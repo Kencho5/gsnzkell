@@ -11,7 +11,7 @@ export class UserService {
 
   getProfileData(id) {
     return this._http.post('/api/user', id).pipe(
-      map((res) => {
+      map((res: HttpResponse<Response>) => {
         return res;
       }));
   }

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
+import { LoginService } from '../login/login.service';
 import { UploadService } from './upload.service';
 
 @Component({
@@ -10,16 +11,16 @@ import { UploadService } from './upload.service';
 })
 export class UploadComponent implements OnInit {
   uploadForm = new FormGroup({
-    title:  new FormControl(),
-    animal:  new FormControl(),
-    breed:  new FormControl(),
-    price:  new FormControl(),
-    age:  new FormControl(),
-    ageType:  new FormControl(),
-    Description:  new FormControl(),
-    postType:  new FormControl(),
-    phone:  new FormControl(),
-    imgs:  new FormControl()
+    title:  new FormControl('', Validators.required),
+    animal:  new FormControl('', Validators.required),
+    breed:  new FormControl('', Validators.required),
+    price:  new FormControl('', Validators.required),
+    age:  new FormControl('', Validators.required),
+    ageType:  new FormControl('', Validators.required),
+    Description:  new FormControl('', Validators.maxLength(200)),
+    postType:  new FormControl('', Validators.required),
+    phone:  new FormControl('', Validators.required),
+    imgs:  new FormControl('', Validators.required)
   });
 
   urls = [];
@@ -29,11 +30,16 @@ export class UploadComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private uploadService: UploadService,
-    private router: Router
+    private router: Router,
+    private login: LoginService
     ) { }
 
   ngOnInit(): void {
-    
+    this.login.isLoggedIn$.subscribe(res => {
+      if(res == false) {
+         this.router.navigate(['/login']);
+      }
+  });
   }
 
   selectFiles(event) {

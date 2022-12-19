@@ -196,6 +196,7 @@ app.post('/api/update', (req, res) => {
 
 app.post('/api/upload', (req, res) => {
   token = req.body.user;
+  console.log(req.body)
 
   if(jwt.verify(token, publicKEY, signOptions)) {
     var postID = uuidv4();
