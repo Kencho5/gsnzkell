@@ -1,6 +1,6 @@
 body {
     font-family: 'Ubuntu', sans-serif;
-    color: #efe9da;
+    color: #e6ccd7;
   }
   
   .main {
@@ -16,15 +16,52 @@ body {
 }
 
 .results {
-  width: 100px;
+  width: 100%;
   height: 400px;
   flex-grow: 1;
+  margin-left: 80px;
+  display: flex;
+  justify-content: space-between;
 }
 
 .filters {
-  background-color: #646F56;
+  background-color: #D01760;
   border-radius: 10px;
   width: 200px;
   height: 400px;
   padding: 20px;
+}
+
+.card {
+  background-color: #D01760;
+  height: 360px;
+  width: 280px;
+  border-radius: 8px;
+}
+
+.img-div {
+  padding: 20px;
+}
+
+.post-img {
+  outline: 3px solid #FFB3D1;
+  border-radius: 8px;
+  padding: 100px;
+}
+
+.post-line {
+  color: #FFB3D1;
+  width: 240px;
+}
+
+.post-title {
+  margin-left: 20px;
+}
+
+.last {
+  display: flex;
+  width: 240px;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 10px;
 }
