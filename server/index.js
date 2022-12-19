@@ -309,6 +309,7 @@ app.post('/api/search', (req, res) => {
           ageType: row.age_type,
           description: row.description,
           postType: row.post_type,
+          date: row.date,
           imgs: row.img_path
          });
       })

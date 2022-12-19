@@ -8,12 +8,7 @@ import { SearchService } from './search.service';
   styleUrls: ['./search.component.scss']
 })
 export class SearchComponent implements OnInit {
-  postData = {
-    id: '',
-    phone_number: '',
-    facebook: '',
-    instagram: '',
-  }
+  postData = [];
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -27,10 +22,18 @@ export class SearchComponent implements OnInit {
     this.searchService.searchPost({'type': type, 'text': text}).subscribe((res) => {
       if(res['code'] == 200) {
         res['data'].forEach(post => {
-            console.log(post)
+            this.postData.push({
+              id: post.id,
+              type: post.postType,
+              animal: post.animal,
+              price: post.price,
+              date: post.date.split('T')[0],
+              img: post.imgs[0]
+            });
         })
       }
     });
+    console.log(this.postData)
   }
 
 }
