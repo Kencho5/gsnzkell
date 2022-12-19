@@ -218,7 +218,7 @@ app.post('/api/upload', (req, res) => {
       var base64Data = req.body.urls[i].replace(/^data:image\/png;base64,/, "");
     }
 
-    require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${postID}-${i}.${type}`, base64Data, 'base64', function(err) {});
+    require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${postID}-${i}${type}`, base64Data, 'base64', function(err) {});
     imgs.push(`${i}${type}`)
   }
 
