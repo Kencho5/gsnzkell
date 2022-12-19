@@ -1,0 +1,81 @@
+<body>
+    <div class="main">
+      <div class="cards">
+        <div class="card left">
+          <img src="/assets/images/logo.svg" alt="logo" class="logo">
+          <hr class="left-line-first">
+          <h1 id="posts-h1">POSTS</h1>
+          <hr class="left-line-second">
+          <div class="posts">
+            <mat-icon>sell</mat-icon>
+            <h1 class="posts-text">SELLING</h1>
+            <h1 class="posts-text">2</h1>
+          </div>
+          <div class="posts">
+            <mat-icon>favorite</mat-icon>
+            <h1 class="posts-text">MEETING</h1>
+            <h1 class="posts-text">7</h1>
+          </div>
+          <div class="posts">
+            <mat-icon>cottage</mat-icon>
+            <h1 class="posts-text">MEETING</h1>
+            <h1 class="posts-text">3</h1>
+          </div>
+        </div>
+        <div class="card right">
+          <div class="info-bg-div">
+            <div class="info-bg">
+              <h1 id="information">INFORMATION</h1>
+            </div>
+          </div>
+          <div class="info-list">
+            <!-- FIRST -->
+            <div class="data">
+              <div>
+                <mat-icon>badge</mat-icon>
+              </div>
+                <div class="edit-div">
+                  <h1 class="info-text" id="usernameEdit">{{userData.name}}</h1>
+                </div>
+            </div>
+            <hr class="right-line">
+            <!-- SECOND -->
+            <div class="data">
+              <div>
+                <mat-icon>phone</mat-icon>
+              </div>
+                <div class="edit-div">
+                  <h1 class="info-text" id="phoneEdit">{{userData.phone_number}}</h1>
+                </div>
+            </div>
+            <hr class="right-line">
+
+            <!-- FOURTH -->
+            <div class="data">
+              <div>
+                <mat-icon>facebook</mat-icon>
+              </div>
+                <div class="edit-div">
+                    <h1 class="info-text social-media" id="facebookEdit">
+                      <a href="{{userData.facebook}}" target="_blank">View Facebook Profile</a>
+                    </h1>
+                </div>                 
+            </div>
+            <hr class="right-line">
+            <!-- FIFTH -->
+            <div class="data">
+              <div>
+                <img src="/assets/images/instagram.svg" alt="instagram" width="24">
+              </div>
+                <div class="edit-div">
+                    <h1 class="info-text social-media" id="instagramEdit">
+                      <a href="{{userData.instagram}}" target="_blank">View Instagram Profile</a>
+                    </h1>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </body>
+  

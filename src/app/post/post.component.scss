@@ -1,0 +1,58 @@
+body,html{
+    font-family:Ubuntu,sans-serif;
+}
+
+.main {
+    display: flex;
+    justify-content: space-evenly;
+    flex:1;
+    padding: 100px;
+    color: #efe9da;
+}
+
+.logo-div {
+    width: 55px;
+    height: 55px;
+}
+
+h1 {
+    font-weight: bold;
+}
+
+#title {
+    color: #646f57;
+}
+
+.child {
+    display: flex;
+    flex-direction: column;
+    flex: 2;
+    margin-left: 30px;
+}
+
+.user {
+    background-color: #646f57;
+    padding: 25px;
+    border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content:space-between;
+    width: 70%;
+}
+
+.profile {
+    display: flex;
+    justify-content: space-evenly;
+    align-items:flex-end;
+    width: 150px;
+    cursor: pointer;
+}
+
+#price {
+    background-color: #646f57;
+    border-radius: 10px;
+    width: 70%;
+    padding: 25px;
+    text-align: center;
+}
+

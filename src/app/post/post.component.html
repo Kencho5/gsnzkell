@@ -1,0 +1,14 @@
+<div class="main">
+    <img data-image="black" src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
+    <div class="child">
+        <h1 id="title">Selling - {{post.breed}}</h1>
+        <h1 id="price">{{post.price}} ₾</h1>
+        <div class="user">
+            <div class="profile" (click)="openProfile()">
+                <div class="logo-div" style="background: url(/assets/images/logo.svg); background-size: 100% 100%;"></div>
+                <h1>{{post.name}}</h1>
+            </div>
+            <h1>{{post.phone}}</h1>
+        </div>
+    </div>
+</div>

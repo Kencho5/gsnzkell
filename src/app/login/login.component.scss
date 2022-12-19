@@ -1,0 +1,195 @@
+* {
+	padding: 0;
+	margin: 0;
+	color: #3d4436;
+	box-sizing: border-box;
+	word-wrap: break-word;
+	font-family: 'Ubuntu', sans-serif;
+}
+
+body {
+	min-height: 100%;
+}
+
+h1 {
+	letter-spacing: -1px
+}
+
+a {
+	color: #646f57;
+	text-decoration: unset
+}
+
+.login-root {
+	display: flex;
+	width: 100%;
+	min-height: 100vh;
+	overflow: hidden
+}
+
+.flex-flex {
+	display: flex
+}
+
+.center-center {
+	align-items: center;
+	justify-content: center
+}
+
+.box-root {
+	box-sizing: border-box
+}
+
+.flex-direction--column {
+	-ms-flex-direction: column;
+	flex-direction: column
+}
+
+.padding-top--64 {
+	padding-top: 64px
+}
+
+.padding-top--24 {
+	padding-top: 24px
+}
+
+.padding-top--48 {
+	padding-top: 48px
+}
+
+.padding-bottom--24 {
+	padding-bottom: 24px
+}
+
+.padding-horizontal--48 {
+	padding: 48px
+}
+
+.padding-bottom--15 {
+	padding-bottom: 15px
+}
+
+.flex-justifyContent--center {
+	-ms-flex-pack: center;
+	justify-content: center
+}
+
+.formbg {
+	margin: 0 auto;
+	width: 100%;
+	max-width: 448px;
+	background: #efe9da;
+	border-radius: 10px;
+	box-shadow: rgba(60, 66, 87, .12) 0 7px 14px 0, rgba(0, 0, 0, .12) 0 3px 6px 0
+}
+
+span {
+	display: block;
+	font-size: 20px;
+	line-height: 28px;
+}
+
+label {
+	margin-bottom: 10px;
+    color: #4b5342;
+}
+
+label {
+	font-size: 14px;
+	font-weight: 600;
+	display: block
+}
+
+.reset-pass a,label {
+	color: #4b5342;
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+}
+.reset-pass > a {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.grid--50-50 {
+	display: grid;
+	grid-template-columns: 50% 50%;
+	align-items: center
+}
+
+.field input {
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    border: unset;
+    border-radius: 6px;
+    outline-color: #000;
+    background-color: #efe9da;
+    box-shadow: transparent 0 0 0 0, transparent 0 0 0 0, transparent 0 0 0 0, rgba(60, 66, 87, .16) 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0, transparent 0 0 0 0;
+}
+
+
+input[type=submit] {
+    background-color: #454d3d !important;
+    box-shadow: transparent 0 0 0 0, transparent 0 0 0 0, rgba(0, 0, 0, .12) 0 1px 1px 0, #4b5342 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0, rgba(60, 66, 87, .08) 0 2px 5px 0 !important;
+    color: #efe9da;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.footer-link span {
+	font-size: 14px;
+	text-align: center
+}
+
+.listing a {
+	color: #efe9da;
+	font-weight: 600;
+	margin: 0 10px
+}
+
+@keyframes animationLeftRight {
+	0% {
+		transform: translateX(0)
+	}
+	50% {
+		transform: translateX(1000px)
+	}
+	100% {
+		transform: translateX(0)
+	}
+}
+
+@keyframes animationRightLeft {
+	0% {
+		transform: translateX(0)
+	}
+	50% {
+		transform: translateX(-1000px)
+	}
+	100% {
+		transform: translateX(0)
+	}
+}
+
+.success-div {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.success-text {
+	font-weight: bold;
+	color: #4BB543;
+}
+
+.error-div {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.error-text {
+	font-weight: bold;
+	color: #ff3333;
+}

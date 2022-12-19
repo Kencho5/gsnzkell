@@ -1,0 +1,30 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    color: #efe9da;
+  }
+  
+  .main {
+    display: flex;
+    padding: 100px;
+    font-weight: bold;
+  letter-spacing: 3px;
+  }
+  
+  h1 {
+  letter-spacing: 3px;
+  font-weight: bold;
+}
+
+.results {
+  width: 100px;
+  height: 400px;
+  flex-grow: 1;
+}
+
+.filters {
+  background-color: #646F56;
+  border-radius: 10px;
+  width: 200px;
+  height: 400px;
+  padding: 20px;
+}

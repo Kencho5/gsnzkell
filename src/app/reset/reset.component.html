@@ -1,0 +1,39 @@
+
+<div class="login-root">
+    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
+       <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
+          <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
+             <h1><a href="/" rel="dofollow">Pender</a></h1>
+          </div>
+          <div class="formbg-outer">
+             <div class="formbg">
+                <div class="formbg-inner padding-horizontal--48">
+                   <span class="padding-bottom--24">Reset your password</span>
+                   <form id="stripe-login" [formGroup]="resetForm" (ngSubmit)="resetPass()">
+                      <div class="field padding-bottom--24">
+                         <label for="email">Email</label>
+                         <input type="email" formControlName="email" autocomplete="on">
+                      </div>
+                      <div class="field padding-bottom--24">
+                         <input type="submit" name="submit" value="Send Code">
+                      </div>
+                   <div *ngIf="message == 'Successfully Logged In!'" class="success-div">
+                      <h4 class="success-text">
+                         {{message}}
+                      </h4>
+                   </div>
+                   <div *ngIf="message == 'Email Or Password Incorrect.' || message == 'Please fill out the form.'" class="error-div">
+                      <h4 class="error-text">
+                         {{message}}
+                      </h4>
+                 </div>
+                   </form>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+  </div>
+  
+
+<router-outlet></router-outlet>

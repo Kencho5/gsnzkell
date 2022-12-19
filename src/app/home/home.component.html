@@ -1,0 +1,166 @@
+<body>
+  <form [formGroup]="searchForm" (ngSubmit)="search()">
+  <div class="search-main">
+    <div class="search-div">
+      <div class="search-content">
+        <div>
+          <h1>Buy, Sell, Meet Or Adopt Pets</h1>
+          <div class="search-content-input">
+              <input type="text" id="searchText" placeholder="Search" formControlName="text">
+              <select formControlName="type" class="search-type">
+                <option value="">Search Type</option>
+                <option value="title">Title</option>
+                <option value="breed">Breed</option>
+            </select>
+            </div>
+          </div>
+          <button type="submit" class="logo-btn" style="background: url(/assets/images/logo.svg); background-size: 100% 100%;"></button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <div class="offerings">
+    <h1 class="offerings-main-text">We Offer</h1>
+    <div class="line"></div>
+    <div class="boxes">
+      <div class="box">
+        <h1>Selling</h1>
+        <mat-icon class="icon">sell</mat-icon>
+        <div class="paragraph">
+          <p>Sell your pets to others or buy pets for your loved ones.</p>
+        </div>
+      </div>
+      <div class="box">
+        <h1>Meeting</h1>
+        <mat-icon class="icon">favorite</mat-icon>
+        <div class="paragraph">
+          <p>Want to have more cute little pets? Find a match on Pender for your pet.</p>
+        </div>
+      </div>
+      <div class="box">
+        <h1>Adopting</h1>
+        <mat-icon class="icon">cottage</mat-icon>
+        <div class="paragraph">
+          <p>Want to adopt a pet? Search on Pender! want to find someone to adopt your pet? Upload a post on Pender!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- SELLING POSTS -->
+  <div class="posts-title-div">
+    <h1 class="offerings-main-text">Latest Selling Posts</h1>
+    <div class="line-posts"></div>
+  </div>
+  <div class="posts">
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/German_Shepherd_-_DSC_0346_%2810096362833%29.jpg'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+  </div>
+  <!-- MEETING POSTS -->
+  <div class="posts-title-div">
+    <h1 class="offerings-main-text">Latest Meeting Posts</h1>
+    <div class="line-posts"></div>
+  </div>
+  <div class="posts">
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://ichef.bbci.co.uk/news/976/cpsprodpb/EF59/production/_123837216_mediaitem123834363.jpg'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/German_Shepherd_-_DSC_0346_%2810096362833%29.jpg'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+  </div>
+  <!-- ADOPTING POSTS -->
+  <div class="posts-title-div">
+    <h1 class="offerings-main-text">Latest Adopting Posts</h1>
+    <div class="line-posts"></div>
+  </div>
+  <div class="posts">
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://images.theconversation.com/files/443350/original/file-20220131-15-1ndq1m6.jpg?ixlib=rb-1.1.0&rect=0%2C0%2C3354%2C2464&q=45&auto=format&w=926&fit=clip'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://www.princeton.edu/sites/default/files/styles/half_2x/public/images/2022/02/KOA_Nassau_2697x1517.jpg?itok=iQEwihUn'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+    <div class="posts-child">
+      <div class="posts-img" style="background: url('https://upload.wikimedia.org/wikipedia/commons/d/d0/German_Shepherd_-_DSC_0346_%2810096362833%29.jpg'); background-size: 100% 100%;"></div>
+      <h1>Title - Price</h1>
+      <div class="description">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime mollitia,
+          molestiae quas vel sint commodi repudiandae consequuntur voluptatum</p>
+      </div>
+    </div>
+  </div>
+</body>

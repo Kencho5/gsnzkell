@@ -1,0 +1,85 @@
+<body>
+    <div class="main">
+        <h1>Upload Your Post</h1>
+        <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+            
+          <mat-form-field class="field">
+            <mat-label>Title</mat-label>
+            <input matInput formControlName="title">
+          </mat-form-field>
+
+            <mat-form-field appearance="fill" class="field">
+                <mat-label>Select Animal</mat-label>
+                <mat-select formControlName="animal">
+                    <mat-option value="dog">Dog</mat-option>
+                    <mat-option value="cat">Cat</mat-option>
+                    <mat-option value="fish">Fish</mat-option>
+                    <mat-option value="bird">Bird</mat-option>
+                    <mat-option value="reptile">Reptile</mat-option>
+                </mat-select>
+              </mat-form-field>
+              
+              <mat-form-field class="field">
+                <mat-label>Breed</mat-label>
+                <input matInput formControlName="breed">
+              </mat-form-field>
+
+              <mat-form-field class="field">
+                <mat-label>Price (GEL)</mat-label>
+                <input matInput formControlName="price">
+              </mat-form-field>
+
+              <mat-form-field appearance="outline" class="field">
+                <mat-label>Age</mat-label>
+                <input matInput type="text" formControlName="age">
+             <mat-select name="ampm" class="ampm" formControlName="ageType">
+                  <mat-option value="years">Years</mat-option>
+                  <mat-option value="months">Months</mat-option>
+             </mat-select>
+           </mat-form-field>
+
+              <mat-form-field class="field">
+                <mat-label>Description</mat-label>
+                <textarea matInput formControlName="description"></textarea>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill" class="field">
+                <mat-label>Post Type</mat-label>
+                <mat-select formControlName="postType">
+                    <mat-option value="selling">Selling</mat-option>
+                    <mat-option value="meeting">Meeting</mat-option>
+                    <mat-option value="adopting">Adopting</mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <section class="field images">
+                <button type="button" mat-raised-button (click)="fileInput.click()">Choose File</button>
+                <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
+                <div *ngIf="message">
+                  <p style="color: red;">4 Photos Maximum!</p>
+                </div>
+                <div class="images">
+                    <div class="image" *ngFor="let url of urls">
+                        <button mat-fab color="#e63427" (click)="removeImage($event)" type='button'>
+                            <mat-icon class="{{url}}">cancel</mat-icon>
+                          </button>
+                        <img [src]="url">
+                    </div>
+                </div>
+              </section>
+
+              <mat-form-field class="field">
+                <mat-label>Phone Number</mat-label>
+                <input matInput formControlName="phone">
+              </mat-form-field>
+              
+              <section class="field">
+                <div *ngIf="form_msg">
+                  <p style="color: red;">Please fill out the form.</p>
+                </div>
+                <input type="submit">
+              </section>
+
+        </form>
+    </div>
+</body>
