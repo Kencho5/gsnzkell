@@ -6,6 +6,14 @@ const jwt = require('jsonwebtoken');
 const fs = require('fs');
 var bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
+const { MongoClient } = require("mongodb");
+
+const url = 'mongodb://localhost:27017';
+const client = new MongoClient(url);
+
+client.connect();
+const db = client.db('pender');
+const collection = db.collection('userPosts');
 
 const pool = new Pool({
   user: 'kencho',
@@ -196,8 +204,7 @@ app.post('/api/update', (req, res) => {
 
 app.post('/api/upload', (req, res) => {
   token = req.body.user;
-  console.log(req.body)
-
+  
   if(jwt.verify(token, publicKEY, signOptions)) {
     var postID = uuidv4();
     email = jwt.verify(token, publicKEY, signOptions)['email'];
@@ -223,6 +230,20 @@ app.post('/api/upload', (req, res) => {
   }
 
   var form = req.body.form;
+
+  var data = {
+    _id: postID,
+    email: email,
+    name: userName
+  }
+
+  const insertResult = collection.insertOne(data);
+  console.log('Inserted documents =>', insertResult);
+
+  res.status(200).send({
+    code: 500
+  });
+  return;
   pool.query(`INSERT INTO user_posts(id, email, name, title, phone, animal, breed, price, age, age_type, description, post_type, img_path, date) VALUES(
     '${postID}',
     '${email}',
