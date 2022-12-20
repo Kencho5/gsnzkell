@@ -8,7 +8,8 @@
             </span>
             
             <div class="wrap-input100 validate-input">
-            <select wrap-input100="animal" class="select" formControlName="animal">
+            <select wrap-input100="animal" class="select" formControlName="animal"
+            required>
               <option value="" disabled>Select Animal</option>
               <option>Dog</option>
               <option>Cat</option>
@@ -20,13 +21,15 @@
 
             <div class="wrap-input100 validate-input">
                 <input class="input100" type="text" wrap-input100="breed" placeholder="Breed" 
-                formControlName="breed">
+                formControlName="breed"
+                required>
                 <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100 validate-input">
             <select wrap-input100="options" id="option" class="select" (change)="changeInput($event)"
-            formControlName="postType">
+            formControlName="postType"
+            required>
               <option value="" disabled>Select Post Type</option>
               <option value="selling">Selling</option>
               <option value="meeting">Meeting</option>
@@ -36,16 +39,19 @@
 
             <div class="wrap-input100 validate-input" id="to-remove">
                 <input class="input100" type="number" wrap-input100="price" placeholder="Price (GEL)"  id="to-hide"
-                formControlName="price">
+                formControlName="price"
+                required>
                 <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100-double validate-input">
               <div class="double-input-div">
                 <input class="double-input" type="number" wrap-input100="age_year" placeholder="Age" 
-                formControlName="age">
+                formControlName="age"
+                required>
                 
-                <select class="double-select" formControlName="ageType">
+                <select class="double-select" formControlName="ageType"
+                required>
                   <option value="" disabled>Age (Years/Month)</option>
                   <option value="years">Years</option>
                   <option value="months">Months</option>
@@ -55,13 +61,15 @@
           </div>
 
             <div class="wrap-input100 validate-input" >
-                <textarea class="input100" wrap-input100="description" placeholder="Description"  maxlength="150" formControlName="description"></textarea>
+                <textarea class="input100" wrap-input100="description" placeholder="Description"  maxlength="150" formControlName="description"
+                required></textarea>
                 <span class="focus-input100"></span>
             </div>
 
             <div class="wrap-input100 validate-input">
               <input class="input100" type="text" wrap-input100="breed" placeholder="Phone Number" 
-              formControlName="phone">
+              formControlName="phone"
+              required>
               <span class="focus-input100"></span>
           </div>
             
