@@ -1,4 +1,99 @@
 <body>
+  <div class="container-contact100">
+    
+    <div class="wrap-contact100">
+        <form class="contact100-form validate-form" [formGroup]="uploadForm" (ngSubmit)="upload()">
+            <span class="contact100-form-title">
+                Upload Your Post
+            </span>
+            
+            <div class="wrap-input100 validate-input">
+            <select wrap-input100="animal" class="select" formControlName="animal">
+              <option value="" disabled>Select Animal</option>
+              <option>Dog</option>
+              <option>Cat</option>
+              <option>Fish</option>
+              <option>Bird</option>
+              <option>Reptile</option>
+            </select>
+          </div>
+
+            <div class="wrap-input100 validate-input">
+                <input class="input100" type="text" wrap-input100="breed" placeholder="Breed" 
+                formControlName="breed">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+            <select wrap-input100="options" id="option" class="select" (change)="changeInput($event)"
+            formControlName="postType">
+              <option value="" disabled>Select Post Type</option>
+              <option value="selling">Selling</option>
+              <option value="meeting">Meeting</option>
+              <option value="adopting">Adopting</option>
+            </select>
+            </div>
+
+            <div class="wrap-input100 validate-input" id="to-remove">
+                <input class="input100" type="number" wrap-input100="price" placeholder="Price (GEL)"  id="to-hide"
+                formControlName="price">
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100-double validate-input">
+              <div class="double-input-div">
+                <input class="double-input" type="number" wrap-input100="age_year" placeholder="Age" 
+                formControlName="age">
+                
+                <select class="double-select" formControlName="ageType">
+                  <option value="" disabled>Age (Years/Month)</option>
+                  <option value="years">Years</option>
+                  <option value="months">Months</option>
+                </select>
+              </div>
+              <span class="focus-input100"></span>
+          </div>
+
+            <div class="wrap-input100 validate-input" >
+                <textarea class="input100" wrap-input100="description" placeholder="Description"  maxlength="150" formControlName="description"></textarea>
+                <span class="focus-input100"></span>
+            </div>
+
+            <div class="wrap-input100 validate-input">
+              <input class="input100" type="text" wrap-input100="breed" placeholder="Phone Number" 
+              formControlName="phone">
+              <span class="focus-input100"></span>
+          </div>
+            
+            <div class="upload-image" align="center">
+                    <button type="button" (click)="fileInput.click()" class="btn btn-primary btn-file">Upload Photos (Max 3)</button>
+                <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
+                <div *ngIf="message">
+                  <h2 style="color: red;">3 Photos Maximum!</h2>
+                </div>
+                <div class="images">
+                    <div class="image-div" *ngFor="let url of urls">
+                        <button (click)="removeImage($event)" type='button'>
+                            <mat-icon class="{{url}}">cancel</mat-icon>
+                          </button>
+                        <img [src]="url" class="uploaded-img">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="container-contact100-form-btn">
+                <button class="contact100-form-btn" type="submit" id="submit">
+                    <span>
+                        <i class="fas fa-paper-plane" style="padding-right: 5px;"></i>
+                        Upload
+                    </span>
+                </button>
+            </div>
+        </form>
+        <h2 align="center" style="padding-top: 30px; color: red;" *ngIf="form_msg">Please fill out the form.</h2>
+    </div>
+</div>
+<!-- 
     <div class="main">
         <h1>Upload Your Post</h1>
         <form [formGroup]="uploadForm" (ngSubmit)="upload()">
@@ -32,7 +127,7 @@
               <mat-form-field appearance="outline" class="field">
                 <mat-label>Age</mat-label>
                 <input matInput type="text" formControlName="age">
-             <mat-select name="ampm" class="ampm" formControlName="ageType">
+             <mat-select wrap-input100="ampm" class="ampm" formControlName="ageType">
                   <mat-option value="years">Years</mat-option>
                   <mat-option value="months">Months</mat-option>
              </mat-select>
@@ -81,5 +176,5 @@
               </section>
 
         </form>
-    </div>
+    </div> -->
 </body>

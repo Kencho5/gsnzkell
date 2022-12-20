@@ -11,13 +11,12 @@ import { UploadService } from './upload.service';
 })
 export class UploadComponent implements OnInit {
   uploadForm = new FormGroup({
-    title:  new FormControl('', Validators.required),
     animal:  new FormControl('', Validators.required),
     breed:  new FormControl('', Validators.required),
-    price:  new FormControl('', Validators.required),
+    price:  new FormControl(''),
     age:  new FormControl('', Validators.required),
     ageType:  new FormControl('', Validators.required),
-    Description:  new FormControl('', Validators.maxLength(200)),
+    description:  new FormControl('', Validators.maxLength(200)),
     postType:  new FormControl('', Validators.required),
     phone:  new FormControl('', Validators.required),
     imgs:  new FormControl('', Validators.required)
@@ -86,6 +85,14 @@ export class UploadComponent implements OnInit {
       });
     } else {
       this.form_msg = true;
+    }
+  }
+
+  changeInput(event) {
+    if(event.target.value != "selling") {
+      event.path[2][3].style.display = 'none';
+    } else {
+      event.path[2][3].style.display = 'block';
     }
   }
 

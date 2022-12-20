@@ -1,48 +1,555 @@
+// body {
+//     font-family: 'Ubuntu', sans-serif;
+//     color: #FFB3D1;
+//   }
+  
+// h1 {
+//     font-weight: bold;
+// }
+
+// form {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+// }
+// .field {
+//     text-align: center;
+//     width: 20%;
+//     margin-top: 60px;
+// }
+
+// .main {
+//     font-weight: bold;
+//     text-align: center;
+//     margin-top: 50px;
+// }
+
+// .images-input {
+//     background-color: #FFB3D1;
+//     color: black;
+//     padding: 7px;
+//     width: 50%;
+//     border-radius: 5px;
+//     cursor: pointer;
+// }
+
+// img {
+//     max-width: 100%;
+//     height: auto;
+// }
+
+// .image {
+//     width: 220px;
+//     min-height: 120px;
+//     max-height: auto;
+//     float: left;
+//     margin: 3px;
+//     padding: 3px;
+// }
+
+$dark: #D0175F;
+$bg: #EA90B7;
+$light: #e4bccc;
+
 body {
     font-family: 'Ubuntu', sans-serif;
-    color: #FFB3D1;
-  }
-  
-h1 {
+    font-weight: 500;
+}
+
+.fade-in {
+    animation: fadeIn ease .5s;
+    -webkit-animation: fadeIn ease .5s;
+    -moz-animation: fadeIn ease .5s;
+    -o-animation: fadeIn ease .5s;
+    -ms-animation: fadeIn ease .5s
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0
+    }
+
+    100% {
+        opacity: 1
+    }
+}
+
+@media print {
+
+    *,
+    ::after,
+    ::before {
+        text-shadow: none !important;
+        box-shadow: none !important
+    }
+}
+
+*,
+::after,
+::before {
+    box-sizing: inherit
+}
+
+button,
+input,
+textarea {
+    -ms-touch-action: manipulation;
+    touch-action: manipulation
+}
+
+button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color
+}
+
+button,
+input,
+textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit
+}
+
+button,
+input {
+    overflow: visible
+}
+
+button {
+    text-transform: none
+}
+
+button {
+    -webkit-appearance: button
+}
+
+button::-moz-focus-inner {
+    padding: 0;
+    border-style: none
+}
+
+textarea {
+    overflow: auto;
+    resize: vertical
+}
+
+/*! CSS Used from: https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/css/font-awesome.min.css */
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+/*! CSS Used from: https://colorlib.com/etc/cf/ContactFrom_v10/css/util.css */
+/*! CSS Used from: https://colorlib.com/etc/cf/ContactFrom_v10/css/main.css */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+input {
+    outline: 0;
+    border: none
+}
+
+textarea {
+    outline: 0;
+    border: none
+}
+
+input:focus,
+textarea:focus {
+    border-color: transparent !important
+}
+
+input::-webkit-input-placeholder {
+    color: $light
+}
+
+input:-moz-placeholder {
+    color: $light
+}
+
+input::-moz-placeholder {
+    color: $light
+}
+
+input:-ms-input-placeholder {
+    color: $light
+}
+
+textarea::-webkit-input-placeholder {
+    color: $light
+}
+
+textarea:-moz-placeholder {
+    color: $light
+}
+
+textarea::-moz-placeholder {
+    color: $light
+}
+
+textarea:-ms-input-placeholder {
+    color: $light
+}
+
+button {
+    outline: 0 !important;
+    border: none;
+    background: 0 0
+}
+
+button:hover {
+    cursor: pointer
+}
+
+.container-contact100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    position: relative;
+}
+
+.wrap-contact100 {
+    width: 550px;
+    background: 0 0;
+    padding: 50px 0 160px
+}
+
+.contact100-form {
+    width: 100%
+}
+
+.contact100-form-title {
+    display: block;
+    font-family: Ubuntu-Bold;
+    font-size: 30px;
+    color: $dark;
+    line-height: 1.2;
+    text-transform: uppercase;
+    text-align: center;
+    padding-bottom: 49px
+}
+
+.wrap-input100 {
+    width: 100%;
+    background-color: $dark;
+    border-radius: 31px;
+    margin-bottom: 16px;
+    position: relative;
+    z-index: 1
+}
+
+.wrap-input100-double {
+    width: 100%;
+    border-radius: 31px;
+    margin-bottom: 16px;
+    // position: relative;
+    // z-index: 1
+}
+
+.input100 {
+    position: relative;
+    display: block;
+    width: 100%;
+    background: $dark;
+    border-radius: 31px;
+    font-family: Ubuntu-Bold;
+    font-size: 18px;
+    line-height: 1.2
+}
+
+input.input100 {
+    height: 62px;
+    padding: 0 35px
+}
+
+textarea.input100 {
+    min-height: 169px;
+    padding: 19px 35px 0
+}
+
+.focus-input100 {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 31px;
+    background-color: $dark;
+    pointer-events: none;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s
+}
+
+.input100:focus+.focus-input100 {
+    width: calc(100% + 20px)
+}
+
+.container-contact100-form-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding-top: 10px
+}
+
+.contact100-form-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 150px;
+    height: 62px;
+    background-color: transparent;
+    border-radius: 31px;
+    font-family: Ubuntu-Bold;
+    font-size: 16px;
+    color: $light;
+    line-height: 1.2;
+    text-transform: uppercase;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    position: relative;
+    z-index: 1
+}
+
+.contact100-form-btn::before {
+    content: "";
+    display: block;
+    position: absolute;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 50%;
+    -webkit-transform: translateX(-50%);
+    -moz-transform: translateX(-50%);
+    -ms-transform: translateX(-50%);
+    -o-transform: translateX(-50%);
+    transform: translateX(-50%);
+    border-radius: 31px;
+    background-color: $dark;
+    pointer-events: none;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s
+}
+
+.contact100-form-btn:hover:before {
+    background-color: #a8144d;
+    width: calc(100% + 20px)
+}
+
+.validate-input {
+    position: relative
+}
+
+/*! CSS Used fontfaces */
+@font-face {
+    font-family: FontAwesome;
+    src: url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot?v=4.7.0);
+    src: url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.eot#iefix&v=4.7.0) format('embedded-opentype'), url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff2?v=4.7.0) format('woff2'), url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.woff?v=4.7.0) format('woff'), url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.ttf?v=4.7.0) format('truetype'), url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular) format('svg');
+    font-weight: 400;
+    font-style: normal
+}
+
+@font-face {
+    font-family: Ubuntu-Bold;
+    src: url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/ubuntu/Ubuntu-Bold.ttf)
+}
+
+.submit {
+    font-family: Ubuntu-Bold;
+    src: url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/ubuntu/Ubuntu-Bold.ttf);
+    background-color: $dark;
+    border-radius: 31px;
+    width: 140px;
+    height: 60px;
+    cursor: pointer
+}
+
+.upload-image {
+    margin-bottom: 50px;
+    margin-top: 50px
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+    background-color: $dark;
+    color: $light;
+    padding: 20px;
+    border: none;
+    border-radius: 15px;
+}
+
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    opacity: 0;
+    outline: 0;
+    background: $dark;
+    cursor: inherit;
+    display: block
+}
+
+.select {
+    font-family: Ubuntu-Bold;
+    font-size: 18px;
+    display: inline-block;
+    width: 100%;
+    cursor: pointer;
+    padding: 20px 15px;
+    outline: 0;
+    border: 0;
+    border-radius: 31px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: $dark;
+    color: $light;
+    padding-left: 35px;
+}
+
+.double-input-div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.double-input {
+    width: 260px;
+    background: $dark;
+    border-radius: 31px;
+    font-family: Ubuntu-Bold;
+    font-size: 18px;
+    line-height: 1.2;
+    padding-left: 35px;
+    padding: 0 35px;
+}
+
+input {
+    color: $light;
+}
+textarea {
+    color: $light;
+}
+
+.double-select {
+    font-family: Ubuntu-Bold;
+    font-size: 18px;
+    width: 260px;
+    cursor: pointer;
+    padding: 20px 15px;
+    outline: 0;
+    border: 0;
+    border-radius: 31px;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: $dark;
+    color: $light;
+    padding-left: 35px;
+}
+
+option {
     font-weight: bold;
 }
 
-form {
+.images {
     display: flex;
-    flex-direction: column;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.image-div {
+    width: 240px;
+    height: 200px;
+    margin-top: 50px;
     align-items: center;
 }
-.field {
-    text-align: center;
-    width: 20%;
-    margin-top: 60px;
-}
 
-.main {
-    font-weight: bold;
-    text-align: center;
-    margin-top: 50px;
-}
-
-.images-input {
-    background-color: #FFB3D1;
-    color: black;
-    padding: 7px;
-    width: 50%;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-img {
-    max-width: 100%;
-    height: auto;
-}
-
-.image {
-    width: 220px;
-    min-height: 120px;
-    max-height: auto;
-    float: left;
-    margin: 3px;
-    padding: 3px;
+.uploaded-img {
+    width: 100%;
+    height: 100%;
+    outline: 3px solid $light;
+    border-radius: 8px;
 }
