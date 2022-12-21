@@ -281,6 +281,7 @@ app.post('/api/post', (req, res) => {
           ageType: result.ageType,
           description: result.description,
           postType: result.postType,
+          date: result.date,
           imgs: result.img_path
         }
 
@@ -295,37 +296,6 @@ app.post('/api/post', (req, res) => {
         });
       }
   });
-
-  // pool.query(`SELECT * FROM user_posts WHERE id = '${postID}'`, (errorDB, responseDB) => {
-  //   if (responseDB) {
-  //     var data = {
-  //       id: responseDB.rows[0].id,
-  //       title: responseDB.rows[0].title,
-  //       email: responseDB.rows[0].email,
-  //       name: responseDB.rows[0].name,
-  //       phone: responseDB.rows[0].phone,
-  //       animal: responseDB.rows[0].animal,
-  //       breed: responseDB.rows[0].breed,
-  //       price: responseDB.rows[0].price,
-  //       age: responseDB.rows[0].age,
-  //       ageType: responseDB.rows[0].age_type,
-  //       description: responseDB.rows[0].description,
-  //       postType: responseDB.rows[0].post_type,
-  //       imgs: responseDB.rows[0].img_path
-  //      };
-      
-  //     res.status(200).send({
-  //       code: 200,
-  //       data: data
-  //     });
-      
-  //   } else {
-  //     res.status(200).send({
-  //       code: 500,
-  //     });
-  //   }
-  // });
-
 })
 
 app.post('/api/search', (req, res) => {

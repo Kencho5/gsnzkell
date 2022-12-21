@@ -1,14 +1,47 @@
-<div class="main">
-    <img data-image="black" src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
+<!-- <div class="main">
+    <img data-image="black" src="/assets/postImages/post.id-post.imgs[0]" alt="">
     <div class="child">
-        <h1 id="title">Selling - {{post.breed}}</h1>
-        <h1 id="price">{{post.price}} ₾</h1>
+        <h1 id="title">Selling - post.breed</h1>
+        <h1 id="price">post.price ₾</h1>
         <div class="user">
             <div class="profile" (click)="openProfile()">
                 <div class="logo-div" style="background: url(/assets/images/logo.svg); background-size: 100% 100%;"></div>
-                <h1>{{post.name}}</h1>
+                <h1>post.name</h1>
             </div>
-            <h1>{{post.phone}}</h1>
+            <h1>post.phone</h1>
         </div>
     </div>
-</div>
+</div> -->
+
+<main>
+    <div class="container">
+      <div class="grid product">
+          <div class="column-xs-12 column-md-7">
+            <div class="post-type">
+                <h1>{{post.postType}}</h1>
+            </div>
+          <div class="product-gallery">
+            <div class="product-image">
+              <img class="active" src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}">
+            </div>
+            <ul class="image-list">
+              <li class="image-item" *ngFor="let img of post.imgs"><img src="/assets/postImages/{{post.id}}-{{img}}" (click)="changeImage($event)"></li>
+            </ul>
+          </div>
+        </div>
+        <div class="column-xs-12 column-md-5">
+          <h1>{{post.animal}} - {{post.breed}}</h1>
+          <p class="date"><mat-icon>event</mat-icon> {{post.date}}</p>
+          <div class="post-details">
+              <h2 *ngIf="post.price != ''">{{post.price}} ₾</h2>
+              <h2>123 ₾</h2>
+              <h2>{{post.age}} {{post.ageType}} Old</h2>
+          </div>
+          <div class="description">
+            <p>{{post.description}}</p>
+          </div>
+          <h1 class="user-details">{{post.name}} - <mat-icon>phone</mat-icon> {{post.phone}}</h1>
+        </div>
+      </div>
+    </div>
+  </main>

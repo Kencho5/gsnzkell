@@ -16,7 +16,6 @@ export class PostComponent implements OnInit {
     id: '',
     name: '',
     email: '',
-    title: '',
     phone: '',
     animal: '',
     breed: '',
@@ -25,6 +24,7 @@ export class PostComponent implements OnInit {
     ageType: '',
     description: '',
     postType: '',
+    date: '',
     imgs: ''
   }
 
@@ -47,7 +47,6 @@ export class PostComponent implements OnInit {
           id: res['data']['id'],
           name: res['data']['name'],
           email: res['data']['email'],
-          title: res['data']['title'],
           phone: res['data']['phone'],
           animal: res['data']['animal'],
           breed: res['data']['breed'],
@@ -55,10 +54,10 @@ export class PostComponent implements OnInit {
           age: res['data']['age'],
           ageType: res['data']['ageType'],
           description: res['data']['description'],
-          postType: res['data']['postType'],
+          postType: res['data']['postType'].toUpperCase(),
+          date: res['data']['date'].split('T')[0],
           imgs: res['data']['imgs']
         }
-        console.log(this.post)
       } else {
         this.router.navigate(['']);
       }
@@ -75,6 +74,12 @@ export class PostComponent implements OnInit {
       }
     });
 
+  }
+
+  changeImage(event) {
+    var active = document.getElementsByClassName("active")[0] as HTMLImageElement;
+
+    active.src = event.target.src;
   }
 
 }
