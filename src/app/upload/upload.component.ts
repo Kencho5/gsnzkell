@@ -71,7 +71,6 @@ export class UploadComponent implements OnInit {
 
   upload() {
     if(this.uploadForm.valid) {
-
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,

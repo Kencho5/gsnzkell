@@ -11,6 +11,7 @@ import { PostService } from './post.service';
 })
 export class PostComponent implements OnInit {
   postID: string;
+  icon: string;
 
   post = {
     id: '',
@@ -58,6 +59,15 @@ export class PostComponent implements OnInit {
           date: res['data']['date'].split('T')[0],
           imgs: res['data']['imgs']
         }
+
+        if(this.post.postType == "SELLING") {
+          this.icon = 'sell'
+        } else if(this.post.postType == "MEETING") {
+          this.icon = 'favorite'
+        } else {
+          this.icon = 'home';
+        }
+        
       } else {
         this.router.navigate(['']);
       }
