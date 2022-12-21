@@ -207,8 +207,11 @@ app.post('/api/upload', (req, res) => {
   
   if(jwt.verify(token, publicKEY, signOptions)) {
     var postID = uuidv4();
+
     email = jwt.verify(token, publicKEY, signOptions)['email'];
+
     userName = jwt.verify(token, publicKEY, signOptions)['name'];
+
   } else {
     res.status(200).send({
       code: 500
@@ -226,7 +229,7 @@ app.post('/api/upload', (req, res) => {
     }
 
     require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${postID}-${i}${type}`, base64Data, 'base64', function(err) {});
-    imgs.push(`${i}${type}`)
+    imgs.push(`${i}${type}`);
   }
 
   var form = req.body.form;
@@ -234,78 +237,94 @@ app.post('/api/upload', (req, res) => {
   var data = {
     _id: postID,
     email: email,
-    name: userName
+    name: userName,
+    animal: form['animal'],
+    breed: form['breed'],
+    price: form['price'],
+    age: form['age'],
+    ageType: form['ageType'],
+    description: form['description'],
+    postType: form['postType'],
+    phone: form['phone'],
+    date: new Date(),
+    img_path: imgs
   }
 
-  const insertResult = collection.insertOne(data);
-  console.log('Inserted documents =>', insertResult);
-
-  res.status(200).send({
-    code: 500
-  });
-  return;
-  pool.query(`INSERT INTO user_posts(id, email, name, title, phone, animal, breed, price, age, age_type, description, post_type, img_path, date) VALUES(
-    '${postID}',
-    '${email}',
-    '${userName}',
-    '${form['title']}', 
-    '${form['phone']}', 
-    '${form['animal']}', 
-    '${form['breed']}',
-    '${form['price']}',
-    '${form['age']}',
-    '${form['ageType']}',
-    '${form['description']}',
-    '${form['postType']}',
-    '{${imgs}}',
-    current_timestamp
-    )`, (errorDB, responseDB) => {
-    if (responseDB) {
+  collection.insertOne(data, function(err, result) {
+    if(result) {
       res.status(200).send({
         code: 200,
         id: postID
       });
     } else {
-      console.log(errorDB)
       res.status(200).send({
-        code: 500,
+        code: 500
       });
     }
-  });
+  })
 });
 
 app.post('/api/post', (req, res) => {
   var postID = req.body.id;
-  
-  pool.query(`SELECT * FROM user_posts WHERE id = '${postID}'`, (errorDB, responseDB) => {
-    if (responseDB) {
-      var data = {
-        id: responseDB.rows[0].id,
-        title: responseDB.rows[0].title,
-        email: responseDB.rows[0].email,
-        name: responseDB.rows[0].name,
-        phone: responseDB.rows[0].phone,
-        animal: responseDB.rows[0].animal,
-        breed: responseDB.rows[0].breed,
-        price: responseDB.rows[0].price,
-        age: responseDB.rows[0].age,
-        ageType: responseDB.rows[0].age_type,
-        description: responseDB.rows[0].description,
-        postType: responseDB.rows[0].post_type,
-        imgs: responseDB.rows[0].img_path
-       };
-      
-      res.status(200).send({
-        code: 200,
-        data: data
-      });
-      
-    } else {
-      res.status(200).send({
-        code: 500,
-      });
-    }
+
+  collection.findOne({"_id": postID}, function(err, result) {
+      if(result) {
+        var data = {
+          id: result._id,
+          email: result.email,
+          name: result.name,
+          phone: result.phone,
+          animal: result.animal,
+          breed: result.breed,
+          price: result.price,
+          age: result.age,
+          ageType: result.ageType,
+          description: result.description,
+          postType: result.postType,
+          imgs: result.img_path
+        }
+
+        res.status(200).send({
+          code: 200,
+          data: data
+        });
+
+      } else {
+        res.status(200).send({
+          code: 500
+        });
+      }
   });
+
+  // pool.query(`SELECT * FROM user_posts WHERE id = '${postID}'`, (errorDB, responseDB) => {
+  //   if (responseDB) {
+  //     var data = {
+  //       id: responseDB.rows[0].id,
+  //       title: responseDB.rows[0].title,
+  //       email: responseDB.rows[0].email,
+  //       name: responseDB.rows[0].name,
+  //       phone: responseDB.rows[0].phone,
+  //       animal: responseDB.rows[0].animal,
+  //       breed: responseDB.rows[0].breed,
+  //       price: responseDB.rows[0].price,
+  //       age: responseDB.rows[0].age,
+  //       ageType: responseDB.rows[0].age_type,
+  //       description: responseDB.rows[0].description,
+  //       postType: responseDB.rows[0].post_type,
+  //       imgs: responseDB.rows[0].img_path
+  //      };
+      
+  //     res.status(200).send({
+  //       code: 200,
+  //       data: data
+  //     });
+      
+  //   } else {
+  //     res.status(200).send({
+  //       code: 500,
+  //     });
+  //   }
+  // });
 
 })
 

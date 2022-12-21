@@ -58,6 +58,7 @@ export class PostComponent implements OnInit {
           postType: res['data']['postType'],
           imgs: res['data']['imgs']
         }
+        console.log(this.post)
       } else {
         this.router.navigate(['']);
       }

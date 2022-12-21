@@ -11,6 +11,12 @@ body {
   color: $light;
 }
 
+input::-webkit-input-placeholder{
+  color:$dark;
+}
+input:-moz-placeholder {
+  color:$dark;
+}
 
 .search-main {
     margin: 100px;
@@ -89,21 +95,6 @@ body {
   color: $dark;
   padding-left: 30px;
 }
-
-/*.search-content input {
-  margin-top: 30px;
-  width: 550px;
-  height: 68px;
-  border-radius: 30px;
-  background-color: $light;
-  border: 1px solid $light;
-  outline: none;
-  font-size: 30px;
-  padding-left: 30px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: $dark;
-}*/
 
 @media (max-width: 2100px) {
   .boxes {
