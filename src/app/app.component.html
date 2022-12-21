@@ -1,4 +1,4 @@
-<header class="site-header">
+<!-- <header class="site-header">
   <div class="wrapper site-header__wrapper">
     <div class="site-header__start">
       <a href="#" class="brand">Pender</a>
@@ -25,4 +25,25 @@
     </ng-template>
   </div>
 </header>
+<router-outlet></router-outlet> -->
+<nav class="navbar">
+  <div class="navbar-container container">
+      <input type="checkbox" name="" id="">
+      <div class="hamburger-lines">
+          <span class="nav-line line1"></span>
+          <span class="nav-line line2"></span>
+          <span class="nav-line line3"></span>
+      </div>
+      <ul class="menu-items">
+          <li><a href="/">Home</a></li>
+          <li><a href="/upload">Upload</a></li>
+          <li><a href="/profile">Profile</a></li>
+          <li *ngIf="loginService.isLoggedIn$ | async; else logout" (click)="logoutFunction()"><a href="/login">Log Out</a></li>
+          <ng-template #logout>
+            <li><a href="/login">Log In</a></li>
+          </ng-template>
+      </ul>
+      <h1 class="logo">Pender</h1>
+  </div>
+</nav>
 <router-outlet></router-outlet>
