@@ -185,13 +185,17 @@ nav {
   font-size: 24px;
 }
 
+.user-details-div {
+  display: flex;
+  justify-content: space-between;
+}
+
 .user-details {
   position: relative;
   display: inline-block;
   background: $button;
   color: $light;
   border: none;
-  border-radius: 0;
   padding: 1.25rem 2.5rem;
   font-size: 23px;
   text-transform: uppercase;
@@ -217,6 +221,14 @@ nav {
     transform-origin: 0 50%;
     transition: transform 0.3s ease-out;
   }
+}
+
+.user-details::before {
+  border-radius: 10px;
+}
+
+.user-details {
+  border-radius: 10px;
 }
 
 .container {

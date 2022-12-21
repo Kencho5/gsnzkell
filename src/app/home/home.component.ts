@@ -32,5 +32,6 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/search', {type: this.searchForm.value.type, text: this.searchForm.value.text}]);
     }
   }
+  
 
 }
