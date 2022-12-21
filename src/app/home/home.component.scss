@@ -100,42 +100,18 @@ input:-moz-placeholder {
   padding-left: 30px;
 }
 
-@media (max-width: 2100px) {
-  .boxes {
-    display: block;
-    margin-top: 50px;
-  }
-
-  .box {
-    margin: auto;
-  }
-
-  .offerings-main-text {
-    text-align: center;
-    line-height: 1.1;
-  }
-
-  .line {
-    margin: auto;
-  }
-}
-
-@media (min-width: 2100px) {
-  .boxes {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .offerings {
-    width: 50%;
-  }
-}
-
-@media (max-width: 1100px) {}
-
 .offerings {
-  padding-top: 50px;
+  text-align: center;
+}
+
+.line {
   margin: auto;
+}
+
+.boxes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }
 
 .offerings-main-text {
