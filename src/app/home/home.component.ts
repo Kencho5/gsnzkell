@@ -9,6 +9,8 @@ import { HomeService } from './home.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  posts = [];
+
   searchForm = this.formBuilder.group({
     text:  new FormControl(),
     type:  new FormControl()
@@ -21,6 +23,8 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.latestPosts();
+
     this.searchForm = new FormGroup({
       text: new FormControl('', [Validators.required]),
       type: new FormControl('', Validators.required)
@@ -32,6 +36,13 @@ export class HomeComponent implements OnInit {
       this.router.navigate(['/search', {type: this.searchForm.value.type, text: this.searchForm.value.text}]);
     }
   }
-  
+
+  latestPosts() {
+    this.homeService.latestPosts().subscribe((res) => {
+      if (res["code"] == 200) {
+        this.posts = res['data'];
+      }
+    });
+  }
 
 }

@@ -114,13 +114,6 @@ input:-moz-placeholder {
   flex-wrap: wrap;
 }
 
-.offerings-main-text {
-  font-size: 50px;
-  color: $dark;
-  font-weight: 700;
-  letter-spacing: 2px;
-}
-
 .line {
   width: 217px;
   height: 1px;
@@ -214,28 +207,38 @@ input:-moz-placeholder {
   margin-bottom: 20px;
 }
 
-.description {
-  width: 90%;
-  margin: auto;
-  padding: 20px;
-  overflow: hidden;
-  max-height: 95px;
+.posts-div {
+  background-color: $light;
+  margin: 30px;
+  margin-top: 150px;
+  border-radius: 16px;
 }
 
 .latest-posts {
   display: flex;
   justify-content: space-around;
-  padding: 40px;
   flex-wrap: wrap;
 }
 
 .post {
   margin-bottom: 40px;
   background-color: $dark;
-  height: 300px;
+  height: 310px;
   width: 250px;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 12px;
+}
+
+.latest-title {
+  color: $dark;
+  font-weight: bold;
+  padding: 30px;
+}
+
+.title-div {
+  display: flex;
+  align-items: center;
+  height: 100px;
 }
 
 .post-title {
@@ -261,35 +264,7 @@ input:-moz-placeholder {
   object-fit: cover;
 }
 
-.latest {
-  text-align: center;
-  margin-top: 100px;
-}
-
-.latest-line {
-  width: 300px;
-  height: 1px;
-  background-color: $dark;
-  border: 2px solid $dark;
-  margin: auto;
-}
-
-.title {
-  display: flex;
-  justify-content: space-evenly;
-  width: 300px;
-  margin: auto;
-}
-
-.star {
-  font-size: 40px;
-  width: 40px;
-  height: 40px;
-  color: $dark;
-}
-
 .post-details {
-  margin-top: 10px;
   display: flex;
   justify-content: space-between;
   padding: 15px;
@@ -302,7 +277,12 @@ input:-moz-placeholder {
   font-size: 25px;
 }
 
+.breed {
+  font-size: 18px;
+}
+
 .open-post {
+  cursor: pointer;
   border: none;
   border-radius: 8px;
   background-color: $light;
@@ -310,5 +290,9 @@ input:-moz-placeholder {
   height: 40px;
   color: $dark;
   font-size: 16px;
+  font-weight: bold;
+}
+
+.age h2 {
   font-weight: bold;
 }

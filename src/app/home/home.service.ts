@@ -11,4 +11,11 @@ export class HomeService {
     private _http: HttpClient
   ) { }
 
+  latestPosts() {
+    return this._http.post('/api/home', {}).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
+
 }

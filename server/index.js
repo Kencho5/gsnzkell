@@ -336,6 +336,41 @@ app.post('/api/search', (req, res) => {
     }
   });
 
-})
+});
+
+app.post('/api/home', (req, res) => {
+  var data = [];
+  var result = collection.find().skip(collection.countDocuments() - 10).toArray(function(err, results) {
+    if(results) {
+      results.forEach(result => {
+        data.push({
+          id: result._id,
+          email: result.email,
+          name: result.name,
+          phone: result.phone,
+          animal: result.animal,
+          breed: result.breed,
+          price: result.price,
+          age: result.age,
+          ageType: result.ageType,
+          description: result.description,
+          postType: result.postType,
+          date: result.date,
+          imgs: result.img_path
+      });
+      })
+      
+      res.status(200).send({
+        code: 200,
+        data: data
+      });
+
+    } else {
+      res.status(200).send({
+        code: 500
+      });
+    }
+  });
+});
 
 app.listen(8080, () => console.log(`Started server at http://localhost:8080!`));
