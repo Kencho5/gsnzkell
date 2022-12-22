@@ -1,43 +1,13 @@
-<!-- <main>
-    <div class="container">
-      <div class="grid product">
-          <div class="column-xs-12 column-md-7">
-            <div class="post-type">
-                <h1><mat-icon>{{icon}}</mat-icon> {{post.postType}}</h1>
-            </div>
-          <div class="product-gallery">
-            <div class="product-image">
-              <img class="active" src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}">
-            </div>
-            <ul class="image-list">
-              <li class="image-item" *ngFor="let img of post.imgs"><img src="/assets/postImages/{{post.id}}-{{img}}" (click)="changeImage($event)"></li>
-            </ul>
-          </div>
-        </div>
-        <div class="column-xs-12 column-md-5">
-          <h1>{{post.animal}} - {{post.breed}}</h1>
-          <p class="date"><mat-icon>event</mat-icon> {{post.date}}</p>
-          <div class="post-details">
-              <h2 *ngIf="post.price != ''">{{post.price}} ₾</h2>
-              <h2>{{post.age}} {{post.ageType}} Old</h2>
-          </div>
-          <div class="description">
-            <p>{{post.description}}</p>
-          </div>
-          <div class="user-details-div">
-            <h1 class="user-details">{{post.name}} - <mat-icon>phone</mat-icon> {{post.phone}}</h1>
-  
-            <h1 class="user-details" (click)="openProfile()"><mat-icon>person</mat-icon> View Profile</h1>
-          </div>
-        </div>
-      </div>
-    </div>
-  </main> -->
-
-  <div class="main">
+<div class="main">
     <div class="images-div">
+      
+      <h1 class="post-type">
+        <mat-icon>{{icon}}</mat-icon>
+        {{post.postType}}
+      </h1>
+
       <div class="active-div">
-        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active" @changeImage>
+        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active">
         <div class="arrows-div">
           <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
           <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
@@ -48,6 +18,21 @@
       </div>
     </div>
     <div class="post-details">
-      <h1>test</h1>
+      <h1 class="date"><mat-icon>today</mat-icon> {{post.date}}</h1>
+
+      <div>
+        <h1 class="title">{{post.breed}}</h1>
+        <h1 class="title" *ngIf="post.price != ''">{{post.price}} ₾</h1>
+        <h1 class="title">{{post.age}} {{post.ageType |titlecase}} Old</h1>
+        <p class="description">{{post.description}}</p>
+      </div>
+
+      <div class="user-details">
+          <h1><mat-icon>account_circle</mat-icon> {{post.name |titlecase}}</h1>
+
+          <h1><mat-icon>phone</mat-icon> {{post.phone}}</h1>
+        <h1><mat-icon>place</mat-icon> Tbilisi</h1>
+      </div>
+
     </div>
   </div>

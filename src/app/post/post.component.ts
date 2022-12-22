@@ -32,6 +32,9 @@ export class PostComponent implements OnInit {
       if(res['code'] == 200) {
         this.post = res['data'];
 
+        this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
+        this.post.postType = this.post.postType.toUpperCase();
+
         if(this.post.postType == "SELLING") {
           this.icon = 'sell'
         } else if(this.post.postType == "MEETING") {
