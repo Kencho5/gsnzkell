@@ -346,15 +346,12 @@ app.post('/api/home', (req, res) => {
         data.push({
           id: result._id,
           email: result.email,
-          name: result.name,
-          phone: result.phone,
           animal: result.animal,
           breed: result.breed,
           price: result.price,
           age: result.age,
           ageType: result.ageType,
-          description: result.description,
-          postType: result.postType,
+          postType: result.postType.toUpperCase(),
           date: result.date,
           imgs: result.img_path
       });
