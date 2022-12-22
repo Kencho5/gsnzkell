@@ -2,6 +2,10 @@ $dark: #D0175F;
 $bg: #EA90B7;
 $light: #e4bccc;
 
+mat-icon {
+        font-family: 'Material Icons' !important;
+}
+
 *,::after,::before{
     box-sizing:border-box;
     padding:0;
