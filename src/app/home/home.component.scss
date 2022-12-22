@@ -235,11 +235,11 @@ input:-moz-placeholder {
 
 .post {
   display: inline-block;
-  margin: 30px;
-  margin-bottom: 40px;
+  margin: 40px;
+  // margin-bottom: 40px;
   background-color: $dark;
-  height: 310px;
-  width: 250px;
+  height: 280px;
+  width: 230px;
   border-radius: 12px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 12px;
 }
@@ -253,7 +253,7 @@ input:-moz-placeholder {
 .title-div {
   display: flex;
   align-items: center;
-  height: 100px;
+  height: 70px;
 }
 
 .post-title {
@@ -270,7 +270,7 @@ input:-moz-placeholder {
 
 .post-img {
   position: relative;
-  height: 70%;
+  height: 60%;
 }
 .post-img img {
   border-radius: 10px 10px 0px 0px;
