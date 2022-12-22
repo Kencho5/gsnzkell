@@ -1,4 +1,4 @@
-<main>
+<!-- <main>
     <div class="container">
       <div class="grid product">
           <div class="column-xs-12 column-md-7">
@@ -32,4 +32,22 @@
         </div>
       </div>
     </div>
-  </main>
+  </main> -->
+
+  <div class="main">
+    <div class="images-div">
+      <div class="active-div">
+        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active" @changeImage>
+        <div class="arrows-div">
+          <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
+          <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
+        </div>
+      </div>
+      <div class="all-imgs">
+          <img *ngFor="let img of post.imgs" src="/assets/postImages/{{post.id}}-{{img}}" class="sub-img" (click)="changeImage($event)">
+      </div>
+    </div>
+    <div class="post-details">
+      <h1>test</h1>
+    </div>
+  </div>

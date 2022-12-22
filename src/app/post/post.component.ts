@@ -13,21 +13,7 @@ export class PostComponent implements OnInit {
   postID: string;
   icon: string;
 
-  post = {
-    id: '',
-    name: '',
-    email: '',
-    phone: '',
-    animal: '',
-    breed: '',
-    price: '',
-    age: '',
-    ageType: '',
-    description: '',
-    postType: '',
-    date: '',
-    imgs: ''
-  }
+  post;
 
   private routeSub: Subscription;
 
@@ -44,21 +30,7 @@ export class PostComponent implements OnInit {
 
     this.postService.getPostData({'id': this.postID}).subscribe((res) => {
       if(res['code'] == 200) {
-        this.post = {
-          id: res['data']['id'],
-          name: res['data']['name'],
-          email: res['data']['email'],
-          phone: res['data']['phone'],
-          animal: res['data']['animal'],
-          breed: res['data']['breed'],
-          price: res['data']['price'],
-          age: res['data']['age'],
-          ageType: res['data']['ageType'],
-          description: res['data']['description'],
-          postType: res['data']['postType'].toUpperCase(),
-          date: res['data']['date'].split('T')[0],
-          imgs: res['data']['imgs']
-        }
+        this.post = res['data'];
 
         if(this.post.postType == "SELLING") {
           this.icon = 'sell'
@@ -90,6 +62,33 @@ export class PostComponent implements OnInit {
     var active = document.getElementsByClassName("active")[0] as HTMLImageElement;
 
     active.src = event.target.src;
+  }
+
+  scrollLeft() {
+    var active = document.getElementsByClassName("active")[0] as HTMLImageElement;
+    var current = active.src.slice(-5);
+
+    var nextIndex = this.post.imgs.indexOf(current);
+
+    if(nextIndex - 1 >= 0) {
+      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[nextIndex - 1]}`;
+    } else {
+      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[this.post.imgs.length - 1]}`;
+    }
+  }
+
+  scrollRight() {
+    var active = document.getElementsByClassName("active")[0] as HTMLImageElement;
+    var current = active.src.slice(-5);
+
+    var nextIndex = this.post.imgs.indexOf(current);
+
+    if(nextIndex + 1 < this.post.imgs.length) {
+      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[nextIndex + 1]}`;
+    } else {
+      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[0]}`;
+    }
+
   }
 
 }
