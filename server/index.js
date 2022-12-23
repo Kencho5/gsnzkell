@@ -48,7 +48,7 @@ app.use(
 
 const limiter = rateLimit({
   windowMs: 30000,
-  max: 100,
+  max: 150,
   message: "Too many requests from this IP, please try again"
 });
 app.use(limiter);
@@ -62,42 +62,32 @@ app.post('/api/login', (req, res) => {
   email = req.body.email;
   password = req.body.password;
 
-  pool.query(`SELECT password, name, email, phone_number, instagram, facebook FROM USERS WHERE email = '${email}'`, (errorDB, responseDB) => {
-    if (responseDB.rowCount != 0) {
+  users.findOne({email: email}, (err, responseDB) => {
+    if(responseDB) {
+      bcrypt.compare(password, responseDB.password, (error, result) => {
 
-      bcrypt.compare(password, responseDB.rows[0].password, function(err, result) {
+        var payload = {
+          name: responseDB.username,
+          email: responseDB.email,
+          phone: responseDB.phone,
+          instagram: responseDB.instagram,
+          facebook: responseDB.facebook
+        };
 
-        if (result) {
-          
-          var payload = {
-            name: responseDB.rows[0].name,
-            email: responseDB.rows[0].email,
-            phone: responseDB.rows[0].phone_number,
-            instagram: responseDB.rows[0].instagram,
-            facebook: responseDB.rows[0].facebook
-           };
-
-          var token = jwt.sign(payload, privateKEY, signOptions);
-          
-          res.status(200).send({
-            status: 200,
-            message: 'Successfully Logged In!',
-            token: token
-          });
-        } else {
-          res.status(200).send({
-            status: 401,
-          });
-        }
-
+      var token = jwt.sign(payload, privateKEY, signOptions);
+      
+      res.status(200).send({
+        status: 200,
+        message: 'Successfully Logged In!',
+        token: token
       });
+      })
     } else {
       res.status(200).send({
         status: 500
       });
     }
-
-  });
+  })
 })
 
 app.post('/api/register', (req, res) => {
