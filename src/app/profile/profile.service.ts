@@ -9,12 +9,12 @@ export class ProfileService {
 
   constructor(private _http: HttpClient) { }
 
-  getProfile(token) {
-    return this._http.post('/api/profile', token).pipe(
-      map((res: HttpResponse<Response>) => {
-        return res;
-      }));
-  }
+  // getProfile(token) {
+  //   return this._http.post('/api/profile', token).pipe(
+  //     map((res: HttpResponse<Response>) => {
+  //       return res;
+  //     }));
+  // }
 
   updateUserData(data, type, email) {
     return this._http.post('/api/update', [data, type, email]).pipe(

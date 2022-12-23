@@ -11,12 +11,7 @@ import { UserService } from './user.service';
 export class UserComponent implements OnInit {
   userID: string;
 
-  userData = {
-    name: '',
-    phone_number: '',
-    facebook: '',
-    instagram: '',
-  }
+  userData;
 
   private routeSub: Subscription;
 
@@ -32,12 +27,7 @@ export class UserComponent implements OnInit {
 
     this.userService.getProfileData({'id': this.userID}).subscribe((res) => {
       if(res['code'] == 200) {
-        this.userData = {
-          name: res['data']["name"],
-          phone_number: res['data']["phone"],
-          facebook: res['data']["facebook"],
-          instagram: res['data']["instagram"]
-        }
+        this.userData = res['data'];
       }
     });
   }

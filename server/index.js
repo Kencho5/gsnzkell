@@ -129,61 +129,27 @@ app.post('/api/register', (req, res) => {
   });
 })
 
-app.post('/api/profile', (req, res) => {
-  if(req.body.email) {
-    email = req.body.email;
-  } else {
-    token = req.body.token;
-  
-    try {
-      email = jwt.verify(token, publicKEY, signOptions)['email'];
-    } catch(e) {
-      res.status(200).send({
-        code: 500,
-      });
-    }
-  }
-
-  pool.query(`SELECT id, name, phone_number, facebook, instagram FROM USERS WHERE email = '${email}'`, (errorDB, responseDB) => {
-    if (responseDB.rowCount != 0) {
-      var payload = {
-        id: responseDB.rows[0].id,
-        name: responseDB.rows[0].name,
-        email: responseDB.rows[0].email,
-        phone: responseDB.rows[0].phone_number,
-        instagram: responseDB.rows[0].instagram,
-        facebook: responseDB.rows[0].facebook
-       };
-
-      var newToken = jwt.sign(payload, privateKEY, signOptions);
-
-      res.status(200).send({
-        code: 200,
-        token: newToken
-      });
-    }
-  });
-});
-
 app.post('/api/user', (req, res) => {
   id = req.body.id;
 
-  pool.query(`SELECT id, email, name, phone_number, facebook, instagram FROM USERS WHERE id = '${id}'`, (errorDB, responseDB) => {
-    if (responseDB.rowCount != 0) {
-      var payload = {
-        id: responseDB.rows[0].id,
-        name: responseDB.rows[0].name,
-        email: responseDB.rows[0].email,
-        phone: responseDB.rows[0].phone_number,
-        instagram: responseDB.rows[0].instagram,
-        facebook: responseDB.rows[0].facebook
-       };
-
+  users.findOne({_id: id}, (err, response) => {
+    if(err) {
       res.status(200).send({
-        code: 200,
-        data: payload
+        code: 404
       });
     }
+    var payload = {
+      id: response.id,
+      name: response.username,
+      phone: response.phone,
+      instagram: response.instagram,
+      facebook: response.facebook
+     };
+
+    res.status(200).send({
+      code: 200,
+      data: payload
+    });
   });
 })
 
