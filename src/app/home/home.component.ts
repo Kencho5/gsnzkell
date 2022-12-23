@@ -57,7 +57,7 @@ export class HomeComponent implements OnInit {
   }
 
   openPost(event) {
-    var id = event.path[2]['id'];
+    var id = event.path[3]['id'];
 
     window.open(`/post/${id}`)
   }

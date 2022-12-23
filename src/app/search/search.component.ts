@@ -20,19 +20,25 @@ export class SearchComponent implements OnInit {
 
     this.searchService.searchPost({'text': text}).subscribe((res) => {
       if(res['code'] == 200) {
-        console.log(res['data'])
         res['data'].forEach(post => {
             this.postData.push({
-              id: post.id,
+              id: post._id,
               type: post.postType,
+              breed: post.breed,
+              age: post.age,
+              ageType: post.ageType,
               animal: post.animal,
               price: post.price,
               date: post.date.split('T')[0],
-              img: post.imgs[0]
+              img: post.img_path[0]
             });
         })
       }
     });
+  }
+
+  openPost(event) {
+
   }
 
 }

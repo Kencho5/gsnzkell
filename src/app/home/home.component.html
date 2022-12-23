@@ -51,14 +51,14 @@
           <p class="post-title">{{post.postType}}</p>
         </div>
         <div class="post-details">
-          <div>
-            <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
-            <ng-template #age>
-              <p>{{post.age}} {{post.ageType}}</p>
-            </ng-template>
-            <h2 class="breed">Breed</h2>
-          </div>
-          <button class="open-post" (click)="openPost($event)">Open</button>
+        <h2 class="breed">{{post.breed |titlecase}}</h2>
+        <div class="last">
+          <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
+          <ng-template #age>
+            <p>{{post.age}} {{post.ageType|titlecase}}</p>
+          </ng-template>
+        <button class="open-post" (click)="openPost($event)">Open</button>
+        </div>
         </div>
       </div>
     </div>

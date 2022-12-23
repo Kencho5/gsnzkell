@@ -5,17 +5,22 @@
             <hr>
         </div>
         <div class="results">
-            <div class="card" *ngFor="let post of postData">
-                <div class="img-div">
-                    <img src="/assets/postImages/{{post.id}}-{{post.img}}" class="post-img">
+            <div class="post" *ngFor="let post of postData" id="{{post.id}}">
+                <div class="post-img">
+                  <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
+                  <p class="post-title">{{post.postType}}</p>
                 </div>
-                <h1 class="post-title">{{post.type}} - {{post.animal}}</h1>
-                <hr class="post-line">
-                <div class="last">
-                    <h2 class="last">{{post.price}} ₾</h2>
-                    <h2 class="last">{{post.date}}</h2>
+                <div class="post-details">
+                  <div>
+                    <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
+                    <ng-template #age>
+                      <p>{{post.age}} {{post.ageType}}</p>
+                    </ng-template>
+                    <h2 class="breed">{{post.breed}}</h2>
+                  </div>
+                  <button class="open-post" (click)="openPost($event)">Open</button>
                 </div>
-            </div>
+              </div>
         </div>
     </div>
 </body>
