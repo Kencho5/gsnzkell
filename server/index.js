@@ -95,6 +95,15 @@ app.post('/api/login', (req, res) => {
 app.post('/api/register', (req, res) => {
   // ip = req.ip;
 
+  users.findOne({email: req.body.email}, function(err, response) {
+    if(response) {
+      res.status(200).send({
+        code: 500,
+        message: 'Email Already In Use.'
+      });
+    }
+  })
+
   bcrypt.hash(req.body.password, 10, function(errorHash, hash) {
 
     var data = {
