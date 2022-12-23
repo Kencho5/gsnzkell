@@ -93,20 +93,16 @@ app.post('/api/login', (req, res) => {
 })
 
 app.post('/api/register', (req, res) => {
-  email = req.body.email;
-  username = req.body.name;
-  phoneNumber = req.body.phoneNumber;
-  password = req.body.password;
   // ip = req.ip;
-  id = uuidv4();
 
-  bcrypt.hash(password, 10, function(errorHash, hash) {
+  bcrypt.hash(req.body.password, 10, function(errorHash, hash) {
 
     var data = {
-      _id: id,
-      email: email,
-      username: username,
-      phone: phoneNumber,
+      _id: uuidv4(),
+      email: req.body.email,
+      username: req.body.name,
+      phone: req.body.phoneNumber,
+      city: req.body.city,
       password: hash
     }
 
