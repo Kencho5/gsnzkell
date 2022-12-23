@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  isRegistered = localStorage.getItem('isRegistered');
+  // isRegistered = localStorage.getItem('isRegistered');
   loggedIn: boolean;
   message: string;
+  isRegistered = "Successfully Registered!";
   
   loginForm = this.formBuilder.group({
     email: '',

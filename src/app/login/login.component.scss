@@ -10,6 +10,10 @@ $light: #e4bccc;
 	word-wrap: break-word;
 	font-family: 'Ubuntu', sans-serif;
 }
+mat-icon {
+    font-family: 'Material Icons' !important;
+	vertical-align: middle;
+}
 
 body {
 	min-height: 100%;
@@ -187,7 +191,7 @@ input[type=submit] {
 
 .success-text {
 	font-weight: bold;
-	color: #4BB543;
+	color: $dark;
 }
 
 .error-div {
