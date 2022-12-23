@@ -13,7 +13,8 @@ const client = new MongoClient(url);
 
 client.connect();
 const db = client.db('pender');
-const collection = db.collection('userPosts');
+const userPosts = db.collection('userPosts');
+const users = db.collection('users');
 
 const pool = new Pool({
   user: 'kencho',
@@ -96,14 +97,21 @@ app.post('/api/register', (req, res) => {
   username = req.body.name;
   phoneNumber = req.body.phoneNumber;
   password = req.body.password;
-  ip = req.ip;
+  // ip = req.ip;
   id = uuidv4();
 
   bcrypt.hash(password, 10, function(errorHash, hash) {
 
-    pool.query(`INSERT INTO USERS(id, email, name, phone_number, password, ip_address) VALUES('${id}', '${email}', '${username}', '${phoneNumber}', '${hash}', '${ip}')`, (errorDB, responseDB) => {
+    var data = {
+      _id: id,
+      email: email,
+      username: username,
+      phone: phoneNumber,
+      password: hash
+    }
 
-      if (responseDB) {
+    users.insertOne(data, function(err, result) {
+      if(result) {
         res.status(200).send({
           code: 200,
           message: 'Successfully Registered!'
@@ -250,7 +258,7 @@ app.post('/api/upload', (req, res) => {
     img_path: imgs
   }
 
-  collection.insertOne(data, function(err, result) {
+  userPosts.insertOne(data, function(err, result) {
     if(result) {
       res.status(200).send({
         code: 200,
@@ -267,7 +275,7 @@ app.post('/api/upload', (req, res) => {
 app.post('/api/post', (req, res) => {
   var postID = req.body.id;
 
-  collection.findOne({"_id": postID}, function(err, result) {
+  userPosts.findOne({"_id": postID}, function(err, result) {
       if(result) {
         var data = {
           id: result._id,
@@ -340,7 +348,7 @@ app.post('/api/search', (req, res) => {
 
 app.post('/api/home', (req, res) => {
   var data = [];
-  var result = collection.find().skip(collection.countDocuments() - 10).toArray(function(err, results) {
+  var result = userPosts.find().skip(userPosts.countDocuments() - 10).toArray(function(err, results) {
     if(results) {
       results.forEach(result => {
         data.push({
