@@ -180,6 +180,11 @@ input[type=submit] {
 	}
 }
 
+mat-icon {
+    font-family: 'Material Icons' !important;
+	vertical-align: middle;
+}
+
 .success-div {
 	padding-top: 20px;
 	text-align: center;
@@ -197,5 +202,5 @@ input[type=submit] {
 
 .error-text {
 	font-weight: bold;
-	color: #ff3333;
+	color: $dark;
 }

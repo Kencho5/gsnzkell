@@ -35,10 +35,10 @@
                     <input type="submit" name="submit" value="Register">
                 </div>
                 <div *ngIf="displayError" class="error-div">
-                    <h4 class="error-text">Please fill out the form.</h4>
+                    <h4 class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h4>
                 </div>
                 <div *ngIf="httpError" class="error-div">
-                  <h4 class="error-text">Email already in use.</h4>
+                  <h4 class="error-text"><mat-icon>cancel</mat-icon> Email already in use.</h4>
               </div>
               </form>
             </div>
