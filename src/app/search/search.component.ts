@@ -16,11 +16,11 @@ export class SearchComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    var type = this.activatedRoute.snapshot.paramMap.get("type");
     var text = this.activatedRoute.snapshot.paramMap.get("text");
 
-    this.searchService.searchPost({'type': type, 'text': text}).subscribe((res) => {
+    this.searchService.searchPost({'text': text}).subscribe((res) => {
       if(res['code'] == 200) {
+        console.log(res['data'])
         res['data'].forEach(post => {
             this.postData.push({
               id: post.id,
@@ -33,7 +33,6 @@ export class SearchComponent implements OnInit {
         })
       }
     });
-    console.log(this.postData)
   }
 
 }

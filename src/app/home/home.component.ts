@@ -12,8 +12,7 @@ export class HomeComponent implements OnInit {
   posts = [];
 
   searchForm = this.formBuilder.group({
-    text:  new FormControl(),
-    type:  new FormControl()
+    text:  new FormControl()
   });
 
   constructor(
@@ -26,14 +25,13 @@ export class HomeComponent implements OnInit {
     this.latestPosts();
 
     this.searchForm = new FormGroup({
-      text: new FormControl('', [Validators.required]),
-      type: new FormControl('', Validators.required)
+      text: new FormControl('', [Validators.required])
    });
   }
 
   search() {
     if(this.searchForm.valid) {
-      this.router.navigate(['/search', {type: this.searchForm.value.type, text: this.searchForm.value.text}]);
+      this.router.navigate(['/search', {text: this.searchForm.value.text}]);
     }
   }
 

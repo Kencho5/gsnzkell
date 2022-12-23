@@ -279,43 +279,28 @@ app.post('/api/post', (req, res) => {
 })
 
 app.post('/api/search', (req, res) => {
-  var text = req.body.text;
-  var type = req.body.type;
-  
-  pool.query(`SELECT * FROM user_posts WHERE ${type} LIKE '%${text}%'`, (errorDB, responseDB) => {
-    if (responseDB) {
-      var data = []
-      responseDB.rows.forEach(row => {
-        data.push({
-          id: row.id,
-          title: row.title,
-          email: row.email,
-          name: row.name,
-          phone: row.phone,
-          animal: row.animal,
-          breed: row.breed,
-          price: row.price,
-          age: row.age,
-          ageType: row.age_type,
-          description: row.description,
-          postType: row.post_type,
-          date: row.date,
-          imgs: row.img_path
-         });
-      })
-      
-      res.status(200).send({
-        code: 200,
-        data: data
-      });
-      
-    } else {
+  var searchText = req.body.text;
+
+  userPosts.find(
+    { $text: { $search: searchText } },
+    { score: { $meta: "textScore" } }
+  ).sort(
+      { score: { $meta: "textScore" } }
+  ).toArray((err, response) => {
+    if(err) {
       res.status(200).send({
         code: 500,
       });
     }
+    var data = []
+    response.forEach(row => {
+    data.push(row)      
+  })
+  res.status(200).send({
+    code: 200,
+    data: data
   });
-
+  })
 });
 
 app.post('/api/home', (req, res) => {
