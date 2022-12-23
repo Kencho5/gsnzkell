@@ -7,6 +7,7 @@ const fs = require('fs');
 var bodyParser = require('body-parser');
 const { v4: uuidv4 } = require('uuid');
 const { MongoClient } = require("mongodb");
+const rateLimit = require("express-rate-limit");
 
 const url = 'mongodb://localhost:27017';
 const client = new MongoClient(url);
@@ -44,6 +45,13 @@ app.use(
     extended: true
   })
 )
+
+const limiter = rateLimit({
+  windowMs: 30000,
+  max: 100,
+  message: "Too many requests from this IP, please try again"
+});
+app.use(limiter);
 
 app.use(bodyParser.json({limit: '100mb'}));
 app.use(bodyParser.urlencoded({limit: '100mb', extended: true}));
