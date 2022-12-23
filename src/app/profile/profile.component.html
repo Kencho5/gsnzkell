@@ -43,8 +43,13 @@
             <ng-template #usernameDone>
               <ng-container *ngIf="editable == 'usernameEdit';">
                 <div class="edit-div">
-                  <input type="text" class="edit-details-input" name="name" (keyup.enter)="submitDetails($event)">
-                  <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon">done</mat-icon>
+                  <input type="text" class="edit-details-input" name="username" (keyup.enter)="submitDetails($event)" value="{{userData.name}}">
+
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
                 </div>
               </ng-container>
             </ng-template>
@@ -64,8 +69,13 @@
             <ng-template #phoneDone>
               <ng-container *ngIf="editable == 'phoneEdit';">
                 <div class="edit-div">
-                  <input type="number" class="edit-details-input" name="phone_number" (keyup.enter)="submitDetails($event)">
-                  <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon">done</mat-icon>
+                  <input type="number" class="edit-details-input" name="phone" (keyup.enter)="submitDetails($event)"
+                  value="{{userData.phone_number}}">
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+                    
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
                 </div>
               </ng-container>
             </ng-template>
@@ -85,8 +95,13 @@
             <ng-template #emailDone>
               <ng-container *ngIf="editable == 'emailEdit';">
                 <div class="edit-div">
-                  <input type="email" class="edit-details-input" name="email" (keyup.enter)="submitDetails($event)">
-                  <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon">done</mat-icon>
+                  <input type="email" class="edit-details-input" name="email" (keyup.enter)="submitDetails($event)"
+                  value="{{userData.email}}">
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+                    
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
                 </div>
               </ng-container>
             </ng-template>
@@ -116,7 +131,11 @@
               <ng-container *ngIf="editable == 'facebookEdit';">
                 <div class="edit-div">
                   <input type="text" class="edit-details-input" name="facebook" (keyup.enter)="submitDetails($event)">
-                  <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon">done</mat-icon>
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+                    
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
                 </div>
               </ng-container>
             </ng-template>
@@ -146,7 +165,11 @@
               <ng-container *ngIf="editable == 'instagramEdit';">
                 <div class="edit-div">
                   <input type="text" class="edit-details-input" name="instagram" (keyup.enter)="submitDetails($event)">
-                  <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon">done</mat-icon>
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+                    
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
                 </div>
               </ng-container>
             </ng-template>

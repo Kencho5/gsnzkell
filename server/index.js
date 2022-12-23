@@ -192,25 +192,28 @@ app.post('/api/update', (req, res) => {
   detailType = req.body[1];
   email = req.body[2];
 
-  pool.query(`UPDATE users SET ${detailType} = '${newDetail}' WHERE email = '${email}' RETURNING name, email, phone_number, instagram, facebook`, (errorDB, responseDB) => {
-    if (responseDB) {
+  users.findOneAndUpdate(
+    {email: email}, 
+    {$set: {[detailType]: newDetail}},
+    {returnDocument: 'after'},
+    function(err, doc) {
 
       var payload = {
-        name: responseDB.rows[0].name,
-        email: responseDB.rows[0].email,
-        phone: responseDB.rows[0].phone_number,
-        instagram: responseDB.rows[0].instagram,
-        facebook: responseDB.rows[0].facebook
+        name: doc.value.username,
+        email: doc.value.email,
+        phone: doc.value.phone,
+        instagram: doc.value.instagram,
+        facebook: doc.value.facebook
        };
 
-       var token = jwt.sign(payload, privateKEY, signOptions);
+      var token = jwt.sign(payload, privateKEY, signOptions);
 
       res.status(200).send({
         code: 200,
         token: token
       });
     }
-  });
+    )
 })
 
 app.post('/api/upload', (req, res) => {

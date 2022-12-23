@@ -28,7 +28,7 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     var user = this.login.user;
-
+  
     this.userData = {
       email: user["email"],
       name: user["name"],
@@ -59,8 +59,8 @@ export class ProfileComponent implements OnInit {
   }
 
   submitDetails(event) {
-    var inputValue = event.target.parentNode.firstChild.value;
-    var inputName = event.target.parentNode.firstChild.name;
+    var inputValue = event.target.parentNode.parentNode.firstChild.value;
+    var inputName = event.target.parentNode.parentNode.firstChild.name;
 
     if (inputValue.length == 0) {
       this.getProfileData();
@@ -72,7 +72,9 @@ export class ProfileComponent implements OnInit {
       this._profileService.updateUserData(inputValue, inputName, this.userData.email).subscribe((res) => {
         if (res["code"] == 200) {
           localStorage.setItem('token', res['token']);
+
           this.login.user = jwtDecode(this.login.token);
+
           this.getProfileData();
         }
       });
@@ -81,6 +83,10 @@ export class ProfileComponent implements OnInit {
 
       this.editable = "";
     }
+  }
+
+  cancel () {
+    this.editable = "";
   }
 
   validateEmail(email) {
