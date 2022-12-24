@@ -305,7 +305,8 @@ app.post('/api/search', (req, res) => {
 
 app.post('/api/home', (req, res) => {
   var data = [];
-  var result = userPosts.find().skip(userPosts.countDocuments() - 10).toArray(function(err, results) {
+
+  var result = userPosts.find().limit(10).sort({$natural: -1}).toArray(function(err, results) {
     if(results) {
       results.forEach(result => {
         data.push({
