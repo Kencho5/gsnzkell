@@ -292,7 +292,7 @@ app.post('/api/search', (req, res) => {
         code: 500,
       });
     }
-    var data = []
+    var data = [];
     response.forEach(row => {
     data.push(row)      
   })

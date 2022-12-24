@@ -273,7 +273,7 @@ input:-moz-placeholder {
   height: 60%;
 }
 .post-img img {
-  // border-radius: 10px 10px 0px 0px;
+  border-radius: 10px 10px 0px 0px;
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -311,11 +311,13 @@ input:-moz-placeholder {
   border: none;
   border-radius: 8px;
   background-color: $light;
-  width: 80px;
-  height: 40px;
+  padding: 10px;
+  width: 50px;
   color: $dark;
   font-size: 16px;
   font-weight: bold;
+  text-align: center;
+  text-decoration: none;
 }
 
 .age h2 {

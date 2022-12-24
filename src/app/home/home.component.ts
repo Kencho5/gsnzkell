@@ -56,10 +56,4 @@ export class HomeComponent implements OnInit {
     div.scrollLeft += 250;
   }
 
-  openPost(event) {
-    var id = event.path[3]['id'];
-
-    window.open(`/post/${id}`)
-  }
-
 }

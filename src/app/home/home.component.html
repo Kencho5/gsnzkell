@@ -57,7 +57,8 @@
           <ng-template #age>
             <p>{{post.age}} {{post.ageType|titlecase}}</p>
           </ng-template>
-        <button class="open-post" (click)="openPost($event)">Open</button>
+        <a href="/post/{{post.id}}"
+        target="_blank" class="open-post">Open</a>
         </div>
         </div>
       </div>

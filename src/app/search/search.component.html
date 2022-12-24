@@ -1,26 +1,32 @@
 <body>
     <div class="main">
-        <div class="filters">
-            <h1>Filters</h1>
-            <hr>
+        <div class="posts">
+            <div class="post" *ngFor="let post of posts" id="{{post.id}}">
+                <p class="type">{{post.postType}}</p>
+                <div class="image">
+                    <img src="/assets/postImages/{{post.id}}-{{post.img}}">
+                </div>
+                <div class="bottom">
+                    <p *ngIf="post.price != ''">{{post.price}} ₾</p>
+                    <p>{{post.age}} {{post.ageType |titlecase}} Old</p>
+                </div>
+                <a href="/post/{{post.id}}" target="_blank" class="open">Open Post</a>
+            </div>
         </div>
-        <div class="results">
-            <div class="post" *ngFor="let post of postData" id="{{post.id}}">
-                <div class="post-img">
-                  <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
-                  <p class="post-title">{{post.postType}}</p>
-                </div>
-                <div class="post-details">
-                  <div>
-                    <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
-                    <ng-template #age>
-                      <p>{{post.age}} {{post.ageType}}</p>
-                    </ng-template>
-                    <h2 class="breed">{{post.breed}}</h2>
-                  </div>
-                  <button class="open-post" (click)="openPost($event)">Open</button>
-                </div>
+
+<!--         
+        <div class="posts">
+            <div class="post" *ngFor="let post of posts" id="{{post.id}}">
+                <p class="title">{{post.postType}}</p>
+              <div class="post-img">
+                <img src="/assets/postImages/{{post.id}}-{{post.img}}" alt="">
               </div>
+              <div class="post-details">
+                <p *ngIf="post.price != ''">{{post.price}} ₾</p>
+                <p>{{post.age}} {{post.ageType |titlecase}} Old</p>
+            </div>
+            <a href="/post/{{post.id}}" class="open" target="_blank">Open Post</a>
         </div>
+        </div> -->
     </div>
 </body>
