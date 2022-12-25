@@ -187,7 +187,8 @@ app.post('/api/user', (req, res) => {
       phone: response.phone,
       instagram: response.instagram,
       facebook: response.facebook,
-      counts
+      counts: counts,
+      city: response.city
      };
 
     res.status(200).send({
