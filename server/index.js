@@ -152,7 +152,29 @@ app.post('/api/register', (req, res) => {
 app.post('/api/user', (req, res) => {
   id = req.body.id;
 
-  users.findOne({_id: id}, (err, response) => {
+  var strings = ['selling', 'meeting', 'adopting'];
+
+  async function getCounts(email) {
+    let counts = [];
+  
+    for (const string of strings) {
+      let count = await new Promise((resolve, reject) => {
+        userPosts.count({email: email, postType: string}, (error, count) => {
+            resolve(count);
+        });
+      });
+  
+      counts.push(count);
+    }
+  
+    return counts;
+  }
+  
+  
+  users.findOne({_id: id}, async (err, response) => {
+    
+    let counts = await getCounts(response.email);
+    
     if(err) {
       res.status(200).send({
         code: 404
@@ -163,7 +185,8 @@ app.post('/api/user', (req, res) => {
       name: response.username,
       phone: response.phone,
       instagram: response.instagram,
-      facebook: response.facebook
+      facebook: response.facebook,
+      counts
      };
 
     res.status(200).send({

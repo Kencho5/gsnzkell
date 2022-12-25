@@ -7,19 +7,19 @@
           <h1 id="posts-h1">POSTS</h1>
           <hr class="left-line-second">
           <div class="posts">
-            <mat-icon>sell</mat-icon>
+            <mat-icon class="count-icons">sell</mat-icon>
             <h1 class="posts-text">SELLING</h1>
-            <h1 class="posts-text">2</h1>
+            <h1 class="posts-text">{{userData.counts[0]}}</h1>
           </div>
           <div class="posts">
-            <mat-icon>favorite</mat-icon>
+            <mat-icon class="count-icons">favorite</mat-icon>
             <h1 class="posts-text">MEETING</h1>
-            <h1 class="posts-text">7</h1>
+            <h1 class="posts-text">{{userData.counts[1]}}</h1>
           </div>
           <div class="posts">
-            <mat-icon>cottage</mat-icon>
-            <h1 class="posts-text">MEETING</h1>
-            <h1 class="posts-text">3</h1>
+            <mat-icon class="count-icons">cottage</mat-icon>
+            <h1 class="posts-text">ADOPTING</h1>
+            <h1 class="posts-text">{{userData.counts[2]}}</h1>
           </div>
         </div>
         <div class="card right">
