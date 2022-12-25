@@ -64,14 +64,34 @@ app.post('/api/login', (req, res) => {
 
   users.findOne({email: email}, (err, responseDB) => {
     if(responseDB) {
-      bcrypt.compare(password, responseDB.password, (error, result) => {
+      bcrypt.compare(password, responseDB.password, async (error, result) => {
+        var strings = ['selling', 'meeting', 'adopting'];
 
+        async function getCounts() {
+          let counts = [];
+        
+          for (const string of strings) {
+            let count = await new Promise((resolve, reject) => {
+              userPosts.count({email: email, postType: string}, (error, count) => {
+                  resolve(count);
+              });
+            });
+        
+            counts.push(count);
+          }
+        
+          return counts;
+        }
+        
+        let counts = await getCounts();
+        
         var payload = {
           name: responseDB.username,
           email: responseDB.email,
           phone: responseDB.phone,
           instagram: responseDB.instagram,
-          facebook: responseDB.facebook
+          facebook: responseDB.facebook,
+          counts: counts
         };
 
       var token = jwt.sign(payload, privateKEY, signOptions);
