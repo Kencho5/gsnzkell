@@ -329,7 +329,8 @@ app.post('/api/post', (req, res) => {
           description: result.description,
           postType: result.postType,
           date: result.date,
-          imgs: result.img_path
+          imgs: result.img_path,
+          city: result.city
         }
 
         res.status(200).send({
