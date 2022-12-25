@@ -344,7 +344,23 @@ app.post('/api/post', (req, res) => {
         });
       }
   });
-})
+});
+
+app.post('/api/profile', (req, res) => {
+  email = req.body.email;
+  
+  userPosts.find({ email: email }).sort({$natural: -1}).toArray((err, posts) => {
+    if(err) {
+      res.status(200).send({
+        code: 500,
+      });
+    }
+    res.status(200).send({
+      code: 200,
+      data: posts
+    });
+  })
+});
 
 app.post('/api/search', (req, res) => {
   var searchText = req.body.text;

@@ -13,6 +13,7 @@ import { LoginService } from '../login/login.service';
 export class ProfileComponent implements OnInit {
 
   userData;
+  posts;
 
   constructor(
     private router: Router,
@@ -22,6 +23,12 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     var user = this.login.user;
+
+    this._profileService.getPosts({email: user['email']}).subscribe((res) => {
+      if (res["code"] == 200) {
+       this.posts = res['data'];
+      }
+    });
 
     this.userData = {
       email: user["email"],
