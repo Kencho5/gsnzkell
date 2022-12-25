@@ -22,16 +22,16 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     var user = this.login.user;
-    
+
     this.userData = {
       email: user["email"],
       name: user["name"],
       phone_number: user["phone"],
       facebook: user["facebook"],
       instagram: user["instagram"],
-      counts: user["counts"]
+      counts: user["counts"],
+      city: user["city"]
     }
-    
   }
 
   ngOnInit(): void { 
@@ -68,7 +68,7 @@ export class ProfileComponent implements OnInit {
         if (res["code"] == 200) {
           localStorage.setItem('token', res['token']);
 
-          this.login.user = jwtDecode(this.login.token);
+          this.login.user = jwtDecode(res['token']);
 
           this.getProfileData();
         }

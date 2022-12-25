@@ -38,6 +38,7 @@ export class LoginService {
     if (!token) {
       return null
     }
+    
     return jwt_decode(token) as UserModel;
   }
 }

@@ -91,7 +91,8 @@ app.post('/api/login', (req, res) => {
           phone: responseDB.phone,
           instagram: responseDB.instagram,
           facebook: responseDB.facebook,
-          counts: counts
+          counts: counts,
+          city: responseDB.city
         };
 
       var token = jwt.sign(payload, privateKEY, signOptions);
@@ -201,18 +202,39 @@ app.post('/api/update', (req, res) => {
   detailType = req.body[1];
   email = req.body[2];
 
+  var strings = ['selling', 'meeting', 'adopting'];
+
+  async function getCounts(email) {
+    let counts = [];
+  
+    for (const string of strings) {
+      let count = await new Promise((resolve, reject) => {
+        userPosts.count({email: email, postType: string}, (error, count) => {
+            resolve(count);
+        });
+      });
+  
+      counts.push(count);
+    }
+  
+    return counts;
+  }
+
   users.findOneAndUpdate(
     {email: email}, 
     {$set: {[detailType]: newDetail}},
     {returnDocument: 'after'},
-    function(err, doc) {
+    async function(err, doc) {
+    let counts = await getCounts(email);
 
       var payload = {
         name: doc.value.username,
         email: doc.value.email,
         phone: doc.value.phone,
         instagram: doc.value.instagram,
-        facebook: doc.value.facebook
+        facebook: doc.value.facebook,
+        counts: counts,
+        city: doc.value.city
        };
 
       var token = jwt.sign(payload, privateKEY, signOptions);

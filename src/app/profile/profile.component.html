@@ -81,6 +81,32 @@
             </ng-template>
           </div>
           <hr class="right-line">
+          <!-- CITY -->
+          <div class="data">
+            <div>
+              <mat-icon>place</mat-icon>
+            </div>
+            <ng-container *ngIf="editable != 'cityEdit'; else cityDone">
+              <div class="edit-div">
+                <h1 class="info-text" id="cityEdit">{{userData.city}}</h1>
+                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
+              </div>
+            </ng-container>
+            <ng-template #cityDone>
+              <ng-container *ngIf="editable == 'cityEdit';">
+                <div class="edit-div">
+                  <input type="text" class="edit-details-input" name="city" (keyup.enter)="submitDetails($event)"
+                  value="{{userData.city}}">
+                  <div class="editable-div">
+                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+                    
+                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-template>
+          </div>
+          <hr class="right-line">
           <!-- THIRD -->
           <div class="data">
             <div>

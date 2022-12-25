@@ -3,5 +3,7 @@ export interface UserModel {
     email: string,
     phone: string,
     instagram: string,
-    facebook: string
+    facebook: string,
+    city: string,
+    counts: []
 }
