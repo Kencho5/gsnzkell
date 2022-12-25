@@ -12,13 +12,7 @@ import { LoginService } from '../login/login.service';
 
 export class ProfileComponent implements OnInit {
 
-  userData = {
-    email: '',
-    name: '',
-    phone_number: '',
-    facebook: '',
-    instagram: '',
-  }
+  userData;
 
   constructor(
     private router: Router,
@@ -28,13 +22,14 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     var user = this.login.user;
-  
+    
     this.userData = {
       email: user["email"],
       name: user["name"],
       phone_number: user["phone"],
       facebook: user["facebook"],
-      instagram: user["instagram"]
+      instagram: user["instagram"],
+      counts: user["counts"]
     }
     
   }
