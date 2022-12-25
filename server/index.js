@@ -126,7 +126,7 @@ app.post('/api/register', (req, res) => {
   bcrypt.hash(req.body.password, 10, function(errorHash, hash) {
 
     var data = {
-      _id: uuidv4(),
+      _id: postID,
       email: req.body.email,
       username: req.body.name,
       phone: req.body.phoneNumber,
@@ -170,11 +170,24 @@ app.post('/api/user', (req, res) => {
   
     return counts;
   }
+
+  async function getPosts(email) {
+    let posts = [];
+
+    let docs = await new Promise((resolve, reject) => {
+      userPosts.find({ email: email }).sort({$natural: -1}).toArray((err, docs) => {
+        resolve(docs)
+      })
+    }) 
+    posts = docs;
+  }
   
   
   users.findOne({_id: id}, async (err, response) => {
     
     let counts = await getCounts(response.email);
+    let posts = await getPosts(response.email);
+    console.log(posts)
     
     if(err) {
       res.status(200).send({
@@ -247,6 +260,60 @@ app.post('/api/update', (req, res) => {
     }
     )
 })
+
+function insertTest() {
+
+  var types = ["selling", "meeting", "adopting"];
+  var animals = [
+    {
+      animal: "Dog",
+      img: "/Users/kencho/Desktop/tmp/German-Shepherd-1358309706-1024x591.jpg"
+    },
+    {
+      animal: "Cat",
+      img: "/Users/kencho/Desktop/tmp/cat/german_rex_cat_cute_l.jpg"
+    },
+    {
+      animal: "Bird",
+      img: "/Users/kencho/Desktop/tmp/bird.jpeg"
+    }
+  ]
+
+  
+  docs = [];
+  for(var i = 0; i < 57; i++) {
+    var animal = animals[Math.floor(Math.random() * animals.length)];
+    var type = types[Math.floor(Math.random() * types.length)];
+
+    var imageAsBase64 = fs.readFileSync(animal.img, 'base64');
+
+    var id = uuidv4();
+    docs.push({
+      _id: id,
+      email: 'giokenchadze@gmail.com',
+      name: 'giorgi',
+      animal: animal.animal,
+      breed: `german rex ${Math.floor(Math.random() * 1000)}`,
+      price: Math.floor(Math.random() * 2000),
+      age: Math.floor(Math.random() * 6),
+      ageType: 'years',
+      description: 'asdkmakwr janrj anejrn aermioe',
+      postType: type,
+      phone: '557325325',
+      date: new Date(),
+      img_path: [ `${i}.png`],
+      city: 'gori'
+    });
+      var type = '.png';
+      var base64Data = imageAsBase64.replace(/^data:image\/png;base64,/, "");
+
+    require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${id}-${i}${type}`, base64Data, 'base64', function(err) {});
+  }
+
+  userPosts.insertMany(docs);
+
+}
+// insertTest()
 
 app.post('/api/upload', (req, res) => {
   token = req.body.user;
@@ -368,7 +435,9 @@ app.post('/api/search', (req, res) => {
   userPosts.find(
     { $text: { $search: searchText } },
     { score: { $meta: "textScore" } }
-  ).sort(
+  )
+  .limit(20)
+  .sort(
       { score: { $meta: "textScore" }, _id: 1 }
   ).toArray((err, response) => {
     if(err) {
@@ -378,7 +447,7 @@ app.post('/api/search', (req, res) => {
     }
     var data = [];
     response.forEach(row => {
-    data.push(row)      
+    data.push(row)
   })
   res.status(200).send({
     code: 200,

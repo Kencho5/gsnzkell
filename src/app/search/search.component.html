@@ -1,7 +1,7 @@
 <body>
     <div class="main">
         <div class="posts">
-            <div class="post" *ngFor="let post of posts" id="{{post.id}}">
+            <div class="post" *ngFor="let post of displayedPosts" id="{{post.id}}">
                 <p class="type">{{post.postType}}</p>
                 <div class="image">
                     <img src="/assets/postImages/{{post.id}}-{{post.img}}">
@@ -14,4 +14,10 @@
             </div>
         </div>
     </div>
+    <mat-paginator [length]="postsLength"
+              [pageSize]="10"
+              aria-label="Select page">
+              (page)="pageEvent = $event"
+</mat-paginator>
+
 </body>

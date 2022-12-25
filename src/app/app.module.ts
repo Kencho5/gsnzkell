@@ -21,6 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { PostComponent } from './post/post.component';
 import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SearchComponent } from './search/search.component';
     MatGridListModule,
     MatSelectModule,
     MatInputModule,
-    MatButtonModule
+    MatButtonModule,
+    MatPaginatorModule
   ],
   providers: [],
   bootstrap: [AppComponent]
