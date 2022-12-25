@@ -110,11 +110,10 @@
                     </span>
                 </button>
             </div>
+            <div class="error-div" *ngIf="form_msg">
+              <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
+            </div>
         </form>
-        <div class="error-div" *ngIf="form_msg">
-          <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
-        </div>
     </div>
 </div>
-Z
 </body>

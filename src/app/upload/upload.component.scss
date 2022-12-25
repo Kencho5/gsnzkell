@@ -143,24 +143,33 @@ button:hover {
 }
 
 .wrap-contact100 {
-    width: 550px;
+    width: 100%;
     background: 0 0;
-    padding: 50px 0 160px
+    padding: 50px 0 160px;
+    display: flex;
+    justify-content: center;
 }
 
 .contact100-form {
-    width: 100%
+    width: 600px;
+    background-color: $light;
+    padding: 30px;
+    margin-top: 50px;
+    border-radius: 30px;
 }
 
 .contact100-form-title {
     display: block;
     font-family: Ubuntu-Bold;
     font-size: 30px;
-    color: $dark;
+    color: $light;
+    background-color: $dark;
+    margin: 30px;
     line-height: 1.2;
     text-transform: uppercase;
     text-align: center;
-    padding-bottom: 49px
+    padding: 20px;
+    border-radius: 30px;
 }
 
 .wrap-input100 {
