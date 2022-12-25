@@ -293,7 +293,8 @@ app.post('/api/upload', (req, res) => {
     postType: form['postType'],
     phone: form['phone'],
     date: new Date(),
-    img_path: imgs
+    img_path: imgs,
+    city: form['city']
   }
 
   userPosts.insertOne(data, function(err, result) {

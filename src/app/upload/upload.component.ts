@@ -19,7 +19,8 @@ export class UploadComponent implements OnInit {
     description:  new FormControl('', Validators.maxLength(200)),
     postType:  new FormControl('', Validators.required),
     phone:  new FormControl('', Validators.required),
-    imgs:  new FormControl('', Validators.required)
+    imgs:  new FormControl('', Validators.required),
+    city:  new FormControl('', Validators.required)
   });
 
   urls = [];
