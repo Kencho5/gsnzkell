@@ -79,7 +79,7 @@
 
           <div class="wrap-input100 validate-input">
             <input class="input100" type="text" wrap-input100="breed" placeholder="City" 
-            formControlName="city"
+              formControlName="city"
             required>
             <span class="focus-input100"></span>
         </div>
@@ -96,7 +96,7 @@
                 <div class="images">
                     <div class="image-div" *ngFor="let url of urls">
                         <button (click)="removeImage($event)" type='button'>
-                            <mat-icon class="{{url}}">cancel</mat-icon>
+                            <mat-icon class="{{url}}" id="cancel-icon">cancel</mat-icon>
                           </button>
                         <img [src]="url" class="uploaded-img">
                     </div>
@@ -111,7 +111,9 @@
                 </button>
             </div>
         </form>
-        <h2 align="center" style="padding-top: 30px; color: red;" *ngIf="form_msg">Please fill out the form.</h2>
+        <div class="error-div" *ngIf="form_msg">
+          <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
+        </div>
     </div>
 </div>
 Z

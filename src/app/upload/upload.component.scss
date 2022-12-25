@@ -448,3 +448,28 @@ option {
     outline: 3px solid $dark;
     border-radius: 8px;
 }
+
+#cancel-icon {
+    color: $dark;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+}
+
+.error-div {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.error-text {
+	font-weight: bold;
+	color: $dark;
+}
+
+.error-div mat-icon { 
+    color: $dark;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
