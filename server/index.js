@@ -353,7 +353,7 @@ app.post('/api/search', (req, res) => {
     { $text: { $search: searchText } },
     { score: { $meta: "textScore" } }
   ).sort(
-      { score: { $meta: "textScore" } }
+      { score: { $meta: "textScore" }, _id: 1 }
   ).toArray((err, response) => {
     if(err) {
       res.status(200).send({
