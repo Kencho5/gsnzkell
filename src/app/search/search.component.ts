@@ -11,8 +11,8 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 })
 export class SearchComponent implements OnInit {
   posts = [];
-  displayedPosts = [];
   postsLength;
+  text: string;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   pageEvent: PageEvent;
@@ -25,9 +25,15 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {
     this.paginator.page.subscribe(() => this.loadPage());
 
-    var text = this.activatedRoute.snapshot.paramMap.get("text");
+    this.text = this.activatedRoute.snapshot.paramMap.get("text");
+    
+    this.loadPosts(0, this.text);
+  }
 
-    this.searchService.searchPost({'text': text}).subscribe((res) => {
+  loadPosts(start, text) {
+    this.posts = [];
+    
+    this.searchService.searchPost({text: text, start: start}).subscribe((res) => {
       if(res['code'] == 200) {
         res['data'].forEach(post => {
             this.posts.push({
@@ -43,14 +49,9 @@ export class SearchComponent implements OnInit {
               date: post.date.split('T')[0],
               img: post.img_path[0]
             });
-            console.log(this.paginator.pageIndex * this.paginator.pageSize, this.paginator.pageSize)
 
-            var start = this.paginator.pageIndex * this.paginator.pageSize;
-
-            this.displayedPosts = this.posts.slice(start, start + this.paginator.pageSize);
-
-            this.postsLength = this.posts.length;
-        })
+            this.postsLength = res['count'];
+        });
       }
     });
   }
@@ -58,7 +59,7 @@ export class SearchComponent implements OnInit {
   loadPage() {
     var start = this.paginator.pageIndex * this.paginator.pageSize;
 
-    this.displayedPosts = this.posts.slice(start, start + this.paginator.pageSize)
+    this.loadPosts(start, this.text);
   }
 
 }

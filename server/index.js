@@ -281,7 +281,7 @@ function insertTest() {
 
   
   docs = [];
-  for(var i = 0; i < 57; i++) {
+  for(var i = 100; i < 8000; i++) {
     var animal = animals[Math.floor(Math.random() * animals.length)];
     var type = types[Math.floor(Math.random() * types.length)];
 
@@ -431,12 +431,23 @@ app.post('/api/profile', (req, res) => {
 
 app.post('/api/search', (req, res) => {
   var searchText = req.body.text;
+  var start = req.body.start;
+  var count;
+
+  userPosts.countDocuments(
+    { $text: { $search: searchText } },
+    { score: { $meta: "textScore" } },
+    (err, response) => {
+      count = response;
+    }
+  )
 
   userPosts.find(
     { $text: { $search: searchText } },
     { score: { $meta: "textScore" } }
   )
-  .limit(20)
+  .skip(start)
+  .limit(10)
   .sort(
       { score: { $meta: "textScore" }, _id: 1 }
   ).toArray((err, response) => {
@@ -445,13 +456,15 @@ app.post('/api/search', (req, res) => {
         code: 500,
       });
     }
+
     var data = [];
     response.forEach(row => {
     data.push(row)
   })
   res.status(200).send({
     code: 200,
-    data: data
+    data: data,
+    count: count
   });
   })
 });
