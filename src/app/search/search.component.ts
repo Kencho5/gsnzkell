@@ -32,9 +32,15 @@ export class SearchComponent implements OnInit {
 
   loadPosts(start, text) {
     this.posts = [];
-    
+
     this.searchService.searchPost({text: text, start: start}).subscribe((res) => {
       if(res['code'] == 200) {
+        if(start != 0) {
+          localStorage.getItem('count');
+        } else {
+          localStorage.setItem('count', res['count']);
+        }
+
         res['data'].forEach(post => {
             this.posts.push({
               id: post._id,
@@ -50,7 +56,7 @@ export class SearchComponent implements OnInit {
               img: post.img_path[0]
             });
 
-            this.postsLength = res['count'];
+            this.postsLength = localStorage.getItem('count');
         });
       }
     });
