@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { ProfileService } from './profile.service';
 import { LoginService } from '../login/login.service';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +16,16 @@ export class ProfileComponent implements OnInit {
   userData;
   posts;
 
+  postCount: string;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  pageEvent: PageEvent;
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler() {
+    localStorage.removeItem('postCount');
+  }
+
   constructor(
     private router: Router,
     private _profileService: ProfileService,
@@ -23,12 +34,6 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     var user = this.login.user;
-
-    this._profileService.getPosts({email: user['email']}).subscribe((res) => {
-      if (res["code"] == 200) {
-       this.posts = res['data'];
-      }
-    });
 
     this.userData = {
       email: user["email"],
@@ -41,7 +46,24 @@ export class ProfileComponent implements OnInit {
     }
   }
 
+  loadPosts(start) {
+    this._profileService.getPosts({email: this.login.user['email'], start: start}).subscribe((res) => {
+      if (res["code"] == 200) {
+       this.posts = res['data'];
+        
+        if(localStorage.getItem('postCount') == null) {
+          localStorage.setItem("postCount", res['count']);
+        }
+        this.postCount = localStorage.getItem("postCount");
+      }
+    });
+  }
+
   ngOnInit(): void { 
+    this.paginator.page.subscribe(() => this.loadPage());
+
+    this.loadPosts(0);
+
     this.login.isLoggedIn$.subscribe(res => {
         if(res == false) {
            this.router.navigate(['/login']);
@@ -98,5 +120,11 @@ export class ProfileComponent implements OnInit {
         /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
       );
   };
+
+  loadPage() {
+    var start = this.paginator.pageIndex * this.paginator.pageSize;
+
+    this.loadPosts(start);
+  }
 
 }

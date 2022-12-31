@@ -413,10 +413,18 @@ app.post('/api/post', (req, res) => {
   });
 });
 
-app.post('/api/profile', (req, res) => {
+app.post('/api/profile', async (req, res) => {
   email = req.body.email;
-  
-  userPosts.find({ email: email }).sort({$natural: -1}).toArray((err, posts) => {
+  var count;
+
+  if(req.body.start == 0) {
+    count = await countUserPosts(email);
+  }
+
+  userPosts.find({ email: email })
+  .skip(parseInt(req.body.start))
+  .limit(5)
+  .sort({$natural: -1}).toArray((err, posts) => {
     if(err) {
       res.status(200).send({
         code: 500,
@@ -424,7 +432,8 @@ app.post('/api/profile', (req, res) => {
     }
     res.status(200).send({
       code: 200,
-      data: posts
+      data: posts,
+      count: count
     });
   })
 });
@@ -437,6 +446,23 @@ function countSearchResults(searchText) {
       count = response;
     }
   )
+  return count;
+}
+
+async function countUserPosts(email) {
+  var count;
+
+  let res = await new Promise((resolve, reject) => {
+      userPosts.countDocuments({
+              email: email
+          },
+          (err, response) => {
+              resolve(response);
+          }
+      )
+  });
+  count = res;
+
   return count;
 }
 

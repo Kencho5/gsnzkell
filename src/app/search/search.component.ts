@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from './search.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -16,6 +16,11 @@ export class SearchComponent implements OnInit {
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   pageEvent: PageEvent;
+
+  @HostListener('window:beforeunload', ['$event'])
+  beforeunloadHandler() {
+    localStorage.removeItem('count');
+  }
 
   constructor(
     private activatedRoute: ActivatedRoute,

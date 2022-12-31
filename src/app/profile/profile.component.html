@@ -222,4 +222,9 @@
       </div>
   </div>
   </div>
+  <mat-paginator [length]="postCount"
+              [pageSize]="5"
+              aria-label="Select page">
+              (page)="pageEvent = $event"    
+</mat-paginator>
 </body>
