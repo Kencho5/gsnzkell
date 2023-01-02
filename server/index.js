@@ -61,7 +61,8 @@ app.use(bodyParser.urlencoded({
 app.use(express.json());
 
 app.post('/api/git', (req, res) => {
-   shell.exec('./update.sh')
+  console.log("here")
+   shell.exec('./update.sh');
 });
 
 app.post('/api/login', (req, res) => {
