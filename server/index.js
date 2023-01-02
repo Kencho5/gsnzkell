@@ -11,6 +11,8 @@ const {
   MongoClient
 } = require("mongodb");
 const rateLimit = require("express-rate-limit");
+const shell = require('shelljs');
+
 
 const url = 'mongodb://127.0.0.1:27017';
 const client = new MongoClient(url);
@@ -57,6 +59,10 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(express.json());
+
+app.post('/api/git', (req, res) => {
+   shell.exec('./update.sh')
+});
 
 app.post('/api/login', (req, res) => {
   email = req.body.email;
