@@ -62,8 +62,6 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void { 
     this.paginator.page.subscribe(() => this.loadPage());
 
-    this.loadPosts(0);
-
     this.login.isLoggedIn$.subscribe(res => {
         if(res == false) {
            this.router.navigate(['/login']);
@@ -72,6 +70,8 @@ export class ProfileComponent implements OnInit {
           this.getProfileData();
         }
     });
+
+    this.loadPosts(0);
   }
 
   editable = "";
