@@ -54,7 +54,7 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.paginator.page.subscribe(() => this.loadPage());
-    
+
     this.routeSub = this.route.params.subscribe(params => {
       this.userID = params['id'];
     });
