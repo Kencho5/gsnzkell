@@ -39,7 +39,7 @@ app.use(
   express.urlencoded({
     extended: true
   })
-)
+);
 
 const limiter = rateLimit({
   windowMs: 30000,
