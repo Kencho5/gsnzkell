@@ -4,7 +4,7 @@
             <div class="post" *ngFor="let post of posts" id="{{post.id}}">
                 <p class="type">{{post.postType}}</p>
                 <div class="image">
-                    <img src="/assets/postImages/{{post.id}}-{{post.img}}">
+                    <img src="/postImages/{{post.id}}-{{post.img}}">
                 </div>
                 <div class="bottom">
                     <p *ngIf="post.price != ''">{{post.price}} ₾</p>

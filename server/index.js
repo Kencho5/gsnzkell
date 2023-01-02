@@ -330,7 +330,7 @@ function insertTest() {
     var type = '.png';
     var base64Data = imageAsBase64.replace(/^data:image\/png;base64,/, "");
 
-    require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${id}-${i}${type}`, base64Data, 'base64', function (err) {});
+    require("fs").writeFile(`/tmp/postImages/${id}-${i}${type}`, base64Data, 'base64', function (err) {});
   }
 
   userPosts.insertMany(docs);
@@ -364,7 +364,7 @@ app.post('/api/upload', (req, res) => {
       var base64Data = req.body.urls[i].replace(/^data:image\/png;base64,/, "");
     }
 
-    require("fs").writeFile(`/Users/kencho/Desktop/pender/src/assets/postImages/${postID}-${i}${type}`, base64Data, 'base64', function (err) {});
+    require("fs").writeFile(`/tmp/postImages/${postID}-${i}${type}`, base64Data, 'base64', function (err) {});
     imgs.push(`${i}${type}`);
   }
 

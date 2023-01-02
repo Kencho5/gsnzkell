@@ -1,4 +1,5 @@
 <body>
+  <img src="/postImages/bec3a1cd-68a2-425c-ba7b-8803ded4866b-0.png" alt="">
   <form [formGroup]="searchForm" (ngSubmit)="search()">
   <div class="search-main">
     <div class="search-div">
@@ -47,7 +48,7 @@
     <div class="latest-posts">
       <div class="post" *ngFor="let post of posts" id="{{post.id}}">
         <div class="post-img">
-          <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
+          <img src="/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
           <p class="post-title">{{post.postType}}</p>
         </div>
         <div class="post-details">

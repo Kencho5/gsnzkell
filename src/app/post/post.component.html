@@ -7,14 +7,14 @@
       </h1>
 
       <div class="active-div">
-        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active">
+        <img src="/postImages/{{post.id}}-{{post.imgs[0]}}" class="active">
         <div class="arrows-div">
           <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
           <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
         </div>
       </div>
       <div class="all-imgs">
-          <img *ngFor="let img of post.imgs" src="/assets/postImages/{{post.id}}-{{img}}" class="sub-img" (click)="changeImage($event)">
+          <img *ngFor="let img of post.imgs" src="/postImages/{{post.id}}-{{img}}" class="sub-img" (click)="changeImage($event)">
       </div>
     </div>
     <div class="post-details">

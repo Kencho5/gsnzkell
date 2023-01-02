@@ -74,9 +74,9 @@ export class PostComponent implements OnInit {
     var nextIndex = this.post.imgs.indexOf(current);
 
     if(nextIndex - 1 >= 0) {
-      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[nextIndex - 1]}`;
+      active.src = `/postImages/${this.post.id}-${this.post.imgs[nextIndex - 1]}`;
     } else {
-      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[this.post.imgs.length - 1]}`;
+      active.src = `/postImages/${this.post.id}-${this.post.imgs[this.post.imgs.length - 1]}`;
     }
   }
 
@@ -87,9 +87,9 @@ export class PostComponent implements OnInit {
     var nextIndex = this.post.imgs.indexOf(current);
 
     if(nextIndex + 1 < this.post.imgs.length) {
-      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[nextIndex + 1]}`;
+      active.src = `/postImages/${this.post.id}-${this.post.imgs[nextIndex + 1]}`;
     } else {
-      active.src = `/assets/postImages/${this.post.id}-${this.post.imgs[0]}`;
+      active.src = `/postImages/${this.post.id}-${this.post.imgs[0]}`;
     }
 
   }
