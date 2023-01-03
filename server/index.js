@@ -12,7 +12,7 @@ const {
 } = require("mongodb");
 const rateLimit = require("express-rate-limit");
 const shell = require('shelljs');
-
+var os = require('os');
 
 const url = 'mongodb://127.0.0.1:27017';
 const client = new MongoClient(url);
@@ -337,6 +337,7 @@ function insertTest() {
     });
     var type = '.png';
     var base64Data = imageAsBase64.replace(/^data:image\/png;base64,/, "");
+    
 
     require("fs").writeFile(`../src/assets/postImages/${id}-${i}${type}`, base64Data, 'base64', function (err) {});
   }
@@ -372,7 +373,13 @@ app.post('/api/upload', (req, res) => {
       var base64Data = req.body.urls[i].replace(/^data:image\/png;base64,/, "");
     }
 
-    require("fs").writeFile(`../src/assets/postImages/${postID}-${i}${type}`, base64Data, 'base64', function (err) {});
+    if(os.platform() == "darwin") {
+      var save_path = "../src/assets"; 
+    } else {
+      var save_path = "/var/www/pender/assets";
+    }
+
+    require("fs").writeFile(`${save_path}/postImages/${postID}-${i}${type}`, base64Data, 'base64', function (err) {});
     imgs.push(`${i}${type}`);
   }
 
