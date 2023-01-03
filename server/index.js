@@ -338,8 +338,13 @@ function insertTest() {
     var type = '.png';
     var base64Data = imageAsBase64.replace(/^data:image\/png;base64,/, "");
     
+    if(os.platform() == "darwin") {
+      var save_path = "../src/assets"; 
+    } else {
+      var save_path = "/var/www/pender/assets";
+    }
 
-    require("fs").writeFile(`../src/assets/postImages/${id}-${i}${type}`, base64Data, 'base64', function (err) {});
+    require("fs").writeFile(`${save_path}/postImages/${id}-${i}${type}`, base64Data, 'base64', function (err) {});
   }
 
   userPosts.insertMany(docs);
