@@ -66,6 +66,27 @@ app.post('/api/git', (req, res) => {
   }
 });
 
+async function getCounts(email) {
+  var strings = ['selling', 'meeting', 'adopting'];
+  let counts = [];
+
+  for (const string of strings) {
+    let count = await new Promise((resolve, reject) => {
+      userPosts.count({
+        email: email,
+        postType: string
+      }, (error, count) => {
+        resolve(count);
+      });
+    });
+
+    counts.push(count);
+  }
+
+  return counts;
+}
+
+
 app.post('/api/login', (req, res) => {
   email = req.body.email;
   password = req.body.password;
@@ -75,28 +96,8 @@ app.post('/api/login', (req, res) => {
   }, (err, responseDB) => {
     if (responseDB) {
       bcrypt.compare(password, responseDB.password, async (error, result) => {
-        var strings = ['selling', 'meeting', 'adopting'];
-
-        async function getCounts() {
-          let counts = [];
-
-          for (const string of strings) {
-            let count = await new Promise((resolve, reject) => {
-              userPosts.count({
-                email: email,
-                postType: string
-              }, (error, count) => {
-                resolve(count);
-              });
-            });
-
-            counts.push(count);
-          }
-
-          return counts;
-        }
-
-        let counts = await getCounts();
+        
+        let counts = await getCounts(email);
 
         var payload = {
           name: responseDB.username,
@@ -312,7 +313,7 @@ function insertTest() {
 
 
   docs = [];
-  for (var i = 8000; i < 8005; i++) {
+  for (var i = 0; i < 20000; i++) {
     var animal = animals[Math.floor(Math.random() * animals.length)];
     var type = types[Math.floor(Math.random() * types.length)];
 
@@ -462,8 +463,9 @@ app.post('/api/profile', async (req, res) => {
   email = req.body.email;
   var count;
 
-  if (req.body.start == 0) {
+  if(req.body.start == 0) {
     count = await countUserPosts(email);
+    counts = await getCounts(email);
   }
 
   userPosts.find({
@@ -482,7 +484,8 @@ app.post('/api/profile', async (req, res) => {
       res.status(200).send({
         code: 200,
         data: posts,
-        count: count
+        count: count,
+        counts: counts
       });
     })
 });

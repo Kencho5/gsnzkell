@@ -1,6 +1,6 @@
-$dark: #D0175F;
-$bg: #EA90B7;
-$light: #e4bccc;
+$dark: #f2a77e;
+$bg: #f3ddad;
+$light: #fffbf1;
 
 body {
   padding: 0;
@@ -171,7 +171,7 @@ input:-moz-placeholder {
 }
 
 .posts-child {
-  background-color: $dark;
+  background-color: $light;
   align-items: center;
   text-align: center;
   width: 500px;
@@ -200,7 +200,7 @@ input:-moz-placeholder {
 }
 
 .posts-img {
-  outline: 3px solid $light;
+  outline: 3px solid $dark;
   border-radius: 30px;
   padding: 150px;
   margin: 15px;
@@ -208,7 +208,7 @@ input:-moz-placeholder {
 }
 
 .posts-div {
-  background-color: $light;
+  background-color: $dark;
   margin: 30px;
   margin-top: 150px;
   border-radius: 16px;
@@ -237,7 +237,7 @@ input:-moz-placeholder {
   display: inline-block;
   margin: 40px;
   // margin-bottom: 40px;
-  background-color: $dark;
+  background-color: $light;
   height: 300px;
   width: 230px;
   border-radius: 12px;
@@ -245,7 +245,7 @@ input:-moz-placeholder {
 }
 
 .latest-title {
-  color: $dark;
+  color: $light;
   font-weight: bold;
   padding: 30px 0px 0px 30px;
 }
@@ -280,6 +280,7 @@ input:-moz-placeholder {
 }
 
 .post-details {
+  color: $dark;
   display: flex;
   justify-content: space-evenly;
   flex-direction: column;
@@ -310,10 +311,10 @@ input:-moz-placeholder {
   cursor: pointer;
   border: none;
   border-radius: 8px;
-  background-color: $light;
+  background-color: $dark;
+  color: $light;
   padding: 10px;
   width: 50px;
-  color: $dark;
   font-size: 16px;
   font-weight: bold;
   text-align: center;

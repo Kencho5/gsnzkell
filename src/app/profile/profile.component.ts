@@ -51,9 +51,7 @@ export class ProfileComponent implements OnInit {
       if (res["code"] == 200) {
        this.posts = res['data'];
         
-        if(localStorage.getItem('postCount') == null) {
-          localStorage.setItem("postCount", res['count']);
-        }
+        localStorage.setItem("postCount", res['count']);
         this.postCount = localStorage.getItem("postCount");
       }
     });
