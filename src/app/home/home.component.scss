@@ -11,93 +11,36 @@ body {
   color: $light;
 }
 
+.main-div {
+  padding-top: 100px;
+  margin: auto;
+  align-items: center;
+}
+
+.main-div input {
+  font-size: 20px;
+  font-weight: bold;
+  border: none;
+  color: $dark;
+  padding: 15px;
+  border-radius: 15px;
+  outline: none;
+  text-align: center;
+}
+
+.main-div mat-icon {
+  color: $dark;
+  vertical-align: middle;
+  position: absolute;
+  margin-top: 15px;
+  margin-left: 15px;
+}
+
 input::-webkit-input-placeholder{
   color:$dark;
 }
 input:-moz-placeholder {
   color:$dark;
-}
-
-.search-main {
-    margin: 100px;
-}
-
-.search-div {
-  background-color: $dark;
-  border-radius: 50px;
-  width: 70%;
-  height: 450px;
-  margin: auto;
-}
-
-.search-content {
-  height: 100%;
-  border-radius: 50px;
-  display: flex;
-  justify-content: space-evenly;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.logo-btn {
-  border: none;
-  transition: .2s;
-  cursor: pointer;
-}
-
-.logo-btn:hover {
-  transform: scale(1.1);
-}
-
-.logo-btn {
-  width: 140px;
-  height: 140px;
-}
-
-.search-content h1 {
-  font-weight: bold;
-  letter-spacing: 2px;
-  font-size: 40px;
-  line-height: 1.1;
-  text-align: center;
-}
-
-.search-type {
-  border-radius: 30px;
-  background-color: $light;
-  border:  none;
-  outline: none;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: $dark;
-  text-align: center;
-  padding: 8px;
-  width: 40%;
-  height: 68px;
-}
-
-.search-content-input {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  height: 180px;
-  text-align: center;
-  margin-top: 30px;
-}
-
-.search-content input {
-  width: 50%;
-  height: 68px;
-  border-radius: 30px;
-  background-color: $light;
-  border:  none;
-  outline: none;
-  font-size: 30px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: $dark;
-  padding-left: 30px;
 }
 
 .offerings {
