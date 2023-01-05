@@ -17,7 +17,16 @@
 <!--       </ul> -->
 <!--       <h1 class="logo"><mat-icon>pets</mat-icon> Pender</h1> -->
 <!--   </div> -->
+
 <!-- </nav> -->
+  <!-- <form [formGroup]="searchForm" (ngSubmit)="search()"> -->
+  <!--   <div class="main-div"> -->
+  <!--     <div class="search-div"> -->
+  <!--     <mat-icon>search</mat-icon> -->
+  <!-- <input type="text" formControlName="text" placeholder="Breed"> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </form> -->
 <nav class="navbar navbar-expand-lg navbar-dark">
   <div class="container-fluid">
     <a class="navbar-brand brand-custom" href="#">
@@ -43,12 +52,12 @@
             <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
           </ng-template>
       </ul>
-      <form class="d-flex">
+      <form class="d-flex" [formGroup]="searchForm" (ngSubmit)="search()">
         <div class="input-group input-group-lg">
             <span class="input-group-text search-icon" id="basic-addon1">
               <mat-icon>search</mat-icon>
             </span>
-        <input class="form-control me-2 shadow-none search-input" type="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2 shadow-none search-input" type="search" placeholder="Search" aria-label="Search" formControlName="text" >
         </div>
       </form>
     </div>
