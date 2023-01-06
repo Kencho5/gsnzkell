@@ -16,7 +16,7 @@
                <!-- Post header-->
                <header class="mb-4">
                   <!-- Post title-->
-                  <h1 class="fw-bolder mb-1" class="main-title">{{post.breed}}</h1>
+                  <h1 class="fw-bolder mb-1" class="main-title">{{post.breed}} - {{post.age}} {{post.ageType|titlecase}} Old</h1>
                   <!-- Post meta content-->
                   <div class="text-muted fst-italic mb-2">{{post.date}}</div>
                </header>
@@ -39,6 +39,10 @@
                      </div>
                   </div>
                </div>
+               <!-- PHONE -->
+              <section class="mb-5">
+                  <h2 class="fw-bolder mb-4 mt-5 description">{{post.phone}}</h2>
+               </section>
                <!-- Post content-->
                <section class="mb-5">
                   <h2 class="fw-bolder mb-4 mt-5 description">{{post.description}}</h2>

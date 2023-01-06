@@ -313,7 +313,7 @@ function insertTest() {
 
 
   docs = [];
-  for (var i = 0; i < 20000; i++) {
+  for (var i = 0; i < 2000; i++) {
     var animal = animals[Math.floor(Math.random() * animals.length)];
     var type = types[Math.floor(Math.random() * types.length)];
 
