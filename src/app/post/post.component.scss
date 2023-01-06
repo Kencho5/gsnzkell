@@ -3,17 +3,20 @@ body,html{
     font-family:Ubuntu,sans-serif;
 }
 
-$dark: #f2a77e;
-$light: #fffbf1;
+$dark: #ee8240;
+$dim: #2e3134;
+$light: #fff;
 $button: #D0175F;
 $button-hover: #ad1650;
 
+.main-title {
+  font-weight: bold;
+  color: $dim;
+}
 .main {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 100px;
-  margin-top: 100px;
 }
 
 .images-div {
@@ -93,7 +96,7 @@ $button-hover: #ad1650;
 }
 
 h1 {
-  color: $light;
+  color: $dim;
   font-weight: bold;
 }
 

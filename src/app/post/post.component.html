@@ -1,38 +1,51 @@
-<div class="main">
-    <div class="images-div">
-      
-      <h1 class="post-type">
-        <mat-icon>{{icon}}</mat-icon>
-        {{post.postType}}
-      </h1>
-
-      <div class="active-div">
-        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active">
-        <div class="arrows-div">
-          <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
-          <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
-        </div>
+<section class="py-5">
+   <div class="container px-5 my-5">
+      <div class="row gx-5">
+         <div class="col-lg-3">
+            <div class="d-flex align-items-center mt-lg-5 mb-4">
+               <img class="img-fluid rounded-circle" src="/assets/images/logo.png" style="width: 50px; height: 50px;"  alt="..." />
+               <div class="ms-3">
+                  <div class="fw-bold">{{post.name|titlecase}}</div>
+                  <div class="text-muted">{{post.city|titlecase}}</div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-9">
+            <!-- Post content-->
+            <article>
+               <!-- Post header-->
+               <header class="mb-4">
+                  <!-- Post title-->
+                  <h1 class="fw-bolder mb-1" class="main-title">{{post.breed}}</h1>
+                  <!-- Post meta content-->
+                  <div class="text-muted fst-italic mb-2">{{post.date}}</div>
+               </header>
+               <!-- Preview image figure-->
+               <div class="main">
+                  <div class="images-div">
+                     <h1 class="post-type">
+                        <mat-icon>{{icon}}</mat-icon>
+                        {{post.postType}}
+                     </h1>
+                     <div class="active-div">
+                        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="active">
+                        <div class="arrows-div">
+                           <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
+                           <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
+                        </div>
+                     </div>
+                     <div class="all-imgs">
+                        <img *ngFor="let img of post.imgs" src="/assets/postImages/{{post.id}}-{{img}}" class="sub-img" (click)="changeImage($event)">
+                     </div>
+                  </div>
+               </div>
+               <!-- Post content-->
+               <section class="mb-5">
+                  <h2 class="fw-bolder mb-4 mt-5 description">{{post.description}}</h2>
+               </section>
+            </article>
+            <!-- Comments section-->
+         </div>
       </div>
-      <div class="all-imgs">
-          <img *ngFor="let img of post.imgs" src="/assets/postImages/{{post.id}}-{{img}}" class="sub-img" (click)="changeImage($event)">
-      </div>
-    </div>
-    <div class="post-details">
-      <h1 class="date"><mat-icon>today</mat-icon> {{post.date}}</h1>
-
-      <div>
-        <h1 class="title">{{post.breed}}</h1>
-        <h1 class="title" *ngIf="post.price != ''">{{post.price}} ₾</h1>
-        <h1 class="title">{{post.age}} {{post.ageType |titlecase}} Old</h1>
-        <p class="description">{{post.description}}</p>
-      </div>
-
-      <div class="user-details">
-          <h1><mat-icon>account_circle</mat-icon> {{post.name |titlecase}}</h1>
-
-          <h1><mat-icon>phone</mat-icon> {{post.phone}}</h1>
-        <h1><mat-icon>place</mat-icon> {{post.city |titlecase}}</h1>
-      </div>
-
-    </div>
-  </div>
+   </div>
+</section>
