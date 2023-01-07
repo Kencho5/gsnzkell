@@ -155,6 +155,7 @@ input:-moz-placeholder {
   margin: 30px;
   margin-top: 150px;
   border-radius: 16px;
+  box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.1) 0px 8px 24px, rgba(17, 17, 26, 0.1) 0px 16px 56px;
 }
 
 .latest-posts {
@@ -283,4 +284,45 @@ input:-moz-placeholder {
   height: 50px;
   color: $light;
 }
+svg {
+	width: 100%;
+	height: 100%;
+}
 
+				@keyframes rotate {
+					 100% {
+						  transform: rotate(360deg)
+					 }
+				}
+
+				.top-outer {
+					 transform-origin: 73px 69px;
+					 animation: rotate 30s linear infinite;
+				}
+
+				.top-inner {
+					 transform-origin: 73px 69px;
+					 animation: rotate 20s linear infinite;
+				}
+
+				.bottom-outer {
+					 transform-origin: 134px 222px;
+					 animation: rotate 30s linear infinite;
+				}
+
+				.bottom-inner {
+								transform-origin: 134px  222px;
+								animation: rotate 20s linear infinite;
+				}
+.wrap-layer{
+      position: relative;
+      height: 200vh;
+   }
+.over-layer {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+      /* non-critical styles left out */
+   }

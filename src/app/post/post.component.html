@@ -5,8 +5,11 @@
             <div class="d-flex align-items-center mt-lg-5 mb-4">
                <img class="img-fluid rounded-circle" src="/assets/images/logo.png" style="width: 50px; height: 50px;"  alt="..." />
                <div class="ms-3">
-                  <div class="fw-bold">{{post.name|titlecase}}</div>
-                  <div class="text-muted">{{post.city|titlecase}}</div>
+                 <div class="fw-bold">
+                   {{post.name|titlecase}}</div>
+                  <div class="text-muted">
+                    <mat-icon>place</mat-icon>
+                    {{post.city|titlecase}}</div>
                </div>
             </div>
          </div>
