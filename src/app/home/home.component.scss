@@ -297,7 +297,11 @@ svg {
 
 				.top-outer {
 					 transform-origin: 73px 69px;
-					 animation: rotate 30s linear infinite;
+           -webkit-animation: rotate 30s linear infinite;
+  -moz-animation: rotate 30s linear infinite;
+  -ms-animation: rotate 30s linear infinite;
+  -o-animation: rotate 30s linear infinite;
+  animation: rotate 30s linear infinite;
 				}
 
 				.top-inner {
