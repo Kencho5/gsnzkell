@@ -16,6 +16,8 @@ mat-icon {
 }
 
 body {
+  background-color:hsla(31,84%,92%,1);
+background-image:radial-gradient(at 0% 29%, hsla(30,100%,56%,1) 0px, transparent 50%),radial-gradient(at 80% 0%, hsla(189,100%,100%,1) 0px, transparent 50%), radial-gradient(at 79% 94%, hsla(39,100%,63%,1) 0px, transparent 50%);
 	min-height: 100%;
 }
 

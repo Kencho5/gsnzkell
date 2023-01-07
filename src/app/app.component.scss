@@ -37,6 +37,8 @@ h1 {
 
 .search-input {
   color: $dark !important;
+  border: none;
+  border-radius: 20px;
 }
 
 .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -55,7 +57,10 @@ h1 {
 .search-icon {
   color: $dark;
   background-color: $light;
+  border: none;
+  border-radius: 20px;
 }
+
 .custom-toggler.navbar-toggler {
             border-color: $light;
         }

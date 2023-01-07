@@ -285,91 +285,35 @@ input:-moz-placeholder {
   color: $light;
 }
 svg {
-  width: 100%;
-  height: 100%;
+	width: 100%;
+	height: 100%;
 }
 
-@-webkit-keyframes rotate {
-  100% {
-    -webkit-transform: rotate(360deg);
-  }
-}
+				@keyframes rotate {
+					 100% {
+						  transform: rotate(360deg)
+					 }
+				}
 
-@-moz-keyframes rotate {
-  100% {
-    -moz-transform: rotate(360deg);
-  }
-}
+				.top-outer {
+					 transform-origin: 73px 69px;
+					 animation: rotate 30s linear infinite;
+				}
 
-@-ms-keyframes rotate {
-  100% {
-    -ms-transform: rotate(360deg);
-  }
-}
+				.top-inner {
+					 transform-origin: 73px 69px;
+					 animation: rotate 20s linear infinite;
+				}
 
-@-o-keyframes rotate {
-  100% {
-    -o-transform: rotate(360deg);
-  }
-}
+				.bottom-outer {
+					 transform-origin: 134px 222px;
+					 animation: rotate 30s linear infinite;
+				}
 
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-.top-outer {
-  -webkit-transform-origin: 73px 69px;
-  -moz-transform-origin: 73px 69px;
-  -ms-transform-origin: 73px 69px;
-  -o-transform-origin: 73px 69px;
-  transform-origin: 73px 69px;
-  -webkit-animation: rotate 30s linear infinite;
-  -moz-animation: rotate 30s linear infinite;
-  -ms-animation: rotate 30s linear infinite;
-  -o-animation: rotate 30s linear infinite;
-  animation: rotate 30s linear infinite;
-}
-
-.top-inner {
-  -webkit-transform-origin: 73px 69px;
-  -moz-transform-origin: 73px 69px;
-  -ms-transform-origin: 73px 69px;
-  -o-transform-origin: 73px 69px;
-  transform-origin: 73px 69px;
-  -webkit-animation: rotate 20s linear infinite;
-  -moz-animation: rotate 20s linear infinite;
-  -ms-animation: rotate 20s linear infinite;
-  -o-animation: rotate 20s linear infinite;
-  animation: rotate 20s linear infinite;
-}
-
-.bottom-outer {
-  -webkit-transform-origin: 134px 222px;
-  -moz-transform-origin: 134px 222px;
-  -ms-transform-origin: 134px 222px;
-  -o-transform-origin: 134px 222px;
-  transform-origin: 134px 222px;
-  -webkit-animation: rotate 30s linear infinite;
-  -moz-animation: rotate 30s linear infinite;
-  -ms-animation: rotate 30s linear infinite;
-  -o-animation: rotate 30s linear infinite;
-  animation: rotate 30s linear infinite;
-}
-
-.bottom-inner {
-  -webkit-transform-origin: 134px 222px;
-  -moz-transform-origin: 134px 222px;
-  -ms-transform-origin: 134px 222px;
-  -o-transform-origin: 134px 222px;
-  transform-origin: 134px 222;
-  -webkit-animation: rotate 20s linear infinite;
-  -moz-animation: rotate 20s linear infinite;
-  -ms-animation: rotate 20s linear infinite;
-  -o-animation: rotate 20s linear infinite;
-  animation: rotate 20s linear infinite;
-}
+				.bottom-inner {
+								transform-origin: 134px  222px;
+								animation: rotate 20s linear infinite;
+				}
 .wrap-layer{
       position: relative;
       height: 200vh;

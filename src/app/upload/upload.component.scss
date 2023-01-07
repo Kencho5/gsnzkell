@@ -1,12 +1,12 @@
-$dark: #f2a77e;
-$bg: #f3ddad;
-$light: #ececec;
+$dark: #ee8240;
+$bg: #fceddc;
+$light: #fff;
+$dim: #2e3134;
 
 body {
     font-family: 'Ubuntu', sans-serif;
     font-weight: 500;
 }
-
 @media print {
 
     *,
@@ -138,21 +138,20 @@ button:hover {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 15px;
     position: relative;
 }
 
 .wrap-contact100 {
     width: 100%;
     background: 0 0;
-    padding: 50px 0 160px;
     display: flex;
     justify-content: center;
 }
 
 .contact100-form {
-    width: 600px;
+    width: 75%;
     background-color: $bg;
+    border: 5px solid #371300;
     padding: 30px;
     margin-top: 50px;
     border-radius: 30px;
@@ -383,12 +382,13 @@ mat-icon {
     color: $light;
     vertical-align: middle;
     font-size: 30px;
-    margin-left: 20px;
+    margin-left: 10px;
 }
 
 .double-input-div {
     display: flex;
     justify-content: space-between;
+    height: 100%;
 }
 
 .double-input {
@@ -482,3 +482,56 @@ option {
     width: 20px;
     height: 20px;
 }
+
+@media screen and (max-width: 710px) {
+  .container-contact100 {
+    width: 100%;
+    margin-top: 0;
+  }
+  .double-input-div {
+    flex-direction: column;
+    height: 150px;
+  }
+}
+
+svg {
+	width: 100%;
+	height: 100%;
+}
+
+@keyframes rotate {
+   100% {
+      transform: rotate(360deg)
+   }
+}
+
+.top-outer {
+   transform-origin: 73px 69px;
+   animation: rotate 30s linear infinite;
+}
+
+.top-inner {
+   transform-origin: 73px 69px;
+   animation: rotate 20s linear infinite;
+}
+
+.bottom-outer {
+   transform-origin: 134px 222px;
+   animation: rotate 30s linear infinite;
+}
+
+.bottom-inner {
+        transform-origin: 134px  222px;
+        animation: rotate 20s linear infinite;
+}
+.wrap-layer{
+      position: relative;
+      height: 100vh;
+   }
+.over-layer {
+      position: absolute;
+      width: 100%;
+      height: auto;
+      top: 0;
+      left: 0;
+   }
