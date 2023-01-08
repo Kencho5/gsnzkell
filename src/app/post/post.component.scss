@@ -9,10 +9,6 @@ $light: #fff;
 $button: #D0175F;
 $button-hover: #ad1650;
 
-.main-title {
-  font-weight: bold;
-  color: $dim;
-}
 .main {
   display: flex;
   justify-content: space-between;
@@ -66,7 +62,6 @@ $button-hover: #ad1650;
 .sub-img:hover {
   transform: scale(1.1);
 }
-
 .arrows-div {
   display: flex;
   justify-content: space-between;

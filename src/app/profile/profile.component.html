@@ -1,209 +1,238 @@
 <body>
-  <div class="main">
-    <div class="cards">
-      <div class="card left">
-        <img src="/assets/images/logo.png" alt="logo" class="logo" style="background-color: #f3ddad; padding: 20px; border-radius: 100%;">
-        <hr class="left-line-first">
-        <h1 id="posts-h1">POSTS</h1>
-        <hr class="left-line-second">
-        <div class="posts">
-          <mat-icon class="count-icons">sell</mat-icon>
-          <h1 class="posts-text">SELLING</h1>
-          <h1 class="posts-text">{{userData.counts[0]}}</h1>
-        </div>
-        <div class="posts">
-          <mat-icon class="count-icons">favorite</mat-icon>
-          <h1 class="posts-text">MEETING</h1>
-          <h1 class="posts-text">{{userData.counts[1]}}</h1>
-        </div>
-        <div class="posts">
-          <mat-icon class="count-icons">cottage</mat-icon>
-          <h1 class="posts-text">ADOPTING</h1>
-          <h1 class="posts-text">{{userData.counts[2]}}</h1>
-        </div>
-      </div>
-      <div class="card right">
-        <div class="info-bg-div">
-          <div class="info-bg">
-            <h1 id="information">INFORMATION</h1>
-          </div>
-        </div>
-        <div class="info-list">
-          <!-- FIRST -->
-          <div class="data">
-            <div>
-              <mat-icon>badge</mat-icon>
-            </div>
-            <ng-container *ngIf="editable != 'usernameEdit'; else usernameDone">
-              <div class="edit-div">
-                <h1 class="info-text" id="usernameEdit">{{userData.name}}</h1>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #usernameDone>
-              <ng-container *ngIf="editable == 'usernameEdit';">
-                <div class="edit-div">
-                  <input type="text" class="edit-details-input" name="username" (keyup.enter)="submitDetails($event)" value="{{userData.name}}">
+  <!-- <div class="main"> -->
+  <!--   <div class="cards"> -->
+  <!--     <div class="card left"> -->
+  <!--       <img src="/assets/images/logo.png" alt="logo" class="logo" style="background-color: #f3ddad; padding: 20px; border-radius: 100%;"> -->
+  <!--       <hr class="left-line-first"> -->
+  <!--       <h1 id="posts-h1">POSTS</h1> -->
+  <!--       <hr class="left-line-second"> -->
+  <!--       <div class="posts"> -->
+  <!--         <mat-icon class="count-icons">sell</mat-icon> -->
+  <!--         <h1 class="posts-text">SELLING</h1> -->
+  <!--         <h1 class="posts-text">{{userData.counts[0]}}</h1> -->
+  <!--       </div> -->
+  <!--       <div class="posts"> -->
+  <!--         <mat-icon class="count-icons">favorite</mat-icon> -->
+  <!--         <h1 class="posts-text">MEETING</h1> -->
+  <!--         <h1 class="posts-text">{{userData.counts[1]}}</h1> -->
+  <!--       </div> -->
+  <!--       <div class="posts"> -->
+  <!--         <mat-icon class="count-icons">cottage</mat-icon> -->
+  <!--         <h1 class="posts-text">ADOPTING</h1> -->
+  <!--         <h1 class="posts-text">{{userData.counts[2]}}</h1> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--     <div class="card right"> -->
+  <!--       <div class="info-bg-div"> -->
+  <!--         <div class="info-bg"> -->
+  <!--           <h1 id="information">INFORMATION</h1> -->
+  <!--         </div> -->
+  <!--       </div> -->
+  <!--       <div class="info-list"> -->
+  <!--         <-- FIRST -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <mat-icon>badge</mat-icon> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'usernameEdit'; else usernameDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <h1 class="info-text" id="usernameEdit">{{userData.name}}</h1> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #usernameDone> -->
+  <!--             <ng-container *ngIf="editable == 'usernameEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="text" class="edit-details-input" name="username" (keyup.enter)="submitDetails($event)" value="{{userData.name}}"> -->
 
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
 
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-          <hr class="right-line">
-          <!-- SECOND -->
-          <div class="data">
-            <div>
-              <mat-icon>phone</mat-icon>
-            </div>
-            <ng-container *ngIf="editable != 'phoneEdit'; else phoneDone">
-              <div class="edit-div">
-                <h1 class="info-text" id="phoneEdit">{{userData.phone_number}}</h1>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #phoneDone>
-              <ng-container *ngIf="editable == 'phoneEdit';">
-                <div class="edit-div">
-                  <input type="number" class="edit-details-input" name="phone" (keyup.enter)="submitDetails($event)"
-                  value="{{userData.phone_number}}">
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
-                    
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-          <hr class="right-line">
-          <!-- CITY -->
-          <div class="data">
-            <div>
-              <mat-icon>place</mat-icon>
-            </div>
-            <ng-container *ngIf="editable != 'cityEdit'; else cityDone">
-              <div class="edit-div">
-                <h1 class="info-text" id="cityEdit">{{userData.city}}</h1>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #cityDone>
-              <ng-container *ngIf="editable == 'cityEdit';">
-                <div class="edit-div">
-                  <input type="text" class="edit-details-input" name="city" (keyup.enter)="submitDetails($event)"
-                  value="{{userData.city}}">
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
-                    
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-          <hr class="right-line">
-          <!-- THIRD -->
-          <div class="data">
-            <div>
-              <mat-icon>alternate_email</mat-icon>
-            </div>
-            <ng-container *ngIf="editable != 'emailEdit'; else emailDone">
-              <div class="edit-div">
-                <h1 class="info-text" id="emailEdit">{{userData.email}}</h1>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #emailDone>
-              <ng-container *ngIf="editable == 'emailEdit';">
-                <div class="edit-div">
-                  <input type="email" class="edit-details-input" name="email" (keyup.enter)="submitDetails($event)"
-                  value="{{userData.email}}">
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
-                    
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-          <hr class="right-line">
-          <!-- FOURTH -->
-          <div class="data">
-            <div>
-              <mat-icon>facebook</mat-icon>
-            </div>
-            <ng-container *ngIf="editable != 'facebookEdit'; else facebookDone">
-              <div class="edit-div">
-                <ng-container *ngIf="userData.facebook != null; else setFacebook">
-                  <h1 class="info-text social-media" id="facebookEdit">
-                    <a href="{{userData.facebook}}" target="_blank">View Facebook Profile</a>
-                  </h1>
-                </ng-container>
-                <ng-template #setFacebook>
-                  <h1 class="info-text social-media" id="facebookEdit">
-                    <a>Set Facebook Profile</a>
-                  </h1>
-                </ng-template>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #facebookDone>
-              <ng-container *ngIf="editable == 'facebookEdit';">
-                <div class="edit-div">
-                  <input type="text" class="edit-details-input" name="facebook" (keyup.enter)="submitDetails($event)">
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
-                    
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-          <hr class="right-line">
-          <!-- FIFTH -->
-          <div class="data">
-            <div>
-              <img src="/assets/images/instagram.svg" alt="instagram" width="24" class="ig">
-            </div>
-            <ng-container *ngIf="editable != 'instagramEdit'; else instagramDone">
-              <div class="edit-div">
-                <ng-container *ngIf="userData.instagram != null; else setInstagram">
-                  <h1 class="info-text social-media" id="instagramEdit">
-                    <a href="{{userData.instagram}}" target="_blank">View Instagram Profile</a>
-                  </h1>
-                </ng-container>
-                <ng-template #setInstagram>
-                  <h1 class="info-text social-media" id="instagramEdit">
-                    <a>Set Instagram Profile</a>
-                  </h1>
-                </ng-template>
-                <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon>
-              </div>
-            </ng-container>
-            <ng-template #instagramDone>
-              <ng-container *ngIf="editable == 'instagramEdit';">
-                <div class="edit-div">
-                  <input type="text" class="edit-details-input" name="instagram" (keyup.enter)="submitDetails($event)">
-                  <div class="editable-div">
-                    <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon>
-                    
-                    <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon>
-                  </div>
-                </div>
-              </ng-container>
-            </ng-template>
-          </div>
-        </div>
-      </div>
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--         <hr class="right-line"> -->
+  <!--         <-- SECOND -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <mat-icon>phone</mat-icon> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'phoneEdit'; else phoneDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <h1 class="info-text" id="phoneEdit">{{userData.phone_number}}</h1> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #phoneDone> -->
+  <!--             <ng-container *ngIf="editable == 'phoneEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="number" class="edit-details-input" name="phone" (keyup.enter)="submitDetails($event)" -->
+  <!--                 value="{{userData.phone_number}}"> -->
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
+  <!--                    -->
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--         <hr class="right-line"> -->
+  <!--         <-- CITY -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <mat-icon>place</mat-icon> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'cityEdit'; else cityDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <h1 class="info-text" id="cityEdit">{{userData.city}}</h1> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #cityDone> -->
+  <!--             <ng-container *ngIf="editable == 'cityEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="text" class="edit-details-input" name="city" (keyup.enter)="submitDetails($event)" -->
+  <!--                 value="{{userData.city}}"> -->
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
+  <!--                    -->
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--         <hr class="right-line"> -->
+  <!--         <-- THIRD -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <mat-icon>alternate_email</mat-icon> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'emailEdit'; else emailDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <h1 class="info-text" id="emailEdit">{{userData.email}}</h1> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #emailDone> -->
+  <!--             <ng-container *ngIf="editable == 'emailEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="email" class="edit-details-input" name="email" (keyup.enter)="submitDetails($event)" -->
+  <!--                 value="{{userData.email}}"> -->
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
+  <!--                    -->
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--         <hr class="right-line"> -->
+  <!--         <-- FOURTH -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <mat-icon>facebook</mat-icon> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'facebookEdit'; else facebookDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <ng-container *ngIf="userData.facebook != null; else setFacebook"> -->
+  <!--                 <h1 class="info-text social-media" id="facebookEdit"> -->
+  <!--                   <a href="{{userData.facebook}}" target="_blank">View Facebook Profile</a> -->
+  <!--                 </h1> -->
+  <!--               </ng-container> -->
+  <!--               <ng-template #setFacebook> -->
+  <!--                 <h1 class="info-text social-media" id="facebookEdit"> -->
+  <!--                   <a>Set Facebook Profile</a> -->
+  <!--                 </h1> -->
+  <!--               </ng-template> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #facebookDone> -->
+  <!--             <ng-container *ngIf="editable == 'facebookEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="text" class="edit-details-input" name="facebook" (keyup.enter)="submitDetails($event)"> -->
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
+  <!--                    -->
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--         <hr class="right-line"> -->
+  <!--         <-- FIFTH -->
+  <!--         <div class="data"> -->
+  <!--           <div> -->
+  <!--             <img src="/assets/images/instagram.svg" alt="instagram" width="24" class="ig"> -->
+  <!--           </div> -->
+  <!--           <ng-container *ngIf="editable != 'instagramEdit'; else instagramDone"> -->
+  <!--             <div class="edit-div"> -->
+  <!--               <ng-container *ngIf="userData.instagram != null; else setInstagram"> -->
+  <!--                 <h1 class="info-text social-media" id="instagramEdit"> -->
+  <!--                   <a href="{{userData.instagram}}" target="_blank">View Instagram Profile</a> -->
+  <!--                 </h1> -->
+  <!--               </ng-container> -->
+  <!--               <ng-template #setInstagram> -->
+  <!--                 <h1 class="info-text social-media" id="instagramEdit"> -->
+  <!--                   <a>Set Instagram Profile</a> -->
+  <!--                 </h1> -->
+  <!--               </ng-template> -->
+  <!--               <mat-icon class="edit-icon" (click)="editDetails($event)">edit</mat-icon> -->
+  <!--             </div> -->
+  <!--           </ng-container> -->
+  <!--           <ng-template #instagramDone> -->
+  <!--             <ng-container *ngIf="editable == 'instagramEdit';"> -->
+  <!--               <div class="edit-div"> -->
+  <!--                 <input type="text" class="edit-details-input" name="instagram" (keyup.enter)="submitDetails($event)"> -->
+  <!--                 <div class="editable-div"> -->
+  <!--                   <mat-icon class="icon" (click)="submitDetails($event)" class="edit-icon done">done</mat-icon> -->
+  <!--                    -->
+  <!--                   <mat-icon class="edit-icon done" (click)="cancel()">close</mat-icon> -->
+  <!--                 </div> -->
+  <!--               </div> -->
+  <!--             </ng-container> -->
+  <!--           </ng-template> -->
+  <!--         </div> -->
+  <!--       </div> -->
+  <!--     </div> -->
+  <!--   </div> -->
+  <!-- </div> -->
+  <div class="profile-card">
+    <div class="rectangle">
     </div>
-  </div>
+      <img class="avatar" src="/assets/images/tmp.webp" width="50" alt="Avatar">
+
+      <div class="username">{{userData.name|titlecase}}</div>
+      <div class="city">
+        <mat-icon>place</mat-icon>
+        {{userData.city|titlecase}}
+      </div>
+      <button type="button" class="edit-profile">Edit Profile</button>
+      <div class="line"></div>
+      <div class="divs">
+        <div>
+          <mat-icon>sell</mat-icon>
+          <p class="counts">{{userData.counts[0]}}</p>
+        </div>
+        <div>
+          <mat-icon>favorite</mat-icon>
+          <p class="counts">{{userData.counts[0]}}</p>
+        </div>
+        <div>
+          <mat-icon>cottage</mat-icon>
+          <p class="counts">{{userData.counts[0]}}</p>
+        </div>
+      </div>
+            <!-- <button type="button" class="edit-profile">Edit Profile</button> -->
+
+    </div>
 
   <h1 class="posts-title">Your Posts</h1>
   <div class="user-posts">
