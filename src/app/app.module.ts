@@ -22,6 +22,10 @@ import { PostComponent } from './post/post.component';
 import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatDialogModule } from '@angular/material/dialog';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -35,6 +39,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     PostComponent,
     UserComponent,
     SearchComponent,
+    EditProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +54,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatInputModule,
     MatButtonModule,
     MatPaginatorModule,
+    MatDialogModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

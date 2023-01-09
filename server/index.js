@@ -237,61 +237,43 @@ async function getPosts(email, start) {
 }
 
 app.post('/api/update', (req, res) => {
-  newDetail = req.body[0];
-  detailType = req.body[1];
-  email = req.body[2];
+  username = req.body[0].data.name;
+  email = req.body[0].data.email;
+  old_email = req.body[1];
+  phone = req.body[0].data.phone;
+  city = req.body[0].data.city;
+  facebook = req.body[0].data.facebook;
 
-  var strings = ['selling', 'meeting', 'adopting'];
-
-  async function getCounts(email) {
-    let counts = [];
-
-    for (const string of strings) {
-      let count = await new Promise((resolve, reject) => {
-        userPosts.count({
-          email: email,
-          postType: string
-        }, (error, count) => {
-          resolve(count);
-        });
-      });
-
-      counts.push(count);
+  users.updateOne(
+    { email: old_email },
+    {
+      $set: { 
+        email: email,
+        username: username,
+        phone: phone,
+        city: city,
+        facebook: facebook
+      },
+      $currentDate: { lastModified: true }
     }
+  );
 
-    return counts;
-  }
+  var payload = {
+    name: username,
+    email: email,
+    phone: phone,
+    facebook: facebook,
+    city: city,
+    counts: req.body[2]
+  };
 
-  users.findOneAndUpdate({
-      email: email
-    }, {
-      $set: {
-        [detailType]: newDetail
-      }
-    }, {
-      returnDocument: 'after'
-    },
-    async function (err, doc) {
-      let counts = await getCounts(email);
+  var token = jwt.sign(payload, privateKEY, signOptions);
 
-      var payload = {
-        name: doc.value.username,
-        email: doc.value.email,
-        phone: doc.value.phone,
-        instagram: doc.value.instagram,
-        facebook: doc.value.facebook,
-        counts: counts,
-        city: doc.value.city
-      };
+  res.status(200).send({
+    code: 200,
+    token: token
+  });
 
-      var token = jwt.sign(payload, privateKEY, signOptions);
-
-      res.status(200).send({
-        code: 200,
-        token: token
-      });
-    }
-  )
 })
 
 function insertTest() {

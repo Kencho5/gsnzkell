@@ -47,13 +47,13 @@ export class HomeComponent implements OnInit {
   scrollLeft() {
     var div = document.getElementsByClassName("latest-posts")[0] as HTMLImageElement;
 
-    div.scrollLeft -= div.offsetWidth / 2;
+    div.scrollLeft -= div.offsetWidth;
   }
 
   scrollRight() {
     var div = document.getElementsByClassName("latest-posts")[0] as HTMLImageElement;
 
-    div.scrollLeft += div.offsetWidth / 2;
+    div.scrollLeft += div.offsetWidth;
   }
 
 }

@@ -4,6 +4,9 @@ import jwtDecode from 'jwt-decode';
 import { ProfileService } from './profile.service';
 import { LoginService } from '../login/login.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+
+import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +18,7 @@ export class ProfileComponent implements OnInit {
 
   userData;
   posts;
+  animal: string;
 
   postCount: string;
 
@@ -29,7 +33,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private _profileService: ProfileService,
-    private login: LoginService
+    private login: LoginService,
+    public dialog: MatDialog
   ) {}
 
   getProfileData() {
@@ -72,12 +77,32 @@ export class ProfileComponent implements OnInit {
     });
 
     this.loadPosts(0);
+    this.openDialog();
   }
 
   loadPage() {
     var start = this.paginator.pageIndex * this.paginator.pageSize;
 
     this.loadPosts(start);
+  }
+
+  openDialog() {
+    let dialogRef = this.dialog.open(EditProfileComponent, {
+      width: '600px',
+      panelClass: 'custom-container',
+      data: this.userData
+      
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result != "cancel") {
+        this._profileService.updateUserData(result, this.userData.email, this.login.user.counts).subscribe((res) => {
+          if (res["code"] == 200) {
+            localStorage.setItem('token', res['token'])
+          }
+        });
+      }
+    });
   }
 
 }
