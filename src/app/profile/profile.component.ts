@@ -50,8 +50,10 @@ export class ProfileComponent implements OnInit {
     this._profileService.getPosts({email: this.login.user['email'], start: start}).subscribe((res) => {
       if (res["code"] == 200) {
        this.posts = res['data'];
-        
-        localStorage.setItem("postCount", res['count']);
+
+        if(res['count']) {
+          localStorage.setItem("postCount", res['count']);
+        }
         this.postCount = localStorage.getItem("postCount");
       }
     });
@@ -71,53 +73,6 @@ export class ProfileComponent implements OnInit {
 
     this.loadPosts(0);
   }
-
-  editable = "";
-  editType = "";
-
-  editDetails(event) {
-    this.editType = event.target.parentNode.firstChild.id;
-    this.editable = this.editType;
-  }
-
-  submitDetails(event) {
-    var inputValue = event.target.parentNode.parentNode.firstChild.value;
-    var inputName = event.target.parentNode.parentNode.firstChild.name;
-
-    if (inputValue.length == 0) {
-      this.getProfileData();
-    } else if (this.editType == "phoneEdit" && inputValue.length < 9) {
-      this.getProfileData();
-    } else if (this.editType == "emailEdit" && this.validateEmail(inputValue) == null) {
-      this.getProfileData();
-    } else {
-      this._profileService.updateUserData(inputValue, inputName, this.userData.email).subscribe((res) => {
-        if (res["code"] == 200) {
-          localStorage.setItem('token', res['token']);
-
-          this.login.user = jwtDecode(res['token']);
-
-          this.getProfileData();
-        }
-      });
-
-      this.userData[inputName] = inputValue;
-
-      this.editable = "";
-    }
-  }
-
-  cancel () {
-    this.editable = "";
-  }
-
-  validateEmail(email) {
-    return String(email)
-      .toLowerCase()
-      .match(
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-      );
-  };
 
   loadPage() {
     var start = this.paginator.pageIndex * this.paginator.pageSize;
