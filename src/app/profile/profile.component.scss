@@ -11,6 +11,23 @@ mat-icon {
   vertical-align: middle;
 }
 
+.posts-fade {
+    animation: postsFadeAnimation ease 0.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+  
+@keyframes postsFadeAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
+}
+// :host ::ng-deep .custom-spinner circle{   
+//     stroke: $dark;
+// }
 .profile-card {
   display: flex;
   flex-direction: column;

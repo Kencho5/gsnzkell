@@ -80,6 +80,9 @@ export class ProfileComponent implements OnInit {
   }
 
   loadPage() {
+    var div = document.getElementsByClassName('user-posts')[0] as HTMLElement;
+    div.classList.toggle('posts-fade');
+
     var start = this.paginator.pageIndex * this.paginator.pageSize;
 
     this.loadPosts(start);

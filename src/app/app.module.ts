@@ -25,6 +25,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FormsModule } from '@angular/forms';
+// import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
@@ -55,7 +56,8 @@ import { FormsModule } from '@angular/forms';
     MatButtonModule,
     MatPaginatorModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    // MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
