@@ -77,7 +77,6 @@ export class ProfileComponent implements OnInit {
     });
 
     this.loadPosts(0);
-    this.openDialog();
   }
 
   loadPage() {
@@ -99,6 +98,9 @@ export class ProfileComponent implements OnInit {
         this._profileService.updateUserData(result, this.userData.email, this.login.user.counts).subscribe((res) => {
           if (res["code"] == 200) {
             localStorage.setItem('token', res['token'])
+            this.login.user = jwtDecode(res['token']);
+
+            this.getProfileData();
           }
         });
       }

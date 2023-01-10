@@ -15,6 +15,21 @@ $button-hover: #ad1650;
   flex-wrap: wrap;
 }
 
+section {
+  max-width: 700px;
+  margin: auto;
+}
+
+.row {
+  display: flex;
+  flex-direction: column;
+}
+
+.text-muted {
+  display: flex;
+  align-items: center;
+}
+
 .images-div {
   width: 500px;
   height: 500px;
