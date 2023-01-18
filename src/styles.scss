@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 
 body {
 	background-color: #fceddc;
@@ -22,4 +22,45 @@ body {
         opacity: 1;
      }
 }
+/* Font */
+@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Ubuntu:wght@300;400;500;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Ubuntu", sans-serif;
+  scroll-behavior: smooth;
+}
+
+ol,
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+img {
+  max-width: 100%;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #1d1d1d;
+  margin-bottom: 20px;
+}
+
+/* Base Styles CSS End */
 

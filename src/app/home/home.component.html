@@ -7,42 +7,330 @@
   <!--     </div> -->
   <!--   </div> -->
   <!-- </form> -->
-<div class="wrap-layer">
-  <div class="over-layer">
-  <div class="posts-div">
-      <h1 class="latest-title">Latest Posts</h1>
-    <div class="latest-posts">
-      <div class="post" *ngFor="let post of posts" id="{{post.id}}">
-        <div class="post-img">
-          <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="">
-          <p class="post-title">{{post.postType}}</p>
-        </div>
-        <div class="post-details">
-        <h2 class="breed">{{post.breed |titlecase}}</h2>
-        <div class="last">
-          <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
-          <ng-template #age>
-            <p>{{post.age}} {{post.ageType|titlecase}}</p>
-          </ng-template>
-        <a href="/post/{{post.id}}"
-        target="_blank" class="open-post">Open</a>
-        </div>
-        </div>
-      </div>
-    </div>
-    <div class="arrows-div">
-      <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon>
-      <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon>
-    </div>
-  </div>
-  </div>
+<!-- <div class="wrap-layer"> -->
+<!--   <div class="over-layer"> -->
+<!--   <div class="posts-div"> -->
+<!--       <h1 class="latest-title">Latest Posts</h1> -->
+<!--     <div class="latest-posts"> -->
+<!--       <div class="post" *ngFor="let post of posts" id="{{post.id}}"> -->
+<!--         <div class="post-img"> -->
+<!--           <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt=""> -->
+<!--           <p class="post-title">{{post.postType}}</p> -->
+<!--         </div> -->
+<!--         <div class="post-details"> -->
+<!--         <h2 class="breed">{{post.breed |titlecase}}</h2> -->
+<!--         <div class="last"> -->
+<!--           <p *ngIf="post.price != '' else age">{{post.price}} ₾</p> -->
+<!--           <ng-template #age> -->
+<!--             <p>{{post.age}} {{post.ageType|titlecase}}</p> -->
+<!--           </ng-template> -->
+<!--         <a href="/post/{{post.id}}" -->
+<!--         target="_blank" class="open-post">Open</a> -->
+<!--         </div> -->
+<!--         </div> -->
+<!--       </div> -->
+<!--     </div> -->
+<!--     <div class="arrows-div"> -->
+<!--       <mat-icon (click)="scrollLeft()" class="scrollButton">navigate_before</mat-icon> -->
+<!--       <mat-icon (click)="scrollRight()" class="scrollButton">navigate_next</mat-icon> -->
+<!--     </div> -->
+<!--   </div> -->
+<!--   </div> -->
 
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" viewBox="24 105 156 95" >
-    <rect x="0" y="0" width="300" height="300" fill="#fceddc"/>
-    <path class="top-outer" fill="#ee8240" stroke="#371300" stroke-width="1" d="M68 1c23,0 67,17 69,39 4,38 5,52 -5,69 -20,36 -68,46 -120,-9 -27,-28 -7,-101 56,-99z"/>
-    <path class="top-inner" fill="#fceddc" stroke="#DCB467" stroke-width="1" d="M69 22c33,-7 52,21 54,37 3,26 -1,28 -8,40 -15,25 -48,25 -85,-14 -19,-20 -4,-53 39,-63z"/>
-    <path class="bottom-outer" fill="#DCB467" stroke="#371300" stroke-width="1" d="M158 158c30,13 56,50 44,75 -9,18 -22,46 -42,55 -20,10 -48,2 -73,-19 -29,-25 -27,-55 -9,-79 17,-22 43,-48 80,-32z"/>
-    <path class="bottom-inner" fill="#ee8240" stroke="#371300" stroke-width="1" d="M136 180c32,-9 45,13 46,29 3,27 8,29 0,42 -14,25 -52,24 -79,0 -21,-18 -2,-61 33,-71z"/>
-</svg>
-</div>
+<!-- <svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" viewBox="24 105 156 95" > -->
+<!--     <rect x="0" y="0" width="300" height="300" fill="#fceddc"/> -->
+<!--     <path class="top-outer" fill="#ee8240" stroke="#371300" stroke-width="1" d="M68 1c23,0 67,17 69,39 4,38 5,52 -5,69 -20,36 -68,46 -120,-9 -27,-28 -7,-101 56,-99z"/> -->
+<!--     <path class="top-inner" fill="#fceddc" stroke="#DCB467" stroke-width="1" d="M69 22c33,-7 52,21 54,37 3,26 -1,28 -8,40 -15,25 -48,25 -85,-14 -19,-20 -4,-53 39,-63z"/> -->
+<!--     <path class="bottom-outer" fill="#DCB467" stroke="#371300" stroke-width="1" d="M158 158c30,13 56,50 44,75 -9,18 -22,46 -42,55 -20,10 -48,2 -73,-19 -29,-25 -27,-55 -9,-79 17,-22 43,-48 80,-32z"/> -->
+<!--     <path class="bottom-inner" fill="#ee8240" stroke="#371300" stroke-width="1" d="M136 180c32,-9 45,13 46,29 3,27 8,29 0,42 -14,25 -52,24 -79,0 -21,-18 -2,-61 33,-71z"/> -->
+<!-- </svg> -->
+<!-- </div> -->
+    <header>
+      <!-- Header Section HTML Start -->
+
+
+      <!-- Header Section HTML End -->
+
+      <!-- Hero Section HTML Start -->
+
+      <section id="Hero">
+        <div class="hero-wrapper position-relative">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-lg-6">
+                <div class="hero-content">
+                  <h1>
+                    <span class="adopt position-relative">
+                      Adopt <img src="assets/images/adopt.svg" alt="adopt" />
+                    </span>
+                    <span class="sell position-relative">
+                      Sell <img src="assets/images/sell.svg" alt="sell" />
+                    </span>
+                    <span class="meet position-relative">
+                      Meet <img src="assets/images/meet.svg" alt="meet" />
+                    </span>
+                    <br />
+                    Your Pet Here
+                  </h1>
+                  <div class="hero-btn mt-5">
+                    <a href="#">Upload Post</a>
+                  </div>
+                  <div class="pets-box">
+                    <div class="single-pet">
+                      <img src="assets/images/dog.png" alt="dog" />
+                      <h4>Dogs</h4>
+                    </div>
+                    <div class="single-pet">
+                      <img src="assets/images/cat.png" alt="cat" />
+                      <h4>Cats</h4>
+                    </div>
+                    <div class="single-pet">
+                      <img src="assets/images/birds.png" alt="bird" />
+                      <h4>Birds</h4>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-lg-6">
+                <div class="hero-img">
+                  <img
+                    class="img-fluid"
+                    src="assets/images/hero-img.png"
+                    alt="hero-img"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-shape1">
+            <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
+          </div>
+          <div class="hero-shape2">
+            <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Hero Section HTML End -->
+    </header>
+
+    <!-- Header Part HTML End -->
+
+    <!-- Main Part HTML Start -->
+
+    <main class="main-bg position-relative">
+      <div class="main-top-shape">
+        <img src="assets/images/main-shape.png" alt="main-shape" />
+      </div>
+
+      <!-- Post Section HTML Start -->
+
+      <section id="Post">
+        <div class="post-wrapper position-relative">
+          <div class="container-fluid">
+            <div class="section-title">
+              <h2>Latest Posts</h2>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img1.png" alt="post-img1" />
+                    <span>Selling</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img2.png" alt="post-img2" />
+                    <span>Adopting</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img3.png" alt="post-img3" />
+                    <span>Meeting</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img4.png" alt="post-img4" />
+                    <span>Selling</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img1.png" alt="post-img1" />
+                    <span>Selling</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img2.png" alt="post-img2" />
+                    <span>Adopting</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img3.png" alt="post-img3" />
+                    <span>Meeting</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+              <div class="col-sm-6 col-lg-3">
+                <div class="post-card">
+                  <div class="post-card-img position-relative">
+                    <img src="assets/images/post-img4.png" alt="post-img4" />
+                    <span>Selling</span>
+                  </div>
+                  <h5>German Rex 323</h5>
+                  <p>
+                    1732
+                    <span
+                      ><img src="assets/images/currency.svg" alt="currency"
+                    /></span>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="post-see-more-btn text-center mt-5 pt-4">
+              <a href="#">See More</a>
+            </div>
+          </div>
+          <div class="latest-post-shape">
+            <img
+              src="assets/images/latest-post-shape.png"
+              alt="latest-post-shape"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Post Section HTML End -->
+
+      <!-- Upload Post Section HTML Start -->
+
+      <section id="Upload-post">
+        <div class="upload-post-wrapper position-relative">
+          <div class="container-fluid">
+            <div class="section-title">
+              <h2>Upload your Post</h2>
+            </div>
+            <div class="upload-post-container">
+              <div class="upload-post-title">
+                <h4>Upload Your Post</h4>
+              </div>
+              <div class="row align-items-center">
+                <div class="col-md-6">
+                  <div class="upload-post-img">
+                    <img
+                      src="assets/images/upload-post.png"
+                      alt="upload-post"
+                    />
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="upload-post-form-container">
+                    <form>
+                      <div class="upload-post-form">
+                        <div class="up-form-field">
+                          <input type="text" placeholder="Select Animal" />
+                        </div>
+                        <div class="up-form-field">
+                          <input type="text" placeholder="Breed" />
+                        </div>
+                        <div class="up-form-field">
+                          <input type="text" placeholder="Price" />
+                        </div>
+                        <div class="up-form-field">
+                          <input type="text" placeholder="Age (Year/Month)" />
+                        </div>
+                        <div class="up-form-field">
+                          <input type="text" placeholder="Age" />
+                        </div>
+                        <div class="up-form-btn text-end mt-3">
+                          <input type="submit" placeholder="Next" />
+                        </div>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="upload-post-shape">
+            <img
+              src="assets/images/upload-post-shape.png"
+              alt="upload-post-shape"
+            />
+          </div>
+        </div>
+      </section>
+
+      <!-- Upload Post Section HTML End -->
+    </main>
+
+    <!-- Main Part HTML End -->
+
+
 </body>

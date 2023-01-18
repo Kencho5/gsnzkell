@@ -1,0 +1,289 @@
+@media (min-width: 1920px) {
+  .navbar .container-fluid {
+    padding: 0 100px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 150px;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .navbar .container-fluid {
+    padding: 0 100px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 150px;
+  }
+
+  .hero-shape1 {
+    bottom: 30px;
+  }
+
+  .hero-shape2 {
+    bottom: 100px;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .navbar .container-fluid {
+    padding: 0 80px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+
+  .hero-shape1 {
+    bottom: -40px;
+  }
+
+  .hero-shape2 {
+    bottom: 80px;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .navbar .container-fluid {
+    padding: 0 80px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+
+  .hero-wrapper {
+    padding-bottom: 300px;
+  }
+
+  .hero-shape1 {
+    bottom: 150px;
+  }
+
+  .hero-shape2 {
+    bottom: 180px;
+  }
+
+  .hero-shape1 img,
+  .hero-shape2 img {
+    width: 80%;
+  }
+
+  .hero-shape2 img {
+    float: right;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 60px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .navbar .container-fluid {
+    padding: 0 50px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 70px;
+  }
+
+  .hero-content h1 {
+    font-size: 56px;
+  }
+
+  .hero-wrapper {
+    padding-bottom: 350px;
+  }
+
+  .hero-shape1 {
+    bottom: 150px;
+  }
+
+  .hero-shape2 {
+    bottom: 180px;
+  }
+
+  .hero-shape1 img,
+  .hero-shape2 img {
+    width: 70%;
+  }
+
+  .hero-shape2 img {
+    float: right;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 50px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .navbar .container-fluid {
+    padding: 0 20px;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 30px;
+  }
+
+  .hero-content {
+    position: relative;
+  }
+
+  .hero-content h1 {
+    font-size: 48px;
+    line-height: 60px;
+  }
+
+  span.adopt img,
+  span.sell img,
+  span.meet img {
+    width: 80%;
+  }
+
+  .hero-shape1 {
+    bottom: 150px;
+  }
+
+  .hero-shape2 {
+    bottom: 180px;
+  }
+
+  .hero-shape1 img,
+  .hero-shape2 img {
+    width: 70%;
+  }
+
+  .hero-shape2 img {
+    float: right;
+  }
+
+  .hero-img {
+    padding-top: 50px;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 20px;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .navbar .container-fluid {
+    padding: 0 10px;
+  }
+
+  .search-form {
+    max-width: 93%;
+    margin: auto;
+    padding-left: 10px;
+  }
+
+  .search-form-field {
+    max-width: 75%;
+  }
+
+  .search-form-field input {
+    max-width: 85%;
+  }
+
+  .hero-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+
+  .hero-content {
+    position: relative;
+    padding-top: 120px;
+    text-align: center;
+  }
+
+  .hero-content h1 {
+    font-size: 32px;
+    line-height: 45px;
+  }
+
+  span.adopt img,
+  span.sell img,
+  span.meet img {
+    width: 90%;
+  }
+
+  span.adopt::after,
+  span.sell::after {
+    top: 16px;
+  }
+
+  .nav-buttons {
+    text-align: center;
+  }
+
+  .hero-shape1 {
+    top: 300px;
+  }
+
+  .hero-shape2 {
+    bottom: 200px;
+  }
+
+  .hero-shape1 img,
+  .hero-shape2 img {
+    width: 70%;
+  }
+
+  .hero-shape2 img {
+    float: right;
+  }
+
+  .pets-box {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 80px;
+  }
+
+  .single-pet h4 {
+    font-size: 20px;
+  }
+
+  .hero-img {
+    display: none;
+  }
+
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+
+  .section-title h2 {
+    font-size: 28px;
+  }
+
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+
+  .upload-post-form {
+    padding: 0 20px 50px;
+  }
+}

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from './login/login.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -7,9 +7,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss', './responsive.css']
 })
 export class AppComponent {
+  @HostListener('window:scroll', [])
+onWindowScroll(event: Event) {
+    var navbar = document.getElementsByClassName('navbar')[0] as HTMLElement;
+    navbar.classList.toggle('sticky', window.scrollY > 0);
+}
 
   searchForm = this.formBuilder.group({
     text:  new FormControl()
