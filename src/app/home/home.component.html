@@ -132,10 +132,10 @@
               <h2>Latest Posts</h2>
             </div>
             <div class="row align-items-center">
-              <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" id="{{post.id}}">
+              <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post.id)">
                 <div class="post-card">
                   <div class="post-card-img position-relative">
-                    <img src="assets/images/post-img1.png" alt="post-img1" />
+                    <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="post-img" />
                     <span>{{post.postType|titlecase}}</span>
                   </div>
                   <h5>{{post.breed}}</h5>

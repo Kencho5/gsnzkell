@@ -43,6 +43,10 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  openPost(id) {
+    console.log(id)
+      this.router.navigate([`/post/${id}`]);
+  }
   
   scrollLeft() {
     var div = document.getElementsByClassName("latest-posts")[0] as HTMLImageElement;
