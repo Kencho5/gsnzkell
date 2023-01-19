@@ -301,6 +301,12 @@ function insertTest() {
 
     var imageAsBase64 = fs.readFileSync(animal.img, 'base64');
 
+    if(type == 'selling') {
+      var price = Math.floor(Math.random() * 2000);
+    } else {
+      var price = "";
+    }
+
     var id = uuidv4();
     docs.push({
       _id: id,
@@ -308,7 +314,7 @@ function insertTest() {
       name: 'giorgi',
       animal: animal.animal,
       breed: `german rex ${Math.floor(Math.random() * 1000)}`,
-      price: Math.floor(Math.random() * 2000),
+      price: price,
       age: Math.floor(Math.random() * 6),
       ageType: 'years',
       description: 'asdkmakwr janrj anejrn aermioe',

@@ -1,3 +1,4 @@
+
 @media (min-width: 1920px) {
   .navbar .container-fluid {
     padding: 0 100px;
@@ -285,5 +286,10 @@
 
   .upload-post-form {
     padding: 0 20px 50px;
+    margin: auto;
+  }
+
+  .upload-post-shape {
+    z-index: -1;
   }
 }
