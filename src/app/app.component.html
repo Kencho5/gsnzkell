@@ -84,13 +84,13 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav pl-md-5 mx-auto pb-0">
-                <form>
+                <form [formGroup]="searchForm" (ngSubmit)="search()">
                   <div class="search-form">
                     <button type="submit" class="search-btn">
                       <img src="assets/images/search.svg" alt="search" />
                     </button>
                     <div class="search-form-field">
-                      <input type="text" placeholder="Search for your pet..." />
+                      <input type="text" placeholder="Search for your pet..." formControlName="text" />
                       <span>
                         <img src="assets/images/filter.svg" alt="filter" />
                       </span>

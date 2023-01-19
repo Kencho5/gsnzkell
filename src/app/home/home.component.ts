@@ -29,11 +29,6 @@ export class HomeComponent implements OnInit {
    });
   }
 
-  search() {
-    if(this.searchForm.valid) {
-      this.router.navigate(['/search', {text: this.searchForm.value.text}]);
-    }
-  }
 
   latestPosts() {
     this.homeService.latestPosts().subscribe((res) => {
