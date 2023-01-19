@@ -2,14 +2,10 @@ $dark: #ee8240;
 $light: #fceddc;
 $dim: #2e3134;
 
-// body {
-//   padding: 0;
-//   margin: 0;
-//   box-sizing: border-box;
-//   word-wrap: break-word;
-//   font-family: 'Ubuntu', sans-serif;
-//   color: $light;
-// }
+* {
+  font-family: 'Ubuntu', sans-serif !important;
+}
+
 /* Hero Section CSS Start */
 
 .hero-wrapper {
@@ -66,7 +62,6 @@ span.meet img {
 }
 
 .hero-btn a {
-  font-family: "Merriweather", serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -169,7 +164,6 @@ span.meet img {
   position: absolute;
   left: 0;
   bottom: 40px;
-  font-family: "Merriweather", serif;
   font-size: 16px;
   font-weight: 400;
   padding: 12px 16px;
@@ -187,7 +181,6 @@ span.meet img {
 }
 
 .post-card p {
-  font-family: "Merriweather", serif;
   font-weight: 400;
   font-size: 32px;
   color: #27525c;

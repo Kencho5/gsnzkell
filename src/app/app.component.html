@@ -1,4 +1,3 @@
-<!-- <nav class="navbar navbar-expand-lg navbar-dark"> -->
 <!--   <div class="container-fluid"> -->
 <!--     <a class="navbar-brand brand-custom" href="#"> -->
 <!--       <img src="/assets/images/logo.png" alt="logo" class="nav-logo"> -->
@@ -36,7 +35,7 @@
 <!-- </nav> -->
       <!--       <nav class="navbar navbar-expand-lg navbar-dark bg-dark"> -->
       <!--           <div class="container px-5"> -->
-      <!--               <a class="navbar-brand" href="/"> -->
+      <!--               <a class="navbar-brand" hre/login
       <!--                 <img src="/assets/images/logo.png" alt="logo" class="nav-logo"> -->
       <!--                 Pender -->
       <!--               </a> -->
@@ -101,7 +100,10 @@
               </ul>
               <div class="navbar-nav ml-auto">
                 <div class="nav-buttons">
-                  <a class="login" href="login.html">Log In</a>
+                  <a class="login" href="/login" *ngIf="loginService.isLoggedIn$ | async; else logout" (click)="logoutFunction()">Log Out</a>
+                  <ng-template #logout>
+                    <a class="login" href="/login">Log In</a>
+                  </ng-template>
                 </div>
               </div>
             </div>
