@@ -6,6 +6,11 @@ $dim: #2e3134;
   font-family: 'Ubuntu', sans-serif !important;
 }
 
+mat-icon {
+  font-family: 'Material Icons' !important;
+  vertical-align: middle;
+}
+
 /* Hero Section CSS Start */
 
 .hero-wrapper {
@@ -265,13 +270,36 @@ span.meet img {
   width: 100%;
 }
 
-.up-form-field input {
+select {
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
+}
+
+.double {
+  display: flex;
+}
+
+textarea {
   width: 100%;
   background: #ffffff;
   border: 1px solid #0b2f5b;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
+  font-weight: bold;
+}
+
+.up-form-field input, .files-btn  {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
 .up-form-field input:focus {
@@ -285,24 +313,75 @@ span.meet img {
 }
 
 .up-form-btn input {
-  font-family: "Merriweather", serif;
   font-size: 16px;
-  font-weight: 400;
+  font-weight: 600;
   color: #1d1d1d;
   background: #fca311;
   padding: 16px 40px;
   border: none;
   border-radius: 30px;
+  transition: transform .2s;
 }
 
+.up-form-btn input:hover {
+  transform: scale(1.1);
+}
 .upload-post-shape {
   position: absolute;
   left: 0;
   bottom: -20px;
 }
 
+.images {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.image-div {
+    width: 250px;
+    height: 230px;
+    margin-top: 50px;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.uploaded-img {
+    width: 100%;
+    height: 100%;
+    outline: 3px solid $dark;
+    border-radius: 8px;
+}
+
+#cancel-icon {
+    color: $dark;
+    font-size: 30px;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
 .upload-post-shape img {
   max-width: 80%;
+}
+
+.error-div {
+	padding-top: 20px;
+	text-align: center;
+}
+
+.error-text {
+	font-weight: bold;
+	color: $dim;
+}
+
+.error-div mat-icon { 
+    color: $dim;
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
 }
 
 /* Upload Post Section CSS End */
