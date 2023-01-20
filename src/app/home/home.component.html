@@ -131,8 +131,8 @@
             <div class="section-title">
               <h2>Latest Posts</h2>
             </div>
-            <div class="posts-main">
-            <div class="posts col-sm-6 col-lg-3"  *ngFor="let post of posts" (click)="openPost(post.id)">
+            <div class="row align-items-center">
+              <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post.id)">
                 <div class="post-card">
                   <div class="post-card-img position-relative">
                     <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="post-img" />
@@ -145,7 +145,7 @@
           </ng-template>
 
                 </div>
-            </div>
+              </div>
             </div>
             <div class="post-see-more-btn text-center mt-5 pt-4">
               <a href="#">See More</a>
@@ -202,7 +202,7 @@
                         <div class="up-form-field">
                           <input type="text" placeholder="Age" />
                         </div>
-                        <div class="up-form-btn text-end mt-3">
+                        <div class="up-form-btn text-center text-md-end mt-3">
                           <input type="submit" placeholder="Next" />
                         </div>
                       </div>
@@ -225,6 +225,7 @@
     </main>
 
     <!-- Main Part HTML End -->
+
 
 
 </body>

@@ -559,7 +559,7 @@ app.post('/api/search', (req, res) => {
 app.post('/api/home', (req, res) => {
   var data = [];
 
-  var result = userPosts.find().limit(9).sort({
+  var result = userPosts.find().limit(8).sort({
     $natural: -1
   }).toArray(function (err, results) {
     if (results) {

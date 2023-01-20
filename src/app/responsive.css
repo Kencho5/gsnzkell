@@ -1,4 +1,3 @@
-
 @media (min-width: 1920px) {
   .navbar .container-fluid {
     padding: 0 100px;
@@ -277,6 +276,12 @@
 
   .section-title h2 {
     font-size: 28px;
+  }
+
+  .post-card-img img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
   }
 
   .upload-post-img {

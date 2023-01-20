@@ -62,6 +62,7 @@ span.meet img {
 }
 
 .hero-btn a {
+  font-family: "Merriweather", serif;
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.03em;
@@ -141,26 +142,17 @@ span.meet img {
 }
 
 /* Post Section CSS Start */
-.posts-main {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-.posts {
-  margin: 20px;
-}
 
 .post-card {
-  display: inline-block;
   background: linear-gradient(
     180deg,
     #ffffff 0%,
     rgba(255, 255, 255, 0.7) 100%
   );
   box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
-  width: 300px;
-  height: 350px;
-  padding: 25px;
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin-top: 40px;
   border-radius: 44px;
   transition: transform .2s;
   cursor: pointer;
@@ -170,13 +162,10 @@ span.meet img {
   transform: scale(1.05);
 }
 
-.post-card-img {
-  position: relative;
-  height: 60%;
-}
-
 .post-card-img img {
   width: 100%;
+  min-height: 200px;
+  max-height: 200px;
   height: 100%;
   object-fit: cover;
   border-radius: 20px;
@@ -188,7 +177,7 @@ span.meet img {
   bottom: 40px;
   font-size: 16px;
   font-weight: 700;
-  padding: 8px 10px;
+  padding: 8px 12px;
   color: #1d1d1d;
   background: #ffffff;
   border-radius: 0px 10px 10px 0px;
@@ -204,6 +193,7 @@ span.meet img {
 }
 
 .post-card p {
+  font-family: "Merriweather", serif;
   font-weight: 400;
   font-size: 32px;
   color: #27525c;
