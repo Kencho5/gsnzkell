@@ -312,6 +312,12 @@ textarea {
   color: rgba(29, 29, 29, 0.8);
 }
 
+.up-form-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
 .up-form-btn input {
   font-size: 16px;
   font-weight: 600;
