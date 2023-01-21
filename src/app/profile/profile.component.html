@@ -71,7 +71,8 @@
           <div class="container-fluid">
             <div class="user-hero-container">
               <div class="user-hero-top">
-                <a class="user-edit-icon" href="#"
+                <a class="user-edit-icon" 
+                    (click)="openModal()"
                   ><img src="assets/images/edit.svg" alt="edit"
                 /></a>
               </div>
@@ -143,6 +144,63 @@
         </div>
       </section>
 
+      <section id="User-form">
+        <div class="user-modal">
+          <div class="user-form-container d-lg-flex">
+            <div class="user-upload-img mb-4 mb-lg-0">
+              <img src="assets/images/user.png" alt="user" />
+              <a class="upload-btn" href="#">+</a>
+            </div>
+            <form>
+              <div class="user-form-field">
+                <input type="text" value="{{userData.name}}" required />
+              </div>
+              <div class="user-form-field">
+                <img src="assets/images/email-icon.svg" alt="email-icon" />
+                <input
+                  type="email"
+                  value="{{userData.email}}"
+                  required
+                />
+              </div>
+              <div class="user-form-field">
+                <img src="assets/images/phone-icon.svg" alt="phone-icon" />
+                <input type="text" value="{{userData.phone_number}}" required />
+              </div>
+              <div class="user-form-field">
+                <img
+                  src="assets/images/location-icon.svg"
+                  alt="location-icon"
+                />
+                <input type="text" value="{{userData.city}}" required />
+              </div>
+              <div class="user-form-field">
+                <img src="assets/images/instagram-gray-icon.svg" alt="social-icon" />
+                <input
+                  type="text"
+                  value="{{userData.instagram}}"
+                  required
+                />
+              </div>
+
+              <div class="user-form-field">
+                <img src="assets/images/facebook-gray-icon.svg" alt="social-icon" />
+                <input
+                  type="text"
+                  value="{{userData.facebook}}"
+                  required
+                />
+              </div>
+              <div class="text-center text-lg-end mt-4">
+                <button class="form-done-btn" type="submit">Done</button>
+                <button class="form-close-btn" (click)="closeModal()">Close</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+
       <!-- User Hero Section HTML End -->
     </header>
 
@@ -157,7 +215,7 @@
         <div class="post-wrapper position-relative">
           <div class="container-fluid">
             <div class="section-title">
-              <h2>{{userData.name}}’s Posts</h2>
+              <h2>{{userData.name|titlecase}}’s Posts</h2>
             </div>
             <div class="row align-items-center">
               <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post._id)">

@@ -115,6 +115,13 @@ export class ProfileComponent implements OnInit {
     console.log(id)
       this.router.navigate([`/post/${id}`]);
   }
+  
+  openModal() {
+     document.querySelector('.user-modal').classList.toggle('active');
+  }
 
+  closeModal() {
+       document.querySelector('.user-modal').classList.remove('active')
+  }
 
 }
