@@ -1,66 +1,66 @@
 <body>
-  <div class="profile-card">
-    <div class="rectangle">
-    </div>
-      <img class="avatar" src="/assets/images/tmp.webp" width="50" alt="Avatar">
+<!--   <div class="profile-card"> -->
+<!--     <div class="rectangle"> -->
+<!--     </div> -->
+<!--       <img class="avatar" src="/assets/images/tmp.webp" width="50" alt="Avatar"> -->
 
-      <div class="username">{{userData.name|titlecase}}</div>
-      <div class="city">
-        <mat-icon>place</mat-icon>
-        {{userData.city|titlecase}}
-      </div>
-        <button type="button" class="edit-profile" (click)="openDialog()">Edit Profile</button>
-      <div class="line"></div>
-      <div class="divs">
-        <div>
-          <mat-icon>sell</mat-icon>
-          <p class="counts">{{userData.counts[0]}}</p>
-        </div>
-        <div>
-          <mat-icon>favorite</mat-icon>
-          <p class="counts">{{userData.counts[0]}}</p>
-        </div>
-        <div>
-          <mat-icon>cottage</mat-icon>
-          <p class="counts">{{userData.counts[0]}}</p>
-        </div>
-      </div>
+<!--       <div class="username">{{userData.name|titlecase}}</div> -->
+<!--       <div class="city"> -->
+<!--         <mat-icon>place</mat-icon> -->
+<!--         {{userData.city|titlecase}} -->
+<!--       </div> -->
+<!--         <button type="button" class="edit-profile" (click)="openDialog()">Edit Profile</button> -->
+<!--       <div class="line"></div> -->
+<!--       <div class="divs"> -->
+<!--         <div> -->
+<!--           <mat-icon>sell</mat-icon> -->
+<!--           <p class="counts">{{userData.counts[0]}}</p> -->
+<!--         </div> -->
+<!--         <div> -->
+<!--           <mat-icon>favorite</mat-icon> -->
+<!--           <p class="counts">{{userData.counts[0]}}</p> -->
+<!--         </div> -->
+<!--         <div> -->
+<!--           <mat-icon>cottage</mat-icon> -->
+<!--           <p class="counts">{{userData.counts[0]}}</p> -->
+<!--         </div> -->
+<!--       </div> -->
 
-      <ng-container *ngIf="userData.facebook; else noFacebook">
-      <a type="button" class="facebook" href="{{userData.facebook}}" target="_blank">
-         <mat-icon>facebook</mat-icon>
-      </a>
-      </ng-container>
+<!--       <ng-container *ngIf="userData.facebook; else noFacebook"> -->
+<!--       <a type="button" class="facebook" href="{{userData.facebook}}" target="_blank"> -->
+<!--          <mat-icon>facebook</mat-icon> -->
+<!--       </a> -->
+<!--       </ng-container> -->
 
-      <ng-template #noFacebook>
-      <a type="button" class="facebook" (click)="openDialog()">
-        <mat-icon>facebook</mat-icon>
-      </a>
-      </ng-template>
+<!--       <ng-template #noFacebook> -->
+<!--       <a type="button" class="facebook" (click)="openDialog()"> -->
+<!--         <mat-icon>facebook</mat-icon> -->
+<!--       </a> -->
+<!--       </ng-template> -->
 
-    </div>
+<!--     </div> -->
 
-  <h1 class="posts-title">Your Posts</h1>
+<!--   <h1 class="posts-title">Your Posts</h1> -->
 
-  <div class="user-posts">
-    <div class="post" *ngFor="let post of posts" id="{{post.id}}">
-      <p class="type">{{post.postType |uppercase}}</p>
-      <div class="image">
-          <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}">
-      </div>
-      <div class="bottom">
-          <p *ngIf="post.price != ''">{{post.price}} ₾</p>
-          <p>{{post.age}} {{post.ageType |titlecase}} Old</p>
-      </div>
-      <div class="buttons">
-        <a href="/post/{{post._id}}" target="_blank" class="open">Open</a>
-        <a href="/post/{{post._id}}" target="_blank" class="open">Edit</a>
-      </div>
-  </div>
-  </div>
-  <mat-paginator [length]="postCount"
-              [pageSize]="5"
-              aria-label="Select page">
-              (page)="pageEvent = $event"    
-</mat-paginator>
+<!--   <div class="user-posts"> -->
+<!--     <div class="post" *ngFor="let post of posts" id="{{post.id}}"> -->
+<!--       <p class="type">{{post.postType |uppercase}}</p> -->
+<!--       <div class="image"> -->
+<!--           <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}"> -->
+<!--       </div> -->
+<!--       <div class="bottom"> -->
+<!--           <p *ngIf="post.price != ''">{{post.price}} ₾</p> -->
+<!--           <p>{{post.age}} {{post.ageType |titlecase}} Old</p> -->
+<!--       </div> -->
+<!--       <div class="buttons"> -->
+<!--         <a href="/post/{{post._id}}" target="_blank" class="open">Open</a> -->
+<!--         <a href="/post/{{post._id}}" target="_blank" class="open">Edit</a> -->
+<!--       </div> -->
+<!--   </div> -->
+<!--   </div> -->
+<!--   <mat-paginator [length]="postCount" -->
+<!--               [pageSize]="5" -->
+<!--               aria-label="Select page"> -->
+<!--               (page)="pageEvent = $event"     -->
+<!-- </mat-paginator> -->
 </body>

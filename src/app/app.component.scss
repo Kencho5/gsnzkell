@@ -1,77 +1,6 @@
 $dark: #ee8240;
 $light: #fceddc;
 $dim: #2e3134;
-
-// mat-icon {
-//     font-family: 'Material Icons' !important;
-// }
-
-// *,::after,::before{
-//     font-family:Ubuntu,sans-serif;
-// }
-// h1 {
-// 	color: $light;
-// }
-
-// .navbar {
-//   background-color: $dark !important;
-// }
-
-// .nav-link {
-//   color: $light;
-//   font-size: 20px;
-// }
-
-// .nav-logo {
-//   width: 50px;
-//   height: 50px;
-//   background-color: $light;
-//   padding: 5px;
-//   border-radius: 100%;
-// }
-
-// .search-btn {
-//   background-color: $light;
-//   color: $dark;
-// }
-
-// .search-input {
-//   color: $dark !important;
-//   border: none;
-//   border-radius: 20px;
-// }
-
-// .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-//             color: $dark;
-//             opacity: 1; /* Firefox */
-// }
-
-// .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
-//             color: $dark;
-// }
-
-// .form-control::-ms-input-placeholder { /* Microsoft Edge */
-//             color: $dark;
-//  }
-
-// .search-icon {
-//   color: $dark;
-//   background-color: $light;
-//   border: none;
-//   border-radius: 20px;
-// }
-
-// .custom-toggler.navbar-toggler {
-//             border-color: $light;
-//         }
-//           
-// .custom-toggler .navbar-toggler-icon {
-//       background-image: url(
-// "data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(242, 167, 126, 0.8)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-// }
-// .custom-toggler {
-//   background-color: $light;
-// }
 /* Navigation Section CSS Start */
 
 nav.navbar {
@@ -146,8 +75,9 @@ nav.navbar {
 }
 
 a.login {
+  font-family: "Merriweather", serif;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   line-height: 20px;
   padding: 13px 32px;
   color: #1d1d1d;
@@ -161,6 +91,69 @@ a.login:hover {
   color: #fca311;
   background: transparent;
   border: 1px solid #fca311;
+}
+
+.user-profile-icon {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 60px;
+  right: 0;
+  width: 270px;
+  padding: 40px 30px;
+  background: #ffffff;
+  filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+  border-radius: 30px;
+  display: none;
+}
+
+.profile-dropdown.active {
+  display: block;
+}
+
+.profile-user-info img {
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  border-radius: 100%;
+  cursor: pointer;
+  margin-right: 20px;
+}
+
+.profile-user-info h5 {
+  font-size: 18px;
+  font-weight: 600;
+  text-align: left;
+  color: #1d1d1d;
+  margin: 0;
+}
+
+.profile-user-info p {
+  color: #1d1d1dcc;
+  margin: 0;
+}
+
+.user-edit-profile span,
+.user-logout span {
+  margin: 10px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #1d1d1d;
+}
+
+.user-logout {
+  float: left;
+}
+
+.profile-dropdown hr {
+  border-top: 1px solid #62d8f4;
+  opacity: 1;
 }
 
 .navbar-toggler {
@@ -220,10 +213,6 @@ a.login:hover {
   background-color: #151515;
 }
 
-.nav-buttons img {
-  width: 20px;
-}
-
 @media (max-width: 1200px) {
   .navbar-nav {
     background: #ffffff;
@@ -243,7 +232,7 @@ a.login:hover {
   }
 
   .search-form-field input {
-    padding: 11px 0 11px 30px;
+    padding: 11px 0 11px 10px;
   }
 
   .search-form-field span {

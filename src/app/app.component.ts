@@ -10,11 +10,6 @@ import { Router } from '@angular/router';
   styleUrls: ['./app.component.scss', './responsive.css']
 })
 export class AppComponent {
-  // @HostListener('window:scroll', [])
-// onWindowScroll(event: Event) {
-//     var navbar = document.getElementsByClassName('navbar')[0] as HTMLElement;
-//     navbar.classList.toggle('sticky', window.scrollY > 0);
-// }
 
   searchForm = this.formBuilder.group({
     text:  new FormControl()
@@ -49,5 +44,9 @@ export class AppComponent {
 
   logoutFunction() {
     localStorage.removeItem('token');
+  }
+
+  openModal() {
+     document.querySelector('.profile-dropdown').classList.toggle('active')
   }
 }

@@ -1,5 +1,7 @@
 @media (min-width: 1920px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 100px;
   }
 
@@ -14,7 +16,8 @@
 }
 
 @media (min-width: 1600px) and (max-width: 1919px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid {
     padding: 0 100px;
   }
 
@@ -37,7 +40,9 @@
 }
 
 @media (min-width: 1400px) and (max-width: 1599px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 80px;
   }
 
@@ -60,7 +65,9 @@
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 80px;
   }
 
@@ -93,10 +100,21 @@
   .upload-post-wrapper .container-fluid {
     padding: 0 60px;
   }
+
+  .user-hero-bottom-wrapper {
+    padding: 0 40px 70px 50px;
+  }
+
+  .user-info-img img {
+    width: 180px;
+    height: 180px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 50px;
   }
 
@@ -133,10 +151,30 @@
   .upload-post-wrapper .container-fluid {
     padding: 0 50px;
   }
+
+  .user-hero-bottom-wrapper {
+    padding: 0 40px 70px 50px;
+  }
+
+  .user-info-img img {
+    width: 150px;
+    height: 150px;
+    margin-top: -70px;
+  }
+
+  .user-contact-details li {
+    margin-bottom: 15px;
+  }
+
+  .user-social li::after {
+    right: -75px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 20px;
   }
 
@@ -188,10 +226,31 @@
   .section-title h2 {
     font-size: 28px;
   }
+
+  .user-hero-top {
+    background-position: center center;
+    height: 130px;
+  }
+
+  .user-hero-bottom-wrapper {
+    padding: 0 40px 70px 50px;
+  }
+
+  .user-info-img img {
+    width: 150px;
+    height: 150px;
+    margin-top: -70px;
+  }
+
+  .user-contact-details li {
+    margin-bottom: 15px;
+  }
 }
 
 @media (min-width: 300px) and (max-width: 767px) {
-  .navbar .container-fluid {
+  .navbar .container-fluid,
+  .user-hero-wrapper .container-fluid,
+  .user-footer .container-fluid {
     padding: 0 10px;
   }
 
@@ -207,6 +266,11 @@
 
   .search-form-field input {
     max-width: 85%;
+  }
+
+  .profile-dropdown {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .hero-wrapper .container-fluid {
@@ -296,5 +360,33 @@
 
   .upload-post-shape {
     z-index: -1;
+  }
+
+  .user-hero-top {
+    background-position: center center;
+    height: 100px;
+  }
+
+  .user-hero-bottom-wrapper {
+    padding: 0 40px 70px 20px;
+  }
+
+  .user-info-img img {
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+  }
+
+  .user-contact-details li {
+    margin-bottom: 15px;
+  }
+  .user-info-content h4 {
+    font-size: 28px;
+  }
+
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
