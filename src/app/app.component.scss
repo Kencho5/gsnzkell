@@ -1,6 +1,11 @@
 $dark: #ee8240;
 $light: #fceddc;
 $dim: #2e3134;
+
+mat-icon {
+  vertical-align: middle;
+}
+
 /* Navigation Section CSS Start */
 
 nav.navbar {
@@ -145,6 +150,11 @@ a.login:hover {
   font-size: 16px;
   font-weight: 400;
   color: #1d1d1d;
+}
+
+.user-edit-profile {
+  display: flex;
+  justify-content: flex-start;
 }
 
 .user-logout {
