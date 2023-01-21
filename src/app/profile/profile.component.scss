@@ -225,3 +225,226 @@ mat-icon {
 //   font-weight: bold;
 //   font-size: 14px;
 // }
+/* ======***=======
+User Page CSS 
+/* ======***======= */
+
+/* User Hero Section CSS Start */
+
+.user-hero-wrapper {
+  margin-top: 150px;
+}
+
+.user-hero-container {
+  background: #ffffff;
+  filter: drop-shadow(0px 7px 15px rgba(0, 0, 0, 0.2));
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.user-hero-top {
+  background: url(/assets/images/user-top-bg.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 180px;
+  position: relative;
+}
+
+.user-edit-icon {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+}
+
+.user-hero-bottom-wrapper {
+  padding: 0 40px 70px 100px;
+}
+
+.user-info-img img {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin-top: -100px;
+  border: 10px solid #ffffff;
+  border-radius: 100%;
+}
+
+.user-info-content h4 {
+  font-size: 32px;
+  font-weight: 700;
+  color: #000000;
+  padding: 15px 0;
+  margin: 0;
+}
+
+.user-contact-details li {
+  margin-right: 30px;
+}
+
+.user-contact-details a {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1d;
+  padding-left: 10px;
+}
+
+.user-social li {
+  position: relative;
+  margin: 0px 25px;
+}
+
+.user-social li::after {
+  position: absolute;
+  content: "";
+  top: 50%;
+  right: -65px;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 1px;
+  background: #b24a3f;
+}
+
+.user-footer-social li::after {
+  background: #5a6381;
+}
+
+.user-social li:last-child {
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.user-social li:last-child:after {
+  display: none;
+}
+
+.user-social li a {
+  padding: 0 10px;
+}
+
+/* User Hero Section CSS End */
+
+/* Post Section CSS Start */
+
+.post-card {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 44px;
+}
+
+.post-card-img img {
+  width: 100%;
+  min-height: 220px;
+  max-height: 220px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.post-card-img span {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 16px;
+  font-weight: bold !important;
+  padding: 8px 12px;
+  color: #1d1d1d;
+  background: #ffffff;
+}
+
+.post-card h5 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #1d1d1d;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #27525c;
+  margin: 0;
+}
+
+.post-card span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #27525c;
+}
+
+.post-card p span img {
+  margin-top: -20px;
+}
+
+.post-see-more-btn a {
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #211f54;
+}
+
+.latest-post-shape {
+  position: absolute;
+  right: 0;
+  bottom: -335px;
+  z-index: -1;
+}
+
+.latest-post-shape img {
+  max-width: 80%;
+  float: right;
+}
+
+/* Post Section CSS End */
+
+
+/* User page Post Section CSS Start */
+
+.user-page-bottom-body {
+  background: linear-gradient(
+    155.53deg,
+    #ffce1d5d 10.5%,
+    rgba(157, 26, 113, 0.096) 98.28%
+  );
+  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  padding: 50px 0;
+  margin-top: 100px;
+}
+
+.user-post {
+  padding-bottom: 120px;
+}
+
+/* Footer Section CSS */
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #334368;
+}
+
+.logo img {
+  padding-right: 12px;
+}
+
+.footer-copyright p {
+  color: #000000;
+  margin: 0;
+}
+
+/* User page Post Section CSS End */

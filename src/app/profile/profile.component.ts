@@ -11,7 +11,7 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss', '../responsive.css']
 })
 
 export class ProfileComponent implements OnInit {
@@ -55,6 +55,7 @@ export class ProfileComponent implements OnInit {
     this._profileService.getPosts({email: this.login.user['email'], start: start}).subscribe((res) => {
       if (res["code"] == 200) {
        this.posts = res['data'];
+        console.log(this.posts)
 
         if(res['count']) {
           localStorage.setItem("postCount", res['count']);
@@ -65,7 +66,7 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void { 
-    this.paginator.page.subscribe(() => this.loadPage());
+    // this.paginator.page.subscribe(() => this.loadPage());
 
     this.login.isLoggedIn$.subscribe(res => {
         if(res == false) {
@@ -88,26 +89,32 @@ export class ProfileComponent implements OnInit {
     this.loadPosts(start);
   }
 
-  openDialog() {
-    let dialogRef = this.dialog.open(EditProfileComponent, {
-      width: '600px',
-      panelClass: 'custom-container',
-      data: this.userData
-      
-    });
+  // openDialog() {
+  //   let dialogRef = this.dialog.open(EditProfileComponent, {
+  //     width: '600px',
+  //     panelClass: 'custom-container',
+  //     data: this.userData
+  //     
+  //   });
 
-    dialogRef.afterClosed().subscribe(result => {
-      if(result != "cancel") {
-        this._profileService.updateUserData(result, this.userData.email, this.login.user.counts).subscribe((res) => {
-          if (res["code"] == 200) {
-            localStorage.setItem('token', res['token'])
-            this.login.user = jwtDecode(res['token']);
+  //   dialogRef.afterClosed().subscribe(result => {
+  //     if(result != "cancel") {
+  //       this._profileService.updateUserData(result, this.userData.email, this.login.user.counts).subscribe((res) => {
+  //         if (res["code"] == 200) {
+  //           localStorage.setItem('token', res['token'])
+  //           this.login.user = jwtDecode(res['token']);
 
-            this.getProfileData();
-          }
-        });
-      }
-    });
+  //           this.getProfileData();
+  //         }
+  //       });
+  //     }
+  //   });
+  // }
+
+  openPost(id) {
+    console.log(id)
+      this.router.navigate([`/post/${id}`]);
   }
+
 
 }
