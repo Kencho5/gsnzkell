@@ -593,4 +593,14 @@ app.post('/api/home', (req, res) => {
   });
 });
 
+app.post('/api/delete', (req, res) => {
+  var result = userPosts.deleteOne({ "_id": req.body.id });
+  console.log(result);
+
+  res.status(200).send({
+    code: 200
+  });
+});
+
+
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));

@@ -23,4 +23,12 @@ export class ProfileService {
       }));
   }
 
+    deletePost(data) {
+    return this._http.post('/api/delete', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
+
+
 }

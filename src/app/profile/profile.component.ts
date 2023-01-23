@@ -123,4 +123,13 @@ export class ProfileComponent implements OnInit {
   this.closeModal();
   }
 
+  deletePost(id) {
+    this._profileService.deletePost({id: id}).subscribe((res) => {
+      if (res["code"] == 200) {
+        this.loadPosts(0);
+      }
+    });
+
+  }
+
 }
