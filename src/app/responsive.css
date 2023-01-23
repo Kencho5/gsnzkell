@@ -384,6 +384,18 @@
     font-size: 28px;
   }
 
+  .user-form-container {
+    width: 300px;
+    margin-top: 80px;
+    padding: 40px 20px;
+  }
+
+  .user-upload-img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+
   .footer-logo {
     display: flex;
     justify-content: center;

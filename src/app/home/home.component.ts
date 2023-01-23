@@ -112,6 +112,7 @@ export class HomeComponent implements OnInit {
     upload() {
     if(localStorage.getItem('token') == null) {
       this.router.navigate(['/login']);
+      return
     }
     if(this.uploadForm.valid) {
       const data = {

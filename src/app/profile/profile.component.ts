@@ -6,7 +6,9 @@ import { LoginService } from '../login/login.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 
-import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+// import { EditProfileComponent } from '../edit-profile/edit-profile.component';
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-profile',
@@ -15,6 +17,16 @@ import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 })
 
 export class ProfileComponent implements OnInit {
+
+    profileForm = new FormGroup({
+    name:  new FormControl(this.login.user['name'], Validators.required),
+    email:  new FormControl(this.login.user['email'], Validators.required),
+    phone:  new FormControl(this.login.user['phone'], Validators.required),
+    city:  new FormControl(this.login.user['city'], Validators.required),
+    facebook:  new FormControl(this.login.user['facebook'], Validators.required),
+    instagram:  new FormControl(this.login.user['instagram'], Validators.required)
+  });
+
 
   userData;
   posts;
@@ -55,7 +67,6 @@ export class ProfileComponent implements OnInit {
     this._profileService.getPosts({email: this.login.user['email'], start: start}).subscribe((res) => {
       if (res["code"] == 200) {
        this.posts = res['data'];
-        console.log(this.posts)
 
         if(res['count']) {
           localStorage.setItem("postCount", res['count']);
@@ -88,31 +99,7 @@ export class ProfileComponent implements OnInit {
 
     this.loadPosts(start);
   }
-
-  // openDialog() {
-  //   let dialogRef = this.dialog.open(EditProfileComponent, {
-  //     width: '600px',
-  //     panelClass: 'custom-container',
-  //     data: this.userData
-  //     
-  //   });
-
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     if(result != "cancel") {
-  //       this._profileService.updateUserData(result, this.userData.email, this.login.user.counts).subscribe((res) => {
-  //         if (res["code"] == 200) {
-  //           localStorage.setItem('token', res['token'])
-  //           this.login.user = jwtDecode(res['token']);
-
-  //           this.getProfileData();
-  //         }
-  //       });
-  //     }
-  //   });
-  // }
-
   openPost(id) {
-    console.log(id)
       this.router.navigate([`/post/${id}`]);
   }
   
@@ -121,7 +108,19 @@ export class ProfileComponent implements OnInit {
   }
 
   closeModal() {
-       document.querySelector('.user-modal').classList.remove('active')
+    document.querySelector('.user-modal').classList.remove('active')
+  }
+
+  editProfile() {
+    this._profileService.updateUserData(this.profileForm.value, this.userData.email).subscribe((res) => {
+      if (res["code"] == 200) {
+        localStorage.setItem('token', res['token'])
+        this.login.user = jwtDecode(res['token']);
+
+        this.getProfileData();
+      }
+    });
+  this.closeModal();
   }
 
 }

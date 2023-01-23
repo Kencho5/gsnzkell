@@ -237,12 +237,13 @@ async function getPosts(email, start) {
 }
 
 app.post('/api/update', (req, res) => {
-  username = req.body[0].data.name;
-  email = req.body[0].data.email;
-  old_email = req.body[1];
-  phone = req.body[0].data.phone;
-  city = req.body[0].data.city;
-  facebook = req.body[0].data.facebook;
+  username = req.body.data.name;
+  email = req.body.data.email;
+  old_email = req.body.old_email;
+  phone = req.body.data.phone;
+  city = req.body.data.city;
+  facebook = req.body.data.facebook;
+  instagram = req.body.data.instagram;
 
   users.updateOne(
     { email: old_email },
@@ -252,7 +253,8 @@ app.post('/api/update', (req, res) => {
         username: username,
         phone: phone,
         city: city,
-        facebook: facebook
+        facebook: facebook,
+        instagram: instagram
       },
       $currentDate: { lastModified: true }
     }
@@ -263,6 +265,7 @@ app.post('/api/update', (req, res) => {
     email: email,
     phone: phone,
     facebook: facebook,
+    instagram: instagram,
     city: city,
     counts: req.body[2]
   };
@@ -273,7 +276,6 @@ app.post('/api/update', (req, res) => {
     code: 200,
     token: token
   });
-
 })
 
 function insertTest() {
@@ -295,7 +297,7 @@ function insertTest() {
 
 
   docs = [];
-  for (var i = 0; i < 2000; i++) {
+  for (var i = 0; i < 1000; i++) {
     var animal = animals[Math.floor(Math.random() * animals.length)];
     var type = types[Math.floor(Math.random() * types.length)];
 

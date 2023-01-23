@@ -129,7 +129,7 @@
                         /></a>
                       </li>
                       <li>
-                        <a href="{{userData.facebook}"
+                        <a href="{{userData.facebook}}"
                           ><img
                             src="assets/images/facebook-icon.svg"
                             alt="facebook-icon"
@@ -151,49 +151,52 @@
               <img src="assets/images/user.png" alt="user" />
               <a class="upload-btn" href="#">+</a>
             </div>
-            <form>
+            <form [formGroup]="profileForm" (ngSubmit)="editProfile()"> 
               <div class="user-form-field">
-                <input type="text" value="{{userData.name}}" required />
+                <input type="text" formControlName="name" placeholder="Name" required />
               </div>
               <div class="user-form-field">
                 <img src="assets/images/email-icon.svg" alt="email-icon" />
                 <input
                   type="email"
-                  value="{{userData.email}}"
+                  formControlName="email"
+                  placeholder="Email"
                   required
                 />
               </div>
               <div class="user-form-field">
                 <img src="assets/images/phone-icon.svg" alt="phone-icon" />
-                <input type="text" value="{{userData.phone_number}}" required />
+                <input type="text" formControlName="phone" placeholder="Phone Number" required />
               </div>
               <div class="user-form-field">
                 <img
                   src="assets/images/location-icon.svg"
                   alt="location-icon"
                 />
-                <input type="text" value="{{userData.city}}" required />
+                <input type="text" formControlName="city" placeholder="City" required />
               </div>
               <div class="user-form-field">
                 <img src="assets/images/instagram-gray-icon.svg" alt="social-icon" />
                 <input
                   type="text"
-                  value="{{userData.instagram}}"
+                  formControlName="instagram"
+                  placeholder="Instagram"
                   required
                 />
               </div>
 
               <div class="user-form-field">
-                <img src="assets/images/facebook-gray-icon.svg" alt="social-icon" />
+                <img src="assets/images/facebook-input.svg" alt="social-icon" />
                 <input
                   type="text"
-                  value="{{userData.facebook}}"
+                  formControlName="facebook"
+                  placeholder="Facebook"
                   required
                 />
               </div>
               <div class="text-center text-lg-end mt-4">
                 <button class="form-done-btn" type="submit">Done</button>
-                <button class="form-close-btn" (click)="closeModal()">Close</button>
+                <button class="form-close-btn" type="button" (click)="closeModal()">Close</button>
               </div>
             </form>
           </div>
