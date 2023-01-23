@@ -1,132 +1,110 @@
 <body>
-
-<div class="wrap-layer">
-<div class="over-layer">
-  <div class="container-contact100">
-    
-    <div class="wrap-contact100">
-        <form class="contact100-form validate-form" [formGroup]="uploadForm" (ngSubmit)="upload()">
-            <span class="contact100-form-title">
-                Upload Your Post
-            </span>
-            
-            <div class="wrap-input100 validate-input">
-              <mat-icon>expand_more</mat-icon>
-              <select wrap-input100="animal" class="select" formControlName="animal"
-              required>
-              <option value="" disabled>Select Animal</option>
-              <option>Dog</option>
-              <option>Cat</option>
-              <option>Fish</option>
-              <option>Bird</option>
-              <option>Reptile</option>
-            </select>
-          </div>
-
-            <div class="wrap-input100 validate-input">
-                <input class="input100" type="text" wrap-input100="breed" placeholder="Breed" 
-                formControlName="breed"
-                required>
-                <span class="focus-input100"></span>
-            </div>
-
-            <div class="wrap-input100 validate-input">
-              <mat-icon>expand_more</mat-icon>
-            <select wrap-input100="options" id="option" class="select" (change)="changeInput($event)"
-            formControlName="postType"
-            required>
-              <option value="" disabled>Select Post Type</option>
-              <option value="selling">Selling</option>
-              <option value="meeting">Meeting</option>
-              <option value="adopting">Adopting</option>
-            </select>
-            </div>
-
-            <div class="wrap-input100 validate-input" id="to-remove">
-                <input class="input100" type="number" wrap-input100="price" placeholder="Price (GEL)"  id="to-hide"
-                formControlName="price">
-                <span class="focus-input100"></span>
-            </div>
-
-            <div class="wrap-input100-double validate-input">
-              <div class="double-input-div">
-                <input class="double-input" type="number" wrap-input100="age_year" placeholder="Age" 
-                formControlName="age"
-                required>
-                
-                <div class="age-arrow">
-                  <mat-icon>expand_more</mat-icon>
-                  <select class="double-select" formControlName="ageType"
-                  required>
-                    <option value="" disabled>Age (Years/Month)</option>
-                    <option value="years">Years</option>
-                    <option value="months">Months</option>
-                  </select>
-                </div>
-              </div>
-              <span class="focus-input100"></span>
-          </div>
-
-            <div class="wrap-input100 validate-input" >
-                <textarea class="input100" wrap-input100="description" placeholder="Description"  maxlength="150" formControlName="description"
-                required></textarea>
-                <span class="focus-input100"></span>
-            </div>
-
-            <div class="wrap-input100 validate-input">
-              <input class="input100" type="text" wrap-input100="breed" placeholder="Phone Number" 
-              formControlName="phone"
-              required>
-              <span class="focus-input100"></span>
-          </div>
-
-          <div class="wrap-input100 validate-input">
-            <input class="input100" type="text" wrap-input100="breed" placeholder="City" 
-              formControlName="city"
-            required>
-            <span class="focus-input100"></span>
-        </div>
-            
-            <div class="upload-image" align="center">
-              <div class="upload-icon">
-                <mat-icon>file_upload</mat-icon> 
-                      <button type="button" (click)="fileInput.click()" class="btn btn-primary btn-file">Upload Photos (Max 3)</button>
+        <!-- Upload Post Section HTML Start -->
+      <section id="Upload-post">
+         <div class="upload-post-wrapper position-relative">
+            <div class="container-fluid">
+               <div class="upload-post-container">
+                  <div class="upload-post-title">
+                     <h4>Upload Your Post</h4>
+                  </div>
+                  <div class="row align-items-center">
+                     <div class="col-md-6">
+                        <div class="upload-post-img">
+                           <img
+                              src="assets/images/upload-post.png"
+                              alt="upload-post"
+                              />
+                        </div>
+                     </div>
+                     <div class="col-md-6">
+                        <div class="upload-post-form-container">
+                           <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+                           <div class="upload-post-form">
+                              <div class="up-form-field">
+                                 <select class="form-select" formControlName="animal"
+                                    required>
+                                    <option value="" selected disabled>Select Animal</option>
+                                    <option>Dog</option>
+                                    <option>Cat</option>
+                                    <option>Fish</option>
+                                    <option>Bird</option>
+                                    <option>Reptile</option>
+                                 </select>
+                              </div>
+                              <div class="up-form-field">
+                                 <input type="text" placeholder="Breed" 
+                                    formControlName="breed"
+                                    required>
+                              </div>
+                              <div class="up-form-field">
+                                 <select (change)="changeInput($event)"
+                                    formControlName="postType"
+                                    class="form-select"
+                                    required>
+                                    <option value="" disabled>Select Post Type</option>
+                                    <option>Selling</option>
+                                    <option>Meeting</option>
+                                    <option>Adopting</option>
+                                 </select>
+                              </div>
+                              <div class="up-form-field">
+                                 <input type="text" placeholder="Price (GEL)" formControlName="price"/>
+                              </div>
+                              <div class="up-form-field double">
+                                 <input type="text" placeholder="Age" formControlName="age" />
+                                 <select class="form-select" formControlName="ageType"
+                                    required>
+                                    <option value="" selected disabled>Year/Month</option>
+                                    <option>Years</option>
+                                    <option>Months</option>
+                                 </select>
+                              </div>
+                              <div class="up-form-field">
+                                 <textarea placeholder="Description"  maxlength="150" formControlName="description"></textarea>
+                              </div>
+                              <div class="up-form-field">
+                                 <input type="text" placeholder="Phone Number"  formControlName="phone" />
+                              </div>
+                              <div class="up-form-field">
+                                 <input type="text" placeholder="City" formControlName="city"/>
+                              </div>
+                              <div class="up-form-field">
+                                              <div class="upload-icon">
+                      <button type="button" (click)="fileInput.click()" class="files-btn"><mat-icon>file_upload</mat-icon> Photos (Max 3)</button>
               </div>
                 <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
-                <div *ngIf="message">
-                  <h2 style="color: red;">3 Photos Maximum!</h2>
+                <div *ngIf="message" class="error-div">
+                  <h2 class="error-text">3 Photos Maximum!</h2>
                 </div>
                 <div class="images">
                     <div class="image-div" *ngFor="let url of urls">
-                        <button (click)="removeImage($event)" type='button'>
-                            <mat-icon class="{{url}}" id="cancel-icon">cancel</mat-icon>
-                          </button>
+                            <mat-icon class="{{url}}" id="cancel-icon" (click)="removeImage($event)">cancel</mat-icon>
                         <img [src]="url" class="uploaded-img">
                     </div>
                 </div>
-            </div>
-            
-            <div class="container-contact100-form-btn">
-                <button class="contact100-form-btn" type="submit" id="submit">
-                    <span>
-                        Upload
-                    </span>
-                </button>
-            </div>
-            <div class="error-div" *ngIf="form_msg">
+                              </div>
+                              <div class="up-form-btn text-center text-md-end mt-3">
+                          <input type="submit" placeholder="Next" />
+                        </div>
+                                    <div class="error-div" *ngIf="form_msg">
               <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
             </div>
-        </form>
-    </div>
-</div>
-</div>
-<svg xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMin slice" viewBox="24 105 156 95" >
-    <rect x="0" y="0" width="300" height="300" fill="#fceddc"/>
-    <path class="top-outer" fill="#ee8240" stroke="#371300" stroke-width="1" d="M68 1c23,0 67,17 69,39 4,38 5,52 -5,69 -20,36 -68,46 -120,-9 -27,-28 -7,-101 56,-99z"/>
-    <path class="top-inner" fill="#fceddc" stroke="#DCB467" stroke-width="1" d="M69 22c33,-7 52,21 54,37 3,26 -1,28 -8,40 -15,25 -48,25 -85,-14 -19,-20 -4,-53 39,-63z"/>
-    <path class="bottom-outer" fill="#DCB467" stroke="#371300" stroke-width="1" d="M158 158c30,13 56,50 44,75 -9,18 -22,46 -42,55 -20,10 -48,2 -73,-19 -29,-25 -27,-55 -9,-79 17,-22 43,-48 80,-32z"/>
-    <path class="bottom-inner" fill="#ee8240" stroke="#371300" stroke-width="1" d="M136 180c32,-9 45,13 46,29 3,27 8,29 0,42 -14,25 -52,24 -79,0 -21,-18 -2,-61 33,-71z"/>
-</svg>
 
-</div>
+                           </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="upload-post-shape">
+               <img
+                  src="assets/images/upload-post-shape.png"
+                  alt="upload-post-shape"
+                  />
+            </div>
+         </div>
+      </section>
+      <!-- Upload Post Section HTML End -->
+
 </body>

@@ -5,437 +5,114 @@ $dim: #2e3134;
 
 body {
     font-family: 'Ubuntu', sans-serif;
-    font-weight: 500;
-}
-@media print {
-
-    *,
-    ::after,
-    ::before {
-        text-shadow: none !important;
-        box-shadow: none !important
-    }
+    font-weight: 600;
 }
 
-*,
-::after,
-::before {
-    box-sizing: inherit
+/* Upload Post Section CSS Start */
+
+.upload-post-wrapper {
+  padding: 200px 0;
 }
 
-button,
-input,
-textarea {
-    -ms-touch-action: manipulation;
-    touch-action: manipulation
+.upload-post-container {
+  background: linear-gradient(
+    107.16deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.6) 100%
+  );
+  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  border-radius: 30px;
 }
 
-button:focus {
-    outline: 1px dotted;
-    outline: 5px auto -webkit-focus-ring-color
+.upload-post-title h4 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  color: #1d1d1d;
+  padding-top: 50px;
 }
 
-button,
-input,
-textarea {
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    line-height: inherit
+.upload-post-img {
+  max-width: 80%;
+  margin: auto;
+  padding: 80px 0 150px;
 }
 
-button,
-input {
-    overflow: visible
+.upload-post-img img {
+  width: 100%;
 }
 
-button {
-    text-transform: none
+.upload-post-form {
+  max-width: 400px;
+  width: 100%;
 }
 
-
-button::-moz-focus-inner {
-    padding: 0;
-    border-style: none
+select {
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
-textarea {
-    overflow: auto;
-    resize: vertical
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box
-}
-
-input {
-    outline: 0;
-    border: none
+.double {
+  display: flex;
 }
 
 textarea {
-    outline: 0;
-    border: none
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
-input:focus,
-textarea:focus {
-    border-color: transparent !important
+.up-form-field input, .files-btn  {
+  width: 100%;
+  background: #ffffff;
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
 }
 
-input::-webkit-input-placeholder {
-    color: $light
+.up-form-field input:focus {
+  outline: 0;
 }
 
-input:-moz-placeholder {
-    color: $light
+.up-form-field ::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(29, 29, 29, 0.8);
 }
 
-input::-moz-placeholder {
-    color: $light
+.up-form-btn {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
 }
 
-input:-ms-input-placeholder {
-    color: $light
+.up-form-btn input {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1d;
+  background: #fca311;
+  padding: 16px 40px;
+  border: none;
+  border-radius: 30px;
+  transition: transform .2s;
 }
 
-textarea::-webkit-input-placeholder {
-    color: $light
+.up-form-btn input:hover {
+  transform: scale(1.1);
 }
-
-textarea:-moz-placeholder {
-    color: $light
-}
-
-textarea::-moz-placeholder {
-    color: $light
-}
-
-textarea:-ms-input-placeholder {
-    color: $light
-}
-
-button {
-    outline: 0 !important;
-    border: none;
-    background: 0 0
-}
-
-button:hover {
-    cursor: pointer
-}
-
-.container-contact100 {
-    width: 100%;
-    min-height: 100vh;
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-}
-
-.wrap-contact100 {
-    width: 100%;
-    background: 0 0;
-    display: flex;
-    justify-content: center;
-}
-
-.contact100-form {
-    width: 75%;
-    background-color: $bg;
-    border: 5px solid #371300;
-    padding: 30px;
-    margin-top: 50px;
-    border-radius: 30px;
-}
-
-.contact100-form-title {
-    display: block;
-    font-family: Ubuntu-Bold;
-    font-size: 30px;
-    color: $light;
-    background-color: $dark;
-    margin: 30px;
-    line-height: 1.2;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 20px;
-    border-radius: 30px;
-}
-
-.wrap-input100 {
-    width: 100%;
-    background-color: $dark;
-    border-radius: 31px;
-    margin-bottom: 16px;
-    position: relative;
-    z-index: 1;
-    display: flex;
-    align-items: center;
-}
-
-.wrap-input100-double {
-    width: 100%;
-    border-radius: 31px;
-    margin-bottom: 16px;
-    // position: relative;
-    // z-index: 1
-}
-
-.input100 {
-    position: relative;
-    display: block;
-    width: 100%;
-    background: $dark;
-    border-radius: 31px;
-    font-family: Ubuntu-Bold;
-    font-size: 18px;
-    line-height: 1.2
-}
-
-input.input100 {
-    height: 62px;
-    padding: 0 35px
-}
-
-textarea.input100 {
-    min-height: 169px;
-    padding: 19px 35px 0
-}
-
-.focus-input100 {
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    border-radius: 31px;
-    background-color: $dark;
-    pointer-events: none;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s
-}
-
-.input100:focus+.focus-input100 {
-    width: calc(100% + 20px)
-}
-
-.container-contact100-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 10px;
-    align-items: center;
-}
-
-.contact100-form-btn {
-    display: -webkit-box;
-    display: -webkit-flex;
-    display: -moz-box;
-    display: -ms-flexbox;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 0 20px;
-    min-width: 200px;
-    height: 70px;
-    background-color: transparent;
-    border-radius: 31px;
-    font-family: Ubuntu-Bold;
-    font-size: 16px;
-    color: $light;
-    line-height: 1.2;
-    text-transform: uppercase;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s;
-    position: relative;
-    z-index: 1
-}
-
-.contact100-form-btn::before {
-    content: "";
-    display: block;
-    position: absolute;
-    z-index: -1;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    border-radius: 31px;
-    background-color: $dark;
-    pointer-events: none;
-    -webkit-transition: all .4s;
-    -o-transition: all .4s;
-    -moz-transition: all .4s;
-    transition: all .4s
-}
-
-.contact100-form-btn:hover:before {
-    background-color: #a8144d;
-    width: calc(100% + 20px)
-}
-
-.validate-input {
-    position: relative
-}
-
-@font-face {
-    font-family: Ubuntu-Bold;
-    src: url(https://colorlib.com/etc/cf/ContactFrom_v10/fonts/ubuntu/Ubuntu-Bold.ttf)
-}
-
-.submit {
-    font-family: Ubuntu-Bold;
-    background-color: $dark;
-    border-radius: 31px;
-    width: 140px;
-    height: 60px;
-    cursor: pointer
-}
-
-.upload-image {
-    margin-bottom: 50px;
-    margin-top: 50px
-}
-
-.upload-icon {
-    display: flex;
-    width: 270px;
-    align-items: center;
-    background-color: $dark;
-    border-radius: 31px;
-}
-
-.btn-file {
-    font-size: 18px;
-    position: relative;
-    overflow: hidden;
-    background-color: $dark;
-    color: $light;
-    height: 80px;
-    width: 230px;
-    border: none;
-    border-radius: 31px;
-}
-
-.btn-file input[type=file] {
-    position: absolute;
-    top: 0;
-    right: 0;
-    min-width: 100%;
-    min-height: 100%;
-    font-size: 100px;
-    text-align: right;
-    opacity: 0;
-    outline: 0;
-    background: $dark;
-    cursor: inherit;
-    display: block
-}
-
-.select {
-    font-family: Ubuntu-Bold;
-    font-size: 18px;
-    display: inline-block;
-    width: 100%;
-    cursor: pointer;
-    padding: 20px 15px;
-    outline: 0;
-    border: 0;
-    border-radius: 31px;
-    appearance: menulist;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: $dark;
-    color: $light;
-    // padding-left: 35px;
-}
-mat-icon {
-    color: $light;
-    vertical-align: middle;
-    font-size: 30px;
-    margin-left: 10px;
-}
-
-.double-input-div {
-    display: flex;
-    justify-content: space-between;
-    height: 100%;
-}
-
-.double-input {
-    width: 260px;
-    background: $dark;
-    border-radius: 31px;
-    font-family: Ubuntu-Bold;
-    font-size: 18px;
-    line-height: 1.2;
-    padding-left: 35px;
-    padding: 0 35px;
-    height: 62px;
-}
-
-.age-arrow {
-    display: flex;
-    align-items: center;
-    background-color: $dark;
-    border-radius: 31px;
-    width: 50%;
-}
-
-input {
-    color: $light;
-}
-textarea {
-    color: $light;
-}
-
-.double-select {
-    font-family: Ubuntu-Bold;
-    font-size: 18px;
-    width: 260px;
-    cursor: pointer;
-    padding: 20px 15px;
-    outline: 0;
-    border: 0;
-    border-radius: 31px;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background: $dark;
-    color: $light;
-}
-
-option {
-    font-weight: bold;
+.upload-post-shape {
+  position: absolute;
+  left: 0;
+  bottom: -20px;
 }
 
 .images {
@@ -445,10 +122,12 @@ option {
 }
 
 .image-div {
-    width: 240px;
-    height: 200px;
+    width: 250px;
+    height: 230px;
     margin-top: 50px;
     align-items: center;
+    text-align: center;
+    margin-bottom: 60px;
 }
 
 .uploaded-img {
@@ -464,6 +143,11 @@ option {
     width: 30px;
     height: 30px;
     margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.upload-post-shape img {
+  max-width: 80%;
 }
 
 .error-div {
@@ -473,65 +157,15 @@ option {
 
 .error-text {
 	font-weight: bold;
-	color: $dark;
+	color: $dim;
 }
 
 .error-div mat-icon { 
-    color: $dark;
+    color: $dim;
     font-size: 20px;
     width: 20px;
     height: 20px;
 }
 
-@media screen and (max-width: 710px) {
-  .container-contact100 {
-    width: 100%;
-    margin-top: 0;
-  }
-  .double-input-div {
-    flex-direction: column;
-    height: 150px;
-  }
-}
+/* Upload Post Section CSS End */
 
-svg {
-	width: 100%;
-	height: 100%;
-}
-
-@keyframes rotate {
-   100% {
-      transform: rotate(360deg)
-   }
-}
-
-.top-outer {
-   transform-origin: 73px 69px;
-   animation: rotate 30s linear infinite;
-}
-
-.top-inner {
-   transform-origin: 73px 69px;
-   animation: rotate 20s linear infinite;
-}
-
-.bottom-outer {
-   transform-origin: 134px 222px;
-   animation: rotate 30s linear infinite;
-}
-
-.bottom-inner {
-        transform-origin: 134px  222px;
-        animation: rotate 20s linear infinite;
-}
-.wrap-layer{
-      position: relative;
-      height: 100vh;
-   }
-.over-layer {
-      position: absolute;
-      width: 100%;
-      height: auto;
-      top: 0;
-      left: 0;
-   }

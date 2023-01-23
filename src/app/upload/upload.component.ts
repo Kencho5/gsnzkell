@@ -7,7 +7,7 @@ import { UploadService } from './upload.service';
 @Component({
   selector: 'app-upload',
   templateUrl: './upload.component.html',
-  styleUrls: ['./upload.component.scss']
+  styleUrls: ['./upload.component.scss', '../responsive.css']
 })
 export class UploadComponent implements OnInit {
   uploadForm = new FormGroup({
@@ -89,11 +89,12 @@ export class UploadComponent implements OnInit {
   }
 
   changeInput(event) {
-    if(event.target.value != "selling") {
-      event.path[2][3].style.display = 'none';
+    if(event.target.value != "Selling") {
+      event.path[3][3].style.display = 'none';
     } else {
-      event.path[2][3].style.display = 'block';
+      event.path[3][3].style.display = 'block';
     }
   }
+
 
 }
