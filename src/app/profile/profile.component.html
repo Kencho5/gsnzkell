@@ -221,22 +221,19 @@
               <h2>{{userData.name|titlecase}}’s Posts</h2>
             </div>
             <div class="row align-items-center">
-              <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
-                <div class="post-card" (click)="openPost(post._id)">
-                  <div class="post-card-img position-relative">
-                    <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" />
-                    <span>{{post.postType}}</span>
-                  </div>
-                  <h5>{{post.breed}}</h5>
-                  <div class="d-flex justify-content-between align-items-end">
-                      <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
+                                <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post._id)">
+                  <div class="post-card">
+                     <div class="post-card-img position-relative">
+                        <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" alt="post-img" />
+                        <span>{{post.postType|titlecase}}</span>
+                     </div>
+                     <h5>{{post.breed}}</h5>
+                     <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
                      <ng-template #age>
                         <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
                      </ng-template>
-                     <span>{{post.date|date}}</span>
                   </div>
-                </div>
-              <div class="post-buttons">
+                                <div class="post-buttons">
                 <button type="button">
                   <mat-icon>edit</mat-icon>
                 </button>
@@ -244,7 +241,7 @@
                   <mat-icon>delete</mat-icon>
                 </button>
               </div>
-              </div>
+               </div>
             </div>
           </div>
         </div>
