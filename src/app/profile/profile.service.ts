@@ -16,8 +16,8 @@ export class ProfileService {
       }));
   }
 
-  updateUserData(data, old_email) {
-    return this._http.post('/api/update', {data: data, old_email: old_email}).pipe(
+  updateUserData(data, old_email, pfp, id, pfpSet) {
+    return this._http.post('/api/update', {data: data, old_email: old_email, pfp: pfp, id: id, pfpSet: pfpSet}).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
       }));

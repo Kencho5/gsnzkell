@@ -18,7 +18,6 @@
             <span class="toggler-icon middle-bar"></span>
             <span class="toggler-icon bottom-bar"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarNav">
                <ul class="navbar-nav pl-md-5 mx-auto pb-0">
                   <form [formGroup]="searchForm" (ngSubmit)="search()">
@@ -35,64 +34,72 @@
                   </div>
                   </form>
                </ul>
-              <div class="navbar-nav ml-auto" *ngIf="loginService.isLoggedIn$ | async; else logout">
-                <div class="nav-buttons">
-                  <div class="user-profile position-relative" href="#">
-                    <img
-                      class="user-profile-icon"
-                      src="assets/images/user-profile.png"
-                      alt="user-profile"
-                      (click)="openModal()"
-                    />
-                    <div class="profile-dropdown">
-                      <div class="profile-user-info d-flex align-items-center">
-                        <img
-                          src="assets/images/user-profile.png"
-                          alt="user-profile"
-                        />
-                        <div>
-                          <h5>Gio Giorgi</h5>
-                          <p>Giorgi@gmail.com</p>
-                        </div>
-                      </div>
-                      <hr />
-                      <div class="user-edit-profile">
-                        <a href="/profile" class="align-items-center"
-                          >
-                          <mat-icon style="color: #000;">visibility</mat-icon>
-                          <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
-                          <span class="">View Profile</span></a
-                        >
-                      </div>
-                      <hr />
-                      <div class="user-edit-profile">
-                        <a href="/upload" class="align-items-center"
-                          >
-                          <mat-icon style="color: #000;">add</mat-icon>
-                          <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
-                          <span class="">Upload</span></a
-                        >
-                      </div>
-                      <hr />
-                      <div class="user-logout" (click)="logoutFunction()">
-                        <a
-                          href="/login"
-                          class="align-items-center"
-                          ><img src="assets/images/logout.svg" alt="logout" />
-                          <span>Log out</span></a
-                        >
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ng-template #logout>
-               <div class="navbar-nav ml-auto">
+               <div class="navbar-nav ml-auto" *ngIf="loginService.isLoggedIn$ | async; else logout">
                   <div class="nav-buttons">
-                  <a class="login" href="/login">Log In</a>
+                     <div class="user-profile position-relative" href="#">
+                        <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.id}}.jpg" alt="user-profile" class="user-profile-icon" (click)="openModal()"/>
+                        <ng-template #default>
+                           <img
+                              class="user-profile-icon"
+                              src="assets/images/default_pfp.png"
+                              alt="user-profile"
+                              (click)="openModal()"
+                              />
+                        </ng-template>
+                        <div class="profile-dropdown">
+                           <div class="profile-user-info d-flex align-items-center">
+                              <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.id}}.jpg" alt="user-profile"/>
+                              <ng-template #default>
+                                 <img
+                                    src="assets/images/default_pfp.png"
+                                    alt="user-profile"
+                                    />
+                              </ng-template>
+                              <div>
+                                <h5>{{loginService.user.username}}</h5>
+                                <p>{{loginService.user.email}}</p>
+                              </div>
+                           </div>
+                           <hr />
+                           <div class="user-edit-profile">
+                              <a href="/profile" class="align-items-center"
+                                 >
+                                 <mat-icon style="color: #000;">visibility</mat-icon>
+                                 <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
+                                 <span class="">View Profile</span>
+                              </a
+                                 >
+                           </div>
+                           <hr />
+                           <div class="user-edit-profile">
+                              <a href="/upload" class="align-items-center"
+                                 >
+                                 <mat-icon style="color: #000;">add</mat-icon>
+                                 <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
+                                 <span class="">Upload</span>
+                              </a
+                                 >
+                           </div>
+                           <hr />
+                           <div class="user-logout" (click)="logoutFunction()">
+                              <a
+                                 href="/login"
+                                 class="align-items-center"
+                                 ><img src="assets/images/logout.svg" alt="logout" />
+                              <span>Log out</span></a
+                                 >
+                           </div>
+                        </div>
+                     </div>
                   </div>
                </div>
-              </ng-template>
+               <ng-template #logout>
+                  <div class="navbar-nav ml-auto">
+                     <div class="nav-buttons">
+                        <a class="login" href="/login">Log In</a>
+                     </div>
+                  </div>
+               </ng-template>
             </div>
          </div>
       </nav>

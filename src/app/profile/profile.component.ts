@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
 
   userData;
   posts;
+  pfp;
   animal: string;
 
   postCount: string;
@@ -53,13 +54,15 @@ export class ProfileComponent implements OnInit {
     var user = this.login.user;
 
     this.userData = {
+      id: user["id"],
       email: user["email"],
       name: user["name"],
       phone_number: user["phone"],
       facebook: user["facebook"],
       instagram: user["instagram"],
       counts: user["counts"],
-      city: user["city"]
+      city: user["city"],
+      pfp: user['pfp']
     }
   }
 
@@ -76,7 +79,7 @@ export class ProfileComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void { 
+  ngOnInit(): void {
     // this.paginator.page.subscribe(() => this.loadPage());
 
     this.login.isLoggedIn$.subscribe(res => {
@@ -112,7 +115,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile() {
-    this._profileService.updateUserData(this.profileForm.value, this.userData.email).subscribe((res) => {
+    this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
       if (res["code"] == 200) {
         localStorage.setItem('token', res['token'])
         this.login.user = jwtDecode(res['token']);
@@ -129,7 +132,15 @@ export class ProfileComponent implements OnInit {
         this.loadPosts(0);
       }
     });
+  }
 
+  changePfp(event) {
+    var reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+        reader.onload = (event: any) => {
+        this.pfp = event.target.result;
+          document.getElementById('user-pfp').setAttribute('src', event.target.result)
+    }
   }
 
 }
