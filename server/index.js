@@ -97,16 +97,15 @@ app.post('/api/login', (req, res) => {
     if (responseDB) {
       bcrypt.compare(password, responseDB.password, async (error, result) => {
         
-        let counts = await getCounts(email);
-
         var payload = {
+          id: responseDB._id,
           name: responseDB.username,
           email: responseDB.email,
           phone: responseDB.phone,
           instagram: responseDB.instagram,
           facebook: responseDB.facebook,
-          counts: counts,
-          city: responseDB.city
+          city: responseDB.city,
+          pfp: responseDB.pfp
         };
 
         var token = jwt.sign(payload, privateKEY, signOptions);
@@ -237,6 +236,7 @@ async function getPosts(email, start) {
 }
 
 app.post('/api/update', (req, res) => {
+  id = req.body.id;
   username = req.body.data.name;
   email = req.body.data.email;
   old_email = req.body.old_email;
@@ -244,6 +244,13 @@ app.post('/api/update', (req, res) => {
   city = req.body.data.city;
   facebook = req.body.data.facebook;
   instagram = req.body.data.instagram;
+  pfpSet = req.body.pfpSet;
+  pfp = req.body.pfp;
+
+  if(pfp != undefined) {
+    savePfp(pfp, id);
+    pfpSet = true;
+  }
 
   users.updateOne(
     { email: old_email },
@@ -254,20 +261,22 @@ app.post('/api/update', (req, res) => {
         phone: phone,
         city: city,
         facebook: facebook,
-        instagram: instagram
+        instagram: instagram,
+        pfp: pfpSet
       },
       $currentDate: { lastModified: true }
     }
   );
 
   var payload = {
+    id: id,
     name: username,
     email: email,
     phone: phone,
     facebook: facebook,
     instagram: instagram,
     city: city,
-    counts: req.body[2]
+    pfp: pfpSet
   };
 
   var token = jwt.sign(payload, privateKEY, signOptions);
@@ -276,7 +285,20 @@ app.post('/api/update', (req, res) => {
     code: 200,
     token: token
   });
-})
+});
+
+function savePfp(pfp, id) {
+  if(os.platform() == "darwin") {
+    var save_path = "../src/assets/images"; 
+  } else {
+    var save_path = "/var/www/pender/assets";
+  }
+
+  const base64Data = pfp.replace(/^data:image\/\w+;base64,/, "");
+  const imageBuffer = new Buffer(base64Data, 'base64');
+  console.log(id)
+  fs.writeFile(`${save_path}/user-pfps/${id}.jpg`, imageBuffer, (err) => {});
+}
 
 function insertTest() {
 
