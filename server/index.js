@@ -248,7 +248,7 @@ app.post('/api/update', (req, res) => {
   pfp = req.body.pfp;
 
   if(pfp != undefined) {
-    savePfp(pfp, id);
+    savePfp(pfp, email);
     pfpSet = true;
   }
 
@@ -287,7 +287,7 @@ app.post('/api/update', (req, res) => {
   });
 });
 
-function savePfp(pfp, id) {
+function savePfp(pfp, email) {
   if(os.platform() == "darwin") {
     var save_path = "../src/assets/images"; 
   } else {
@@ -297,7 +297,7 @@ function savePfp(pfp, id) {
   const base64Data = pfp.replace(/^data:image\/\w+;base64,/, "");
   const imageBuffer = new Buffer(base64Data, 'base64');
   console.log(id)
-  fs.writeFile(`${save_path}/user-pfps/${id}.jpg`, imageBuffer, (err) => {});
+  fs.writeFile(`${save_path}/user-pfps/${email}.jpg`, imageBuffer, (err) => {});
 }
 
 function insertTest() {
@@ -535,6 +535,26 @@ async function countUserPosts(email) {
 
   return count;
 }
+
+app.post('/api/getid', async (req, res) => {
+  email = req.body.email;
+
+  users.findOne({
+    email: req.body.email
+  }, function (err, response) {
+      if(response) {
+        res.status(200).send({
+          code: 200,
+          data: response._id
+        });
+      } else {
+        res.status(200).send({
+          code: 500,
+        });
+      }
+  })
+});
+
 
 app.post('/api/search', (req, res) => {
   var searchText = req.body.text;

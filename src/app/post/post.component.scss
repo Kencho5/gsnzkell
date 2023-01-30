@@ -9,167 +9,443 @@ $light: #fff;
 $button: #D0175F;
 $button-hover: #ad1650;
 
-.main {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+
+/* Post Section CSS Start */
+
+.post-card {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 44px;
+  transition: transform .2s;
+  cursor: pointer;
 }
 
-section {
-  max-width: 700px;
-  margin: auto;
+.post-card:hover {
+  transform: scale(1.05);
 }
 
-.row {
-  display: flex;
-  flex-direction: column;
-}
-
-.text-muted {
-  display: flex;
-  align-items: center;
-}
-
-.images-div {
-  width: 500px;
-  height: 500px;
-  display: flex;
-  flex-direction: column;
-  background-color: $dark;
-  border-radius: 12px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 12px;
-  margin: auto;
-}
-
-.phone {
-  background-color: $dark;
-  padding: 5px;
-  border-radius: 5px;
-}
-
-.active-div {
-  position: relative;
-  height: 65%;
-  margin-bottom: 20px;
-}
-
-.active-div img {
+.post-card-img img {
   width: 100%;
+  min-height: 200px;
+  max-height: 200px;
   height: 100%;
   object-fit: cover;
+  border-radius: 20px;
 }
 
-.all-imgs {
-  border-radius: 12px;
-  display: flex;
-  justify-content: space-evenly;
-}
-
-.sub-img {
-  width: 75px;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: .2s;
-  border: 3px solid $light;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 12px;
-}
-
-.sub-img:hover {
-  transform: scale(1.1);
-}
-.arrows-div {
-  display: flex;
-  justify-content: space-between;
-  cursor: pointer;
-  margin: auto;
-  width: 100%;
+.post-card-img span {
   position: absolute;
-  bottom: 110px;
+  left: 0;
+  bottom: 40px;
+  font-size: 16px;
+  font-weight: 700;
+  padding: 8px 12px;
+  color: #1d1d1d;
+  background: #ffffff;
+  border-radius: 0px 10px 10px 0px;
 }
 
-.scrollButton {
-  font-size: 35px;
-  width: 35px;
-  height: 35px;
-  color: $light;
-  background-color: $dark;
-  border-radius: 60px;
+.post-card h5 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #1d1d1d;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  font-family: "Merriweather", serif;
+  font-weight: 400;
+  font-size: 32px;
+  color: #27525c;
+  margin: 0;
+}
+
+.post-card p span img {
+  margin-top: -20px;
+}
+
+.post-see-more-btn a {
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #211f54;
+}
+
+.latest-post-shape {
+  position: absolute;
+  right: 0;
+  bottom: -335px;
+  z-index: -1;
+}
+
+.latest-post-shape img {
+  max-width: 80%;
+  float: right;
+}
+
+/* Post Section CSS End */
+
+/* ========***========
+Post Page CSS
+========***======== */
+
+/* Post Hero Section CSS Start */
+
+.post-hero-wrapper {
+  margin-top: 180px;
+}
+
+.post-hero-title {
+  position: relative;
+  margin-bottom: -110px;
+}
+
+.post-hero-title h2 {
+  position: relative;
+  font-size: 56px;
+  font-weight: 700;
+  color: #121049;
+}
+
+.post-hero-title-border {
+  position: absolute;
+  left: 0;
+  bottom: -40px;
+}
+
+.post-hero-title-border img {
+  width: 75%;
+}
+
+.post-hero-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.post-hero-card1,
+.post-hero-card3 {
+  max-width: 29%;
+  width: 100%;
+}
+
+.post-hero-card1 img,
+.post-hero-card3 img {
+  width: 100%;
+  min-height: 280px;
+  max-height: 280px;
+  height: 100%;
+  border-radius: 22px;
+}
+
+.post-hero-card2 {
+  max-width: 39%;
+  width: 100%;
+}
+
+.post-hero-card2 img {
+  width: 100%;
+  min-height: 450px;
+  max-height: 450px;
+  height: 100%;
+  border-radius: 22px;
+}
+
+.post-hero-card1 {
+  background: radial-gradient(
+    44.1% 44.1% at 50% 50%,
+    rgba(236, 86, 108, 0.6) 0%,
+    #a6031a 100%
+  );
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.post-hero-card2 {
+  background: radial-gradient(
+    51.5% 76.56% at 50% 50%,
+    rgba(96, 161, 193, 0.6) 0%,
+    #095775eb 100%
+  );
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.post-hero-card3 {
+  background: radial-gradient(
+    54.74% 54.74% at 50% 50%,
+    rgba(247, 206, 109, 0.6) 0%,
+    #eabc4e 100%
+  );
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.post-hero-shape {
+  position: absolute;
+  left: 0;
+  top: -60px;
+  z-index: -1;
+}
+
+.slide img {
+    width: 100%; /* set the width */
+  height: 500px; /* set the height */
+  object-fit: cover; /* maintaining aspect ratio */
+  border-radius: 20px;
+}
+
+.slide {
   margin: 10px;
-  transition: .2s;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 2px 12px;
 }
 
-.scrollButton:hover {
-  transform: scale(1.2);
+.slide1 {
+    background: radial-gradient(
+    44.1% 44.1% at 50% 50%,
+    rgba(236, 86, 108, 0.6) 0%,
+    #a6031a 100%
+  );
+  padding: 40px 50px;
+  border-radius: 30px;
 }
 
-.post-details {
-  flex-grow: 1;
+.slide2 {
+   background: radial-gradient(
+    51.5% 76.56% at 50% 50%,
+    rgba(96, 161, 193, 0.6) 0%,
+    #095775eb 100%
+  );
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+.slide3 {
+    background: radial-gradient(
+    54.74% 54.74% at 50% 50%,
+    rgba(247, 206, 109, 0.6) 0%,
+    #eabc4e 100%
+  );
+
+  padding: 40px 50px;
+  border-radius: 30px;
+}
+
+/* Post Hero Section CSS End */
+
+/* Post Info Section CSS Start */
+
+.post-info-container {
+  padding-top: 60px;
+}
+
+.post-info-location li {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1d;
+}
+
+.post-date {
+  padding-right: 50px;
+}
+
+.post-date::after {
+  position: absolute;
+  content: "";
+  top: 9px;
+  right: 18px;
+  width: 15px;
+  height: 15px;
+  background: #ffd234;
+  border-radius: 100%;
+}
+
+.post-info-title h2 {
+  font-size: 43px;
+  font-weight: 700;
+  color: #121049;
+  padding: 15px 0;
+}
+
+.post-info-title img {
+  height: 56px;
+}
+
+.post-info-price h3 {
+  font-size: 44px;
+  color: #27525c;
+}
+
+.post-info-price h3 img {
+  margin-top: -35px;
+  margin-left: -15px;
+}
+
+.post-info-description h4 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1d1d1d;
+}
+
+.post-info-description p {
+  font-size: 18px;
+  color: #1d1d1d;
+  padding-top: 10px;
+}
+
+.post-user-info {
+  max-width: 350px;
+  width: 100%;
+  padding: 40px 30px 40px 40px;
+  float: right;
+  background: #ffffff;
+  box-shadow: 0px 10px 30px 5px rgba(39, 82, 92, 0.2);
+  border-radius: 50px;
+}
+
+.post-user-img img {
+  max-width: 60px;
+  width: 100%;
+  min-height: 60px;
+  max-height: 60px;
+  height: 100%;
+  border-radius: 100%;
+  margin-right: 20px;
+}
+
+.post-user-info-text h4 {
+  font-size: 24px;
+  font-weight: 600;
+  color: #1d1d1d;
+  margin-bottom: 10px;
+}
+
+.post-user-info-text p {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1d;
+  margin: 0;
+}
+
+.post-user-info-text p img {
+  width: 30px;
+  padding-right: 10px;
+}
+
+/* Post Info Section CSS End */
+
+/* Hero Slider CSS */
+
+.hero-slider {
+  margin-top: 160px;
+}
+
+.hero-slider .post-hero-card1,
+.hero-slider .post-hero-card2,
+.hero-slider .post-hero-card3 {
+  max-width: 100%;
+  width: 100%;
+  padding: 30px;
+}
+
+.hero-slider .post-hero-card1 img,
+.hero-slider .post-hero-card2 img,
+.hero-slider .post-hero-card3 img {
+  width: 100%;
+  min-height: 220px;
+  max-height: 220px;
+  border-radius: 22px;
+}
+
+/* Post Slider CSS */
+
+.post-card.item {
+  box-shadow: none;
+}
+
+.post-card p img {
+  max-width: 20px;
+  width: 100%;
+  margin-top: -44px !important;
+  margin-left: 70px;
+}
+
+/* Customizing Slider Dots */
+
+.owl {
+  margin-top: 200px;
+}
+
+:host ::ng-deep .owl-dot span {
+  background: #62d8f466;
+}
+
+:host ::ng-deep .owl-dot.active span {
+  background: #62d8f4 !important;
+}
+
+:host ::ng-deep .owl-prev {
+  padding: 15px !important;
+  font-size: 20px !important;
+  border-radius: 8px !important;
+}
+
+:host ::ng-deep .owl-next {
+  padding: 15px !important;
+  font-size: 20px !important;
+  border-radius: 8px !important;
+}
+
+/* Footer Section CSS */
+
+.logo {
   display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin-left: 50px;
+  align-items: center;
+  font-size: 32px;
+  font-weight: 700;
+  color: #334368;
 }
 
-h1 {
-  color: $dim;
-  font-weight: bold;
+.logo img {
+  padding-right: 12px;
 }
 
-.post-type {
-  text-align: center;
-  padding: 20px 0px 0px 0px;
+.footer-copyright p {
+  color: #000000;
+  margin: 0;
 }
 
-.date {
-  background-color: $dark;
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  width: 180px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 10px;
+/* User page Post Section CSS Start */
+
+.user-page-bottom-body {
+  background: linear-gradient(
+    155.53deg,
+    #ffce1d5d 10.5%,
+    rgba(157, 26, 113, 0.096) 98.28%
+  );
+  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  padding: 50px 0;
+  margin-top: 100px;
 }
 
-.title {
-  background-color: $dark;
-  border-radius: 10px;
-  padding: 12px;
-  width: auto;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 10px;
+.user-post {
+  padding-bottom: 120px;
 }
 
-mat-icon {
-  vertical-align: middle;
+/* Footer Section CSS */
+
+.footer-copyright p {
+  color: #000000;
+  margin: 0;
 }
 
-.description {
-  background-color: $dark;
-  color: $dim !important;
-  border-radius: 10px;
-  padding: 12px;
-  width: auto;
-  text-align: center;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 2px 10px;
-  color: $light;
-  font-size: 20px;
-  font-weight: bold;
-}
+/* User page Post Section CSS End */
 
-.user-details {
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-details div {
-  display: flex;
-  justify-content: space-between;
-  width: 50%;
-}
-
-.user-details h1 {
-  border-radius: 12px;
-  background-color: $dark;
-  padding: 15px;
-  text-align: center;
-}

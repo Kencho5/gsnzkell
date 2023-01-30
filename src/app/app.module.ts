@@ -26,7 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
-
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -57,6 +57,7 @@ import { FormsModule } from '@angular/forms';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
+    CarouselModule
     // MatProgressSpinnerModule
   ],
   providers: [],

@@ -1,6 +1,7 @@
 @media (min-width: 1920px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 100px;
   }
@@ -17,7 +18,8 @@
 
 @media (min-width: 1600px) and (max-width: 1919px) {
   .navbar .container-fluid,
-  .user-hero-wrapper .container-fluid {
+  .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid {
     padding: 0 100px;
   }
 
@@ -42,6 +44,7 @@
 @media (min-width: 1400px) and (max-width: 1599px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .user-post-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 80px;
   }
@@ -62,11 +65,29 @@
   .upload-post-wrapper .container-fluid {
     padding: 0 100px;
   }
+
+  .post-hero-title {
+    margin-bottom: -60px;
+  }
+
+  .post-hero-card1 img,
+  .post-hero-card3 img {
+    min-height: 280px;
+    max-height: 280px;
+    height: 100%;
+  }
+
+  .post-hero-card2 img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
 }
 
 @media (min-width: 1200px) and (max-width: 1399px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 80px;
   }
@@ -97,7 +118,8 @@
   }
 
   .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
+  .upload-post-wrapper .container-fluid,
+  .user-post-wrapper .container-fluid {
     padding: 0 60px;
   }
 
@@ -109,11 +131,29 @@
     width: 180px;
     height: 180px;
   }
+
+  .post-hero-title {
+    margin-bottom: -45px;
+  }
+
+  .post-hero-card1 img,
+  .post-hero-card3 img {
+    min-height: 200px;
+    max-height: 200px;
+    height: 100%;
+  }
+
+  .post-hero-card2 img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 50px;
   }
@@ -169,11 +209,31 @@
   .user-social li::after {
     right: -75px;
   }
+
+  .post-hero-card1 img,
+  .post-hero-card3 img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
+  }
+
+  .post-hero-card2 img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
+
+  .post-info-title h2,
+  .post-hero-title h2 {
+    font-size: 44px;
+    margin-bottom: 50px;
+  }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 20px;
   }
@@ -245,11 +305,45 @@
   .user-contact-details li {
     margin-bottom: 15px;
   }
+
+  .post-hero-card1,
+  .post-hero-card2,
+  .post-hero-card3 {
+    padding: 30px;
+  }
+
+  .post-hero-card1 img,
+  .post-hero-card3 img {
+    min-height: 150px;
+    max-height: 150px;
+    height: 100%;
+  }
+
+  .post-hero-card2 img {
+    min-height: 280px;
+    max-height: 280px;
+    height: 100%;
+  }
+
+  .post-info-title h2,
+  .post-hero-title h2 {
+    font-size: 36px;
+    margin-bottom: 53px;
+  }
+
+  .post-hero-title-border img {
+    width: 60%;
+  }
+
+  .post-info-price h3 {
+    font-size: 30px;
+  }
 }
 
 @media (min-width: 300px) and (max-width: 767px) {
   .navbar .container-fluid,
   .user-hero-wrapper .container-fluid,
+  .post-hero-wrapper .container-fluid,
   .user-footer .container-fluid {
     padding: 0 10px;
   }
@@ -400,5 +494,62 @@
     display: flex;
     justify-content: center;
     align-items: center;
+  }
+
+  .post-info-title h2,
+  .post-hero-title h2 {
+    font-size: 30px;
+  }
+
+  .post-hero-wrapper {
+    margin-top: 120px;
+  }
+
+  .post-hero-title-border {
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+  }
+
+  .post-hero-title-border img {
+    width: 40%;
+  }
+
+  .post-info-title h2 img {
+    height: 30px;
+  }
+
+  .post-info-price h3,
+  .post-info-description h4 {
+    font-size: 25px;
+  }
+
+  .post-user-info {
+    float: none;
+    margin: auto;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 767px) {
+  .post-card-img img,
+  .hero-slider .post-hero-card-img img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
+}
+
+@media (min-width: 400px) and (max-width: 576px) {
+  .post-card-img img,
+  .hero-slider .post-hero-card-img img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
+}
+
+@media only screen and (min-width: 767px) {
+  .owl {
+    display: none;
   }
 }
