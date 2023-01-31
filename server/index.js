@@ -471,34 +471,64 @@ app.post('/api/post', (req, res) => {
   });
 });
 
-app.post('/api/profile', async (req, res) => {
-  email = req.body.email;
-  var count;
+app.post('/api/post', (req, res) => {
+  var postID = req.body.id;
 
-  if(req.body.start == 0) {
-    count = await countUserPosts(email);
-    counts = await getCounts(email);
-  }
-
-  userPosts.find({
-      email: email
-    })
-    .skip(parseInt(req.body.start))
-    .limit(5)
-    .sort({
-      $natural: -1
-    }).toArray((err, posts) => {
-      if (err) {
-        res.status(200).send({
-          code: 500,
-        });
+  userPosts.findOne({
+    "_id": postID
+  }, function (err, result) {
+    if (result) {
+      var data = {
+        id: result._id,
+        email: result.email,
+        name: result.name,
+        phone: result.phone,
+        animal: result.animal,
+        breed: result.breed,
+        price: result.price,
+        age: result.age,
+        ageType: result.ageType,
+        description: result.description,
+        postType: result.postType,
+        date: result.date,
+        imgs: result.img_path,
+        city: result.city
       }
+
       res.status(200).send({
         code: 200,
-        data: posts,
-        count: count,
-        counts: counts
+        data: data
       });
+
+    } else {
+      res.status(200).send({
+        code: 500
+      });
+    }
+  });
+});
+
+app.post('/api/similar', (req, res) => {
+  breed = req.body.breed;
+  city = req.body.city;
+  postType = req.body.postType;
+
+  userPosts.find({
+    $text: {
+      $search: breed
+    },
+    city: city
+  }).limit(3).toArray((err, response) => {
+      if(response) {
+        res.status(200).send({
+          code: 200,
+          data: response
+        });
+      } else {
+        res.status(200).send({
+          code: 404
+        });
+      } 
     })
 });
 

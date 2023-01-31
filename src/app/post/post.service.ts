@@ -24,4 +24,12 @@ export class PostService {
         return res;
       }));
   }
+
+  getSimilarPosts(data) {
+  return this._http.post('/api/similar', data).pipe(
+    map((res: HttpResponse<Response>) => {
+      return res;
+    }));
+  }
+
 }

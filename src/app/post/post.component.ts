@@ -13,6 +13,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class PostComponent implements OnInit {
   postID: string;
   post;
+  similarPosts;
 
   private routeSub: Subscription;
 
@@ -27,18 +28,35 @@ export class PostComponent implements OnInit {
       this.postID = params['id'];
     });
 
-    this.postService.getPostData({'id': this.postID}).subscribe((res) => {
-      if(res['code'] == 200) {
-        this.post = res['data'];
+    this.getPostData();
+  }
 
-        this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
-        this.post.postType = this.post.postType.toUpperCase();
-        
-      } else {
-        this.router.navigate(['']);
-      }
-    });
+  getPostData() {
+      this.postService.getPostData({'id': this.postID}).subscribe((res) => {
+    if(res['code'] == 200) {
+      this.post = res['data'];
+      this.getSimilarPosts();
 
+      this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
+      this.post.postType = this.post.postType.toUpperCase();
+      
+    } else {
+      this.router.navigate(['']);
+    }
+  });
+  }
+
+  getSimilarPosts() {
+      this.postService.getSimilarPosts({
+      'breed': this.post.breed,
+      'city': this.post.city,
+      'postType': this.post.postType
+    })
+      .subscribe((res) => {
+    if(res['code'] == 200) {
+      this.similarPosts = res['data'];
+    }
+  });
   }
 
   openProfile() {
@@ -50,6 +68,13 @@ export class PostComponent implements OnInit {
       }
     });
   }
+
+  openPost(id) {
+    // this.router.navigate([`/post/${id}`]);
+    window.open(`/post/${id}`)
+  }
+
+
  customOptions: OwlOptions = {
     items: 1,
     dots: true,

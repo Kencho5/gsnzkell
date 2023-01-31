@@ -127,7 +127,7 @@
 <!-- User Page Body Section HTML Start -->
 <div class="user-page-bottom-body">
    <!-- Post Section HTML Start -->
-   <section id="Post" class="user-post">
+   <section id="Post" class="user-post" *ngIf="similarPosts != ''">
       <div class="post-wrapper position-relative overflow-hidden pb-5">
          <div class="container-fluid">
             <div class="section-title">
@@ -136,116 +136,37 @@
             <div
                class="row align-items-center justify-content-center d-none d-md-flex"
                >
-               <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="post-card">
-                     <div class="post-card-img position-relative">
-                        <img src="assets/images/post-img1.png" alt="post-img1" />
-                        <span>Selling</span>
+               <div class="col-md-6 col-lg-4 col-xxl-3" *ngFor="let similar of similarPosts">
+                     <div class="post-card" (click)="openPost(similar._id)">
+                        <div class="post-card-img position-relative">
+                           <img src="/assets/postImages/{{similar._id}}-{{similar.img_path[0]}}" alt="post-img1" />
+                           <span>{{similar.postType}}</span>
+                        </div>
+                        <h5>{{similar.breed}}</h5>
+                     <p *ngIf="similar.price != '' else age">{{similar.price}} ₾</p>
+                     <ng-template #age>
+                        <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
+                     </ng-template>
                      </div>
-                     <h5>German Rex 323</h5>
-                     <p>
-                        1732
-                     </p>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="post-card">
-                     <div class="post-card-img position-relative">
-                        <img src="assets/images/post-img2.png" alt="post-img2" />
-                        <span>Adopting</span>
-                     </div>
-                     <h5>German Rex 323</h5>
-                     <p>
-                        1732
-                        <span
-                           ><img src="assets/images/currency.svg" alt="currency"
-                           /></span>
-                     </p>
-                  </div>
-               </div>
-               <div class="col-md-6 col-lg-4 col-xxl-3">
-                  <div class="post-card">
-                     <div class="post-card-img position-relative">
-                        <img src="assets/images/post-img3.png" alt="post-img3" />
-                        <span>Meeting</span>
-                     </div>
-                     <h5>German Rex 323</h5>
-                     <p>
-                        1732
-                        <span
-                           ><img src="assets/images/currency.svg" alt="currency"
-                           /></span>
-                     </p>
-                  </div>
                </div>
             </div>
             <!-- Slider For Mobile -->
-
+            <div class="owl-similar-posts">
                <owl-carousel-o [options]="customOptions">
-                  <ng-template carouselSlide>
-                    <div>
-                      
-                    </div>
-              <div class="post-card item">
-                <div class="post-card-img position-relative">
-                  <img src="assets/images/post-img1.png" alt="post-img1" />
-                  <span>Selling</span>
-                </div>
-                <h5>German Rex 323</h5>
-                <p>
-                  1732
-                  <span
-                    ><img src="assets/images/currency.svg" alt="currency"
-                  /></span>
-                </p>
-              </div>
-                  </ng-template>
-                                    <ng-template carouselSlide>
-                                    <div class="post-card item">
-                  <div class="post-card-img position-relative">
-                     <img src="assets/images/post-img1.png" alt="post-img1" />
-                     <span>Selling</span>
-                  </div>
-                  <h5>German Rex 323</h5>
-                  <p>
-                     1732
-                     <span
-                        ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                  </p>
-               </div>
-                  </ng-template>
-                  <ng-template carouselSlide>
-                                    <div class="post-card item">
-                  <div class="post-card-img position-relative">
-                     <img src="assets/images/post-img1.png" alt="post-img1" />
-                     <span>Selling</span>
-                  </div>
-                  <h5>German Rex 323</h5>
-                  <p>
-                     1732
-                     <span
-                        ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                  </p>
-               </div>
+                  <ng-template carouselSlide *ngFor="let similar of similarPosts">
+                     <div class="post-card item" (click)="openPost(similar._id)">
+                        <div class="post-card-img position-relative">
+                           <img src="/assets/postImages/{{similar._id}}-{{similar.img_path[0]}}" alt="post-img1" />
+                           <span>{{similar.postType}}</span>
+                        </div>
+                        <h5>{{similar.breed}}</h5>
+                     <p *ngIf="similar.price != '' else age">{{similar.price}} ₾</p>
+                     <ng-template #age>
+                        <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
+                     </ng-template>
+                     </div>
                   </ng-template>
                </owl-carousel-o>
-
-            <div class="post-slider owl-carousel owl-theme d-md-none">
-               <div class="post-card item">
-                  <div class="post-card-img position-relative">
-                     <img src="assets/images/post-img1.png" alt="post-img1" />
-                     <span>Selling</span>
-                  </div>
-                  <h5>German Rex 323</h5>
-                  <p>
-                     1732
-                     <span
-                        ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                  </p>
-               </div>
             </div>
          </div>
       </div>
