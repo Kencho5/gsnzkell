@@ -70,7 +70,6 @@ export class PostComponent implements OnInit {
   }
 
   openPost(id) {
-    // this.router.navigate([`/post/${id}`]);
     window.open(`/post/${id}`)
   }
 

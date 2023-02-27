@@ -532,23 +532,6 @@ app.post('/api/similar', (req, res) => {
     })
 });
 
-function countSearchResults(searchText) {
-  userPosts.countDocuments({
-      $text: {
-        $search: searchText
-      }
-    }, {
-      score: {
-        $meta: "textScore"
-      }
-    },
-    (err, response) => {
-      count = response;
-    }
-  )
-  return count;
-}
-
 async function countUserPosts(email) {
   var count;
 
@@ -586,14 +569,12 @@ app.post('/api/getid', async (req, res) => {
 });
 
 
-app.post('/api/search', (req, res) => {
+app.post('/api/search', async (req, res) => {
+  const startTime = Date.now();
+
   var searchText = req.body.text;
   var start = req.body.start;
-  var count;
-
-  if (start == 0) {
-    count = countSearchResults(searchText);
-  }
+  var count = await countSearchResults(searchText);
 
   userPosts.find({
       $text: {
@@ -618,17 +599,31 @@ app.post('/api/search', (req, res) => {
         });
       }
 
-      var data = [];
-      response.forEach(row => {
-        data.push(row)
-      })
+      const end = Date.now();
+      const timeTaken = (end - startTime) / 1000;
+
       res.status(200).send({
         code: 200,
-        data: data,
-        count: count
+        data: response,
+        count: count,
+        time: timeTaken
       });
     })
 });
+
+async function countSearchResults(searchText) {
+  const count = await userPosts.countDocuments({
+      $text: {
+        $search: searchText
+      }
+    }, {
+      score: {
+        $meta: "textScore"
+      }
+    }
+  )
+  return count;
+}
 
 app.post('/api/home', (req, res) => {
   var data = [];

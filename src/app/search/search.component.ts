@@ -1,4 +1,4 @@
-import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from './search.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
@@ -7,70 +7,48 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+  styleUrls: ['./search.component.scss', '../responsive.css']
 })
 export class SearchComponent implements OnInit {
   posts = [];
   postsLength;
   text: string;
+  count;
+  time;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   pageEvent: PageEvent;
 
-  @HostListener('window:beforeunload', ['$event'])
-  beforeunloadHandler() {
-    localStorage.removeItem('count');
-  }
-
   constructor(
     private activatedRoute: ActivatedRoute,
-    private searchService: SearchService
+    private searchService: SearchService,
+    private el: ElementRef,
+    private renderer: Renderer2
   ) { }
 
   ngOnInit(): void {
-    this.paginator.page.subscribe(() => this.loadPage());
+    const bars = this.el.nativeElement.querySelector('.bars');
+    const sidebar = this.el.nativeElement.querySelector('#Profile-sidebar');
+
+    this.renderer.listen(bars, 'click', () => {
+      sidebar.classList.toggle('active');
+    });
 
     this.text = this.activatedRoute.snapshot.paramMap.get("text");
     
-    this.loadPosts(0, this.text);
-  }
-
-  loadPosts(start, text) {
-    this.posts = [];
-
-    this.searchService.searchPost({text: text, start: start}).subscribe((res) => {
-      if(res['code'] == 200) {
-        if(start != 0) {
-          localStorage.getItem('count');
-        } else {
-          localStorage.setItem('count', res['count']);
-        }
-
-        res['data'].forEach(post => {
-            this.posts.push({
-              id: post._id,
-              type: post.postType,
-              breed: post.breed,
-              age: post.age,
-              ageType: post.ageType,
-              animal: post.animal,
-              description: post.description,
-              postType: post.postType.toUpperCase(),
-              price: post.price,
-              date: post.date.split('T')[0],
-              img: post.img_path[0]
-            });
-
-            this.postsLength = localStorage.getItem('count');
-        });
+    this.searchService.searchPost({text: this.text}).subscribe((res) => {
+      if (res["code"] == 200) {
+        this.posts = res['data'];
+        this.count = res['count'];
+        this.time = res['time'];
+        console.log(this.posts)
       }
     });
   }
 
-  loadPage() {
-    var start = this.paginator.pageIndex * this.paginator.pageSize;
-
-    this.loadPosts(start, this.text);
+  openPost(id) {
+    window.open(`/post/${id}`)
   }
+
 
 }

@@ -1,23 +1,249 @@
 <body>
-    <div class="main">
-        <div class="posts">
-            <div class="post" *ngFor="let post of posts" id="{{post.id}}">
-                <p class="type">{{post.postType}}</p>
-                <div class="image">
-                    <img src="/assets/postImages/{{post.id}}-{{post.img}}">
-                </div>
-                <div class="bottom">
-                    <p *ngIf="post.price != ''">{{post.price}} ₾</p>
-                    <p>{{post.age}} {{post.ageType |titlecase}} Old</p>
-                </div>
-                <a href="/post/{{post.id}}" target="_blank" class="open">Open Post</a>
-            </div>
+    <!-- Profile Section HTML Start -->
+
+    <section id="Profile-main">
+      <div class="profile-main-wrapper">
+        <div class="bars d-xl-none">
+          <span>
+            <mat-icon>tune</mat-icon>
+            Filters
+          </span>
         </div>
-    </div>
-    <mat-paginator [length]="postsLength"
-              [pageSize]="10"
-              aria-label="Select page">
-              (page)="pageEvent = $event"    
-</mat-paginator>
+        <div id="Profile-sidebar">
+          <div class="profile-sidebar-wrapper">
+            <div class="filter-form-wrapper">
+              <h4>Filter By:</h4>
+              <form>
+                <div class="filter-form">
+                  <div class="form-input-field">
+                    <label>Animal</label>
+                    <select>
+                      <option value="Select....">Select....</option>
+                      <option value="Cat">Cat</option>
+                    </select>
+                  </div>
+                  <div class="form-input-field">
+                    <label>Post Type</label>
+                    <select>
+                      <option value="Buy">Buy</option>
+                      <option value="Meet">Meet</option>
+                      <option value="Gift">Gift</option>
+                    </select>
+                  </div>
+                  <div class="form-input-field">
+                    <label>City/town</label>
+                    <select>
+                      <option value="Select....">Select....</option>
+                      <option value="Dhaka">Dhaka</option>
+                    </select>
+                  </div>
+                  <div class="form-input-field">
+                    <label>Animal Age</label>
+                    <div class="d-flex">
+                      <input
+                        class="me-1"
+                        type="text"
+                        placeholder="Min..."
+                        required
+                      />
+                      <input
+                        class="ms-1"
+                        type="text"
+                        placeholder="Max..."
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-input-field">
+                    <label>Price</label>
+                    <div class="d-flex">
+                      <input
+                        class="me-1"
+                        type="text"
+                        placeholder="Min..."
+                        required
+                      />
+                      <input
+                        class="ms-1"
+                        type="text"
+                        placeholder="Max..."
+                        required
+                      />
+                    </div>
+                  </div>
+                  <div class="form-btn">
+                    <input type="submit" value="Filter" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div id="Profile-contents" class="position-relative">
+          <div class="profile-contents-wrapper">
+            <div class="post-wrapper position-relative">
+              <div class="section-title">
+                <h2>VIP Posts</h2>
+              </div>
+              <div class="row vip-post-wrapper align-items-center mt-5">
+                <div class="col-sm-6 col-lg-6 col-xl-4">
+                  <div class="post-card">
+                    <div class="post-card-img position-relative">
+                      <img src="assets/images/post-img1.png" alt="post-img1" />
+                      <span>Selling</span>
+                    </div>
+                    <h5>German Rex 323</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p>
+                        1732
+                        <span
+                          ><img src="assets/images/currency.svg" alt="currency"
+                        /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 col-xl-4">
+                  <div class="post-card">
+                    <div class="post-card-img position-relative">
+                      <img src="assets/images/post-img2.png" alt="post-img2" />
+                      <span>Adopting</span>
+                    </div>
+                    <h5>German Rex 323</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p>
+                        1732
+                        <span
+                          ><img src="assets/images/currency.svg" alt="currency"
+                        /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 col-xl-4">
+                  <div class="post-card">
+                    <div class="post-card-img position-relative">
+                      <img src="assets/images/post-img3.png" alt="post-img3" />
+                      <span>Meeting</span>
+                    </div>
+                    <h5>German Rex 323</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p>
+                        1732
+                        <span
+                          ><img src="assets/images/currency.svg" alt="currency"
+                        /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 col-xl-4">
+                  <div class="post-card">
+                    <div class="post-card-img position-relative">
+                      <img src="assets/images/post-img3.png" alt="post-img3" />
+                      <span>Meeting</span>
+                    </div>
+                    <h5>German Rex 323</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p>
+                        1732
+                        <span
+                          ><img src="assets/images/currency.svg" alt="currency"
+                        /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-lg-6 col-xl-4">
+                  <div class="post-card">
+                    <div class="post-card-img position-relative">
+                      <img src="assets/images/post-img3.png" alt="post-img3" />
+                      <span>Meeting</span>
+                    </div>
+                    <h5>German Rex 323</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p>
+                        1732
+                        <span
+                          ><img src="assets/images/currency.svg" alt="currency"
+                        /></span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="profile-shape2">
+                <img
+                  src="assets/images/profile-shape2.png"
+                  alt="profile-shape2"
+                />
+              </div>
+            </div>
+
+            <!-- Latest Post -->
+
+            <div class="post-wrapper position-relative mt-5 pt-5">
+              <div class="d-md-flex justify-content-between align-items-center">
+                <div class="section-title">
+                  <h2>Search Results</h2>
+                </div>
+                <div class="sorted-by">
+                  <label>Found {{count}} results ({{time}} seconds).</label>
+                </div>
+              </div>
+              <div class="row align-items-center mt-4">
+                  <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post.id)">
+                  <div class="post-card">
+                     <div class="post-card-img position-relative">
+                        <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" alt="post-img" />
+                        <span>{{post.postType|titlecase}}</span>
+                     </div>
+                     <h5>{{post.breed}}</h5>
+                     <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
+                     <ng-template #age>
+                        <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
+                     </ng-template>
+                  </div>
+               </div>
+              </div>
+            </div>
+
+            <!-- Latest Post Pagination -->
+
+            <div class="latest-pagination">
+              <div class="latest-pagi-wrapper">
+                <ul>
+                  <li>
+                    <img
+                      src="assets/images/chevron-left.svg"
+                      alt="chevron-left"
+                    />
+                  </li>
+                  <li class="active">1</li>
+                  <li>2</li>
+                  <li>3</li>
+                  <li>4</li>
+                  <li>5</li>
+                  <li>
+                    <img
+                      src="assets/images/chevron-right.svg"
+                      alt="chevron-right"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="profile-shape1">
+            <img src="assets/images/profile-shape1.png" alt="profile-shape1" />
+          </div>
+          <div class="profile-shape3">
+            <img src="assets/images/profile-shape3.png" alt="profile-shape3" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Profile Section HTML End -->
 
 </body>

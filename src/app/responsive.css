@@ -148,6 +148,15 @@
     max-height: 300px;
     height: 100%;
   }
+
+  #Profile-sidebar {
+    max-width: 300px;
+    width: 100%;
+  }
+
+  .profile-sidebar-wrapper {
+    padding: 40px 20px;
+  }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -528,6 +537,18 @@
     float: none;
     margin: auto;
   }
+
+  #Profile-contents {
+    width: 100%;
+  }
+
+  .profile-contents-wrapper {
+    padding: 50px 20px 0;
+  }
+
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
 }
 
 @media (min-width: 577px) and (max-width: 767px) {
@@ -545,6 +566,44 @@
     min-height: 300px;
     max-height: 300px;
     height: 100%;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 1199px) {
+  .profile-main-wrapper {
+    margin-top: 150px;
+  }
+
+  #Profile-sidebar {
+    max-width: 320px;
+    width: 100%;
+    padding-bottom: 40px;
+    position: absolute;
+    top: 150px;
+    left: -100%;
+    z-index: 111;
+    background: #ffffff;
+    transition: left 0.3s ease-in-out;
+  }
+
+  #Profile-sidebar.active {
+    left: 0;
+  }
+
+  .profile-sidebar-wrapper {
+    padding: 40px 20px;
+  }
+
+  .bars {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+
+  .bars span {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
   }
 }
 

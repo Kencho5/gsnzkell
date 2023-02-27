@@ -1,4 +1,4 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, ElementRef, Renderer2 } from '@angular/core';
 import jwtDecode from 'jwt-decode';
 import { LoginService } from './login/login.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -18,13 +18,23 @@ export class AppComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    public loginService: LoginService
+    public loginService: LoginService,
+    private el: ElementRef,
+    private renderer: Renderer2
     ) { }
 
   ngOnInit(): void {
     this.searchForm = new FormGroup({
       text: new FormControl('', [Validators.required])
    });
+
+    const filterIcon = this.el.nativeElement.querySelector('.filterIcon');
+    const searchFilter = this.el.nativeElement.querySelector('.search-filter');
+    
+    this.renderer.listen(filterIcon, 'click', () => {
+      searchFilter.classList.toggle('active');
+    });
+
 
     if(localStorage.getItem('token')) {
       var ts = jwtDecode(localStorage.getItem('token'))['exp'];
