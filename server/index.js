@@ -586,7 +586,7 @@ app.post('/api/search', async (req, res) => {
       }
     })
     .skip(parseInt(start))
-    .limit(10)
+    .limit(15)
     .sort({
       score: {
         $meta: "textScore"

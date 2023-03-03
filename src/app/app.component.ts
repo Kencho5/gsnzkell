@@ -59,4 +59,8 @@ export class AppComponent {
   openModal() {
      document.querySelector('.profile-dropdown').classList.toggle('active')
   }
+
+  closeFilters() {
+     this.el.nativeElement.querySelector('.search-filter').classList.remove('active');
+  }
 }

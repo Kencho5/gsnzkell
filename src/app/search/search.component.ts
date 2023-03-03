@@ -2,7 +2,7 @@ import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2} from
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from './search.service';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
-
+import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
@@ -10,6 +10,17 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   styleUrls: ['./search.component.scss', '../responsive.css']
 })
 export class SearchComponent implements OnInit {
+  filterForm = new FormGroup({
+    animal:  new FormControl(''),
+    postType:  new FormControl(''),
+    city:  new FormControl(''),
+    ageMin:  new FormControl(''),
+    ageMax:  new FormControl(''),
+    ageType:  new FormControl(''),
+    priceMin:  new FormControl(''),
+    priceMax: new FormControl('')
+  });
+
   posts = [];
   postsLength;
   text: string;
@@ -21,6 +32,7 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private activatedRoute: ActivatedRoute,
+    private formBuilder: FormBuilder,
     private searchService: SearchService,
     private el: ElementRef,
     private renderer: Renderer2
@@ -41,7 +53,6 @@ export class SearchComponent implements OnInit {
         this.posts = res['data'];
         this.count = res['count'];
         this.time = res['time'];
-        console.log(this.posts)
       }
     });
   }
@@ -50,5 +61,12 @@ export class SearchComponent implements OnInit {
     window.open(`/post/${id}`)
   }
 
+  filter() {
+    console.log(this.filterForm.value)
+  }
+
+  closeFilter() {
+    this.el.nativeElement.querySelector('#Profile-sidebar').classList.toggle('active');
+  }
 
 }

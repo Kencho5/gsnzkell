@@ -13,43 +13,55 @@
           <div class="profile-sidebar-wrapper">
             <div class="filter-form-wrapper">
               <h4>Filter By:</h4>
-              <form>
+              <form [formGroup]="filterForm" (ngSubmit)="filter()">
                 <div class="filter-form">
                   <div class="form-input-field">
                     <label>Animal</label>
-                    <select>
-                      <option value="Select....">Select....</option>
-                      <option value="Cat">Cat</option>
+                    <select formControlName="animal">
+                      <option value="" selected disabled>Select Animal</option>
+                      <option value="dog">Dog</option>
+                      <option value="cat">Cat</option>
+                      <option value="fish">Fish</option>
+                      <option value="bird">Bird</option>
+                      <option value="reptile">Reptile</option>
                     </select>
                   </div>
                   <div class="form-input-field">
                     <label>Post Type</label>
-                    <select>
-                      <option value="Buy">Buy</option>
-                      <option value="Meet">Meet</option>
-                      <option value="Gift">Gift</option>
+                    <select formControlName="postType">
+                      <option value="" selected disabled>Select Post Type</option>
+                      <option value="selling">Selling</option>
+                      <option value="meeting">Meeting</option>
+                      <option value="adopting">Adopting</option>
                     </select>
                   </div>
                   <div class="form-input-field">
                     <label>City/town</label>
-                    <select>
-                      <option value="Select....">Select....</option>
-                      <option value="Dhaka">Dhaka</option>
+                    <input type="text" placeholder="City" formControlName="city">
+                  </div>
+                  <div class="form-input-field">
+                    <label>Age Type</label>
+                    <select formControlName="ageType">
+                      <option value="" selected disabled>Select Age Type</option>
+                      <option value="years">Years</option>
+                      <option value="meeting">Months</option>
                     </select>
                   </div>
                   <div class="form-input-field">
-                    <label>Animal Age</label>
+                    <label>Age</label>
                     <div class="d-flex">
                       <input
                         class="me-1"
                         type="text"
                         placeholder="Min..."
+                        formControlName="ageMin"
                         required
                       />
                       <input
                         class="ms-1"
                         type="text"
                         placeholder="Max..."
+                        formControlName="ageMax"
                         required
                       />
                     </div>
@@ -61,18 +73,21 @@
                         class="me-1"
                         type="text"
                         placeholder="Min..."
+                        formControlName="priceMin"
                         required
                       />
                       <input
                         class="ms-1"
                         type="text"
                         placeholder="Max..."
+                        formControlName="priceMax"
                         required
                       />
                     </div>
                   </div>
                   <div class="form-btn">
                     <input type="submit" value="Filter" />
+                    <input type="button" value="Close" (click)="closeFilter()" />
                   </div>
                 </div>
               </form>
@@ -192,19 +207,20 @@
                 </div>
               </div>
               <div class="row align-items-center mt-4">
-                  <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post.id)">
+                                <div class="col-sm-6 col-lg-6 col-xl-4" *ngFor="let post of posts" (click)="openPost(post._id)">
                   <div class="post-card">
-                     <div class="post-card-img position-relative">
-                        <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" alt="post-img" />
-                        <span>{{post.postType|titlecase}}</span>
-                     </div>
-                     <h5>{{post.breed}}</h5>
-                     <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
+                    <div class="post-card-img position-relative">
+                      <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" alt="post-img1" />
+                      <span>{{post.postType|titlecase}}</span>
+                    </div>
+                    <h5>{{post.breed}}</h5>
+                    <div class="d-flex justify-content-between align-items-end">
+                      <p *ngIf="post.price != '' else age">{{post.price}} ₾</p>
                      <ng-template #age>
                         <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
-                     </ng-template>
+                     </ng-template>                    </div>
                   </div>
-               </div>
+                </div>
               </div>
             </div>
 

@@ -153,13 +153,21 @@ Profile Page CSS
   margin-bottom: 10px;
 }
 
+.form-btn {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-btn input[type=button] {
+  background-color: #ff1c2f;
+}
+
 .form-btn input {
   font-size: 16px;
   color: #1d1d1d;
   background: #fca311;
   padding: 12px 25px;
   margin-top: 40px;
-  float: right;
   border: none;
   border-radius: 30px;
 }
