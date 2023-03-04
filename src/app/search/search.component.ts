@@ -49,15 +49,18 @@ export class SearchComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(params => {
       this.text = params['text'];
-      this.searchService.searchPost({text: this.text}).subscribe((res) => {
+      this.searchPosts()
+    });
+  }
+
+  searchPosts() {
+    this.searchService.searchPost({text: this.text}).subscribe((res) => {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
           this.time = res['time'];
         }
       });
-    });
-    
   }
 
   openPost(id) {
@@ -84,6 +87,20 @@ export class SearchComponent implements OnInit {
       }
       this.filterError = `Please fill: ${errors}`;
     }
+  }
+
+  resetFilters() {
+    this.filterForm.reset({
+      'animal': '',
+      'postType': '',
+      'city': '',
+      'ageType': '',
+      'ageMin': '',
+      'ageMax': '',
+      'priceMin': '',
+      'priceMax': '',
+    });
+    this.searchPosts();
   }
 
   closeFilter() {
