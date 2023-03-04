@@ -74,7 +74,7 @@
               </div>
                 <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
                 <div *ngIf="message" class="error-div">
-                  <h2 class="error-text">3 Photos Maximum!</h2>
+                  <h2 class="error-text">3 Photos Required!</h2>
                 </div>
                 <div class="images">
                     <div class="image-div" *ngFor="let url of urls">
