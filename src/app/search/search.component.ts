@@ -45,16 +45,19 @@ export class SearchComponent implements OnInit {
     this.renderer.listen(bars, 'click', () => {
       sidebar.classList.toggle('active');
     });
-
-    this.text = this.activatedRoute.snapshot.paramMap.get("text");
     
-    this.searchService.searchPost({text: this.text}).subscribe((res) => {
+    this.activatedRoute.params.subscribe(params => {
+      this.text = params['text'];
+      this.searchService.searchPost({text: this.text}).subscribe((res) => {
       if (res["code"] == 200) {
         this.posts = res['data'];
+        console.log(this.posts)
         this.count = res['count'];
         this.time = res['time'];
       }
     });
+    });
+    
   }
 
   openPost(id) {
