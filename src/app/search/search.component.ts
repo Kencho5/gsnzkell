@@ -12,13 +12,13 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 export class SearchComponent implements OnInit {
   filterForm = new FormGroup({
     animal:  new FormControl(''),
-    postType:  new FormControl(''),
+    postType:  new FormControl('', Validators.required),
     city:  new FormControl(''),
-    ageMin:  new FormControl(''),
-    ageMax:  new FormControl(''),
-    ageType:  new FormControl(''),
-    priceMin:  new FormControl(''),
-    priceMax: new FormControl('')
+    ageMin:  new FormControl('', Validators.required),
+    ageMax:  new FormControl('', Validators.required),
+    ageType:  new FormControl('', Validators.required),
+    priceMin:  new FormControl('', Validators.required),
+    priceMax: new FormControl('', Validators.required)
   });
 
   posts = [];
@@ -26,6 +26,7 @@ export class SearchComponent implements OnInit {
   text: string;
   count;
   time;
+  filterError;
   
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   pageEvent: PageEvent;
@@ -49,13 +50,12 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.text = params['text'];
       this.searchService.searchPost({text: this.text}).subscribe((res) => {
-      if (res["code"] == 200) {
-        this.posts = res['data'];
-        console.log(this.posts)
-        this.count = res['count'];
-        this.time = res['time'];
-      }
-    });
+        if (res["code"] == 200) {
+          this.posts = res['data'];
+          this.count = res['count'];
+          this.time = res['time'];
+        }
+      });
     });
     
   }
@@ -65,7 +65,25 @@ export class SearchComponent implements OnInit {
   }
 
   filter() {
-    console.log(this.filterForm.value)
+    if(this.filterForm.valid) {
+      this.filterError = '';
+
+      this.searchService.searchPost({text: this.text, filters: this.filterForm.value}).subscribe((res) => {
+          if (res["code"] == 200) {
+            this.posts = res['data'];
+            this.count = res['count'];
+            this.time = res['time'];
+          }
+        });
+    } else {
+      let errors = [];
+      for(const invalid in this.filterForm.controls) {
+        if(this.filterForm.controls[invalid].invalid) {
+          errors.push(invalid);
+        }
+      }
+      this.filterError = `Please fill: ${errors}`;
+    }
   }
 
   closeFilter() {

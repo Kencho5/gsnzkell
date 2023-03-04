@@ -568,23 +568,36 @@ app.post('/api/getid', async (req, res) => {
   })
 });
 
-
 app.post('/api/search', async (req, res) => {
   const startTime = Date.now();
 
   var searchText = req.body.text;
   var start = req.body.start;
+  var filters = req.body.filters;
   var count = await countSearchResults(searchText);
 
-  userPosts.find({
-      $text: {
-        $search: searchText
+  let query = { };
+
+  query.$text = { $search: searchText },
+  {
+    score: {
+      $meta: "textScore"
+    }
+  };
+
+  if(filters) {
+    for(const key in filters) {
+      if(filters[key] != '') {
+        if(key.includes('Min') || key.includes('Max')){
+          query[key.substring(0, key.indexOf('M'))] = { $gte: parseInt(filters[key.substring(0, key.indexOf('M')) + "Min"]), $lte: parseInt(filters[key.substring(0, key.indexOf('M')) + "Max"])}
+        } else {
+          query[key] = filters[key];
+        }
       }
-    }, {
-      score: {
-        $meta: "textScore"
-      }
-    })
+    }
+  }
+ 
+  userPosts.find(query)
     .skip(parseInt(start))
     .limit(15)
     .sort({
@@ -598,7 +611,7 @@ app.post('/api/search', async (req, res) => {
           code: 500,
         });
       }
-
+      console.log(response)
       const end = Date.now();
       const timeTaken = (end - startTime) / 1000;
 

@@ -296,6 +296,13 @@ Profile Page CSS
   width: 90%;
 }
 
+.filter-error {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-top: 15px;
+}
+
 @media (min-width: 300px) and (max-width: 992px) {
   .search-filter {
     position: absolute;

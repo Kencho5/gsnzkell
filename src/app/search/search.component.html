@@ -90,6 +90,7 @@
                     <input type="button" value="Close" (click)="closeFilter()" />
                   </div>
                 </div>
+              <p *ngIf="filterError" class="filter-error">{{filterError}}</p>
               </form>
             </div>
           </div>
