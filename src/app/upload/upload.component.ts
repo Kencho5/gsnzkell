@@ -44,7 +44,7 @@ export class UploadComponent implements OnInit {
 
   selectFiles(event) {
     if(event.target.files) {
-      if(event.target.files.length != 3 || this.urls.length != 3) {
+      if(event.target.files.length != 3) {
         this.message = true;
         return;
       }
@@ -58,6 +58,7 @@ export class UploadComponent implements OnInit {
         }
       }
     }
+    console.log(this.urls)
   }
 
   removeImage(event) {
