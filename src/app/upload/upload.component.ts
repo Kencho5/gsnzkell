@@ -44,11 +44,6 @@ export class UploadComponent implements OnInit {
 
   selectFiles(event) {
     if(event.target.files) {
-      if(event.target.files.length != 3) {
-        this.message = true;
-        return;
-      }
-      this.message = false;
       for(var i = 0; i <= File.length; i++) {
         var reader = new FileReader();
 
@@ -57,6 +52,10 @@ export class UploadComponent implements OnInit {
           this.urls.push(event.target.result)
         }
       }
+      if(this.urls.length == 3) {
+        this.message = false;
+      }
+
     }
   }
 
@@ -71,6 +70,11 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
+    if(this.urls.length != 3) {
+      this.message = true;
+      return
+    }
+
     if(this.uploadForm.valid) {
       const data = {
         user: localStorage.getItem('token'),

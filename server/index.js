@@ -380,7 +380,7 @@ function insertTest() {
 }
 // insertTest()
 
-app.post('/api/upload', (req, res) => {
+app.post('/api/upload', async (req, res) => {
   token = req.body.user;
 
   if (jwt.verify(token, publicKEY, signOptions)) {
@@ -396,7 +396,43 @@ app.post('/api/upload', (req, res) => {
     });
   }
 
-  if (os.platform() == "darwin") {
+  var imgs = await saveImages(postID, req);
+
+  var form = req.body.form;
+
+  var data = {
+    _id: postID,
+    email: email,
+    name: userName,
+    animal: form['animal'],
+    breed: form['breed'],
+    price: form['price'],
+    age: form['age'],
+    ageType: form['ageType'],
+    description: form['description'],
+    postType: form['postType'],
+    phone: form['phone'],
+    date: new Date(),
+    img_path: imgs,
+    city: form['city']
+  }
+
+  userPosts.insertOne(data, function (err, result) {
+    if (result) {
+      res.status(200).send({
+        code: 200,
+        id: postID
+      });
+    } else {
+      res.status(200).send({
+        code: 500
+      });
+    }
+  })
+});
+
+async function saveImages(postID, req) {
+    if (os.platform() == "darwin") {
     var save_path = "../src/assets/"; 
   } else {
     var save_path = "/var/www/pender/assets/";
@@ -434,39 +470,8 @@ app.post('/api/upload', (req, res) => {
       imgs.push(`${i}.${type.split('/')[1]}`);
     }
   });
-
-    var form = req.body.form;
-
-    var data = {
-      _id: postID,
-      email: email,
-      name: userName,
-      animal: form['animal'],
-      breed: form['breed'],
-      price: form['price'],
-      age: form['age'],
-      ageType: form['ageType'],
-      description: form['description'],
-      postType: form['postType'],
-      phone: form['phone'],
-      date: new Date(),
-      img_path: imgs,
-      city: form['city']
-    }
-
-  userPosts.insertOne(data, function (err, result) {
-    if (result) {
-      res.status(200).send({
-        code: 200,
-        id: postID
-      });
-    } else {
-      res.status(200).send({
-        code: 500
-      });
-    }
-  })
-});
+  return imgs;
+}
 
 app.post('/api/post', (req, res) => {
   var postID = req.body.id;
@@ -556,7 +561,7 @@ app.post('/api/similar', (req, res) => {
       if(response) {
         res.status(200).send({
           code: 200,
-          data: response
+          data: response.shift()
         });
       } else {
         res.status(200).send({
