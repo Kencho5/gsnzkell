@@ -402,57 +402,57 @@ app.post('/api/upload', (req, res) => {
     var save_path = "/var/www/pender/assets/";
   }
 
-  fs.mkdir(`${save_path}/postImages/${postID}`, (err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-});
-
   var imgs = [];
-  for (var i = 0; i < req.body.urls.length; i++) {
-    // The base64-encoded image data
-    var base64Data = req.body.urls[i];
-
-    // Extract the image type and base64 data from the string
-    const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-    if (!matches) {
-      console.error('Invalid base64 string');
+  fs.mkdir(`${save_path}/postImages/${postID}`, (err) => {
+    if (err) {
+      console.error(err);
       return;
     }
 
-    const type = matches[1];
-    const data = Buffer.from(matches[2], 'base64');
+    for (var i = 0; i < req.body.urls.length; i++) {
+      // The base64-encoded image data
+      var base64Data = req.body.urls[i];
 
-    fs.writeFile(`${save_path}/postImages/${postID}/${i}.${type.split('/')[1]}`, data, 'base64', (err) => {
-      if (err) {
-        console.error(err);
+      // Extract the image type and base64 data from the string
+      const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+      if (!matches) {
+        console.error('Invalid base64 string');
         return;
       }
-      console.log('File saved!');
-    });
 
-    imgs.push(`${i}.${type.split('/')[1]}`);
-  }
+      const type = matches[1];
+      const data = Buffer.from(matches[2], 'base64');
 
-  var form = req.body.form;
+      fs.writeFile(`${save_path}/postImages/${postID}/${i}.${type.split('/')[1]}`, data, 'base64', (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        console.log('File saved!');
+      });
 
-  var data = {
-    _id: postID,
-    email: email,
-    name: userName,
-    animal: form['animal'],
-    breed: form['breed'],
-    price: form['price'],
-    age: form['age'],
-    ageType: form['ageType'],
-    description: form['description'],
-    postType: form['postType'],
-    phone: form['phone'],
-    date: new Date(),
-    img_path: imgs,
-    city: form['city']
-  }
+      imgs.push(`${i}.${type.split('/')[1]}`);
+    }
+  });
+
+    var form = req.body.form;
+
+    var data = {
+      _id: postID,
+      email: email,
+      name: userName,
+      animal: form['animal'],
+      breed: form['breed'],
+      price: form['price'],
+      age: form['age'],
+      ageType: form['ageType'],
+      description: form['description'],
+      postType: form['postType'],
+      phone: form['phone'],
+      date: new Date(),
+      img_path: imgs,
+      city: form['city']
+    }
 
   userPosts.insertOne(data, function (err, result) {
     if (result) {
