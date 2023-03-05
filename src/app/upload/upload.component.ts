@@ -89,10 +89,11 @@ export class UploadComponent implements OnInit {
   }
 
   changeInput(event) {
+    var priceInput = (document.getElementById('price') as HTMLInputElement);
     if(event.target.value != "Selling") {
-      event.path[3][3].style.display = 'none';
+      priceInput.style.display = 'none';
     } else {
-      event.path[3][3].style.display = 'block';
+      priceInput.style.display = 'block';
     }
   }
 

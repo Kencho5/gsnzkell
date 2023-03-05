@@ -28,7 +28,7 @@
                   </div>
                   <div class="form-input-field">
                     <label>Post Type</label>
-                    <select formControlName="postType">
+                    <select formControlName="postType" (change)="changeInput($event)">
                       <option value="" selected disabled>Select Post Type</option>
                       <option value="selling">Selling</option>
                       <option value="meeting">Meeting</option>
@@ -66,7 +66,7 @@
                       />
                     </div>
                   </div>
-                  <div class="form-input-field">
+                  <div class="form-input-field" id="price-div">
                     <label>Price</label>
                     <div class="d-flex">
                       <input
@@ -84,8 +84,8 @@
                         required
                       />
                     </div>
-                    <input type="button" value="Reset Filters" class="reset-filter" (click)="resetFilters()">
                   </div>
+                  <input type="button" value="Reset Filters" class="reset-filter" (click)="resetFilters()">
                   <div class="form-btn">
                     <input type="submit" value="Filter" />
                     <input type="button" value="Close" (click)="closeFilter()" />
