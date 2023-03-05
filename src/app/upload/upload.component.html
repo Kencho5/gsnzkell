@@ -70,7 +70,7 @@
                               </div>
                               <div class="up-form-field">
                                               <div class="upload-icon">
-                      <button type="button" (click)="fileInput.click()" class="files-btn"><mat-icon>file_upload</mat-icon> Photos (Max 3)</button>
+                      <button type="button" (click)="fileInput.click()" class="files-btn"><mat-icon>file_upload</mat-icon> Photos (Min/Max 3)</button>
               </div>
                 <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
                 <div *ngIf="message" class="error-div">
