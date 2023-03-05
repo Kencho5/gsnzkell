@@ -27,9 +27,6 @@
                      </button>
                      <div class="search-form-field">
                         <input type="text" placeholder="Search Breed..." formControlName="text" />
-                        <span class="filterIcon">
-                        <img src="assets/images/filter.svg" alt="filter" />
-                        </span>
                      </div>
                   </div>
                   </form>
@@ -103,78 +100,6 @@
             </div>
          </div>
       </nav>
-              <!-- Search Filter -->
-        <div class="search-filter">
-          <div class="filter-form-wrapper">
-            <h4>Filter By:</h4>
-            <form>
-              <div class="filter-form">
-                <div class="form-input-field">
-                  <label>Animal</label>
-                  <select>
-                    <option value="Select....">Select....</option>
-                    <option value="Cat">Cat</option>
-                  </select>
-                </div>
-                <div class="form-input-field">
-                  <label>Post Type</label>
-                  <select>
-                    <option value="Buy">Buy</option>
-                    <option value="Meet">Meet</option>
-                    <option value="Gift">Gift</option>
-                  </select>
-                </div>
-                <div class="form-input-field">
-                  <label>City/town</label>
-                  <select>
-                    <option value="Select....">Select....</option>
-                    <option value="Dhaka">Dhaka</option>
-                  </select>
-                </div>
-                <div class="form-input-field">
-                  <label>Animal Age</label>
-                  <div class="d-flex">
-                    <input
-                      class="me-1"
-                      type="text"
-                      placeholder="Min..."
-                      required
-                    />
-                    <input
-                      class="ms-1"
-                      type="text"
-                      placeholder="Max..."
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-input-field">
-                  <label>Price</label>
-                  <div class="d-flex">
-                    <input
-                      class="me-1"
-                      type="text"
-                      placeholder="Min..."
-                      required
-                    />
-                    <input
-                      class="ms-1"
-                      type="text"
-                      placeholder="Max..."
-                      required
-                    />
-                  </div>
-                </div>
-                <div class="form-btn">
-                  <input type="submit" value="Done" />
-                  <input type="button" value="Close" style="background-color: red;" (click)="closeFilter()">
-
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
    </section>
 </header>
 <router-outlet></router-outlet>
