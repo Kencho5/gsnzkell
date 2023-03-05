@@ -214,7 +214,7 @@
                                 <div class="col-sm-6 col-lg-6 col-xl-4" *ngFor="let post of posts" (click)="openPost(post._id)">
                   <div class="post-card">
                     <div class="post-card-img position-relative">
-                      <img src="/assets/postImages/{{post._id}}-{{post.img_path[0]}}" alt="post-img1" />
+                      <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img1" />
                       <span>{{post.postType|titlecase}}</span>
                     </div>
                     <h5>{{post.breed}}</h5>

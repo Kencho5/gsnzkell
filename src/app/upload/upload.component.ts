@@ -58,7 +58,6 @@ export class UploadComponent implements OnInit {
         }
       }
     }
-    console.log(this.urls)
   }
 
   removeImage(event) {

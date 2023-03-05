@@ -381,6 +381,19 @@ app.post('/api/upload', (req, res) => {
     });
   }
 
+  if (os.platform() == "darwin") {
+    var save_path = "../src/assets/"; 
+  } else {
+    var save_path = "/var/www/pender/assets/";
+  }
+
+  fs.mkdir(`${save_path}/postImages/${postID}`, (err) => {
+  if (err) {
+    console.error(err);
+    return;
+  }
+});
+
   var imgs = [];
   for (var i = 0; i < req.body.urls.length; i++) {
     // The base64-encoded image data
@@ -388,19 +401,23 @@ app.post('/api/upload', (req, res) => {
 
     // Extract the image type and base64 data from the string
     const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches) {
+      console.error('Invalid base64 string');
+      return;
+    }
+
     const type = matches[1];
     const data = Buffer.from(matches[2], 'base64');
 
-    if(os.platform() == "darwin") {
-      var save_path = "../src/assets"; 
-    } else {
-      var save_path = "/var/www/pender/assets";
-    }
-
-    fs.writeFile(`${save_path}/postImages/${postID}-${i}.${matches[1].split('/')[1]}`, data, 'binary', (err) => {
-      if (err) throw err;
+    fs.writeFile(`${save_path}/postImages/${postID}/${i}.${type.split('/')[1]}`, data, 'base64', (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log('File saved!');
     });
-    imgs.push(`${i}.${matches[1].split('/')[1]}`);
+
+    imgs.push(`${i}.${type.split('/')[1]}`);
   }
 
   var form = req.body.form;

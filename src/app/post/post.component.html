@@ -18,17 +18,17 @@
             <div class="post-hero-container d-none d-md-flex">
                <div class="post-hero-card post-hero-card1">
                   <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" alt="post-img5" />
+                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" alt="post-img5" />
                   </div>
                </div>
                <div class="post-hero-card post-hero-card2">
                   <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}-{{post.imgs[1]}}" alt="post-img2" />
+                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[1]}}" alt="post-img2" />
                   </div>
                </div>
                <div class="post-hero-card post-hero-card3">
                   <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}-{{post.imgs[2]}}" alt="post-img3" />
+                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[2]}}" alt="post-img3" />
                   </div>
                </div>
             </div>
@@ -37,17 +37,17 @@
                <owl-carousel-o [options]="customOptions">
                   <ng-template carouselSlide>
                      <div class="slide slide1">
-                        <img src="/assets/postImages/{{post.id}}-{{post.imgs[0]}}" class="slide-img" alt="img 1">
+                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" class="slide-img" alt="img 1">
                      </div>
                   </ng-template>
                   <ng-template carouselSlide>
                      <div class="slide slide2">
-                        <img src="/assets/postImages/{{post.id}}-{{post.imgs[1]}}" alt="img 2">
+                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[1]}}" alt="img 2">
                      </div>
                   </ng-template>
                   <ng-template carouselSlide>
                      <div class="slide slide3">
-                        <img src="/assets/postImages/{{post.id}}-{{post.imgs[2]}}" alt="img 3">
+                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[2]}}" alt="img 3">
                      </div>
                   </ng-template>
                </owl-carousel-o>
@@ -139,7 +139,7 @@
                <div class="col-md-6 col-lg-4 col-xxl-3" *ngFor="let similar of similarPosts">
                      <div class="post-card" (click)="openPost(similar._id)">
                         <div class="post-card-img position-relative">
-                           <img src="/assets/postImages/{{similar._id}}-{{similar.img_path[0]}}" alt="post-img1" />
+                           <img src="/assets/postImages/{{similar._id}}/{{similar.img_path[0]}}" alt="post-img1" />
                            <span>{{similar.postType}}</span>
                         </div>
                         <h5>{{similar.breed}}</h5>
@@ -156,7 +156,7 @@
                   <ng-template carouselSlide *ngFor="let similar of similarPosts">
                      <div class="post-card item" (click)="openPost(similar._id)">
                         <div class="post-card-img position-relative">
-                           <img src="/assets/postImages/{{similar._id}}-{{similar.img_path[0]}}" alt="post-img1" />
+                           <img src="/assets/postImages/{{similar._id}}/{{similar.img_path[0]}}" alt="post-img1" />
                            <span>{{similar.postType}}</span>
                         </div>
                         <h5>{{similar.breed}}</h5>
