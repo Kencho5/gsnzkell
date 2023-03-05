@@ -588,6 +588,8 @@
 
   #Profile-sidebar.active {
     left: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 0px 15px 15px 0px;
   }
 
   .profile-sidebar-wrapper {

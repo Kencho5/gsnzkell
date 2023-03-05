@@ -611,7 +611,7 @@ app.post('/api/search', async (req, res) => {
           code: 500,
         });
       }
-      console.log(response)
+
       const end = Date.now();
       const timeTaken = (end - startTime) / 1000;
 

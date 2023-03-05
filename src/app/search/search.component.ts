@@ -54,7 +54,7 @@ export class SearchComponent implements OnInit {
   }
 
   searchPosts() {
-    this.searchService.searchPost({text: this.text}).subscribe((res) => {
+    this.searchService.searchPost({text: this.text, filters: this.filterForm.value}).subscribe((res) => {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
@@ -71,13 +71,7 @@ export class SearchComponent implements OnInit {
     if(this.filterForm.valid) {
       this.filterError = '';
 
-      this.searchService.searchPost({text: this.text, filters: this.filterForm.value}).subscribe((res) => {
-          if (res["code"] == 200) {
-            this.posts = res['data'];
-            this.count = res['count'];
-            this.time = res['time'];
-          }
-        });
+      this.searchPosts();
     } else {
       let errors = [];
       for(const invalid in this.filterForm.controls) {
