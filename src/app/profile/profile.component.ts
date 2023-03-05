@@ -139,7 +139,7 @@ export class ProfileComponent implements OnInit {
     reader.readAsDataURL(event.target.files[0]);
         reader.onload = (event: any) => {
         this.pfp = event.target.result;
-          document.getElementById('user-pfp').setAttribute('src', event.target.result)
+          document.getElementsByClassName('edit-profile-pfp')[0].setAttribute('src', event.target.result)
     }
   }
 

@@ -21,7 +21,7 @@
                      <div class="col-lg-9">
                         <div class="user-info-container d-md-flex">
                            <div class="user-info-img">
-                              <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.id}}.jpg" alt="user" id="user-pfp" />
+                              <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" />
                               <ng-template #default>
                                  <img src="assets/images/default_pfp.png" alt="user" />
                               </ng-template>
@@ -90,9 +90,9 @@
       <div class="user-modal">
          <div class="user-form-container d-lg-flex">
             <div class="user-upload-img mb-4 mb-lg-0">
-               <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.id}}.jpg" alt="user" id="user-pfp" />
+               <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" class="edit-profile-pfp" />
                <ng-template #default>
-                  <img src="assets/images/default_pfp.png" alt="user" id="user-pfp" />
+                  <img src="assets/images/default_pfp.png" alt="user" id="user-pfp" class="edit-profile-pfp"/>
                </ng-template>
                <a class="upload-btn" (click)="fileInput.click()">+</a>
             </div>

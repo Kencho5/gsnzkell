@@ -294,10 +294,25 @@ function savePfp(pfp, email) {
     var save_path = "/var/www/pender/assets";
   }
 
-  const base64Data = pfp.replace(/^data:image\/\w+;base64,/, "");
-  const imageBuffer = new Buffer(base64Data, 'base64');
-  console.log(id)
-  fs.writeFile(`${save_path}/user-pfps/${email}.jpg`, imageBuffer, (err) => {});
+  var base64Data = pfp;
+
+  // Extract the image type and base64 data from the string
+  const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+  if (!matches) {
+    console.error('Invalid base64 string');
+    return;
+  }
+
+  const type = matches[1];
+  const data = Buffer.from(matches[2], 'base64');
+
+  fs.writeFile(`${save_path}/user-pfps/${email}.jpg`, data, 'base64', (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('File saved!');
+  });
 }
 
 function insertTest() {

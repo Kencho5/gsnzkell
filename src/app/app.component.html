@@ -34,7 +34,7 @@
                <div class="navbar-nav ml-auto" *ngIf="loginService.isLoggedIn$ | async; else logout">
                   <div class="nav-buttons">
                      <div class="user-profile position-relative" href="#">
-                        <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.id}}.jpg" alt="user-profile" class="user-profile-icon" (click)="openModal()"/>
+                        <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.email}}.jpg" alt="user-profile" class="user-profile-icon" (click)="openModal()"/>
                         <ng-template #default>
                            <img
                               class="user-profile-icon"
@@ -45,7 +45,7 @@
                         </ng-template>
                         <div class="profile-dropdown">
                            <div class="profile-user-info d-flex align-items-center">
-                              <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.id}}.jpg" alt="user-profile"/>
+                              <img *ngIf="loginService.user.pfp == true; else default" src="assets/images/user-pfps/{{loginService.user.email}}.jpg" alt="user-profile"/>
                               <ng-template #default>
                                  <img
                                     src="assets/images/default_pfp.png"
