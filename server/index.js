@@ -438,38 +438,24 @@ async function saveImages(postID, req) {
     var save_path = "/var/www/pender/assets/";
   }
 
-  var imgs = [];
-  fs.mkdir(`${save_path}/postImages/${postID}`, (err) => {
-    if (err) {
-      console.error(err);
-      return;
-    }
+  await fs.promises.mkdir(`${save_path}/postImages/${postID}`);
 
-    for (var i = 0; i < req.body.urls.length; i++) {
-      // The base64-encoded image data
-      var base64Data = req.body.urls[i];
-
-      // Extract the image type and base64 data from the string
+    const imgs = [];
+    for (let i = 0; i < req.body.urls.length; i++) {
+      const base64Data = req.body.urls[i];
       const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+
       if (!matches) {
-        console.error('Invalid base64 string');
-        return;
+        continue;
       }
 
       const type = matches[1];
       const data = Buffer.from(matches[2], 'base64');
 
-      fs.writeFile(`${save_path}/postImages/${postID}/${i}.${type.split('/')[1]}`, data, 'base64', (err) => {
-        if (err) {
-          console.error(err);
-          return;
-        }
-        console.log('File saved!');
-      });
-
+      await fs.promises.writeFile(`${save_path}/postImages/${postID}/${i}.${type.split('/')[1]}`, data, 'base64');
       imgs.push(`${i}.${type.split('/')[1]}`);
+
     }
-  });
   return imgs;
 }
 
