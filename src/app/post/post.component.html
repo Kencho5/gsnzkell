@@ -75,7 +75,7 @@
                               <img src="assets/images/slash.svg" alt="slash" /> {{post.age}} {{post.ageType}}
                            </h2>
                         </div>
-                        <div class="post-info-price" *ngIf="post.price != ''">
+                        <div class="post-info-price" *ngIf="post.price != null">
                            <h3>
                               {{post.price}} ₾
                            </h3>
@@ -143,7 +143,7 @@
                            <span>{{similar.postType}}</span>
                         </div>
                         <h5>{{similar.breed}}</h5>
-                     <p *ngIf="similar.price != '' else age">{{similar.price}} ₾</p>
+                     <p *ngIf="similar.price != null else age">{{similar.price}} ₾</p>
                      <ng-template #age>
                         <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
                      </ng-template>
@@ -160,7 +160,7 @@
                            <span>{{similar.postType}}</span>
                         </div>
                         <h5>{{similar.breed}}</h5>
-                     <p *ngIf="similar.price != '' else age">{{similar.price}} ₾</p>
+                     <p *ngIf="similar.price != null else age">{{similar.price}} ₾</p>
                      <ng-template #age>
                         <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
                      </ng-template>

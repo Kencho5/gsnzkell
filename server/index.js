@@ -653,7 +653,6 @@ app.post("/api/search", async (req, res) => {
     }
   }
   
-  console.log(query)
   userPosts
     .find(query)
     .skip(parseInt(start))
