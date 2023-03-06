@@ -103,8 +103,9 @@ export class SearchComponent implements OnInit {
 
   changeInput(event) {
     var priceDiv = (document.getElementById('price-div') as HTMLDivElement);
+
     console.log(event.target.value)
-    if(event.target.value != "selling") {
+    if(event.target.value != "Selling") {
       priceDiv.style.display = 'none';
     } else {
       priceDiv.style.display = 'block';

@@ -420,8 +420,8 @@ app.post("/api/upload", async (req, res) => {
     name: userName,
     animal: form["animal"],
     breed: form["breed"],
-    price: form["price"],
-    age: form["age"],
+    price: parseInt(form["price"]),
+    age: parseInt(form["age"]),
     ageType: form["ageType"],
     description: form["description"],
     postType: form["postType"],
@@ -652,7 +652,8 @@ app.post("/api/search", async (req, res) => {
       }
     }
   }
-
+  
+  console.log(query)
   userPosts
     .find(query)
     .skip(parseInt(start))
