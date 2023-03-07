@@ -657,7 +657,6 @@ app.post("/api/search", async (req, res) => {
   var searchText = req.body.text;
   var start = req.body.pageIndex;
   var filters = req.body.filters;
-  var count = await countSearchResults(searchText);
 
   let query = {};
 
@@ -670,7 +669,7 @@ app.post("/api/search", async (req, res) => {
 
   if (filters) {
     for (const key in filters) {
-      if (filters[key] != "") {
+      if (filters[key] != "" && filters[key] != 'none') {
         if (key.includes("Min") || key.includes("Max")) {
           query[key.substring(0, key.indexOf("M"))] = {
             $gte: parseInt(filters[key.substring(0, key.indexOf("M")) + "Min"]),
@@ -682,7 +681,9 @@ app.post("/api/search", async (req, res) => {
       }
     }
   }
-  
+
+  var count = await countSearchResults(query);
+
   userPosts
     .find(query)
     .skip(parseInt(start))
@@ -702,7 +703,7 @@ app.post("/api/search", async (req, res) => {
 
       const end = Date.now();
       const timeTaken = (end - startTime) / 1000;
-
+      
       res.status(200).send({
         code: 200,
         data: response,
@@ -712,19 +713,8 @@ app.post("/api/search", async (req, res) => {
     });
 });
 
-async function countSearchResults(searchText) {
-  const count = await userPosts.countDocuments(
-    {
-      $text: {
-        $search: searchText,
-      },
-    },
-    {
-      score: {
-        $meta: "textScore",
-      },
-    }
-  );
+async function countSearchResults(query) {
+  const count = await userPosts.countDocuments(query);
   return count;
 }
 
@@ -767,8 +757,7 @@ app.post("/api/home", (req, res) => {
 });
 
 app.post("/api/delete", (req, res) => {
-  var result = userPosts.deleteOne({ _id: req.body.id });
-  console.log(result);
+  userPosts.deleteOne({ _id: req.body.id });
 
   res.status(200).send({
     code: 200,

@@ -56,11 +56,11 @@ export class SearchComponent implements OnInit {
         this.pageIndex = parseInt(params['page']);
       }
 
-      this.searchPosts(this.pageIndex);
+      this.searchPosts();
     });
   }
 
-  searchPosts(pageIndex) {
+  searchPosts() {
     this.searchService.searchPost({
       text: this.text,
       filters: this.filterForm.value,
@@ -71,6 +71,10 @@ export class SearchComponent implements OnInit {
           this.count = res['count'];
           this.pages = this.numToArray(Math.ceil(res['count'] / 2));
           this.time = res['time'];
+          
+          if(this.pageIndex >= this.pages.length) {
+            this.pageIndex = 1;
+          }
         }
       });
   }
@@ -83,7 +87,7 @@ export class SearchComponent implements OnInit {
     if(this.filterForm.valid) {
       this.filterError = '';
 
-      this.searchPosts(this.pageIndex);
+      this.searchPosts();
     } else {
       let errors = [];
       for(const invalid in this.filterForm.controls) {
@@ -106,7 +110,9 @@ export class SearchComponent implements OnInit {
       'priceMin': '',
       'priceMax': '',
     });
-    this.searchPosts(this.pageIndex);
+
+    this.pageIndex = 1;
+    this.searchPosts();
   }
 
   closeFilter() {
@@ -118,6 +124,9 @@ export class SearchComponent implements OnInit {
 
     if(event.target.value != "Selling") {
       priceDiv.style.display = 'none';
+      
+      this.filterForm.controls['priceMin'].setValue('none');
+      this.filterForm.controls['priceMax'].setValue('none');
     } else {
       priceDiv.style.display = 'block';
     }
@@ -136,8 +145,7 @@ export class SearchComponent implements OnInit {
       this.pageIndex = parseInt(event.target.textContent);
     }
     
-    this.searchPosts(this.pageIndex);
-  
+    this.searchPosts();
   }
 
   numToArray(x) {
