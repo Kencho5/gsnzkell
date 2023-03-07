@@ -625,7 +625,7 @@ app.post("/api/search", async (req, res) => {
   const startTime = Date.now();
 
   var searchText = req.body.text;
-  var start = req.body.start;
+  var start = req.body.pageIndex;
   var filters = req.body.filters;
   var count = await countSearchResults(searchText);
 
@@ -656,7 +656,7 @@ app.post("/api/search", async (req, res) => {
   userPosts
     .find(query)
     .skip(parseInt(start))
-    .limit(15)
+    .limit(2)
     .sort({
       score: {
         $meta: "textScore",

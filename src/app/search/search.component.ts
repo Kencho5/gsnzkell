@@ -1,7 +1,7 @@
 import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SearchService } from './search.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
+// import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -24,12 +24,14 @@ export class SearchComponent implements OnInit {
   posts = [];
   postsLength;
   text: string;
+  pageIndex = 1;
   count;
   time;
   filterError;
+  pages = [];
   
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  pageEvent: PageEvent;
+  // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  // pageEvent: PageEvent;
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -49,15 +51,30 @@ export class SearchComponent implements OnInit {
     
     this.activatedRoute.params.subscribe(params => {
       this.text = params['text'];
-      this.searchPosts()
+
+      if(params['page']) {
+        this.pageIndex = parseInt(params['page']);
+      }
+
+      this.searchPosts(this.pageIndex);
     });
+
   }
 
-  searchPosts() {
-    this.searchService.searchPost({text: this.text, filters: this.filterForm.value}).subscribe((res) => {
+  searchPosts(pageIndex) {
+    this.searchService.searchPost({
+      text: this.text,
+      filters: this.filterForm.value,
+      pageIndex: this.pageIndex
+    }).subscribe((res) => {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
+
+          for(let i = 1; i <= Math.ceil(this.count / 2); i++) {
+          this.pages.push(i);
+        }
+
           this.time = res['time'];
         }
       });
@@ -71,7 +88,7 @@ export class SearchComponent implements OnInit {
     if(this.filterForm.valid) {
       this.filterError = '';
 
-      this.searchPosts();
+      this.searchPosts(this.pageIndex);
     } else {
       let errors = [];
       for(const invalid in this.filterForm.controls) {
@@ -94,7 +111,7 @@ export class SearchComponent implements OnInit {
       'priceMin': '',
       'priceMax': '',
     });
-    this.searchPosts();
+    this.searchPosts(this.pageIndex);
   }
 
   closeFilter() {
@@ -104,7 +121,6 @@ export class SearchComponent implements OnInit {
   changeInput(event) {
     var priceDiv = (document.getElementById('price-div') as HTMLDivElement);
 
-    console.log(event.target.value)
     if(event.target.value != "Selling") {
       priceDiv.style.display = 'none';
     } else {
@@ -112,5 +128,19 @@ export class SearchComponent implements OnInit {
     }
   }
 
+  pagination(event) {
+
+    if(event.target.className == 'arrow-left' && this.pageIndex != 1) {
+      this.pageIndex -= 1;
+    } 
+
+    else if(event.target.className == 'arrow-right' && this.pageIndex != this.pages.length) {
+      this.pageIndex += 1;
+    } 
+
+    else if(event.target.classList[0] == 'pageNum') {
+      this.pageIndex = parseInt(event.target.textContent);
+    }
+  }
 
 }
