@@ -10,6 +10,10 @@ body {
 mat-icon {
   vertical-align: middle;
 }
+
+li {
+  user-select: none;
+}
   
 /* Post Section CSS Start */
 

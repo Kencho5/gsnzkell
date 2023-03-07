@@ -1,5 +1,5 @@
 import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './search.service';
 // import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
@@ -38,7 +38,8 @@ export class SearchComponent implements OnInit {
     private formBuilder: FormBuilder,
     private searchService: SearchService,
     private el: ElementRef,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -58,7 +59,6 @@ export class SearchComponent implements OnInit {
 
       this.searchPosts(this.pageIndex);
     });
-
   }
 
   searchPosts(pageIndex) {
@@ -70,11 +70,7 @@ export class SearchComponent implements OnInit {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
-
-          for(let i = 1; i <= Math.ceil(this.count / 2); i++) {
-          this.pages.push(i);
-        }
-
+          this.pages = this.numToArray(Math.ceil(this.count / 10));
           this.time = res['time'];
         }
       });
@@ -129,7 +125,6 @@ export class SearchComponent implements OnInit {
   }
 
   pagination(event) {
-
     if(event.target.className == 'arrow-left' && this.pageIndex != 1) {
       this.pageIndex -= 1;
     } 
@@ -141,6 +136,17 @@ export class SearchComponent implements OnInit {
     else if(event.target.classList[0] == 'pageNum') {
       this.pageIndex = parseInt(event.target.textContent);
     }
+
+    this.router.navigate(['/search', {text: this.text, page: this.pageIndex}]);
+  
   }
+
+  numToArray(x) {
+  const result = [];
+  for (let i = 1; i <= x; i++) {
+    result.push(i);
+  }
+  return result;
+}
 
 }
