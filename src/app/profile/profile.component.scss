@@ -12,6 +12,10 @@ mat-icon {
   vertical-align: middle;
 }
 
+li {
+  user-select: none;
+}
+
 .posts-fade {
     animation: postsFadeAnimation ease 0.5s;
     animation-iteration-count: 1;
@@ -280,7 +284,6 @@ User Page CSS
 }
 
 .post-card p {
-  font-family: "Merriweather", serif;
   font-weight: 400;
   font-size: 32px;
   color: #27525c;
@@ -375,3 +378,38 @@ User Page CSS
 }
 
 /* User page Post Section CSS End */
+
+/* Pagination */
+
+.latest-pagi-wrapper {
+  padding-top: 100px;
+  padding-bottom: 60px;
+}
+
+.latest-pagi-wrapper ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.latest-pagi-wrapper ul li {
+  font-size: 16px;
+  color: #54a0b2;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  margin: 0 8px;
+  border: 1px solid #54a0b2;
+  border-radius: 100%;
+  cursor: pointer;
+}
+
+.latest-pagi-wrapper ul li.active {
+  color: #ffffff;
+  background: #54a0b2;
+  border: 1px solid #54a0b2;
+}
+

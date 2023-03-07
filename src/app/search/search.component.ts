@@ -22,7 +22,6 @@ export class SearchComponent implements OnInit {
   });
 
   posts = [];
-  postsLength;
   text: string;
   pageIndex = 1;
   count;
@@ -70,7 +69,7 @@ export class SearchComponent implements OnInit {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
-          this.pages = this.numToArray(Math.ceil(this.count / 10));
+          this.pages = this.numToArray(Math.ceil(res['count'] / 2));
           this.time = res['time'];
         }
       });
@@ -136,17 +135,17 @@ export class SearchComponent implements OnInit {
     else if(event.target.classList[0] == 'pageNum') {
       this.pageIndex = parseInt(event.target.textContent);
     }
-
-    this.router.navigate(['/search', {text: this.text, page: this.pageIndex}]);
+    
+    this.searchPosts(this.pageIndex);
   
   }
 
   numToArray(x) {
-  const result = [];
-  for (let i = 1; i <= x; i++) {
-    result.push(i);
+    const result = [];
+    for (let i = 1; i <= x; i++) {
+      result.push(i);
+    }
+    return result;
   }
-  return result;
-}
 
 }

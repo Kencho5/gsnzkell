@@ -621,6 +621,36 @@ app.post("/api/getid", async (req, res) => {
   );
 });
 
+app.post("/api/profile", async (req, res) => {
+  var email = req.body.email;
+  var start = req.body.pageIndex;
+
+  var count = await countUserPosts(email);
+
+  userPosts
+    .find({
+      email: email
+    })
+    .skip(parseInt(start))
+    .limit(4)
+    .sort({
+      _id: 1
+    })
+    .toArray((err, response) => {
+      if (err) {
+        res.status(200).send({
+          code: 500,
+        });
+      }
+
+      res.status(200).send({
+        code: 200,
+        data: response,
+        count: count,
+      });
+    });
+});
+
 app.post("/api/search", async (req, res) => {
   const startTime = Date.now();
 
@@ -656,7 +686,7 @@ app.post("/api/search", async (req, res) => {
   userPosts
     .find(query)
     .skip(parseInt(start))
-    .limit(10)
+    .limit(2)
     .sort({
       score: {
         $meta: "textScore",

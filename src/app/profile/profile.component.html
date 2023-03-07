@@ -182,6 +182,28 @@
                </div>
             </div>
          </div>
+                     <div class="latest-pagination">
+              <div class="latest-pagi-wrapper">
+                <ul (click)="pagination($event)">
+                  <li class="arrow-left">
+                    <img
+                      src="assets/images/chevron-left.svg"
+                      alt="chevron-left"
+                      class="arrow-left"
+                    />
+                  </li>
+                  <li *ngFor="let page of pages" class="pageNum" [ngClass]="{'active': page === pageIndex}">{{page}}</li>
+                  <li class="arrow-right">
+                    <img
+                      src="assets/images/chevron-right.svg"
+                      alt="chevron-right"
+                      class="arrow-right"
+                    />
+                  </li>
+                </ul>
+              </div>
+            </div>
+
       </div>
 </div>
 </section>

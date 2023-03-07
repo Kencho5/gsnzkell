@@ -3,10 +3,7 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { ProfileService } from './profile.service';
 import { LoginService } from '../login/login.service';
-import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { MatDialog } from '@angular/material/dialog';
 
-// import { EditProfileComponent } from '../edit-profile/edit-profile.component';
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 
@@ -32,22 +29,13 @@ export class ProfileComponent implements OnInit {
   posts;
   pfp;
   animal: string;
-
-  postCount: string;
-
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  pageEvent: PageEvent;
-
-  @HostListener('window:beforeunload', ['$event'])
-  beforeunloadHandler() {
-    localStorage.removeItem('postCount');
-  }
+  pageIndex = 1;
+  pages = [];
 
   constructor(
     private router: Router,
     private _profileService: ProfileService,
     private login: LoginService,
-    public dialog: MatDialog
   ) {}
 
   getProfileData() {
@@ -60,28 +48,21 @@ export class ProfileComponent implements OnInit {
       phone_number: user["phone"],
       facebook: user["facebook"],
       instagram: user["instagram"],
-      counts: user["counts"],
       city: user["city"],
       pfp: user['pfp']
     }
   }
 
-  loadPosts(start) {
-    this._profileService.getPosts({email: this.login.user['email'], start: start}).subscribe((res) => {
-      if (res["code"] == 200) {
-       this.posts = res['data'];
-
-        if(res['count']) {
-          localStorage.setItem("postCount", res['count']);
+  loadPosts() {
+    this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex}).subscribe((res) => {
+        if (res["code"] == 200) {
+          this.posts = res['data'];
+          this.pages = this.numToArray(Math.ceil(res['count'] / 4));
         }
-        this.postCount = localStorage.getItem("postCount");
-      }
-    });
+      });
   }
 
   ngOnInit(): void {
-    // this.paginator.page.subscribe(() => this.loadPage());
-
     this.login.isLoggedIn$.subscribe(res => {
         if(res == false) {
            this.router.navigate(['/login']);
@@ -91,17 +72,9 @@ export class ProfileComponent implements OnInit {
         }
     });
 
-    this.loadPosts(0);
+    this.loadPosts();
   }
 
-  loadPage() {
-    var div = document.getElementsByClassName('user-posts')[0] as HTMLElement;
-    div.classList.toggle('posts-fade');
-
-    var start = this.paginator.pageIndex * this.paginator.pageSize;
-
-    this.loadPosts(start);
-  }
   openPost(id) {
       this.router.navigate([`/post/${id}`]);
   }
@@ -129,7 +102,7 @@ export class ProfileComponent implements OnInit {
   deletePost(id) {
     this._profileService.deletePost({id: id}).subscribe((res) => {
       if (res["code"] == 200) {
-        this.loadPosts(0);
+        this.loadPosts();
       }
     });
   }
@@ -142,5 +115,31 @@ export class ProfileComponent implements OnInit {
           document.getElementsByClassName('edit-profile-pfp')[0].setAttribute('src', event.target.result)
     }
   }
+
+  pagination(event) {
+    if(event.target.className == 'arrow-left' && this.pageIndex != 1) {
+      this.pageIndex -= 1;
+    } 
+
+    else if(event.target.className == 'arrow-right' && this.pageIndex != this.pages.length) {
+      this.pageIndex += 1;
+    } 
+
+    else if(event.target.classList[0] == 'pageNum') {
+      this.pageIndex = parseInt(event.target.textContent);
+    }
+
+    this.loadPosts()
+  }
+
+
+  numToArray(x) {
+    const result = [];
+    for (let i = 1; i <= x; i++) {
+      result.push(i);
+    }
+    return result;
+  }
+
 
 }
