@@ -23,6 +23,13 @@ export class ProfileService {
       }));
   }
 
+  updatePostData(data) {
+    return this._http.post('/api/edit-post', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
+
     deletePost(data) {
     return this._http.post('/api/delete', data).pipe(
       map((res: HttpResponse<Response>) => {

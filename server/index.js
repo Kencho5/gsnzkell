@@ -247,6 +247,28 @@ async function getPosts(email, start) {
   return docs;
 }
 
+app.post("/api/edit-post", async (req, res) => {
+  var details = req.body.details;
+  
+  var result = await userPosts.updateOne(
+    { _id: details.id },
+    {
+      $set: {
+        breed: details.breed,
+        description: details.description,
+        city: details.city,
+        phone: details.phone,
+      }
+    }
+  );
+
+  if(result['acknowledged'] == true) {
+    res.status(200).send({
+      code: 200,
+    });
+  }
+});
+
 app.post("/api/update", (req, res) => {
   id = req.body.id;
   username = req.body.data.name;

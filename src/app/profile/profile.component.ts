@@ -25,6 +25,7 @@ export class ProfileComponent implements OnInit {
   });
 
   postForm = new FormGroup({
+    id:  new FormControl('', Validators.required),
     breed:  new FormControl('', Validators.required),
     city:  new FormControl('', Validators.required),
     description:  new FormControl('', Validators.required),
@@ -96,6 +97,7 @@ export class ProfileComponent implements OnInit {
 
    openEdit(post) {
     this.postForm.setValue({
+      id: post._id,
       breed: post.breed,
       city: post.city,
       description: post.description,
@@ -108,8 +110,19 @@ export class ProfileComponent implements OnInit {
     document.querySelector('.edit-modal').classList.remove('active');
   }
 
+  editPost() {
+    this._profileService.updatePostData({details: this.postForm.value}).subscribe((res) => {
+      if (res["code"] == 200) {
+        console.log(res)
+      }
+    });
+
+    this.loadPosts();
+    this.closeEdit();
+  }
+
   editProfile() {
-    this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
+    this._profileService.updateUserData(this.postForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
       if (res["code"] == 200) {
         localStorage.setItem('token', res['token'])
         this.login.user = jwtDecode(res['token']);
@@ -118,10 +131,6 @@ export class ProfileComponent implements OnInit {
       }
     });
   this.closeModal();
-  }
-
-  editPost() {
-
   }
 
   deletePost(id) {
