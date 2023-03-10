@@ -157,6 +157,14 @@ User Page CSS
   display: block;
 }
 
+.edit-modal {
+  display: none;
+}
+
+.edit-modal.active {
+  display: block;
+}
+
 .user-upload-img {
   position: relative;
   width: 150px;
@@ -337,6 +345,11 @@ User Page CSS
   margin: 10px;
 }
 
+.edit-post-form label {
+  font-weight: bold;
+  margin-left: 10px;
+  padding-bottom: 10px;
+}
 
 /* Post Section CSS End */
 

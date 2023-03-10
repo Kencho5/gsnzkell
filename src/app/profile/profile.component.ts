@@ -24,6 +24,13 @@ export class ProfileComponent implements OnInit {
     instagram:  new FormControl(this.login.user['instagram'], Validators.required)
   });
 
+  postForm = new FormGroup({
+    breed:  new FormControl('', Validators.required),
+    city:  new FormControl('', Validators.required),
+    description:  new FormControl('', Validators.required),
+    phone:  new FormControl('', Validators.required),
+  });
+
 
   userData;
   posts;
@@ -87,6 +94,20 @@ export class ProfileComponent implements OnInit {
     document.querySelector('.user-modal').classList.remove('active')
   }
 
+   openEdit(post) {
+    this.postForm.setValue({
+      breed: post.breed,
+      city: post.city,
+      description: post.description,
+      phone: post.phone
+    })
+    document.querySelector('.edit-modal').classList.toggle('active');
+  }
+
+  closeEdit() {
+    document.querySelector('.edit-modal').classList.remove('active');
+  }
+
   editProfile() {
     this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
       if (res["code"] == 200) {
@@ -97,6 +118,10 @@ export class ProfileComponent implements OnInit {
       }
     });
   this.closeModal();
+  }
+
+  editPost() {
+
   }
 
   deletePost(id) {

@@ -173,7 +173,7 @@
                   </ng-template>
                </div>
                <div class="post-buttons">
-                  <button type="button">
+                  <button type="button" (click)="openEdit(post)">
                      <mat-icon>edit</mat-icon>
                   </button>
                   <button type="button" (click)="deletePost(post._id)">
@@ -203,7 +203,38 @@
                 </ul>
               </div>
             </div>
-
+     <section id="User-form">
+      <div class="edit-modal">
+         <div class="user-form-container d-lg-flex">
+            <form [formGroup]="postForm" (ngSubmit)="editPost()" class="edit-post-form"> 
+              <label>Breed</label>
+            <div class="user-form-field">
+              <mat-icon>badge</mat-icon>
+               <input type="text" formControlName="breed" required />
+            </div>
+            <label>Description</label>
+            <div class="user-form-field">
+               <mat-icon>description</mat-icon>
+               <input type="text" formControlName="description" required />
+            </div>
+            <label>Phone</label>
+            <div class="user-form-field">
+               <mat-icon>phone</mat-icon>
+               <input type="text" formControlName="phone" required />
+            </div>
+            <label>City</label>
+            <div class="user-form-field">
+               <mat-icon>place</mat-icon>
+               <input type="text" formControlName="city" required />
+            </div>
+            <div class="text-center text-lg-end mt-4">
+               <button class="form-done-btn" type="submit">Done</button>
+               <button class="form-close-btn" type="button" (click)="closeEdit()">Close</button>
+            </div>
+            </form>
+         </div>
+      </div>
+   </section>
       </div>
 </div>
 </section>

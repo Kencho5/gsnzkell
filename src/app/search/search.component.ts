@@ -52,10 +52,6 @@ export class SearchComponent implements OnInit {
     this.activatedRoute.params.subscribe(params => {
       this.text = params['text'];
 
-      if(params['page']) {
-        this.pageIndex = parseInt(params['page']);
-      }
-
       this.searchPosts();
     });
   }
@@ -69,7 +65,7 @@ export class SearchComponent implements OnInit {
         if (res["code"] == 200) {
           this.posts = res['data'];
           this.count = res['count'];
-          this.pages = this.numToArray(Math.ceil(res['count'] / 2));
+          this.pages = this.numToArray(Math.ceil(res['count'] / 10));
           this.time = res['time'];
           
           if(this.pageIndex >= this.pages.length) {

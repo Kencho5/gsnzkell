@@ -687,7 +687,7 @@ app.post("/api/search", async (req, res) => {
   userPosts
     .find(query)
     .skip(parseInt(start))
-    .limit(2)
+    .limit(10)
     .sort({
       score: {
         $meta: "textScore",
