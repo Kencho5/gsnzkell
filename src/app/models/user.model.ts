@@ -6,5 +6,6 @@ export interface UserModel {
     instagram: string,
     facebook: string,
     city: string,
+    balance: number,
     pfp: boolean
 }

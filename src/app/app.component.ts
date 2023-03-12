@@ -55,7 +55,6 @@ export class AppComponent {
       searchFilter.classList.toggle('active');
     });
 
-
     if(localStorage.getItem('token')) {
       var ts = jwtDecode(localStorage.getItem('token'))['exp'];
       var exp = new Date(ts * 1000).getDate() - new Date().getDate();
