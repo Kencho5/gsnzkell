@@ -327,12 +327,36 @@ User Page CSS
   float: right;
 }
 
-.post-buttons {
-  display: flex;
-  justify-content: space-around;
+.vip-button {
+  box-shadow: 0px 0px 20px #ffca2b;
+
+  background-color: #ffc107 !important;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 10px;
+  transition: box-shadow 0.3s ease-in-out;
 }
 
-.post-buttons button {
+.vip-button:hover {
+  box-shadow: 0px 0px 30px #ff9c08;
+}
+
+.vip-button h1 {
+  color: white;
+}
+
+.post-buttons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.post-buttons h1 {
+  margin: 0;
+  font-weight: bold;
+}
+
+.function-button {
   border: none;
   border-radius: 10px;
     background: linear-gradient(
@@ -341,7 +365,7 @@ User Page CSS
     rgba(255, 255, 255, 0.7) 100%
   );
   backdrop-filter: blur(5px);
-  padding: 10px 30px;
+  padding: 10px 20px;
   margin: 10px;
 }
 

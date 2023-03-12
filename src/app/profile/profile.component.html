@@ -173,10 +173,15 @@
                   </ng-template>
                </div>
                <div class="post-buttons">
-                  <button type="button" (click)="openEdit(post)">
+                  <button class="function-button" type="button" (click)="openEdit(post)">
                      <mat-icon>edit</mat-icon>
                   </button>
-                  <button type="button" (click)="deletePost(post._id)">
+
+                  <button class="vip-button" type="button">
+                     <h1>VIP</h1>
+                  </button>
+
+                  <button class="function-button" type="button" (click)="deletePost(post._id)">
                      <mat-icon>delete</mat-icon>
                   </button>
                </div>
