@@ -786,5 +786,12 @@ app.post("/api/delete", (req, res) => {
   });
 });
 
+app.post("/api/payment", (req, res) => {
+
+  res.status(200).send({
+    code: 200,
+  });
+});
+
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));
 
