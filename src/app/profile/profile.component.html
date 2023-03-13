@@ -1,299 +1,321 @@
 <body>
-<!--   <mat-paginator [length]="postCount" -->
-<!--               [pageSize]="5" -->
-<!--               aria-label="Select page"> -->
-<!--               (page)="pageEvent = $event"     -->
-<!-- </mat-paginator> -->
-<header>
-   <!-- User Hero Section HTML Start -->
-   <section id="User-hero">
-      <div class="user-hero-wrapper">
-         <div class="container-fluid">
-            <div class="user-hero-container">
-               <div class="user-hero-top">
-                  <a class="user-edit-icon" 
-                     (click)="openModal()"
-                     ><img src="assets/images/edit.svg" alt="edit"
-                     /></a>
-               </div>
-               <div class="user-hero-bottom">
-                  <div class="row user-hero-bottom-wrapper align-items-end">
-                     <div class="col-lg-9">
-                        <div class="user-info-container d-md-flex">
-                           <div class="user-info-img">
-                              <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" />
-                              <ng-template #default>
-                                 <img src="assets/images/default_pfp.png" alt="user" />
-                              </ng-template>
-                           </div>
-                           <div class="user-info-content ms-3">
-                              <h4>{{userData.name}}</h4>
-                              <div
-                                 class="user-contact-details d-xl-flex align-items-center"
-                                 >
-                                 <li>
-                                    <img
-                                       src="assets/images/email-icon.svg"
-                                       alt="email-icon"
-                                       />
-                                    <a href="mailto:{{userData.email}}"
-                                       >{{userData.email}}</a
-                                       >
-                                 </li>
-                                 <li>
-                                    <img
-                                       src="assets/images/phone-icon.svg"
-                                       alt="phone-icon"
-                                       />
-                                    <a href="tel:(+995) {{userData.phone_number}}"
-                                       >{{userData.phone_number}}</a
-                                       >
-                                 </li>
-                                 <li>
-                                    <img
-                                       src="assets/images/location-icon.svg"
-                                       alt="location-icon"
-                                       />
-                                    <a>{{userData.city}}</a>
-                                 </li>
+   <!--   <mat-paginator [length]="postCount" -->
+   <!--               [pageSize]="5" -->
+   <!--               aria-label="Select page"> -->
+   <!--               (page)="pageEvent = $event"     -->
+   <!-- </mat-paginator> -->
+   <header>
+      <!-- User Hero Section HTML Start -->
+      <section id="User-hero">
+         <div class="user-hero-wrapper">
+            <div class="container-fluid">
+               <div class="user-hero-container">
+                  <div class="user-hero-top">
+                     <a class="user-edit-icon" 
+                        (click)="openModal()"
+                        ><img src="assets/images/edit.svg" alt="edit"
+                        /></a>
+                  </div>
+                  <div class="user-hero-bottom">
+                     <div class="row user-hero-bottom-wrapper align-items-end">
+                        <div class="col-lg-9">
+                           <div class="user-info-container d-md-flex">
+                              <div class="user-info-img">
+                                 <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" />
+                                 <ng-template #default>
+                                    <img src="assets/images/default_pfp.png" alt="user" />
+                                 </ng-template>
+                              </div>
+                              <div class="user-info-content ms-3">
+                                 <h4>{{userData.name}}</h4>
+                                 <div
+                                    class="user-contact-details d-xl-flex align-items-center"
+                                    >
+                                    <li>
+                                       <img
+                                          src="assets/images/email-icon.svg"
+                                          alt="email-icon"
+                                          />
+                                       <a href="mailto:{{userData.email}}"
+                                          >{{userData.email}}</a
+                                          >
+                                    </li>
+                                    <li>
+                                       <img
+                                          src="assets/images/phone-icon.svg"
+                                          alt="phone-icon"
+                                          />
+                                       <a href="tel:(+995) {{userData.phone_number}}"
+                                          >{{userData.phone_number}}</a
+                                          >
+                                    </li>
+                                    <li>
+                                       <img
+                                          src="assets/images/location-icon.svg"
+                                          alt="location-icon"
+                                          />
+                                       <a>{{userData.city}}</a>
+                                    </li>
+                                 </div>
                               </div>
                            </div>
                         </div>
-                     </div>
-                     <div class="col-lg-3">
-                        <div
-                           class="user-social d-flex align-items-center mt-4 mt-lg-0 float-md-end"
-                           >
-                           <li>
-                              <a href="{{userData.instagram}}"
-                                 ><img
-                                 src="assets/images/instagram-icon.svg"
-                                 alt="instagram-icon"
-                                 /></a>
-                           </li>
-                           <li>
-                              <a href="{{userData.facebook}}"
-                                 ><img
-                                 src="assets/images/facebook-icon.svg"
-                                 alt="facebook-icon"
-                                 /></a>
-                           </li>
+                        <div class="col-lg-3">
+                           <div
+                              class="user-social d-flex align-items-center mt-4 mt-lg-0 float-md-end"
+                              >
+                              <li>
+                                 <a href="{{userData.instagram}}"
+                                    ><img
+                                    src="assets/images/instagram-icon.svg"
+                                    alt="instagram-icon"
+                                    /></a>
+                              </li>
+                              <li>
+                                 <a href="{{userData.facebook}}"
+                                    ><img
+                                    src="assets/images/facebook-icon.svg"
+                                    alt="facebook-icon"
+                                    /></a>
+                              </li>
+                           </div>
                         </div>
                      </div>
                   </div>
                </div>
             </div>
          </div>
+      </section>
+      <div class="vip-modal">
+        <div class="modal-content">
+             <div class="text-center text-lg-end mt-4">
+               <form class="vip-form" [formGroup]="vipForm" (ngSubmit)="buyVip()">
+                 <h1><mat-icon>bolt</mat-icon> VIP <mat-icon>bolt</mat-icon></h1>
+                 <select>
+                  <option value="1">1 Day</option>
+                  <option value="2">2 Days</option>
+                  <option value="3">3 Days</option>
+                  <option value="4">4 Days</option>
+                  <option value="5">5 Days</option>
+                  <option value="6">6 Days</option>
+                  <option value="7">7 Days</option>
+                 </select>
+                 <div class="available-balance">
+                   <p>Service Price <span>2 ₾</span></p> 
+                   <p style="font-size: 14px;">Available Balance <span style="font-size: 20px;">{{userData.balance}} ₾</span></p> 
+                 </div>
+                  <button class="form-done-btn" type="submit">Buy</button>
+                  <button class="form-close-btn" type="button" (click)="closeVip()">Close</button>
+               </form>
+             </div>
+        </div>
       </div>
-   </section>
-   <section id="User-form">
-      <div class="user-modal">
-         <div class="user-form-container d-lg-flex">
-            <div class="user-upload-img mb-4 mb-lg-0">
-               <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" class="edit-profile-pfp" />
-               <ng-template #default>
-                  <img src="assets/images/default_pfp.png" alt="user" id="user-pfp" class="edit-profile-pfp"/>
-               </ng-template>
-               <a class="upload-btn" (click)="fileInput.click()">+</a>
-            </div>
-            <form [formGroup]="profileForm" (ngSubmit)="editProfile()"> 
-            <input hidden (change)="changePfp($event)" #fileInput type="file">
-            <div class="user-form-field">
-               <input type="text" formControlName="name" placeholder="Name" required />
-            </div>
-            <div class="user-form-field">
-               <img src="assets/images/email-icon.svg" alt="email-icon" />
-               <input
-                  type="email"
-                  formControlName="email"
-                  placeholder="Email"
-                  required
-                  />
-            </div>
-            <div class="user-form-field">
-               <img src="assets/images/phone-icon.svg" alt="phone-icon" />
-               <input type="text" formControlName="phone" placeholder="Phone Number" required />
-            </div>
-            <div class="user-form-field">
-               <img
-                  src="assets/images/location-icon.svg"
-                  alt="location-icon"
-                  />
-               <input type="text" formControlName="city" placeholder="City" required />
-            </div>
-            <div class="user-form-field">
-               <img src="assets/images/instagram-gray-icon.svg" alt="social-icon" />
-               <input
-                  type="text"
-                  formControlName="instagram"
-                  placeholder="Instagram"
-                  required
-                  />
-            </div>
-            <div class="user-form-field">
-               <img src="assets/images/facebook-input.svg" alt="social-icon" />
-               <input
-                  type="text"
-                  formControlName="facebook"
-                  placeholder="Facebook"
-                  required
-                  />
-            </div>
-            <div class="text-center text-lg-end mt-4">
-               <button class="form-done-btn" type="submit">Done</button>
-               <button class="form-close-btn" type="button" (click)="closeModal()">Close</button>
-            </div>
-            </form>
-         </div>
-      </div>
-   </section>
-   <!-- User Hero Section HTML End -->
-</header>
-<!-- Header Part HTML
-   <!-- User Page Body Section HTML Start -->
-<div class="user-page-bottom-body">
-   <!-- Post Section HTML Start -->
-   <section id="Post" class="user-post">
-      <div class="post-wrapper position-relative">
-         <div class="container-fluid">
-            <div class="section-title">
-               <h2>{{userData.name|titlecase}}’s Posts</h2>
-            </div>
-            <div class="row align-items-center">
-               <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
-               <div class="post-card" (click)="openPost(post._id)">
-                  <div class="post-card-img position-relative">
-                     <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" />
-                     <span>{{post.postType|titlecase}}</span>
-                  </div>
-                  <h5>{{post.breed}}</h5>
-                  <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
-                  <ng-template #age>
-                     <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
+      <section id="User-form">
+         <div class="user-modal">
+            <div class="user-form-container d-lg-flex">
+               <div class="user-upload-img mb-4 mb-lg-0">
+                  <img *ngIf="userData.pfp == true; else default" src="assets/images/user-pfps/{{userData.email}}.jpg" alt="user" id="user-pfp" class="edit-profile-pfp" />
+                  <ng-template #default>
+                     <img src="assets/images/default_pfp.png" alt="user" id="user-pfp" class="edit-profile-pfp"/>
                   </ng-template>
+                  <a class="upload-btn" (click)="fileInput.click()">+</a>
                </div>
-               <div class="post-buttons">
-                  <button class="function-button" type="button" (click)="openEdit(post)">
-                     <mat-icon>edit</mat-icon>
-                  </button>
-
-                  <button class="vip-button" type="button">
-                     <h1>VIP</h1>
-                  </button>
-
-                  <button class="function-button" type="button" (click)="deletePost(post._id)">
-                     <mat-icon>delete</mat-icon>
-                  </button>
+               <form [formGroup]="profileForm" (ngSubmit)="editProfile()"> 
+               <input hidden (change)="changePfp($event)" #fileInput type="file">
+               <div class="user-form-field">
+                  <input type="text" formControlName="name" placeholder="Name" required />
+               </div>
+               <div class="user-form-field">
+                  <img src="assets/images/email-icon.svg" alt="email-icon" />
+                  <input
+                     type="email"
+                     formControlName="email"
+                     placeholder="Email"
+                     required
+                     />
+               </div>
+               <div class="user-form-field">
+                  <img src="assets/images/phone-icon.svg" alt="phone-icon" />
+                  <input type="text" formControlName="phone" placeholder="Phone Number" required />
+               </div>
+               <div class="user-form-field">
+                  <img
+                     src="assets/images/location-icon.svg"
+                     alt="location-icon"
+                     />
+                  <input type="text" formControlName="city" placeholder="City" required />
+               </div>
+               <div class="user-form-field">
+                  <img src="assets/images/instagram-gray-icon.svg" alt="social-icon" />
+                  <input
+                     type="text"
+                     formControlName="instagram"
+                     placeholder="Instagram"
+                     required
+                     />
+               </div>
+               <div class="user-form-field">
+                  <img src="assets/images/facebook-input.svg" alt="social-icon" />
+                  <input
+                     type="text"
+                     formControlName="facebook"
+                     placeholder="Facebook"
+                     required
+                     />
+               </div>
+               <div class="text-center text-lg-end mt-4">
+                  <button class="form-done-btn" type="submit">Done</button>
+                  <button class="form-close-btn" type="button" (click)="closeModal()">Close</button>
+               </div>
+               </form>
+            </div>
+         </div>
+      </section>
+      <!-- User Hero Section HTML End -->
+   </header>
+   <!-- Header Part HTML
+      <!-- User Page Body Section HTML Start -->
+   <div class="user-page-bottom-body">
+      <!-- Post Section HTML Start -->
+      <section id="Post" class="user-post">
+         <div class="post-wrapper position-relative">
+            <div class="container-fluid">
+               <div class="section-title">
+                  <h2>{{userData.name|titlecase}}’s Posts</h2>
+               </div>
+               <div class="row align-items-center">
+                  <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
+                     <div class="post-card" (click)="openPost(post._id)">
+                        <div class="post-card-img position-relative">
+                           <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" />
+                           <span>{{post.postType|titlecase}}</span>
+                        </div>
+                        <h5>{{post.breed}}</h5>
+                        <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
+                        <ng-template #age>
+                           <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
+                        </ng-template>
+                     </div>
+                     <div class="post-buttons">
+                        <button class="function-button" type="button" (click)="openEdit(post)">
+                           <mat-icon>edit</mat-icon>
+                        </button>
+                        <button class="vip-button" type="button" (click)="openVip()">
+                           <h1>VIP</h1>
+                        </button>
+                        <button class="function-button" type="button" (click)="deletePost(post._id)">
+                           <mat-icon>delete</mat-icon>
+                        </button>
+                     </div>
+                  </div>
+               </div>
+               <div class="latest-pagination">
+                  <div class="latest-pagi-wrapper">
+                     <ul (click)="pagination($event)">
+                        <li class="arrow-left">
+                           <img
+                              src="assets/images/chevron-left.svg"
+                              alt="chevron-left"
+                              class="arrow-left"
+                              />
+                        </li>
+                        <li *ngFor="let page of pages" class="pageNum" [ngClass]="{'active': page === pageIndex}">{{page}}</li>
+                        <li class="arrow-right">
+                           <img
+                              src="assets/images/chevron-right.svg"
+                              alt="chevron-right"
+                              class="arrow-right"
+                              />
+                        </li>
+                     </ul>
+                     <section id="User-form">
+                        <div class="user-modal edit-modal">
+                           <div class="user-form-container d-lg-flex">
+                              <form [formGroup]="postForm" (ngSubmit)="editPost()" class="edit-post-form"> 
+                              <label>Breed</label>
+                              <div class="user-form-field">
+                                 <mat-icon>badge</mat-icon>
+                                 <input type="text" formControlName="breed" required />
+                              </div>
+                              <label>Description</label>
+                              <div class="user-form-field">
+                                 <mat-icon>description</mat-icon>
+                                 <input type="text" formControlName="description" required />
+                              </div>
+                              <label>Phone</label>
+                              <div class="user-form-field">
+                                 <mat-icon>phone</mat-icon>
+                                 <input type="text" formControlName="phone" required />
+                              </div>
+                              <label>City</label>
+                              <div class="user-form-field">
+                                 <mat-icon>place</mat-icon>
+                                 <input type="text" formControlName="city" required />
+                              </div>
+                              <div class="text-center text-lg-end mt-4">
+                                 <button class="form-done-btn" type="submit">Done</button>
+                                 <button class="form-close-btn" type="button" (click)="closeEdit()">Close</button>
+                              </div>
+                              </form>
+                           </div>
+                        </div>
+                     </section>
+                  </div>
                </div>
             </div>
          </div>
-                     <div class="latest-pagination">
-              <div class="latest-pagi-wrapper">
-                <ul (click)="pagination($event)">
-                  <li class="arrow-left">
-                    <img
-                      src="assets/images/chevron-left.svg"
-                      alt="chevron-left"
-                      class="arrow-left"
-                    />
-                  </li>
-                  <li *ngFor="let page of pages" class="pageNum" [ngClass]="{'active': page === pageIndex}">{{page}}</li>
-                  <li class="arrow-right">
-                    <img
-                      src="assets/images/chevron-right.svg"
-                      alt="chevron-right"
-                      class="arrow-right"
-                    />
-                  </li>
-                </ul>
-              </div>
-            </div>
-     <section id="User-form">
-      <div class="edit-modal">
-         <div class="user-form-container d-lg-flex">
-            <form [formGroup]="postForm" (ngSubmit)="editPost()" class="edit-post-form"> 
-              <label>Breed</label>
-            <div class="user-form-field">
-              <mat-icon>badge</mat-icon>
-               <input type="text" formControlName="breed" required />
-            </div>
-            <label>Description</label>
-            <div class="user-form-field">
-               <mat-icon>description</mat-icon>
-               <input type="text" formControlName="description" required />
-            </div>
-            <label>Phone</label>
-            <div class="user-form-field">
-               <mat-icon>phone</mat-icon>
-               <input type="text" formControlName="phone" required />
-            </div>
-            <label>City</label>
-            <div class="user-form-field">
-               <mat-icon>place</mat-icon>
-               <input type="text" formControlName="city" required />
-            </div>
-            <div class="text-center text-lg-end mt-4">
-               <button class="form-done-btn" type="submit">Done</button>
-               <button class="form-close-btn" type="button" (click)="closeEdit()">Close</button>
-            </div>
-            </form>
-         </div>
-      </div>
-   </section>
-      </div>
-</div>
-</section>
-<!-- Post Section HTML End -->
-<!-- User Footer Section HTML Start -->
-<footer id="User-footer" class="user-footer">
-   <div class="container-fluid">
-      <div class="user-footer-container">
-         <div class="row align-items-center">
-            <div class="col-md-4">
-               <div class="footer-logo">
-                  <a class="logo" href="index.html"
-                     ><img src="assets/images/logo.svg" alt="logo" />Pender</a
-                     >
-               </div>
-            </div>
-            <div class="col-md-4">
-               <div
-                  class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
-                  >
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/instagram-gray-icon.svg"
-                        alt="instagram-gray-icon"
-                        /></a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/facebook-gray-icon.svg"
-                        alt="facebook-gray-icon"
-                        /></a>
-                  </li>
-               </div>
-            </div>
-            <div class="col-md-4 mt-4 mt-md-0">
-               <div
-                  class="footer-copyright text-center text-md-start float-md-end"
-                  >
-                  <p>
-                     <img
-                        class="me-3"
-                        src="assets/images/copyright-icon.svg"
-                        alt="copyright-icon"
-                        />All rights reserved
-                  </p>
+      </section>
+      <!-- Post Section HTML End -->
+      <!-- User Footer Section HTML Start -->
+      <footer id="User-footer" class="user-footer">
+         <div class="container-fluid">
+            <div class="user-footer-container">
+               <div class="row align-items-center">
+                  <div class="col-md-4">
+                     <div class="footer-logo">
+                        <a class="logo" href="index.html"
+                           ><img src="assets/images/logo.svg" alt="logo" />Pender</a
+                           >
+                     </div>
+                  </div>
+                  <div class="col-md-4">
+                     <div
+                        class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
+                        >
+                        <li>
+                           <a href="#"
+                              ><img
+                              src="assets/images/instagram-gray-icon.svg"
+                              alt="instagram-gray-icon"
+                              /></a>
+                        </li>
+                        <li>
+                           <a href="#"
+                              ><img
+                              src="assets/images/facebook-gray-icon.svg"
+                              alt="facebook-gray-icon"
+                              /></a>
+                        </li>
+                     </div>
+                  </div>
+                  <div class="col-md-4 mt-4 mt-md-0">
+                     <div
+                        class="footer-copyright text-center text-md-start float-md-end"
+                        >
+                        <p>
+                           <img
+                              class="me-3"
+                              src="assets/images/copyright-icon.svg"
+                              alt="copyright-icon"
+                              />All rights reserved
+                        </p>
+                     </div>
+                  </div>
                </div>
             </div>
          </div>
-      </div>
+      </footer>
+      <!-- User Footer Section HTML End -->
    </div>
-</footer>
-<!-- User Footer Section HTML End -->
-</div>
-<!-- User Page Body Section HTML End -->
+   <!-- User Page Body Section HTML End -->
 </body>

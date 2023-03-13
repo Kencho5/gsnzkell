@@ -135,6 +135,61 @@ User Page CSS
 }
 
 /* User Form Section CSS Start */
+/* The Modal (background) */
+.vip-modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: #fefefe;
+  border-radius: 20px;
+  margin: auto; /* Center the modal both horizontally and vertically */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 0; bottom: 0; left: 0; right: 0; /* Center the modal both horizontally and vertically */
+}
+
+.vip-form h1{
+  font-weight: bold;
+}
+
+.available-balance {
+  border: 2px solid #d4efdd;
+  background-color: #f2fbf7;
+  opacity: 0.7;
+  padding: 5px;
+  font-weight: bold;
+  margin: 20px;
+  // text-align: left;
+}
+
+.available-balance span {
+  font-size: 22px;
+}
+
+.available-balance p {
+  margin: 0;
+}
+
+select {
+  border: 1px solid #0b2f5b;
+  padding: 18px 40px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
+}
 
 .user-form-container {
   margin-top: 150px;
@@ -157,13 +212,10 @@ User Page CSS
   display: block;
 }
 
-.edit-modal {
-  display: none;
-}
-
-.edit-modal.active {
+.vip-modal.active {
   display: block;
 }
+
 
 .user-upload-img {
   position: relative;

@@ -32,6 +32,12 @@ export class ProfileComponent implements OnInit {
     phone:  new FormControl('', Validators.required),
   });
 
+  vipForm = new FormGroup({
+    days:  new FormControl('', Validators.required),
+    authToken:  new FormControl('', Validators.required),
+  });
+
+
 
   userData;
   posts;
@@ -57,6 +63,7 @@ export class ProfileComponent implements OnInit {
       facebook: user["facebook"],
       instagram: user["instagram"],
       city: user["city"],
+      balance: user['balance'],
       pfp: user['pfp']
     }
   }
@@ -95,15 +102,23 @@ export class ProfileComponent implements OnInit {
     document.querySelector('.user-modal').classList.remove('active')
   }
 
-   openEdit(post) {
-    this.postForm.setValue({
-      id: post._id,
-      breed: post.breed,
-      city: post.city,
-      description: post.description,
-      phone: post.phone
-    })
-    document.querySelector('.edit-modal').classList.toggle('active');
+   openVip() {
+     document.querySelector('.vip-modal').classList.toggle('active');
+  }
+
+  closeVip() {
+    document.querySelector('.vip-modal').classList.remove('active')
+  }
+
+ openEdit(post) {
+  this.postForm.setValue({
+    id: post._id,
+    breed: post.breed,
+    city: post.city,
+    description: post.description,
+    phone: post.phone
+  })
+  document.querySelector('.edit-modal').classList.toggle('active');
   }
 
   closeEdit() {
@@ -166,7 +181,6 @@ export class ProfileComponent implements OnInit {
     this.loadPosts()
   }
 
-
   numToArray(x) {
     const result = [];
     for (let i = 1; i <= x; i++) {
@@ -175,5 +189,8 @@ export class ProfileComponent implements OnInit {
     return result;
   }
 
+  buyVip() {
+    console.log(this.vipForm)
+  }
 
 }
