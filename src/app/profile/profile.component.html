@@ -91,7 +91,8 @@
              <div class="text-center text-lg-end mt-4">
                <form class="vip-form" [formGroup]="vipForm" (ngSubmit)="buyVip()">
                  <h1><mat-icon>bolt</mat-icon> VIP <mat-icon>bolt</mat-icon></h1>
-                 <select>
+                 <select [(ngModel)]="daysSelected" formControlName="days">
+                   <option value="" selected disabled>Select Days</option>
                   <option value="1">1 Day</option>
                   <option value="2">2 Days</option>
                   <option value="3">3 Days</option>
@@ -101,7 +102,7 @@
                   <option value="7">7 Days</option>
                  </select>
                  <div class="available-balance">
-                   <p>Service Price <span>2 ₾</span></p> 
+                   <p>Service Price <span>{{daysSelected * 2}} ₾</span></p> 
                    <p style="font-size: 14px;">Available Balance <span style="font-size: 20px;">{{userData.balance}} ₾</span></p> 
                  </div>
                   <button class="form-done-btn" type="submit">Buy</button>
@@ -200,7 +201,7 @@
                         <button class="function-button" type="button" (click)="openEdit(post)">
                            <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="vip-button" type="button" (click)="openVip()">
+                        <button class="vip-button" type="button" (click)="openVip(post._id)">
                            <h1>VIP</h1>
                         </button>
                         <button class="function-button" type="button" (click)="deletePost(post._id)">

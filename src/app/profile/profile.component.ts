@@ -33,17 +33,17 @@ export class ProfileComponent implements OnInit {
   });
 
   vipForm = new FormGroup({
+    id:  new FormControl('', Validators.required),
     days:  new FormControl('', Validators.required),
     authToken:  new FormControl('', Validators.required),
   });
-
-
 
   userData;
   posts;
   pfp;
   animal: string;
   pageIndex = 1;
+  daysSelected = 1;
   pages = [];
 
   constructor(
@@ -102,8 +102,11 @@ export class ProfileComponent implements OnInit {
     document.querySelector('.user-modal').classList.remove('active')
   }
 
-   openVip() {
-     document.querySelector('.vip-modal').classList.toggle('active');
+   openVip(id) {
+    document.querySelector('.vip-modal').classList.toggle('active');
+    
+    this.vipForm.controls['id'].setValue(id);
+    this.vipForm.controls['authToken'].setValue(localStorage.getItem('token'));
   }
 
   closeVip() {
@@ -128,12 +131,10 @@ export class ProfileComponent implements OnInit {
   editPost() {
     this._profileService.updatePostData({details: this.postForm.value}).subscribe((res) => {
       if (res["code"] == 200) {
-        console.log(res)
+        this.loadPosts();
+        this.closeEdit();
       }
     });
-
-    this.loadPosts();
-    this.closeEdit();
   }
 
   editProfile() {
@@ -190,7 +191,13 @@ export class ProfileComponent implements OnInit {
   }
 
   buyVip() {
-    console.log(this.vipForm)
+    if(this.vipForm.valid) {
+      this._profileService.buyVip(this.vipForm.value).subscribe((res) => {
+        if (res["code"] == 200) {
+          this.closeVip();
+        }
+      });
+    }
   }
 
 }

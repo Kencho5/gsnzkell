@@ -24,7 +24,7 @@ export class ProfileService {
   }
 
   updatePostData(data) {
-    return this._http.post('/api/edit-post', data).pipe(
+    return this._http.post('/api/editPost', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
       }));
@@ -37,5 +37,11 @@ export class ProfileService {
       }));
   }
 
+    buyVip(data) {
+    return this._http.post('/api/buyVip', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
 
 }
