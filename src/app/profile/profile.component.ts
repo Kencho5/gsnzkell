@@ -71,6 +71,7 @@ export class ProfileComponent implements OnInit {
   loadPosts() {
     this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex}).subscribe((res) => {
         if (res["code"] == 200) {
+        console.log(res)
           this.posts = res['data'];
           this.pages = this.numToArray(Math.ceil(res['count'] / 4));
         }
@@ -194,6 +195,7 @@ export class ProfileComponent implements OnInit {
     if(this.vipForm.valid) {
       this._profileService.buyVip(this.vipForm.value).subscribe((res) => {
         if (res["code"] == 200) {
+          this.login.user.balance = res['balance'];
           this.closeVip();
         }
       });

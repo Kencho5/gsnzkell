@@ -649,6 +649,10 @@ app.post("/api/profile", async (req, res) => {
   var email = req.body.email;
   var start = req.body.pageIndex;
 
+  if(start == 1){
+    start = 0;
+  }
+
   var count = await countUserPosts(email);
 
   userPosts
