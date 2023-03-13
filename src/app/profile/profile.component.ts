@@ -6,7 +6,6 @@ import { LoginService } from '../login/login.service';
 
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
-
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -45,6 +44,7 @@ export class ProfileComponent implements OnInit {
   pageIndex = 1;
   daysSelected = 1;
   pages = [];
+  currentDate: Date = new Date();
 
   constructor(
     private router: Router,
@@ -70,11 +70,15 @@ export class ProfileComponent implements OnInit {
 
   loadPosts() {
     this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex}).subscribe((res) => {
-        if (res["code"] == 200) {
-          this.posts = res['data'];
-          this.pages = this.numToArray(Math.ceil(res['count'] / 4));
-        }
-      });
+      if (res["code"] == 200) {
+        this.posts = res['data'];
+        this.posts.forEach(post => {
+          var remaining = new Date(post.expireAt).getTime() - new Date().getTime()
+          post.expireAt = Math.floor(remaining / (1000 * 60 * 60 * 24));
+        })
+        this.pages = this.numToArray(Math.ceil(res['count'] / 4));
+      }
+    });
   }
 
   ngOnInit(): void {
@@ -196,6 +200,7 @@ export class ProfileComponent implements OnInit {
         if (res["code"] == 200) {
           this.login.user.balance = res['balance'];
           this.closeVip();
+          this.loadPosts();
         }
       });
     }

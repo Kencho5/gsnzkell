@@ -187,6 +187,9 @@
                <div class="row align-items-center">
                   <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
                     <div class="post-card" (click)="openPost(post._id)" [ngClass]="{'vip-post': post.vip}">
+                      <h1 class="expires-in">
+                        Expires In {{post.expireAt}} Days
+                      </h1>
                         <div class="post-card-img position-relative">
                            <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" />
                            <span class="post-type-label">{{post.postType|titlecase}}</span>
