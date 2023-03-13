@@ -6,7 +6,7 @@
          <div class="container-fluid">
             <div class="post-hero-title">
                <h2>
-                  For Sale
+                 {{post.postType}} - {{post.animal}}
                   <div class="post-hero-title-border">
                      <img
                         src="assets/images/post-hero-title-border-shape.svg"
@@ -53,6 +53,7 @@
                </owl-carousel-o>
             </div>
             <div class="post-info-container">
+              <h1 class="vip" *ngIf="post.vip">VIP</h1>
                <div class="row">
                   <div class="col-md-7">
                      <div class="post-info-text">

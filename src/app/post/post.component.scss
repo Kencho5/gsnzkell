@@ -108,6 +108,17 @@ Post Page CSS
   margin-bottom: -110px;
 }
 
+.vip {
+    -webkit-box-shadow:0px 0px 40px 0px rgba(255,203,46,1);
+  -moz-box-shadow: 0px 0px 40px 0px rgba(255,203,46,1);
+  box-shadow: 0px 0px 40px 0px rgba(255,203,46,1);
+  background-color: #ffca2b;
+  width: 60px;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 8px;
+}
+
 .post-hero-title h2 {
   position: relative;
   font-size: 56px;

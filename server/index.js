@@ -523,6 +523,7 @@ app.post("/api/post", (req, res) => {
           postType: result.postType,
           date: result.date,
           imgs: result.img_path,
+          vip: result.vip,
           city: result.city,
         };
 

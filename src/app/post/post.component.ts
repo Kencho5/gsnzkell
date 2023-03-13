@@ -34,12 +34,10 @@ export class PostComponent implements OnInit {
   getPostData() {
       this.postService.getPostData({'id': this.postID}).subscribe((res) => {
     if(res['code'] == 200) {
-      this.post = res['data'];
-      this.getSimilarPosts();
+        this.post = res['data'];
+        this.getSimilarPosts();
 
-      this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
-      this.post.postType = this.post.postType.toUpperCase();
-      
+        this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
     } else {
       this.router.navigate(['']);
     }
