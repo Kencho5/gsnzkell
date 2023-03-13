@@ -149,13 +149,14 @@ User Page CSS
 
 /* Modal Content */
 .modal-content {
+  text-align: center;
   background-color: #fefefe;
   border-radius: 20px;
   margin: auto; /* Center the modal both horizontally and vertically */
   padding: 20px;
   border: 1px solid #888;
   width: 400px;
-  height: 400px;
+  height: 350px;
   position: absolute;
   top: 0; bottom: 0; left: 0; right: 0; /* Center the modal both horizontally and vertically */
 }

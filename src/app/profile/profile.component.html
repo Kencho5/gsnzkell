@@ -88,7 +88,7 @@
       </section>
       <div class="vip-modal">
         <div class="modal-content">
-             <div class="text-center text-lg-end mt-4">
+          <div>
                <form class="vip-form" [formGroup]="vipForm" (ngSubmit)="buyVip()">
                  <h1><mat-icon>bolt</mat-icon> VIP <mat-icon>bolt</mat-icon></h1>
                  <select [(ngModel)]="daysSelected" formControlName="days">
@@ -205,9 +205,14 @@
                         <button class="function-button" type="button" (click)="openEdit(post)">
                            <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="vip-button" type="button" (click)="openVip(post._id)" *ngIf="!post.vip">
+                        <button class="vip-button" type="button" (click)="openVip(post._id)" *ngIf="!post.vip; else vip">
                            <h1>Buy VIP</h1>
                         </button>
+                        <ng-template #vip>
+                        <button class="vip-button" type="button">
+                           <h1>VIP</h1>
+                        </button>
+                        </ng-template>
                         <button class="function-button" type="button" (click)="deletePost(post._id)">
                            <mat-icon>delete</mat-icon>
                         </button>
