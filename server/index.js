@@ -684,6 +684,11 @@ app.post("/api/search", async (req, res) => {
 
   var searchText = req.body.text;
   var start = req.body.pageIndex;
+
+  if(start == 1) {
+    start = 0;
+  }
+
   var filters = req.body.filters;
 
   let query = {};
@@ -769,6 +774,7 @@ app.post("/api/home", (req, res) => {
             postType: result.postType.toUpperCase(),
             date: result.date,
             imgs: result.img_path,
+            vip: result.vip
           });
         });
 

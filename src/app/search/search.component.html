@@ -105,89 +105,20 @@
                 <h2>VIP Posts</h2>
               </div>
               <div class="row vip-post-wrapper align-items-center mt-5">
-                <div class="col-sm-6 col-lg-6 col-xl-4">
-                  <div class="post-card">
+              <div class="col-sm-6 col-lg-6 col-xl-4" *ngFor="let post of posts" (click)="openPost(post._id)">
+                  <div class="post-card vip-post" *ngIf="post.vip">
                     <div class="post-card-img position-relative">
-                      <img src="assets/images/post-img1.png" alt="post-img1" />
-                      <span>Selling</span>
+                      <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img1" />
+                      <span class="post-type-label">{{post.postType|titlecase}}</span>
+                      <span class="vip-label">VIP</span>
+
                     </div>
-                    <h5>German Rex 323</h5>
+                    <h5>{{post.breed}}</h5>
                     <div class="d-flex justify-content-between align-items-end">
-                      <p>
-                        1732
-                        <span
-                          ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 col-xl-4">
-                  <div class="post-card">
-                    <div class="post-card-img position-relative">
-                      <img src="assets/images/post-img2.png" alt="post-img2" />
-                      <span>Adopting</span>
-                    </div>
-                    <h5>German Rex 323</h5>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <p>
-                        1732
-                        <span
-                          ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 col-xl-4">
-                  <div class="post-card">
-                    <div class="post-card-img position-relative">
-                      <img src="assets/images/post-img3.png" alt="post-img3" />
-                      <span>Meeting</span>
-                    </div>
-                    <h5>German Rex 323</h5>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <p>
-                        1732
-                        <span
-                          ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 col-xl-4">
-                  <div class="post-card">
-                    <div class="post-card-img position-relative">
-                      <img src="assets/images/post-img3.png" alt="post-img3" />
-                      <span>Meeting</span>
-                    </div>
-                    <h5>German Rex 323</h5>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <p>
-                        1732
-                        <span
-                          ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-sm-6 col-lg-6 col-xl-4">
-                  <div class="post-card">
-                    <div class="post-card-img position-relative">
-                      <img src="assets/images/post-img3.png" alt="post-img3" />
-                      <span>Meeting</span>
-                    </div>
-                    <h5>German Rex 323</h5>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <p>
-                        1732
-                        <span
-                          ><img src="assets/images/currency.svg" alt="currency"
-                        /></span>
-                      </p>
-                    </div>
+                      <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
+                     <ng-template #age>
+                        <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
+                     </ng-template>                    </div>
                   </div>
                 </div>
               </div>
@@ -198,8 +129,6 @@
                 />
               </div>
             </div>
-
-            <!-- Latest Post -->
 
             <div class="post-wrapper position-relative mt-5 pt-5">
               <div class="d-md-flex justify-content-between align-items-center">
@@ -212,10 +141,13 @@
               </div>
               <div class="row align-items-center mt-4">
                                 <div class="col-sm-6 col-lg-6 col-xl-4" *ngFor="let post of posts" (click)="openPost(post._id)">
-                  <div class="post-card">
+                  <div class="post-card" [ngClass]="{'vip-post': post.vip}">
                     <div class="post-card-img position-relative">
                       <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img1" />
-                      <span>{{post.postType|titlecase}}</span>
+                      <span class="post-type-label">{{post.postType|titlecase}}</span>
+
+                      <span class="vip-label" *ngIf="post.vip">VIP</span>
+
                     </div>
                     <h5>{{post.breed}}</h5>
                     <div class="d-flex justify-content-between align-items-end">

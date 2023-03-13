@@ -71,7 +71,6 @@ export class ProfileComponent implements OnInit {
   loadPosts() {
     this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex}).subscribe((res) => {
         if (res["code"] == 200) {
-        console.log(res)
           this.posts = res['data'];
           this.pages = this.numToArray(Math.ceil(res['count'] / 4));
         }

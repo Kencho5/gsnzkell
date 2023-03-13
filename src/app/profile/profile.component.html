@@ -186,10 +186,11 @@
                </div>
                <div class="row align-items-center">
                   <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
-                     <div class="post-card" (click)="openPost(post._id)">
+                    <div class="post-card" (click)="openPost(post._id)" [ngClass]="{'vip-post': post.vip}">
                         <div class="post-card-img position-relative">
                            <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" />
-                           <span>{{post.postType|titlecase}}</span>
+                           <span class="post-type-label">{{post.postType|titlecase}}</span>
+                           <span class="vip-label" *ngIf="post.vip">VIP</span>
                         </div>
                         <h5>{{post.breed}}</h5>
                         <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
@@ -201,8 +202,8 @@
                         <button class="function-button" type="button" (click)="openEdit(post)">
                            <mat-icon>edit</mat-icon>
                         </button>
-                        <button class="vip-button" type="button" (click)="openVip(post._id)">
-                           <h1>VIP</h1>
+                        <button class="vip-button" type="button" (click)="openVip(post._id)" *ngIf="!post.vip">
+                           <h1>Buy VIP</h1>
                         </button>
                         <button class="function-button" type="button" (click)="deletePost(post._id)">
                            <mat-icon>delete</mat-icon>
