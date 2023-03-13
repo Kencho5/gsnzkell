@@ -452,6 +452,7 @@ app.post("/api/upload", async (req, res) => {
     date: new Date(),
     img_path: imgs,
     city: form["city"],
+    expireAt: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000)
   };
 
   userPosts.insertOne(data, function (err, result) {
