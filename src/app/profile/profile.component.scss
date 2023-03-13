@@ -386,6 +386,35 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   margin-top: -20px;
 }
 
+.renew-div {
+  text-align: center;
+  width: 50px;
+  border-radius: 100%;
+  height: 50px;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  margin: auto;
+  margin-top: 10px;
+  transition: transform .3s ease-in-out;
+}
+
+.renew-div:hover {
+  transform: rotate(360deg);
+}
+
+.renew-div mat-icon {
+  font-size: 35px;
+  width: 35px;
+  height: 35px;
+  margin-top: 6px;
+  cursor: pointer;
+}
+
 .expires-in {
   text-align: center;
   font-weight: bold;

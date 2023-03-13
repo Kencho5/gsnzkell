@@ -187,6 +187,7 @@
                <div class="row align-items-center">
                   <div class="col-sm-6 col-lg-3" *ngFor="let post of posts">
                     <div class="post-card" (click)="openPost(post._id)" [ngClass]="{'vip-post': post.vip}">
+
                       <h1 class="expires-in">
                         Expires In {{post.expireAt}} Days
                       </h1>
@@ -217,6 +218,10 @@
                            <mat-icon>delete</mat-icon>
                         </button>
                      </div>
+                     <div class="renew-div">
+                      <mat-icon>cached</mat-icon>
+                    </div>
+
                   </div>
                </div>
                <div class="latest-pagination">
