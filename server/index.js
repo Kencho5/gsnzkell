@@ -656,6 +656,8 @@ app.post("/api/profile", async (req, res) => {
 
   if(start == 1){
     start = 0;
+  } else {
+    start = (start * 4) - 4; 
   }
 
   var count = await countUserPosts(email);
