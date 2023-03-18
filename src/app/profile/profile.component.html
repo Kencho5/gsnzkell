@@ -46,7 +46,7 @@
                                           alt="phone-icon"
                                           />
                                        <a href="tel:(+995) {{userData.phone_number}}"
-                                          >{{userData.phone_number}}</a
+                                          >{{userData.phone}}</a
                                           >
                                     </li>
                                     <li>
@@ -97,6 +97,7 @@
                   <button class="form-done-btn" (click)="renewPost()">Renew</button>
                   <button class="form-close-btn" type="button" (click)="toggleRenew(0)">Close</button>
              </div>
+             <p *ngIf="balanceMessage" style="color: red; font-weight: bold; margin-top: 50px;">{{balanceMessage}}</p>
         </div>
       </div>
       <div class="vip-modal">

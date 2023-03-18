@@ -46,6 +46,7 @@ export class ProfileComponent implements OnInit {
   pages = [];
   currentDate: Date = new Date();
   renewID: string;
+  balanceMessage: string;
 
   constructor(
     private router: Router,
@@ -137,7 +138,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile() {
-    this._profileService.updateUserData(this.postForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
+    this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
       if (res["code"] == 200) {
         localStorage.setItem('token', res['token'])
         this.login.user = jwtDecode(res['token']);
@@ -212,6 +213,8 @@ export class ProfileComponent implements OnInit {
 
         this.loadPosts();
         this.toggleRenew(0);
+      } else {
+        this.balanceMessage = res['message'];
       }
     });
   }

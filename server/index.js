@@ -154,6 +154,7 @@ app.post("/api/register", (req, res) => {
       phone: req.body.phoneNumber,
       city: req.body.city,
       password: hash,
+      balance: 0
     };
 
     users.insertOne(data, function (err, result) {
@@ -298,8 +299,7 @@ app.post("/api/update", (req, res) => {
         facebook: facebook,
         instagram: instagram,
         pfp: pfpSet,
-      },
-      $currentDate: { lastModified: true },
+      }
     }
   );
 
@@ -864,12 +864,12 @@ app.post("/api/renew", async (req, res) => {
   var authToken = req.body.authToken;
   var user = jwt.verify(authToken, publicKEY, signOptions);
 
-  var { balance } = await getUserBalance(user['_id']);
+  var { balance } = await getUserBalance(user['id']);
   
   if(balance - 0.25 >= 0) {
     
     var updated = await users.findOneAndUpdate({
-        _id: user._id
+        _id: user.id
       }, 
       {
         $inc: { balance: -0.25 }
