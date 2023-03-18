@@ -452,7 +452,8 @@ app.post("/api/upload", async (req, res) => {
     date: new Date(),
     img_path: imgs,
     city: form["city"],
-    expireAt: new Date(Date.now() + 20 * 24 * 60 * 60 * 1000)
+    vip: false,
+    expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000)
   };
 
   userPosts.insertOne(data, function (err, result) {
@@ -832,7 +833,7 @@ app.post("/api/buyVip", async (req, res) => {
           _id: postID
         }, 
           {
-            $set: { vip: { status: true, expireAt: new Date(Date.now() + days * 24 * 60 * 60 * 1000) } }
+            $set: { vip: { status: true, expireAt: new Date(Date.now() + 5000) } }
           }
         )
 
@@ -855,6 +856,49 @@ function getUserBalance(id) {
     _id: id
   })
 } 
+
+app.post("/api/renew", async (req, res) => {
+  var id = req.body.id;
+  var authToken = req.body.authToken;
+  var user = jwt.verify(authToken, publicKEY, signOptions);
+
+  var { balance } = await getUserBalance(user['_id']);
+  
+  if(balance - 0.25 >= 0) {
+    
+    var updated = await users.findOneAndUpdate({
+        _id: user._id
+      }, 
+      {
+        $inc: { balance: -0.25 }
+      },
+      {
+        returnDocument: "after"
+      }
+    )
+
+    var token = jwt.sign(updated['value'], privateKEY, signOptions);
+
+    await userPosts.updateOne({
+      _id: id
+    },
+      {
+        $set: { expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000) }
+      }
+    )
+
+    res.status(200).send({
+      code: 200,
+      token: token
+    });
+  } else {
+    res.status(200).send({
+      code: 500,
+      message: "Not Enought Balance"
+    });
+  }
+});
+
 
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));
 

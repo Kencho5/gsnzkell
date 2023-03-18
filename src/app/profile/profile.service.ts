@@ -44,4 +44,11 @@ export class ProfileService {
       }));
   }
 
+    renewPost(data) {
+    return this._http.post('/api/renew', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
+
 }

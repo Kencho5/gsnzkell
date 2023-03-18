@@ -86,6 +86,19 @@
             </div>
          </div>
       </section>
+      <div class="renew-modal">
+        <div class="modal-content">
+          <div>
+                 <h1><mat-icon>cached</mat-icon> Renew Post</h1>
+                 <div class="available-balance">
+                   <p>Service Price <span>0.25 ₾</span></p> 
+                   <p style="font-size: 14px;">Available Balance <span style="font-size: 20px;">{{userData.balance}} ₾</span></p> 
+                 </div>
+                  <button class="form-done-btn" (click)="renewPost()">Renew</button>
+                  <button class="form-close-btn" type="button" (click)="toggleRenew(0)">Close</button>
+             </div>
+        </div>
+      </div>
       <div class="vip-modal">
         <div class="modal-content">
           <div>
@@ -189,7 +202,7 @@
                     <div class="post-card" (click)="openPost(post._id)" [ngClass]="{'vip-post': post.vip}">
 
                       <h1 class="expires-in">
-                        Expires In {{post.expireAt}} Days
+                        Expires In {{post.expires}} Days
                       </h1>
                         <div class="post-card-img position-relative">
                            <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" />
@@ -218,7 +231,7 @@
                            <mat-icon>delete</mat-icon>
                         </button>
                      </div>
-                     <div class="renew-div">
+                     <div class="renew-div" (click)="toggleRenew(post._id)">
                       <mat-icon>cached</mat-icon>
                     </div>
 

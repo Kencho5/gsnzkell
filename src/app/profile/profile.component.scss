@@ -136,7 +136,7 @@ User Page CSS
 
 /* User Form Section CSS Start */
 /* The Modal (background) */
-.vip-modal {
+.vip-modal, .renew-modal {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -220,6 +220,13 @@ select {
   display: block;
 }
 
+.renew-modal {
+  display: none;
+}
+
+.renew-modal.active {
+  display: block;
+}
 
 .user-upload-img {
   position: relative;

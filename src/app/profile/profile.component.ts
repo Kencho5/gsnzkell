@@ -45,6 +45,7 @@ export class ProfileComponent implements OnInit {
   daysSelected = 1;
   pages = [];
   currentDate: Date = new Date();
+  renewID: string;
 
   constructor(
     private router: Router,
@@ -53,19 +54,7 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   getProfileData() {
-    var user = this.login.user;
-
-    this.userData = {
-      id: user["id"],
-      email: user["email"],
-      name: user["name"],
-      phone_number: user["phone"],
-      facebook: user["facebook"],
-      instagram: user["instagram"],
-      city: user["city"],
-      balance: user['balance'],
-      pfp: user['pfp']
-    }
+    this.userData = this.login.user;
   }
 
   loadPosts() {
@@ -73,8 +62,8 @@ export class ProfileComponent implements OnInit {
       if (res["code"] == 200) {
         this.posts = res['data'];
         this.posts.forEach(post => {
-          var remaining = new Date(post.expireAt).getTime() - new Date().getTime()
-          post.expireAt = Math.floor(remaining / (1000 * 60 * 60 * 24));
+          var remaining = new Date(post.expires).getTime() - new Date().getTime()
+          post.expires = Math.floor(remaining / (1000 * 60 * 60 * 24));
         })
         this.pages = this.numToArray(Math.ceil(res['count'] / 4));
       }
@@ -115,6 +104,12 @@ export class ProfileComponent implements OnInit {
 
   closeVip() {
     document.querySelector('.vip-modal').classList.remove('active')
+  }
+
+  toggleRenew(id) {
+    document.querySelector('.renew-modal').classList.toggle('active');
+    
+    this.renewID = id;
   }
 
  openEdit(post) {
@@ -199,11 +194,26 @@ export class ProfileComponent implements OnInit {
       this._profileService.buyVip(this.vipForm.value).subscribe((res) => {
         if (res["code"] == 200) {
           this.login.user.balance = res['balance'];
+          this.userData.balance = res['balance'];
+
           this.closeVip();
           this.loadPosts();
         }
       });
     }
+  }
+
+  renewPost() {
+    var token = localStorage.getItem('token');
+     this._profileService.renewPost({id: this.renewID, authToken: localStorage.getItem('token')}).subscribe((res) => {
+      if (res["code"] == 200) {
+        this.userData.balance = jwtDecode(res['token'])['balance'];
+        localStorage.setItem('token', res['token']);
+
+        this.loadPosts();
+        this.toggleRenew(0);
+      }
+    });
   }
 
 }
