@@ -307,7 +307,7 @@ app.post("/api/update", (req, res) => {
 
   var payload = {
     id: id,
-    name: username,
+    username: username,
     email: email,
     phone: phone,
     facebook: facebook,

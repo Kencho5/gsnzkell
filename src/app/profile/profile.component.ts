@@ -15,7 +15,7 @@ import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms'
 export class ProfileComponent implements OnInit {
 
     profileForm = new FormGroup({
-    name:  new FormControl(this.login.user['name'], Validators.required),
+    name:  new FormControl(this.login.user['username'], Validators.required),
     email:  new FormControl(this.login.user['email'], Validators.required),
     phone:  new FormControl(this.login.user['phone'], Validators.required),
     city:  new FormControl(this.login.user['city'], Validators.required),
