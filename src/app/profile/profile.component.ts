@@ -56,6 +56,7 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     this.userData = this.login.user;
+    console.log(this.userData)
   }
 
   loadPosts() {
@@ -209,6 +210,7 @@ export class ProfileComponent implements OnInit {
      this._profileService.renewPost({id: this.renewID, authToken: localStorage.getItem('token')}).subscribe((res) => {
       if (res["code"] == 200) {
         this.userData.balance = jwtDecode(res['token'])['balance'];
+        console.log(jwtDecode(res['token']))
         localStorage.setItem('token', res['token']);
 
         this.loadPosts();

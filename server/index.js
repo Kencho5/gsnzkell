@@ -99,26 +99,29 @@ app.post("/api/login", (req, res) => {
     },
     (err, responseDB) => {
       if (responseDB) {
+        console.log(responseDB)
         bcrypt.compare(password, responseDB.password, async (error, result) => {
-          var payload = {
-            id: responseDB._id,
-            name: responseDB.username,
-            email: responseDB.email,
-            phone: responseDB.phone,
-            instagram: responseDB.instagram,
-            facebook: responseDB.facebook,
-            city: responseDB.city,
-            balance: responseDB.balance,
-            pfp: responseDB.pfp,
-          };
+          if(result) {
+            var payload = {
+              id: responseDB._id,
+              username: responseDB.username,
+              email: responseDB.email,
+              phone: responseDB.phone,
+              instagram: responseDB.instagram,
+              facebook: responseDB.facebook,
+              city: responseDB.city,
+              balance: responseDB.balance,
+              pfp: responseDB.pfp,
+            };
 
-          var token = jwt.sign(payload, privateKEY, signOptions);
+            var token = jwt.sign(payload, privateKEY, signOptions);
 
-          res.status(200).send({
-            status: 200,
-            message: "Successfully Logged In!",
-            token: token,
-          });
+            res.status(200).send({
+              status: 200,
+              message: "Successfully Logged In!",
+              token: token,
+            });
+          }
         });
       } else {
         res.status(200).send({
@@ -879,8 +882,20 @@ app.post("/api/renew", async (req, res) => {
         returnDocument: "after"
       }
     )
+    
+    var payload = {
+      id: updated.value._id,
+      username: updated.value.username,
+      email: updated.value.email,
+      phone: updated.value.phone,
+      instagram: updated.value.instagram,
+      facebook: updated.value.facebook,
+      city: updated.value.city,
+      balance: updated.value.balance,
+      pfp: updated.value.pfp,
+    };
 
-    var token = jwt.sign(updated['value'], privateKEY, signOptions);
+    var token = jwt.sign(payload, privateKEY, signOptions);
 
     await userPosts.updateOne({
       _id: id
