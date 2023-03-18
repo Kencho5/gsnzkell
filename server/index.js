@@ -829,6 +829,8 @@ app.post("/api/buyVip", async (req, res) => {
           }
         )
 
+        var token = jwt.sign(updated['value'], privateKEY, signOptions);
+
         await userPosts.updateOne({
           _id: postID
         }, 
@@ -839,7 +841,7 @@ app.post("/api/buyVip", async (req, res) => {
 
         res.status(200).send({
             code: 200,
-            balance: updated['value'].balance
+            token: token
         });
       } else {
         res.status(200).send({

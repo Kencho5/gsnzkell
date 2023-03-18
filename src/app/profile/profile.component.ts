@@ -193,8 +193,8 @@ export class ProfileComponent implements OnInit {
     if(this.vipForm.valid) {
       this._profileService.buyVip(this.vipForm.value).subscribe((res) => {
         if (res["code"] == 200) {
-          this.login.user.balance = res['balance'];
-          this.userData.balance = res['balance'];
+          this.userData.balance = jwtDecode(res['token'])['balance'];
+          localStorage.setItem('token', res['token']);
 
           this.closeVip();
           this.loadPosts();
