@@ -68,7 +68,7 @@ export class SearchComponent implements OnInit {
           this.pages = this.numToArray(Math.ceil(res['count'] / 10));
           this.time = res['time'];
           
-          if(this.pageIndex >= this.pages.length) {
+          if(this.pageIndex > this.pages.length) {
             this.pageIndex = 1;
           }
         }

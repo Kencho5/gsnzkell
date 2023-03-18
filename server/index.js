@@ -99,7 +99,6 @@ app.post("/api/login", (req, res) => {
     },
     (err, responseDB) => {
       if (responseDB) {
-        console.log(responseDB)
         bcrypt.compare(password, responseDB.password, async (error, result) => {
           if(result) {
             var payload = {
@@ -430,7 +429,7 @@ app.post("/api/upload", async (req, res) => {
 
     email = jwt.verify(token, publicKEY, signOptions)["email"];
 
-    userName = jwt.verify(token, publicKEY, signOptions)["name"];
+    userName = jwt.verify(token, publicKEY, signOptions)["username"];
   } else {
     res.status(200).send({
       code: 500,
@@ -693,7 +692,10 @@ app.post("/api/search", async (req, res) => {
 
   if(start == 1) {
     start = 0;
+  } else {
+    start = (start * 10) - 10;
   }
+  console.log(start)
 
   var filters = req.body.filters;
 
