@@ -138,7 +138,7 @@ export class ProfileComponent implements OnInit {
   }
 
   editProfile() {
-    this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp).subscribe((res) => {
+    this._profileService.updateUserData(this.profileForm.value, this.userData.email, this.pfp, this.userData.id, this.userData.pfp, this.userData.balance).subscribe((res) => {
       if (res["code"] == 200) {
         localStorage.setItem('token', res['token'])
         this.login.user = jwtDecode(res['token']);

@@ -311,6 +311,7 @@ app.post("/api/update", (req, res) => {
     facebook: facebook,
     instagram: instagram,
     city: city,
+    balance: req.body.balance,
     pfp: pfpSet,
   };
 
@@ -896,7 +897,7 @@ app.post("/api/renew", async (req, res) => {
   } else {
     res.status(200).send({
       code: 500,
-      message: "Not Enought Balance"
+      message: "Not Enought Balance",
     });
   }
 });
