@@ -57,7 +57,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     MatPaginatorModule,
     MatDialogModule,
     FormsModule,
-    CarouselModule
+    CarouselModule,
     // MatProgressSpinnerModule
   ],
   providers: [],

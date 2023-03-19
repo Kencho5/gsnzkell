@@ -66,29 +66,6 @@ app.post("/api/git", (req, res) => {
   }
 });
 
-async function getCounts(email) {
-  var strings = ["selling", "meeting", "adopting"];
-  let counts = [];
-
-  for (const string of strings) {
-    let count = await new Promise((resolve, reject) => {
-      userPosts.count(
-        {
-          email: email,
-          postType: string,
-        },
-        (error, count) => {
-          resolve(count);
-        }
-      );
-    });
-
-    counts.push(count);
-  }
-
-  return counts;
-}
-
 app.post("/api/login", (req, res) => {
   email = req.body.email;
   password = req.body.password;
@@ -253,12 +230,13 @@ async function getPosts(email, start) {
 
 app.post("/api/editPost", async (req, res) => {
   var details = req.body.details;
-  
+
   var result = await userPosts.updateOne(
     { _id: details.id },
     {
       $set: {
         breed: details.breed,
+        price: details.price,
         description: details.description,
         city: details.city,
         phone: details.phone,
@@ -544,45 +522,6 @@ app.post("/api/post", (req, res) => {
   );
 });
 
-app.post("/api/post", (req, res) => {
-  var postID = req.body.id;
-
-  userPosts.findOne(
-    {
-      _id: postID,
-    },
-    function (err, result) {
-      if (result) {
-        var data = {
-          id: result._id,
-          email: result.email,
-          name: result.name,
-          phone: result.phone,
-          animal: result.animal,
-          breed: result.breed,
-          price: result.price,
-          age: result.age,
-          ageType: result.ageType,
-          description: result.description,
-          postType: result.postType,
-          date: result.date,
-          imgs: result.img_path,
-          city: result.city,
-        };
-
-        res.status(200).send({
-          code: 200,
-          data: data,
-        });
-      } else {
-        res.status(200).send({
-          code: 500,
-        });
-      }
-    }
-  );
-});
-
 app.post("/api/similar", (req, res) => {
   breed = req.body.breed;
   city = req.body.city;
@@ -653,8 +592,27 @@ app.post("/api/getid", async (req, res) => {
 app.post("/api/profile", async (req, res) => {
   var email = req.body.email;
   var start = req.body.pageIndex;
+  var sortType = req.body.sort;
 
-  if(start == 1){
+  var sort = { expires: -1 };
+  if(sortType) {
+    switch(sortType) {
+      case "expiresDesc":
+        sort = { expires: -1 };
+        break;
+      case "expiresAsc":
+        sort = { expires: 1 };
+        break;
+      case "dateDesc":
+        sort = { date: -1 };
+        break;
+      case "dateAsc":
+        sort = { date: 1 };
+        break;
+    }
+  }
+
+  if(start == 1) {
     start = 0;
   } else {
     start = (start * 4) - 4; 
@@ -667,10 +625,8 @@ app.post("/api/profile", async (req, res) => {
       email: email
     })
     .skip(parseInt(start))
-    .limit(4)
-    .sort({
-      expires: -1
-    })
+    .limit(5)
+    .sort(sort)
     .toArray((err, response) => {
       if (err) {
         res.status(200).send({

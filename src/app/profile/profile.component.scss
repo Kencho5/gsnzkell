@@ -311,6 +311,77 @@ select {
 
 /* Post Section CSS Start */
 
+.sort-div {
+  text-align: center;
+  margin-left: 20px;
+}
+
+.sort-select {
+  border: none;
+}
+
+.post {
+  background-color: white;
+  margin: 20px;
+  border-radius: 15px;
+  height: 330px;
+}
+
+.top {
+  display: flex;
+}
+
+.details {
+  margin-top: 40px;
+}
+
+.details h1, p {
+  font-weight: bold;
+}
+
+.details mat-icon {
+  vertical-align: middle;
+  font-size: 20px;
+}
+
+.top img {
+  width: 30%;
+  min-height: 200px;
+  max-height: 200px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 30px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-evenly;
+  color: #3d3d3d;
+  margin-top: 20px;
+}
+
+.bottom mat-icon {
+  cursor: pointer;
+  transition: transform .2s;
+}
+
+.bottom p {
+  cursor: pointer;
+  border: 1px solid grey;
+  border-radius: 10px;
+  padding-inline: 5px;
+  transition: transform .2s;
+}
+
+.bottom p:hover {
+  transform: scale(1.25);
+}
+
+.bottom mat-icon:hover {
+  transform: scale(1.25);
+}
+
 .vip-post {
 -webkit-box-shadow:0px 0px 33px 0px rgba(255,202,43,1) !important;
 -moz-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;

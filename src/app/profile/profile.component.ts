@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import jwtDecode from 'jwt-decode';
 import { ProfileService } from './profile.service';
 import { LoginService } from '../login/login.service';
-
 import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
 
 @Component({
@@ -26,6 +25,7 @@ export class ProfileComponent implements OnInit {
   postForm = new FormGroup({
     id:  new FormControl('', Validators.required),
     breed:  new FormControl('', Validators.required),
+    price:  new FormControl('', Validators.required),
     city:  new FormControl('', Validators.required),
     description:  new FormControl('', Validators.required),
     phone:  new FormControl('', Validators.required),
@@ -47,6 +47,8 @@ export class ProfileComponent implements OnInit {
   currentDate: Date = new Date();
   renewID: string;
   balanceMessage: string;
+  expiredSort: boolean;
+  sortType;
 
   constructor(
     private router: Router,
@@ -56,18 +58,19 @@ export class ProfileComponent implements OnInit {
 
   getProfileData() {
     this.userData = this.login.user;
-    console.log(this.userData)
   }
 
   loadPosts() {
-    this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex}).subscribe((res) => {
+    this._profileService.getPosts({email: this.userData.email, pageIndex: this.pageIndex, sort: this.sortType}).subscribe((res) => {
       if (res["code"] == 200) {
         this.posts = res['data'];
         this.posts.forEach(post => {
-          var remaining = new Date(post.expires).getTime() - new Date().getTime()
+          var remaining = new Date(post.expires).getTime() - new Date().getTime();
+
           post.expires = Math.floor(remaining / (1000 * 60 * 60 * 24));
+          post.date = new Date(post.date).toDateString().slice(3);
         })
-        this.pages = this.numToArray(Math.ceil(res['count'] / 4));
+        this.pages = this.numToArray(Math.ceil(res['count'] / 5));
       }
     });
   }
@@ -118,6 +121,7 @@ export class ProfileComponent implements OnInit {
   this.postForm.setValue({
     id: post._id,
     breed: post.breed,
+    price: post.price,
     city: post.city,
     description: post.description,
     phone: post.phone
@@ -210,7 +214,6 @@ export class ProfileComponent implements OnInit {
      this._profileService.renewPost({id: this.renewID, authToken: localStorage.getItem('token')}).subscribe((res) => {
       if (res["code"] == 200) {
         this.userData.balance = jwtDecode(res['token'])['balance'];
-        console.log(jwtDecode(res['token']))
         localStorage.setItem('token', res['token']);
 
         this.loadPosts();
@@ -219,6 +222,12 @@ export class ProfileComponent implements OnInit {
         this.balanceMessage = res['message'];
       }
     });
+  }
+
+  sort(event) {
+    this.sortType = event.target.value;
+
+    this.loadPosts();
   }
 
 }
