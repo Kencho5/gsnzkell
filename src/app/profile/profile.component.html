@@ -138,6 +138,7 @@
                <form [formGroup]="profileForm" (ngSubmit)="editProfile()"> 
                <input hidden (change)="changePfp($event)" #fileInput type="file">
                <div class="user-form-field">
+                 <mat-icon>badge</mat-icon>
                   <input type="text" formControlName="name" placeholder="Name" required />
                </div>
                <div class="user-form-field">
