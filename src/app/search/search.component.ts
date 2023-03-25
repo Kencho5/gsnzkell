@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
   time;
   filterError;
   pages = [];
-  vipCount: number;
+  vipCount = 0;
   
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // pageEvent: PageEvent;
@@ -70,8 +70,10 @@ export class SearchComponent implements OnInit {
               this.vipCount += 1;
             }
           })
+
           this.count = res['count'];
           this.pages = this.numToArray(Math.ceil(res['count'] / 10));
+
           this.time = res['time'];
           
           if(this.pageIndex > this.pages.length) {

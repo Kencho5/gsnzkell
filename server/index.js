@@ -653,7 +653,6 @@ app.post("/api/search", async (req, res) => {
   } else {
     start = (start * 10) - 10;
   }
-  console.log(start)
 
   var filters = req.body.filters;
 
