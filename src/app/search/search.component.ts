@@ -86,19 +86,20 @@ export class SearchComponent implements OnInit {
   }
 
   filter() {
-    if(this.filterForm.valid) {
-      this.filterError = '';
+    this.searchPosts();
+    // if(this.filterForm.valid) {
+    //   this.filterError = '';
 
-      this.searchPosts();
-    } else {
-      let errors = [];
-      for(const invalid in this.filterForm.controls) {
-        if(this.filterForm.controls[invalid].invalid) {
-          errors.push(invalid);
-        }
-      }
-      this.filterError = `Please fill: ${errors}`;
-    }
+    //   this.searchPosts();
+    // } else {
+    //   let errors = [];
+    //   for(const invalid in this.filterForm.controls) {
+    //     if(this.filterForm.controls[invalid].invalid) {
+    //       errors.push(invalid);
+    //     }
+    //   }
+    //   this.filterError = `Please fill: ${errors}`;
+    // }
   }
 
   resetFilters() {
