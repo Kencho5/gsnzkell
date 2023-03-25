@@ -792,13 +792,29 @@ app.post("/api/buyVip", async (req, res) => {
           }
         )
 
-        var token = jwt.sign(updated['value'], privateKEY, signOptions);
+        var payload = {
+          id: updated.value._id,
+          username: updated.value.username,
+          email: updated.value.email,
+          phone: updated.value.phone,
+          instagram: updated.value.instagram,
+          facebook: updated.value.facebook,
+          city: updated.value.city,
+          balance: updated.value.balance,
+          pfp: updated.value.pfp,
+        };
+
+
+        var token = jwt.sign(payload, privateKEY, signOptions);
 
         await userPosts.updateOne({
           _id: postID
         }, 
           {
-            $set: { vip: { status: true, expireAt: new Date(Date.now() + 5000) } }
+            $set: {
+              vip: true,
+              expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000)
+            }
           }
         )
 
