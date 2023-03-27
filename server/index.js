@@ -716,10 +716,11 @@ async function countSearchResults(query) {
   return count;
 }
 
-app.post("/api/home", (req, res) => {
-  var data = [];
+app.post("/api/home", async (req, res) => {
+  var posts = [];
+  var vipPosts = [];
 
-  var result = userPosts
+  var result = await userPosts
     .find()
     .limit(8)
     .sort({
@@ -728,7 +729,7 @@ app.post("/api/home", (req, res) => {
     .toArray(function (err, results) {
       if (results) {
         results.forEach((result) => {
-          data.push({
+          posts.push({
             id: result._id,
             email: result.email,
             animal: result.animal,
@@ -742,17 +743,43 @@ app.post("/api/home", (req, res) => {
             vip: result.vip
           });
         });
-
-        res.status(200).send({
-          code: 200,
-          data: data,
-        });
-      } else {
-        res.status(200).send({
-          code: 500,
-        });
       }
     });
+
+        var vipResult = await userPosts
+      .find({
+        vip: true
+      })
+      .limit(4)
+      .sort({
+        expires: -1,
+      })
+      .toArray(function (err, results) {
+        if (results) {
+          results.forEach((result) => {
+            vipPosts.push({
+              id: result._id,
+              email: result.email,
+              animal: result.animal,
+              breed: result.breed,
+              price: result.price,
+              age: result.age,
+              ageType: result.ageType,
+              postType: result.postType.toUpperCase(),
+              date: result.date,
+              imgs: result.img_path,
+              vip: result.vip
+            });
+          });
+        }
+                res.status(200).send({
+          code: 200,
+          posts: posts,
+          vipPosts: vipPosts
+        });
+
+    });
+
 });
 
 app.post("/api/delete", (req, res) => {

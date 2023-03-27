@@ -10,6 +10,7 @@ import { UploadService } from '../upload/upload.service';
 })
 export class HomeComponent implements OnInit {
   posts = [];
+  vipPosts = [];
   urls = [];
   message: boolean;
   form_msg: boolean;
@@ -51,7 +52,8 @@ export class HomeComponent implements OnInit {
   latestPosts() {
     this.homeService.latestPosts().subscribe((res) => {
       if (res["code"] == 200) {
-        this.posts = res['data'];
+        this.posts = res['posts'];
+        this.vipPosts = res['vipPosts'];
       }
     });
   }
