@@ -46,6 +46,7 @@ export class PostComponent implements OnInit {
 
   getSimilarPosts() {
       this.postService.getSimilarPosts({
+      'id': this.post.id,
       'breed': this.post.breed,
       'city': this.post.city,
       'postType': this.post.postType

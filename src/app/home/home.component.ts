@@ -59,7 +59,6 @@ export class HomeComponent implements OnInit {
   }
 
   openPost(id) {
-    console.log(id)
       this.router.navigate([`/post/${id}`]);
   }
   
