@@ -14,6 +14,7 @@ export class PostComponent implements OnInit {
   postID: string;
   post;
   similarPosts;
+  userID: string;
 
   private routeSub: Subscription;
 
@@ -33,11 +34,13 @@ export class PostComponent implements OnInit {
 
   getPostData() {
       this.postService.getPostData({'id': this.postID}).subscribe((res) => {
-    if(res['code'] == 200) {
+    if(res['code'] == 200) {      
         this.post = res['data'];
         this.getSimilarPosts();
 
         this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
+
+        this.getID();
     } else {
       this.router.navigate(['']);
     }
@@ -45,27 +48,27 @@ export class PostComponent implements OnInit {
   }
 
   getSimilarPosts() {
-      this.postService.getSimilarPosts({
-      'id': this.post.id,
-      'breed': this.post.breed,
-      'city': this.post.city,
-      'postType': this.post.postType
-    })
-      .subscribe((res) => {
-    if(res['code'] == 200) {
-      this.similarPosts = res['data'];
-    }
-  });
+    this.postService.getSimilarPosts({
+        'id': this.post.id,
+        'breed': this.post.breed,
+        'city': this.post.city,
+        'postType': this.post.postType
+      })
+        .subscribe((res) => {
+      if(res['code'] == 200) {
+        this.similarPosts = res['data'];
+      }
+    });
+  }
+
+  getID() {
+    this.postService.getUserID({'email': this.post.email}).subscribe((res) => {
+      this.userID = res['data'];
+    });
   }
 
   openProfile() {
-    this.postService.getUserID({'email': this.post.email}).subscribe((res) => {
-      if(res['code'] == 200) {
-        this.router.navigate(['user', res['data']]);
-      } else {
-        this.router.navigate(['']);
-      }
-    });
+    this.router.navigate(['user', this.userID]);
   }
 
   openPost(id) {
