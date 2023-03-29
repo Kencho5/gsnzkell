@@ -15,4 +15,12 @@ export class UserService {
         return res;
       }));
   }
+
+  getPosts(data) {
+    return this._http.post('/api/userPosts', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      }));
+  }
+
 }

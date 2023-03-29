@@ -89,7 +89,7 @@ export class ProfileComponent implements OnInit {
   }
 
   openPost(id) {
-      this.router.navigate([`/post/${id}`]);
+    this.router.navigate([`/post/${id}`]);
   }
   
   openModal() {
