@@ -149,6 +149,7 @@ app.post("/api/user", async (req, res) => {
 
   const payload = {
     username: result.username,
+    email: result.email,
     phone: result.phone,
     facebook: result.facebook,
     instagram: result.instagram,
@@ -170,7 +171,7 @@ app.post("/api/userPosts", async (req, res) => {
 	if (start == 1) {
 		start = 0;
 	} else {
-		start = (start * 4) - 4;
+		start = (start * 5) - 5;
 	}
 
 	var count = await countUserPosts(email);
@@ -585,7 +586,7 @@ app.post("/api/profile", async (req, res) => {
 	if (start == 1) {
 		start = 0;
 	} else {
-		start = (start * 4) - 4;
+		start = (start * 5) - 5;
 	}
 
 	var count = await countUserPosts(email);
