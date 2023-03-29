@@ -149,7 +149,6 @@ app.post("/api/user", async (req, res) => {
 
   const payload = {
     username: result.username,
-    email: result.email,
     phone: result.phone,
     facebook: result.facebook,
     instagram: result.instagram,
@@ -233,7 +232,7 @@ app.post("/api/update", (req, res) => {
   } = req.body;
 
   if (pfp) {
-    savePfp(pfp, email);
+    savePfp(pfp, id);
     pfpSet = true;
   }
 
@@ -272,7 +271,7 @@ app.post("/api/update", (req, res) => {
   });
 });
 
-function savePfp(pfp, email) {
+function savePfp(pfp, id) {
   const savePath = os.platform() === "darwin"
     ? "../src/assets/images"
     : "/var/www/pender/assets";
@@ -290,7 +289,7 @@ function savePfp(pfp, email) {
   const data = Buffer.from(matches[2], "base64");
 
   fs.writeFile(
-    `${savePath}/user-pfps/${email}.jpg`,
+    `${savePath}/user-pfps/${id}.jpg`,
     data,
     "base64",
     (err) => {
