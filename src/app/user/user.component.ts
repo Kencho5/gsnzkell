@@ -22,13 +22,19 @@ import {
 })
 export class UserComponent implements OnInit {
   userID: string;
-
   userData;
   posts;
-  postCount = 0;
+  pfp;
+  animal: string;
+  pageIndex = 1;
+  daysSelected = 1;
+  pages = [];
+  currentDate: Date = new Date();
+  renewID: string;
+  balanceMessage: string;
+  expiredSort: boolean;
+  sortType;
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  pageEvent: PageEvent;
 
   private routeSub: Subscription;
 
@@ -37,35 +43,21 @@ export class UserComponent implements OnInit {
     private userService: UserService
   ) {}
 
-    loadUserData(start) {
-      this.userService.getProfileData({
-        'id': this.userID, 'start': start
-      }).subscribe((res) => {
-        if (res['code'] == 200) {
-          this.userData = res['data'];
-          this.posts = res['posts'];
-
-          for (var i in this.userData.counts) {
-            this.postCount += this.userData.counts[i];
-          }
-        }
-      });
-    }
-
   ngOnInit(): void {
-    this.paginator.page.subscribe(() => this.loadPage());
-
     this.routeSub = this.route.params.subscribe(params => {
       this.userID = params['id'];
+
+      this.getUserData();
     });
-    
-    this.loadUserData(0);
   }
 
-  loadPage() {
-    var start = this.paginator.pageIndex * this.paginator.pageSize;
-
-    this.loadUserData(start);
+  getUserData() {
+    this.userService.getProfileData({"id": this.userID}).subscribe((res) => {
+      if (res["code"] == 200) {
+        console.log(res)
+      }
+    });
   }
+
 
 }

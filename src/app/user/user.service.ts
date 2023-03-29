@@ -9,8 +9,8 @@ export class UserService {
 
   constructor(private _http: HttpClient) { }
 
-  getProfileData(id) {
-    return this._http.post('/api/user', id).pipe(
+  getProfileData(data) {
+    return this._http.post('/api/user', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
       }));

@@ -71,262 +71,201 @@ app.post("/api/git", (req, res) => {
 });
 
 app.post("/api/login", (req, res) => {
-	email = req.body.email;
-	password = req.body.password;
-
-	users.findOne({
-			email: email,
-		},
-		(err, responseDB) => {
-			if (responseDB) {
-				bcrypt.compare(password, responseDB.password, async (error, result) => {
-					if (result) {
-						var payload = {
-							id: responseDB._id,
-							username: responseDB.username,
-							email: responseDB.email,
-							phone: responseDB.phone,
-							instagram: responseDB.instagram,
-							facebook: responseDB.facebook,
-							city: responseDB.city,
-							balance: responseDB.balance,
-							pfp: responseDB.pfp,
-						};
-
-						var token = jwt.sign(payload, privateKEY, signOptions);
-
-						res.status(200).send({
-							status: 200,
-							message: "Successfully Logged In!",
-							token: token,
-						});
-					}
-				});
-			} else {
-				res.status(200).send({
-					status: 500,
-				});
-			}
-		}
-	);
+  const { email, password } = req.body;
+  
+  users.findOne({ email }, async (err, responseDB) => {
+    if (responseDB) {
+      const result = await bcrypt.compare(password, responseDB.password);
+      if (result) {
+        const payload = {
+          id: responseDB._id,
+          username: responseDB.username,
+          email,
+          phone: responseDB.phone,
+          instagram: responseDB.instagram,
+          facebook: responseDB.facebook,
+          city: responseDB.city,
+          balance: responseDB.balance,
+          pfp: responseDB.pfp,
+        };
+        const token = jwt.sign(payload, privateKEY, signOptions);
+        
+        res.status(200).send({
+          status: 200,
+          message: "Successfully Logged In!",
+          token,
+        });
+      }
+    } else {
+      res.status(200).send({
+        status: 500
+      });
+    }
+  });
 });
 
 app.post("/api/register", (req, res) => {
-	// ip = req.ip;
-
-	users.findOne({
-			email: req.body.email,
-		},
-		function(err, response) {
-			if (response) {
-				res.status(200).send({
-					code: 500,
-					message: "Email Already In Use.",
-				});
-			}
-		}
-	);
-
-	bcrypt.hash(req.body.password, 10, function(errorHash, hash) {
-		var data = {
-			_id: uuidv4(),
-			email: req.body.email,
-			username: req.body.name,
-			phone: req.body.phoneNumber,
-			city: req.body.city,
-			password: hash,
-			balance: 0
-		};
-
-		users.insertOne(data, function(err, result) {
-			if (result) {
-				res.status(200).send({
-					code: 200,
-					message: "Successfully Registered!",
-				});
-			} else {
-				res.status(200).send({
-					code: 500,
-					message: "Internal Server Error!",
-				});
-			}
-		});
-	});
+  users.findOne({ email: req.body.email }, (err, response) => {
+    if (response) {
+      res.status(200).send({
+        code: 500,
+        message: "Email Already In Use.",
+      });
+    } else {
+      bcrypt.hash(req.body.password, 10, (errorHash, hash) => {
+        const data = {
+          _id: uuidv4(),
+          email: req.body.email,
+          username: req.body.name,
+          phone: req.body.phoneNumber,
+          city: req.body.city,
+          password: hash,
+          balance: 0
+        };
+        users.insertOne(data, (err, result) => {
+          if (result) {
+            res.status(200).send({
+              code: 200,
+              message: "Successfully Registered!",
+            });
+          } else {
+            res.status(200).send({
+              code: 500,
+              message: "Internal Server Error!",
+            });
+          }
+        });
+      });
+    }
+  });
 });
 
-app.post("/api/user", (req, res) => {
-	id = req.body.id;
+app.post("/api/user", async (req, res) => {
+  const id = req.body.id;
 
-	users.findOne({
-			_id: id,
-		},
-		async (err, response) => {
-			let counts = await getCounts(response.email);
-			let posts = await getPosts(response.email, req.body.start);
+  const result = await users.findOne({
+    _id: id
+  });
 
-			if (err) {
-				res.status(200).send({
-					code: 404,
-				});
-			}
-			var payload = {
-				id: response.id,
-				name: response.username,
-				phone: response.phone,
-				instagram: response.instagram,
-				facebook: response.facebook,
-				counts: counts,
-				city: response.city,
-			};
+  const payload = {
+    username: result.username,
+    email: result.email,
+    phone: result.phone,
+    facebook: result.facebook,
+    instagram: result.instagram,
+    city: result.city,
+    pfp: result.pfp,
+  };
 
-			res.status(200).send({
-				code: 200,
-				data: payload,
-				posts: posts,
-			});
-		}
-	);
+  res.status(200).send({
+    code: 200,
+    data: payload
+  });
+
 });
-
-async function getCounts(email) {
-	let counts = [];
-	var strings = ["selling", "meeting", "adopting"];
-
-	for (const string of strings) {
-		let count = await new Promise((resolve, reject) => {
-			userPosts.count({
-					email: email,
-					postType: string,
-				},
-				(error, count) => {
-					resolve(count);
-				}
-			);
-		});
-
-		counts.push(count);
-	}
-
-	return counts;
-}
-
-async function getPosts(email, start) {
-	let docs = await new Promise((resolve, reject) => {
-		userPosts
-			.find({
-				email: email,
-			})
-			.skip(parseInt(start))
-			.limit(5)
-			.sort({
-				$natural: -1,
-			})
-			.toArray((err, docs) => {
-				resolve(docs);
-			});
-	});
-	return docs;
-}
 
 app.post("/api/editPost", async (req, res) => {
-	var details = req.body.details;
+  const details = req.body.details;
 
-	var result = await userPosts.updateOne({
-		_id: details.id
-	}, {
-		$set: {
-			breed: details.breed,
-			price: details.price,
-			description: details.description,
-			city: details.city,
-			phone: details.phone,
-		}
-	});
+  const result = await userPosts.updateOne(
+    { _id: details.id },
+    {
+      $set: {
+        breed: details.breed,
+        price: details.price,
+        description: details.description,
+        city: details.city,
+        phone: details.phone,
+      },
+    }
+  );
 
-	if (result['acknowledged'] == true) {
-		res.status(200).send({
-			code: 200,
-		});
-	}
+  if (result.acknowledged === true) {
+    res.status(200).send({
+      code: 200,
+    });
+  }
 });
 
 app.post("/api/update", (req, res) => {
-	id = req.body.id;
-	username = req.body.data.name;
-	email = req.body.data.email;
-	old_email = req.body.old_email;
-	phone = req.body.data.phone;
-	city = req.body.data.city;
-	facebook = req.body.data.facebook;
-	instagram = req.body.data.instagram;
-	pfpSet = req.body.pfpSet;
-	pfp = req.body.pfp;
+  const {
+    id,
+    data: { name: username, email, phone, city, facebook, instagram },
+    old_email,
+    pfpSet,
+    pfp,
+    balance,
+  } = req.body;
 
-	if (pfp != undefined) {
-		savePfp(pfp, email);
-		pfpSet = true;
-	}
+  if (pfp) {
+    savePfp(pfp, email);
+    pfpSet = true;
+  }
 
-	users.updateOne({
-		email: old_email
-	}, {
-		$set: {
-			email: email,
-			username: username,
-			phone: phone,
-			city: city,
-			facebook: facebook,
-			instagram: instagram,
-			pfp: pfpSet,
-		}
-	});
+  users.updateOne(
+    { email: old_email },
+    {
+      $set: {
+        email,
+        username,
+        phone,
+        city,
+        facebook,
+        instagram,
+        pfp: pfpSet,
+      },
+    }
+  );
 
-	var payload = {
-		id: id,
-		username: username,
-		email: email,
-		phone: phone,
-		facebook: facebook,
-		instagram: instagram,
-		city: city,
-		balance: req.body.balance,
-		pfp: pfpSet,
-	};
+  const payload = {
+    id,
+    username,
+    email,
+    phone,
+    facebook,
+    instagram,
+    city,
+    balance,
+    pfp: pfpSet,
+  };
 
-	var token = jwt.sign(payload, privateKEY, signOptions);
+  const token = jwt.sign(payload, privateKEY, signOptions);
 
-	res.status(200).send({
-		code: 200,
-		token: token,
-	});
+  res.status(200).send({
+    code: 200,
+    token,
+  });
 });
 
 function savePfp(pfp, email) {
-	if (os.platform() == "darwin") {
-		var save_path = "../src/assets/images";
-	} else {
-		var save_path = "/var/www/pender/assets";
-	}
+  const savePath = os.platform() === "darwin"
+    ? "../src/assets/images"
+    : "/var/www/pender/assets";
 
-	var base64Data = pfp;
+  const base64Data = pfp;
 
-	// Extract the image type and base64 data from the string
-	const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
-	if (!matches) {
-		console.error("Invalid base64 string");
-		return;
-	}
+  // Extract the image type and base64 data from the string
+  const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+  if (!matches) {
+    console.error("Invalid base64 string");
+    return;
+  }
 
-	const type = matches[1];
-	const data = Buffer.from(matches[2], "base64");
+  const type = matches[1];
+  const data = Buffer.from(matches[2], "base64");
 
-	fs.writeFile(`${save_path}/user-pfps/${email}.jpg`, data, "base64", (err) => {
-		if (err) {
-			console.error(err);
-			return;
-		}
-		console.log("File saved!");
-	});
+  fs.writeFile(
+    `${savePath}/user-pfps/${email}.jpg`,
+    data,
+    "base64",
+    (err) => {
+      if (err) {
+        console.error(err);
+        return;
+      }
+      console.log("File saved!");
+    }
+  );
 }
 
 function insertTest() {
@@ -397,86 +336,76 @@ function insertTest() {
 // insertTest()
 
 app.post("/api/upload", async (req, res) => {
-	token = req.body.user;
+  const token = req.body.user;
+  if (!jwt.verify(token, publicKEY, signOptions)) {
+    res.status(500).send({
+      code: 500,
+    });
+    return;
+  }
 
-	if (jwt.verify(token, publicKEY, signOptions)) {
-		var postID = uuidv4();
+  const postID = uuidv4();
+  const { email, username } = jwt.verify(token, publicKEY, signOptions);
+  const imgs = await saveImages(postID, req);
+  const form = req.body.form;
 
-		email = jwt.verify(token, publicKEY, signOptions)["email"];
+  const data = {
+    _id: postID,
+    email,
+    name: username,
+    animal: form.animal,
+    breed: form.breed,
+    price: parseInt(form.price),
+    age: parseInt(form.age),
+    ageType: form.ageType,
+    description: form.description,
+    postType: form.postType,
+    phone: form.phone,
+    date: new Date(),
+    img_path: imgs,
+    city: form.city,
+    vip: false,
+    expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
+  };
 
-		userName = jwt.verify(token, publicKEY, signOptions)["username"];
-	} else {
-		res.status(200).send({
-			code: 500,
-		});
-	}
-
-	var imgs = await saveImages(postID, req);
-
-	var form = req.body.form;
-
-	var data = {
-		_id: postID,
-		email: email,
-		name: userName,
-		animal: form["animal"],
-		breed: form["breed"],
-		price: parseInt(form["price"]),
-		age: parseInt(form["age"]),
-		ageType: form["ageType"],
-		description: form["description"],
-		postType: form["postType"],
-		phone: form["phone"],
-		date: new Date(),
-		img_path: imgs,
-		city: form["city"],
-		vip: false,
-		expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000)
-	};
-
-	userPosts.insertOne(data, function(err, result) {
-		if (result) {
-			res.status(200).send({
-				code: 200,
-				id: postID,
-			});
-		} else {
-			res.status(200).send({
-				code: 500,
-			});
-		}
-	});
+  userPosts.insertOne(data, function (err, result) {
+    if (result) {
+      res.status(200).send({
+        code: 200,
+        id: postID,
+      });
+    } else {
+      res.status(500).send({
+        code: 500,
+      });
+    }
+  });
 });
 
 async function saveImages(postID, req) {
-	if (os.platform() == "darwin") {
-		var save_path = "../src/assets/";
-	} else {
-		var save_path = "/var/www/pender/assets/";
-	}
+  const savePath = os.platform() === "darwin"
+    ? "../src/assets/"
+    : "/var/www/pender/assets/";
+  await fs.promises.mkdir(`${savePath}/postImages/${postID}`);
 
-	await fs.promises.mkdir(`${save_path}/postImages/${postID}`);
+  const imgs = [];
+  for (let i = 0; i < req.body.urls.length; i++) {
+    const base64Data = req.body.urls[i];
+    const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
-	const imgs = [];
-	for (let i = 0; i < req.body.urls.length; i++) {
-		const base64Data = req.body.urls[i];
-		const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
+    if (!matches) {
+      continue;
+    }
 
-		if (!matches) {
-			continue;
-		}
-
-		const type = matches[1];
-		const data = Buffer.from(matches[2], "base64");
-
-		await fs.promises.writeFile(
-			`${save_path}/postImages/${postID}/${i}.${type.split("/")[1]}`,
-			data,
-			"base64"
-		);
-		imgs.push(`${i}.${type.split("/")[1]}`);
-	}
-	return imgs;
+    const [, type, data] = matches;
+    await fs.promises.writeFile(
+      `${savePath}/postImages/${postID}/${i}.${type.split("/")[1]}`,
+      Buffer.from(data, "base64"),
+      "base64"
+    );
+    imgs.push(`${i}.${type.split("/")[1]}`);
+  }
+  return imgs;
 }
 
 app.post("/api/post", (req, res) => {
