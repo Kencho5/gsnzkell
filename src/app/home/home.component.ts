@@ -39,8 +39,13 @@ export class HomeComponent implements OnInit {
     private router: Router,
     private uploadService: UploadService
   ) { }
+  isLoading = true;
 
   ngOnInit(): void {
+    this.isLoading = true;
+    window.addEventListener('load', () => {
+      this.isLoading = false;
+    });
     this.latestPosts();
 
     this.searchForm = new FormGroup({
