@@ -27,7 +27,6 @@ import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +41,6 @@ import { LoadingComponent } from './loading/loading.component';
     UserComponent,
     SearchComponent,
     EditProfileComponent,
-    LoadingComponent,
   ],
   imports: [
     BrowserModule,
