@@ -276,7 +276,7 @@ app.post("/api/update", (req, res) => {
 function savePfp(pfp, id) {
   const savePath = os.platform() === "darwin"
     ? "../src/assets/images"
-    : "/var/www/pender/assets";
+    : "/root/";
 
   const base64Data = pfp;
 
@@ -421,7 +421,7 @@ app.post("/api/upload", async (req, res) => {
 async function saveImages(postID, req) {
   const savePath = os.platform() === "darwin"
     ? "../src/assets/"
-    : "/var/www/pender/assets/";
+    : "/root/";
   await fs.promises.mkdir(`${savePath}/postImages/${postID}`);
 
   const imgs = [];
