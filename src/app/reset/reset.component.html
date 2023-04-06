@@ -17,16 +17,9 @@
                       <div class="field padding-bottom--24">
                          <input type="submit" name="submit" value="Send Code">
                       </div>
-                   <div *ngIf="message == 'Successfully Logged In!'" class="success-div">
-                      <h4 class="success-text">
-                         {{message}}
-                      </h4>
-                   </div>
-                   <div *ngIf="message == 'Email Or Password Incorrect.' || message == 'Please fill out the form.'" class="error-div">
-                      <h4 class="error-text">
-                         {{message}}
-                      </h4>
-                 </div>
+                      <div *ngIf="message" class="error-div">
+                        <h4>Please Enter Your Email</h4>
+                      </div>
                    </form>
                 </div>
              </div>

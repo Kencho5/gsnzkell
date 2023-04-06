@@ -13,6 +13,7 @@ const {
 const rateLimit = require("express-rate-limit");
 const shell = require("shelljs");
 var os = require("os");
+const axios = require('axios');
 
 const url = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
@@ -891,5 +892,42 @@ app.post("/api/renew", async (req, res) => {
 	}
 });
 
+app.post("/api/reset", async (req, res) => {
+  const accessToken = '';
+  const fromEmail = 'support@pender.ge';
+  const toEmail = req.body.email;
+  const subject = 'Reset Password';
+  const content = '<h1>Hello from Zoho Mail API!</h1><p>This is a test email sent using the Zoho Mail API in Node.js.</p>';
+
+  sendEmail(accessToken, fromEmail, toEmail, subject, content);
+
+  res.status(200).send({
+    code: 200,
+  });
+
+});
+
+const sendEmail = async (accessToken, from, to, subject, content) => {
+  const apiUrl = 'https://mail.zoho.com/api/accounts/1000.KDTLXAFEOBAN3DBLHNMY9JRLCYPLEO/messages'; // Replace {account_id} with your Zoho Mail account ID
+  const headers = {
+    'Authorization': `Zoho-oauthtoken ${accessToken}`,
+    'Content-Type': 'application/json',
+  };
+
+  const data = {
+    'from': { 'email': from },
+    'to': [{ 'email': to }],
+    'subject': subject,
+    'content': content,
+    'contentType': 'html',
+  };
+
+  try {
+    const response = await axios.post(apiUrl, data, { headers: headers });
+    console.log('Email sent successfully:', response.data);
+  } catch (error) {
+    console.error('Error sending email:', error.response.data);
+  }
+};
 
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));

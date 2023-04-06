@@ -6,10 +6,10 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-reset',
   templateUrl: './reset.component.html',
-  styleUrls: ['./reset.component.scss']
+  styleUrls: ['../login/login.component.scss', './reset.component.scss']
 })
 export class ResetComponent implements OnInit {
-  message: string;
+  message: boolean;
 
   resetForm = this.formBuilder.group({
     email: ''
@@ -27,15 +27,12 @@ export class ResetComponent implements OnInit {
   }
 
   resetPass() {
-    const email = this.resetForm.value['email'];
-      const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
-      this.http.post('https://formspree.io/f/xpznvdyn',
-        { name: 'Pender', replyto: email, message: "DASDASDSADSA" },
-        { 'headers': headers }).subscribe(
-          response => {
-            console.log(response);
-          }
-        );
+    this.message = false;
+    if(this.resetForm.valid) {
+
+    } else {
+      this.message = true;
+    }
   }
 
 }

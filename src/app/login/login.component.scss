@@ -22,7 +22,8 @@ background-image:radial-gradient(at 0% 29%, hsla(30,100%,56%,1) 0px, transparent
 }
 
 h1 {
-	letter-spacing: -1px
+	letter-spacing: -1px;
+  font-weight: bold;
 }
 
 a {
@@ -31,6 +32,7 @@ a {
 }
 
 .login-root {
+  margin-top: 50px;
 	display: flex;
 	width: 100%;
 	min-height: 100vh;
