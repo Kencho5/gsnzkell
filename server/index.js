@@ -228,10 +228,11 @@ app.post("/api/update", (req, res) => {
     id,
     data: { name: username, email, phone, city, facebook, instagram },
     old_email,
-    pfpSet,
     pfp,
     balance,
   } = req.body;
+
+  var pfpSet = req.body.pfpSet;
 
   if (pfp) {
     savePfp(pfp, id);
@@ -269,7 +270,7 @@ app.post("/api/update", (req, res) => {
 
   res.status(200).send({
     code: 200,
-    token,
+    token: token,
   });
 });
 
