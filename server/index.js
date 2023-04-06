@@ -65,10 +65,53 @@ app.use(
 
 app.use(express.json());
 
-app.post("/api/git", (req, res) => {
-	if (req.body.after) {
-		shell.exec("./update.sh");
-	}
+app.post('/api/webhook', (req, res) => {
+  const { ref } = req.body;
+
+  if (ref === 'refs/heads/master') {
+    console.log('Received push event for master branch');
+
+    exec('git pull origin master', (err, stdout, stderr) => {
+      if (err) {
+        console.error(`Error: ${err}`);
+        return res.sendStatus(500);
+      }
+
+      console.log(`Pull successful: ${stdout}`);
+
+      exec('node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build', (err, stdout, stderr) => {
+        if (err) {
+          console.error(`Error: ${err}`);
+          return res.sendStatus(500);
+        }
+
+        console.log(`Build successful: ${stdout}`);
+
+        exec('cp -r ./dist/pender/* /usr/share/nginx/pender/', (err, stdout, stderr) => {
+          if (err) {
+            console.error(`Error: ${err}`);
+            return res.sendStatus(500);
+          }
+
+          console.log(`Copy successful: ${stdout}`);
+
+          exec('pm2 restart index', (err, stdout, stderr) => {
+            if (err) {
+              console.error(`Error: ${err}`);
+              return res.sendStatus(500);
+            }
+
+            console.log(`Restart successful: ${stdout}`);
+
+            return res.sendStatus(200);
+          });
+        });
+      });
+    });
+  } else {
+    console.log(`Received push event for branch ${ref}`);
+    return res.sendStatus(200);
+  }
 });
 
 app.post("/api/login", (req, res) => {
