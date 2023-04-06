@@ -80,7 +80,7 @@ app.post('/api/webhook', (req, res) => {
 
       console.log(`Pull successful: ${stdout}`);
 
-      exec('node --max_old_space_size=8192 ./node_modules/@angular/cli/bin/ng build', (err, stdout, stderr) => {
+      exec('node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build', (err, stdout, stderr) => {
         if (err) {
           console.error(`Error: ${err}`);
           return res.sendStatus(500);
