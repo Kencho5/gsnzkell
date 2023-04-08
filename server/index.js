@@ -660,75 +660,61 @@ app.post("/api/profile", async (req, res) => {
 });
 
 app.post("/api/search", async (req, res) => {
-	const startTime = Date.now();
+  const startTime = Date.now();
 
-	var searchText = req.body.text;
-	var start = req.body.pageIndex;
+  try {
+    const searchText = req.body.text;
+    const pageIndex = parseInt(req.body.pageIndex) || 1;
+    const filters = req.body.filters || {};
 
-	if (start == 1) {
-		start = 0;
-	} else {
-		start = (start * 10) - 10;
-	}
+    const start = pageIndex === 1 ? 0 : (pageIndex - 1) * 10;
 
-	var filters = req.body.filters;
+    const query = {
+      breed: {
+        $regex: new RegExp(searchText, "i")
+      }
+    };
 
-	let query = {};
+    for (const key in filters) {
+      if (filters[key] && filters[key] !== "none") {
+        if (key.includes("Min") || key.includes("Max")) {
+          const field = key.substring(0, key.indexOf("M"));
+          query[field] = {
+            $gte: parseInt(filters[field + "Min"]),
+            $lte: parseInt(filters[field + "Max"])
+          };
+        } else {
+          query[key] = filters[key];
+        }
+      }
+    }
 
-	(query.$text = {
-		$search: searchText
-	}), {
-		score: {
-			$meta: "textScore",
-		},
-	};
+    const count = await countSearchResults(query);
+    const response = await userPosts
+      .find(query)
+      .skip(start)
+      .limit(10)
+      .sort({
+        expires: -1
+      })
+      .toArray();
 
-	if (filters) {
-		for (const key in filters) {
-			if (filters[key] != "" && filters[key] != 'none') {
-				if (key.includes("Min") || key.includes("Max")) {
-					query[key.substring(0, key.indexOf("M"))] = {
-						$gte: parseInt(filters[key.substring(0, key.indexOf("M")) + "Min"]),
-						$lte: parseInt(filters[key.substring(0, key.indexOf("M")) + "Max"]),
-					};
-				} else {
-					query[key] = filters[key];
-				}
-			}
-		}
-	}
+    const end = Date.now();
+    const timeTaken = (end - startTime) / 1000;
 
-	var count = await countSearchResults(query);
-
-	userPosts
-		.find(query)
-		.skip(parseInt(start))
-		.limit(10)
-		.sort({
-			score: {
-				$meta: "textScore",
-			},
-			_id: 1,
-		})
-		.toArray((err, response) => {
-			if (err) {
-				res.status(200).send({
-					code: 500,
-				});
-			}
-
-			const end = Date.now();
-			const timeTaken = (end - startTime) / 1000;
-
-			res.status(200).send({
-				code: 200,
-				data: response,
-				count: count,
-				time: timeTaken,
-			});
-		});
+    res.status(200).send({
+      code: 200,
+      data: response,
+      count: count,
+      time: timeTaken
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).send({
+      code: 500
+    });
+  }
 });
-
 async function countSearchResults(query) {
 	const count = await userPosts.countDocuments(query);
 	return count;
