@@ -15,6 +15,8 @@ const shell = require("shelljs");
 var os = require("os");
 const axios = require('axios');
 const { exec } = require('child_process');
+const nodemailer = require('nodemailer');
+const session = require('express-session');
 
 const url = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
@@ -51,6 +53,12 @@ const limiter = rateLimit({
 	message: "Too many requests from this IP, please try again",
 });
 app.use(limiter);
+
+app.use(session({
+  secret: 'gsnzkell',
+  resave: false,
+  saveUninitialized: true
+}));
 
 app.use(
 	bodyParser.json({
@@ -924,41 +932,82 @@ app.post("/api/renew", async (req, res) => {
 });
 
 app.post("/api/reset", async (req, res) => {
-  const accessToken = '';
-  const fromEmail = 'support@pender.ge';
-  const toEmail = req.body.email;
-  const subject = 'Reset Password';
-  const content = '<h1>Hello from Zoho Mail API!</h1><p>This is a test email sent using the Zoho Mail API in Node.js.</p>';
-
-  sendEmail(accessToken, fromEmail, toEmail, subject, content);
+  const email = req.body.email;
+  const code = await sendEmail(email);
+  req.session.code = code;
+  req.session.email = email;
 
   res.status(200).send({
-    code: 200,
+    code: 200
   });
-
 });
 
-const sendEmail = async (accessToken, from, to, subject, content) => {
-  const apiUrl = 'https://mail.zoho.com/api/accounts/1000.KDTLXAFEOBAN3DBLHNMY9JRLCYPLEO/messages'; // Replace {account_id} with your Zoho Mail account ID
-  const headers = {
-    'Authorization': `Zoho-oauthtoken ${accessToken}`,
-    'Content-Type': 'application/json',
-  };
+app.post("/api/code", async (req, res) => {
+  const serverCode = req.session.code;
+  const userCode = req.body.code;
+  const password = req.body.password;
+  
+  if(parseInt(serverCode) === parseInt(userCode)) {
+    bcrypt.hash(password, 10, (errorHash, hash) => {
+      users.updateOne({
+        email: req.session.email
+      },
+        {
+          $set: {
+            password: hash
+          }
+        })
 
-  const data = {
-    'from': { 'email': from },
-    'to': [{ 'email': to }],
-    'subject': subject,
-    'content': content,
-    'contentType': 'html',
-  };
+      req.session.destroy();
+      res.status(200).send({
+        code: 200
+      });
+  });
 
-  try {
-    const response = await axios.post(apiUrl, data, { headers: headers });
-    console.log('Email sent successfully:', response.data);
-  } catch (error) {
-    console.error('Error sending email:', error.response.data);
+  } else {
+    res.status(200).send({
+      code: 500
+    });
   }
-};
+});
+
+
+const sendEmail = async (email) => {
+  const SMTP_SERVER = "smtp-relay.sendinblue.com";
+  const SMTP_PORT = 587;
+  const SMTP_USERNAME = "pendersupp@gmail.com";
+  const SMTP_PASSWORD = "1XcKNmfvdYpODSwI";
+  const EMAIL_FROM = "pendersupp@gmail.com";
+  const EMAIL_TO = email;
+  const EMAIL_SUBJECT = "Verification Code";
+  const code = Math.floor(Math.random() * 90000) + 10000;
+  const co_msg = `Code: ${code}`;
+
+  const transporter = nodemailer.createTransport({
+      host: SMTP_SERVER,
+      port: SMTP_PORT,
+      secure: false,
+      auth: {
+          user: SMTP_USERNAME,
+          pass: SMTP_PASSWORD
+      }
+  });
+
+  const mailOptions = {
+      from: EMAIL_FROM,
+      to: EMAIL_TO,
+      subject: EMAIL_SUBJECT,
+      text: co_msg
+  };
+
+  transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+          console.log(error);
+      } else {
+          console.log(`Email sent: ${info.response}`);
+      }
+  });
+  return code;
+}
 
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));
