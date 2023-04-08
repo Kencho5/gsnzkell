@@ -14,8 +14,9 @@ export class HomeComponent implements OnInit {
   urls = [];
   message: boolean;
   form_msg: boolean;
+  isLoading = true;
 
-    uploadForm = new FormGroup({
+  uploadForm = new FormGroup({
     animal:  new FormControl('', Validators.required),
     breed:  new FormControl('', Validators.required),
     price:  new FormControl(''),
@@ -41,6 +42,11 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
+    window.addEventListener('load', () => {
+      this.isLoading = false;
+    });
+
     this.latestPosts();
 
     this.searchForm = new FormGroup({
