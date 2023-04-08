@@ -26,12 +26,13 @@ export class AppComponent {
     text:  new FormControl()
   });
 
-   posts = [];
+  posts = [];
   postsLength;
   text: string;
   count;
   time;
   filterError;
+  isLoading = true;
 
 
   constructor(
@@ -44,6 +45,11 @@ export class AppComponent {
     ) { }
 
   ngOnInit(): void {
+    this.isLoading = true;
+    window.addEventListener('load', () => {
+      this.isLoading = false;
+    });
+
     this.searchForm = new FormGroup({
       text: new FormControl('', [Validators.required])
    });
