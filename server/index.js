@@ -971,7 +971,6 @@ app.post("/api/code", async (req, res) => {
   }
 });
 
-
 const sendEmail = async (email) => {
   const SMTP_SERVER = "smtp-relay.sendinblue.com";
   const SMTP_PORT = 587;
