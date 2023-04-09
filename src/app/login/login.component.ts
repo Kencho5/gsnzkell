@@ -6,48 +6,45 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   isRegistered = localStorage.getItem('isRegistered');
   loggedIn: boolean;
   message: string;
-  
+
   loginForm = this.formBuilder.group({
     email: '',
-    password: ''
+    password: '',
   });
-  
+
   constructor(
     private formBuilder: FormBuilder,
     private _loginService: LoginService,
     private router: Router
-    ) { }
-    
+  ) {}
+
   ngOnInit(): void {
     localStorage.removeItem('isRegistered');
-    
+
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
   }
-  
+
   loginRequest() {
-    if(this.loginForm.valid) {
+    if (this.loginForm.valid) {
       this._loginService.getLoginData(this.loginForm.value).subscribe((res) => {
-        if(res['status'] == 200) {
-          localStorage.setItem("token", res['token']);
+        if (res['status'] == 200) {
+          localStorage.setItem('token', res['token']);
           this.router.navigate(['/profile']);
-          
         } else {
-          this.message = "Email Or Password Incorrect.";
+          this.message = 'Email Or Password Incorrect.';
         }
       });
     } else {
-      this.message = "Please fill out the form.";
+      this.message = 'Please fill out the form.';
     }
-
   }
-
 }

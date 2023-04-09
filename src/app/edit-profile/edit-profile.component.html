@@ -1,43 +1,71 @@
-
 <div class="main">
   <h1 mat-dialog-title class="title">Edit Profile</h1>
-  <div mat-dialog-content style="border-radius: 10px;">
+  <div mat-dialog-content style="border-radius: 10px">
     <form [formGroup]="profileForm">
       <div class="input-div">
         <div class="icon-div">
           <mat-icon>badge</mat-icon>
         </div>
-        <input type="text" formControlName="name" placeholder="Name" required value="{{data.name}}">
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Name"
+          required
+          value="{{ data.name }}"
+        />
       </div>
       <div class="input-div">
         <div class="icon-div">
           <mat-icon>email</mat-icon>
         </div>
-        <input type="email" formControlName="email" placeholder="Email" required value="{{data.email}}">
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          required
+          value="{{ data.email }}"
+        />
       </div>
-        <div class="input-div">
+      <div class="input-div">
         <div class="icon-div">
           <mat-icon>call</mat-icon>
         </div>
-        <input type="text" formControlName="phone" placeholder="Phone Number" required value="{{data.phone_number}}">
+        <input
+          type="text"
+          formControlName="phone"
+          placeholder="Phone Number"
+          required
+          value="{{ data.phone_number }}"
+        />
       </div>
-        <div class="input-div">
+      <div class="input-div">
         <div class="icon-div">
           <mat-icon>place</mat-icon>
         </div>
-        <input type="text" formControlName="city" placeholder="City" required value="{{data.city}}">
+        <input
+          type="text"
+          formControlName="city"
+          placeholder="City"
+          required
+          value="{{ data.city }}"
+        />
       </div>
-        <div class="input-div">
+      <div class="input-div">
         <div class="icon-div">
           <mat-icon>facebook</mat-icon>
         </div>
-        <input type="text" formControlName="facebook" placeholder="Facebook Profile Link" required value="{{data.facebook}}">
+        <input
+          type="text"
+          formControlName="facebook"
+          placeholder="Facebook Profile Link"
+          required
+          value="{{ data.facebook }}"
+        />
       </div>
     </form>
   </div>
   <div mat-dialog-actions>
-      <button mat-button (click)="closeModal($event)" type="submit">Done</button>
-      <button mat-button (click)="closeModal($event)">Cancel</button>
-
+    <button mat-button (click)="closeModal($event)" type="submit">Done</button>
+    <button mat-button (click)="closeModal($event)">Cancel</button>
   </div>
 </div>

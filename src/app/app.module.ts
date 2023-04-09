@@ -12,7 +12,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ResetComponent } from './reset/reset.component';
 import { UploadComponent } from './upload/upload.component';
 import { MatSelectModule } from '@angular/material/select';
@@ -63,6 +63,6 @@ import { LoadingComponent } from './loading/loading.component';
     // MatProgressSpinnerModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

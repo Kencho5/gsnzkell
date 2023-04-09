@@ -3,59 +3,65 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProfileService {
-
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {}
 
   getPosts(data) {
     return this._http.post('/api/profile', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
 
   updateUserData(data, old_email, pfp, id, pfpSet, balance) {
-    return this._http.post('/api/update', {
-      data: data,
-      old_email: old_email,
-      pfp: pfp,
-      id: id,
-      pfpSet: pfpSet,
-      balance: balance
-    }).pipe(
-      map((res: HttpResponse<Response>) => {
-        return res;
-      }));
+    return this._http
+      .post('/api/update', {
+        data: data,
+        old_email: old_email,
+        pfp: pfp,
+        id: id,
+        pfpSet: pfpSet,
+        balance: balance,
+      })
+      .pipe(
+        map((res: HttpResponse<Response>) => {
+          return res;
+        })
+      );
   }
 
   updatePostData(data) {
     return this._http.post('/api/editPost', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
 
-    deletePost(data) {
+  deletePost(data) {
     return this._http.post('/api/delete', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
 
-    buyVip(data) {
+  buyVip(data) {
     return this._http.post('/api/buyVip', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
 
-    renewPost(data) {
+  renewPost(data) {
     return this._http.post('/api/renew', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
-
 }

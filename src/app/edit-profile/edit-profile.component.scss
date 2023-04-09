@@ -50,19 +50,19 @@ mat-icon {
 }
 
 input::-webkit-input-placeholder {
-    color: $light
+  color: $light;
 }
 
 input:-moz-placeholder {
-    color: $light
+  color: $light;
 }
 
 input::-moz-placeholder {
-    color: $light
+  color: $light;
 }
 
 input:-ms-input-placeholder {
-    color: $light
+  color: $light;
 }
 
 button {
@@ -74,4 +74,3 @@ button {
   border: 2px solid $dim;
   margin: auto;
 }
-

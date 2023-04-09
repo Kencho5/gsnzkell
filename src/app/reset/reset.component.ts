@@ -14,13 +14,11 @@ import { Router } from '@angular/router';
     trigger('fadeInOut', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms', style({ opacity: 1 }))
+        animate('300ms', style({ opacity: 1 })),
       ]),
-      transition(':leave', [
-        animate('300ms', style({ opacity: 0 }))
-      ])
-    ])
-  ]
+      transition(':leave', [animate('300ms', style({ opacity: 0 }))]),
+    ]),
+  ],
 })
 export class ResetComponent implements OnInit {
   message: boolean;
@@ -35,18 +33,17 @@ export class ResetComponent implements OnInit {
     private http: HttpClient,
     private resetService: ResetService,
     private router: Router
-    ) { }
+  ) {}
 
   ngOnInit(): void {
     this.resetForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]]
+      email: ['', [Validators.required, Validators.email]],
     });
 
     this.codeForm = this.formBuilder.group({
       code: ['', Validators.required],
-      password: ['', Validators.required]
+      password: ['', Validators.required],
     });
-
   }
 
   sendCode() {
@@ -82,5 +79,4 @@ export class ResetComponent implements OnInit {
       this.message = true;
     }
   }
-
 }

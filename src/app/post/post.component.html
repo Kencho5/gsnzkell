@@ -1,226 +1,258 @@
 <!-- Header Part HTML Start -->
 <header>
-   <!-- Post Hero Section HTML Start -->
-   <section id="Post-hero">
-      <div class="post-hero-wrapper position-relative">
-         <div class="container-fluid">
-            <div class="post-hero-title">
-               <h2>
-                 {{post.postType}} - {{post.animal}}
-                  <div class="post-hero-title-border">
-                     <img
-                        src="assets/images/post-hero-title-border-shape.svg"
-                        alt="post-hero-title-border-shape"
-                        />
-                  </div>
-               </h2>
+  <!-- Post Hero Section HTML Start -->
+  <section id="Post-hero">
+    <div class="post-hero-wrapper position-relative">
+      <div class="container-fluid">
+        <div class="post-hero-title">
+          <h2>
+            {{ post.postType }} - {{ post.animal }}
+            <div class="post-hero-title-border">
+              <img
+                src="assets/images/post-hero-title-border-shape.svg"
+                alt="post-hero-title-border-shape"
+              />
             </div>
-            <div class="post-hero-container d-none d-md-flex">
-               <div class="post-hero-card post-hero-card1">
-                  <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" alt="post-img5" />
-                  </div>
-               </div>
-               <div class="post-hero-card post-hero-card2">
-                  <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[1]}}" alt="post-img2" />
-                  </div>
-               </div>
-               <div class="post-hero-card post-hero-card3">
-                  <div class="post-hero-card-img">
-                     <img src="/assets/postImages/{{post.id}}/{{post.imgs[2]}}" alt="post-img3" />
-                  </div>
-               </div>
+          </h2>
+        </div>
+        <div class="post-hero-container d-none d-md-flex">
+          <div class="post-hero-card post-hero-card1">
+            <div class="post-hero-card-img">
+              <img
+                src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
+                alt="post-img5"
+              />
             </div>
-            <!-- Slider for Mobile -->
-            <div class="owl">
-               <owl-carousel-o [options]="customOptions">
-                  <ng-template carouselSlide>
-                     <div class="slide slide1">
-                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" class="slide-img" alt="img 1">
-                     </div>
-                  </ng-template>
-                  <ng-template carouselSlide>
-                     <div class="slide slide2">
-                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[1]}}" alt="img 2">
-                     </div>
-                  </ng-template>
-                  <ng-template carouselSlide>
-                     <div class="slide slide3">
-                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[2]}}" alt="img 3">
-                     </div>
-                  </ng-template>
-               </owl-carousel-o>
+          </div>
+          <div class="post-hero-card post-hero-card2">
+            <div class="post-hero-card-img">
+              <img
+                src="/assets/postImages/{{ post.id }}/{{ post.imgs[1] }}"
+                alt="post-img2"
+              />
             </div>
-            <div class="post-info-container">
-              <h1 class="vip" *ngIf="post.vip">VIP</h1>
-               <div class="row">
-                  <div class="col-md-7">
-                     <div class="post-info-text">
-                        <div class="post-info-location d-flex align-items-center">
-                           <li class="post-date position-relative">
-                              <img src="assets/images/calender.svg" alt="calender" />
-                              {{post.date}}
-                           </li>
-                           <li>
-                              <img
-                                 src="assets/images/location-icon.svg"
-                                 alt="calender"
-                                 />
-                              {{post.city|titlecase}}
-                           </li>
-                        </div>
-                        <div class="post-info-title">
-                           <h2>
-                              {{post.breed}}
-                              <img src="assets/images/slash.svg" alt="slash" /> {{post.age}} {{post.ageType}}
-                           </h2>
-                        </div>
-                        <div class="post-info-price" *ngIf="post.price != null">
-                           <h3>
-                              {{post.price}} ₾
-                           </h3>
-                        </div>
-                        <div class="post-info-description mt-5">
-                           <h4>Description</h4>
-                           <p>
-                              {{post.description}}
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-5" (click)="openProfile()">
-                     <div
-                        class="post-user-info d-flex align-items-center mt-4 mt-md-0"
-                        >
-                        <div class="post-user-img">
-                           <img src="assets/images/user-pfps/{{userID}}.jpg" alt="user-pfp">
-                           <!-- <img -->
-                           <!--   src="assets/images/user-profile.png" -->
-                           <!--   alt="user-profile" -->
-                           <!-- /> -->
-                        </div>
-                        <div class="post-user-info-text">
-                           <h4>{{post.name}}</h4>
-                           <p>
-                              <img
-                                 src="assets/images/phone-icon.svg"
-                                 alt="phone-icon"
-                                 />
-                              {{post.phone}}
-                           </p>
-                        </div>
-                     </div>
-                  </div>
-               </div>
+          </div>
+          <div class="post-hero-card post-hero-card3">
+            <div class="post-hero-card-img">
+              <img
+                src="/assets/postImages/{{ post.id }}/{{ post.imgs[2] }}"
+                alt="post-img3"
+              />
             </div>
-         </div>
-         <div class="post-hero-shape">
-            <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
-         </div>
+          </div>
+        </div>
+        <!-- Slider for Mobile -->
+        <div class="owl">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide>
+              <div class="slide slide1">
+                <img
+                  src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
+                  class="slide-img"
+                  alt="img 1"
+                />
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="slide slide2">
+                <img
+                  src="/assets/postImages/{{ post.id }}/{{ post.imgs[1] }}"
+                  alt="img 2"
+                />
+              </div>
+            </ng-template>
+            <ng-template carouselSlide>
+              <div class="slide slide3">
+                <img
+                  src="/assets/postImages/{{ post.id }}/{{ post.imgs[2] }}"
+                  alt="img 3"
+                />
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
+        <div class="post-info-container">
+          <h1 class="vip" *ngIf="post.vip">VIP</h1>
+          <div class="row">
+            <div class="col-md-7">
+              <div class="post-info-text">
+                <div class="post-info-location d-flex align-items-center">
+                  <li class="post-date position-relative">
+                    <img src="assets/images/calender.svg" alt="calender" />
+                    {{ post.date }}
+                  </li>
+                  <li>
+                    <img src="assets/images/location-icon.svg" alt="calender" />
+                    {{ post.city | titlecase }}
+                  </li>
+                </div>
+                <div class="post-info-title">
+                  <h2>
+                    {{ post.breed }}
+                    <img src="assets/images/slash.svg" alt="slash" />
+                    {{ post.age }} {{ post.ageType }}
+                  </h2>
+                </div>
+                <div class="post-info-price" *ngIf="post.price != null">
+                  <h3>{{ post.price }} ₾</h3>
+                </div>
+                <div class="post-info-description mt-5">
+                  <h4>Description</h4>
+                  <p>
+                    {{ post.description }}
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-5" (click)="openProfile()">
+              <div
+                class="post-user-info d-flex align-items-center mt-4 mt-md-0"
+              >
+                <div class="post-user-img">
+                  <img
+                    src="assets/images/user-pfps/{{ userID }}.jpg"
+                    alt="user-pfp"
+                  />
+                  <!-- <img -->
+                  <!--   src="assets/images/user-profile.png" -->
+                  <!--   alt="user-profile" -->
+                  <!-- /> -->
+                </div>
+                <div class="post-user-info-text">
+                  <h4>{{ post.name }}</h4>
+                  <p>
+                    <img src="assets/images/phone-icon.svg" alt="phone-icon" />
+                    {{ post.phone }}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-   </section>
-   <!-- Post Hero Section HTML End -->
-   <!-- Post Info Section HTML Start -->
-   <!-- Post Info Section HTML End -->
+      <div class="post-hero-shape">
+        <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
+      </div>
+    </div>
+  </section>
+  <!-- Post Hero Section HTML End -->
+  <!-- Post Info Section HTML Start -->
+  <!-- Post Info Section HTML End -->
 </header>
 <!-- Header Part HTML End -->
 <!-- User Page Body Section HTML Start -->
 <div class="user-page-bottom-body">
-   <!-- Post Section HTML Start -->
-   <section id="Post" class="user-post" *ngIf="similarPosts != ''">
-      <div class="post-wrapper position-relative overflow-hidden pb-5">
-         <div class="container-fluid">
-            <div class="section-title">
-               <h2>Similar Posts</h2>
+  <!-- Post Section HTML Start -->
+  <section id="Post" class="user-post" *ngIf="similarPosts != ''">
+    <div class="post-wrapper position-relative overflow-hidden pb-5">
+      <div class="container-fluid">
+        <div class="section-title">
+          <h2>Similar Posts</h2>
+        </div>
+        <div
+          class="row align-items-center justify-content-center d-none d-md-flex"
+        >
+          <div
+            class="col-md-6 col-lg-4 col-xxl-3"
+            *ngFor="let similar of similarPosts"
+          >
+            <div class="post-card" (click)="openPost(similar._id)">
+              <div class="post-card-img position-relative">
+                <img
+                  src="/assets/postImages/{{ similar._id }}/{{
+                    similar.img_path[0]
+                  }}"
+                  alt="post-img1"
+                />
+                <span>{{ similar.postType }}</span>
+              </div>
+              <h5>{{ similar.breed }}</h5>
+              <p *ngIf="similar.price != null; else age">
+                {{ similar.price }} ₾
+              </p>
+              <ng-template #age>
+                <p>{{ similar.age }} {{ similar.ageType | titlecase }} Old</p>
+              </ng-template>
             </div>
-            <div
-               class="row align-items-center justify-content-center d-none d-md-flex"
-               >
-               <div class="col-md-6 col-lg-4 col-xxl-3" *ngFor="let similar of similarPosts">
-                     <div class="post-card" (click)="openPost(similar._id)">
-                        <div class="post-card-img position-relative">
-                           <img src="/assets/postImages/{{similar._id}}/{{similar.img_path[0]}}" alt="post-img1" />
-                           <span>{{similar.postType}}</span>
-                        </div>
-                        <h5>{{similar.breed}}</h5>
-                     <p *ngIf="similar.price != null else age">{{similar.price}} ₾</p>
-                     <ng-template #age>
-                        <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
-                     </ng-template>
-                     </div>
-               </div>
-            </div>
-            <!-- Slider For Mobile -->
-            <div class="owl-similar-posts">
-               <owl-carousel-o [options]="customOptions">
-                  <ng-template carouselSlide *ngFor="let similar of similarPosts">
-                     <div class="post-card item" (click)="openPost(similar._id)">
-                        <div class="post-card-img position-relative">
-                           <img src="/assets/postImages/{{similar._id}}/{{similar.img_path[0]}}" alt="post-img1" />
-                           <span>{{similar.postType}}</span>
-                        </div>
-                        <h5>{{similar.breed}}</h5>
-                     <p *ngIf="similar.price != null else age">{{similar.price}} ₾</p>
-                     <ng-template #age>
-                        <p>{{similar.age}} {{similar.ageType|titlecase}} Old</p>
-                     </ng-template>
-                     </div>
-                  </ng-template>
-               </owl-carousel-o>
-            </div>
-         </div>
+          </div>
+        </div>
+        <!-- Slider For Mobile -->
+        <div class="owl-similar-posts">
+          <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let similar of similarPosts">
+              <div class="post-card item" (click)="openPost(similar._id)">
+                <div class="post-card-img position-relative">
+                  <img
+                    src="/assets/postImages/{{ similar._id }}/{{
+                      similar.img_path[0]
+                    }}"
+                    alt="post-img1"
+                  />
+                  <span>{{ similar.postType }}</span>
+                </div>
+                <h5>{{ similar.breed }}</h5>
+                <p *ngIf="similar.price != null; else age">
+                  {{ similar.price }} ₾
+                </p>
+                <ng-template #age>
+                  <p>{{ similar.age }} {{ similar.ageType | titlecase }} Old</p>
+                </ng-template>
+              </div>
+            </ng-template>
+          </owl-carousel-o>
+        </div>
       </div>
-   </section>
-   <!-- Post Section HTML End -->
-<!-- User Footer Section HTML Start -->
-<footer id="User-footer" class="user-footer">
-   <div class="container-fluid">
+    </div>
+  </section>
+  <!-- Post Section HTML End -->
+  <!-- User Footer Section HTML Start -->
+  <footer id="User-footer" class="user-footer">
+    <div class="container-fluid">
       <div class="user-footer-container">
-         <div class="row align-items-center">
-            <div class="col-md-4">
-               <div class="footer-logo">
-                  <a class="logo" href="index.html"
-                     ><img src="assets/images/logo.svg" alt="logo" />Pender</a
-                     >
-               </div>
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <div class="footer-logo">
+              <a class="logo" href="index.html"
+                ><img src="assets/images/logo.svg" alt="logo" />Pender</a
+              >
             </div>
-            <div class="col-md-4">
-               <div
-                  class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
-                  >
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/instagram-gray-icon.svg"
-                        alt="instagram-gray-icon"
-                        /></a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/facebook-gray-icon.svg"
-                        alt="facebook-gray-icon"
-                        /></a>
-                  </li>
-               </div>
+          </div>
+          <div class="col-md-4">
+            <div
+              class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
+            >
+              <li>
+                <a href="#"
+                  ><img
+                    src="assets/images/instagram-gray-icon.svg"
+                    alt="instagram-gray-icon"
+                /></a>
+              </li>
+              <li>
+                <a href="#"
+                  ><img
+                    src="assets/images/facebook-gray-icon.svg"
+                    alt="facebook-gray-icon"
+                /></a>
+              </li>
             </div>
-            <div class="col-md-4 mt-4 mt-md-0">
-               <div
-                  class="footer-copyright text-center text-md-start float-md-end"
-                  >
-                  <p>
-                     <img
-                        class="me-3"
-                        src="assets/images/copyright-icon.svg"
-                        alt="copyright-icon"
-                        />All rights reserved
-                  </p>
-               </div>
+          </div>
+          <div class="col-md-4 mt-4 mt-md-0">
+            <div
+              class="footer-copyright text-center text-md-start float-md-end"
+            >
+              <p>
+                <img
+                  class="me-3"
+                  src="assets/images/copyright-icon.svg"
+                  alt="copyright-icon"
+                />All rights reserved
+              </p>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-   </div>
-</footer>
+    </div>
+  </footer>
 </div>
 <!-- User Page Body Section HTML End -->

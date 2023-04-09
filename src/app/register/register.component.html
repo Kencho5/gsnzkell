@@ -1,59 +1,89 @@
 <div class="login-root">
-    <div class="box-root flex-flex flex-direction--column" style="min-height: 100vh;flex-grow: 1;">
-      <div class="box-root padding-top--24 flex-flex flex-direction--column" style="flex-grow: 1; z-index: 9;">
-        <div class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center">
-          <h1><a href="/" rel="dofollow">Pender</a></h1>
-        </div>
-        <div class="formbg-outer">
-          <div class="formbg">
-            <div class="formbg-inner padding-horizontal--48">
-              <span class="padding-bottom--24">Register On Pender</span>
-              <form id="stripe-login" [formGroup]="registerForm" (ngSubmit)="registerRequest()">
-                <div class="field padding-bottom--24">
-                  <label for="email">Email</label>
-                  <input type="email" formControlName="email" >
-                </div>
-                <div class="field padding-bottom--24">
-                  <label for="name">Name</label>
-                  <input type="text" formControlName="name" >
-                </div>
-                <div class="field padding-bottom--24">
-                  <label for="phone-number">Phone Number</label>
-                  <input type="number" formControlName="phoneNumber"  minlength="9" maxlength="9">
-                </div>
-                <div class="field padding-bottom--24">
-                  <label for="name">City</label>
-                  <input type="text" formControlName="city" >
-                </div>
-                <div class="field padding-bottom--24">
-                  <div class="grid--50-50">
-                    <label for="password">Password</label>
-                  </div>
-                  <input type="password" formControlName="password" minlength="4">
-                </div>
-                <div class="field padding-bottom--24">
-                    <input type="submit" name="submit" value="Register">
-                </div>
-                <div *ngIf="displayError" class="error-div">
-                    <h4 class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h4>
-                </div>
-                <div *ngIf="httpError" class="error-div">
-                  <h4 class="error-text"><mat-icon>cancel</mat-icon> Email already in use.</h4>
+  <div
+    class="box-root flex-flex flex-direction--column"
+    style="min-height: 100vh; flex-grow: 1"
+  >
+    <div
+      class="box-root padding-top--24 flex-flex flex-direction--column"
+      style="flex-grow: 1; z-index: 9"
+    >
+      <div
+        class="box-root padding-top--48 padding-bottom--24 flex-flex flex-justifyContent--center"
+      >
+        <h1><a href="/" rel="dofollow">Pender</a></h1>
+      </div>
+      <div class="formbg-outer">
+        <div class="formbg">
+          <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--24">Register On Pender</span>
+            <form
+              id="stripe-login"
+              [formGroup]="registerForm"
+              (ngSubmit)="registerRequest()"
+            >
+              <div class="field padding-bottom--24">
+                <label for="email">Email</label>
+                <input type="email" formControlName="email" />
               </div>
-              </form>
-            </div>
+              <div class="field padding-bottom--24">
+                <label for="name">Name</label>
+                <input type="text" formControlName="name" />
+              </div>
+              <div class="field padding-bottom--24">
+                <label for="phone-number">Phone Number</label>
+                <input
+                  type="number"
+                  formControlName="phoneNumber"
+                  minlength="9"
+                  maxlength="9"
+                />
+              </div>
+              <div class="field padding-bottom--24">
+                <label for="name">City</label>
+                <input type="text" formControlName="city" />
+              </div>
+              <div class="field padding-bottom--24">
+                <div class="grid--50-50">
+                  <label for="password">Password</label>
+                </div>
+                <input
+                  type="password"
+                  formControlName="password"
+                  minlength="4"
+                />
+              </div>
+              <div class="field padding-bottom--24">
+                <input type="submit" name="submit" value="Register" />
+              </div>
+              <div *ngIf="displayError" class="error-div">
+                <h4 class="error-text">
+                  <mat-icon>cancel</mat-icon> Please fill out the form.
+                </h4>
+              </div>
+              <div *ngIf="httpError" class="error-div">
+                <h4 class="error-text">
+                  <mat-icon>cancel</mat-icon> Email already in use.
+                </h4>
+              </div>
+            </form>
           </div>
-          <div class="footer-link padding-top--24">
-            <span>Have an account? <a href="/login" class="footer-login" style="color: #2e3134;">Log In</a></span>
-            <div class="listing padding-top--24 padding-bottom--24 flex-flex center-center">
-              <span><a href="#">Instagram</a></span>
-              <span><a href="#">Facebook</a></span>
-              <span><a href="#">Contact</a></span>
-            </div>
+        </div>
+        <div class="footer-link padding-top--24">
+          <span
+            >Have an account?
+            <a href="/login" class="footer-login" style="color: #2e3134"
+              >Log In</a
+            ></span
+          >
+          <div
+            class="listing padding-top--24 padding-bottom--24 flex-flex center-center"
+          >
+            <span><a href="#">Instagram</a></span>
+            <span><a href="#">Facebook</a></span>
+            <span><a href="#">Contact</a></span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-  
+</div>

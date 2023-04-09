@@ -3,17 +3,16 @@ import { HttpClient, HttpResponse } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UploadService {
-
-  constructor(private _http: HttpClient) { }
+  constructor(private _http: HttpClient) {}
 
   uploadPost(data) {
     return this._http.post('/api/upload', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
-      }));
+      })
+    );
   }
-
 }

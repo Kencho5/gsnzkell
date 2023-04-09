@@ -610,14 +610,16 @@
 }
 
 @media only screen and (min-width: 767px) {
-  .owl, .owl-similar-posts {
+  .owl,
+  .owl-similar-posts {
     display: none;
   }
 }
 
 @media only screen and (max-width: 767px) {
-  .slide1, .slide2, .slide3 {
+  .slide1,
+  .slide2,
+  .slide3 {
     padding: 20px 25px;
   }
 }
-

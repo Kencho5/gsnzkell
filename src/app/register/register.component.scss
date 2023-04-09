@@ -4,207 +4,212 @@ $light: #fff;
 $dim: #2e3134;
 
 * {
-	padding: 0;
-	margin: 0;
-	color: $dark;
-	box-sizing: border-box;
-	word-wrap: break-word;
-	font-family: 'Ubuntu', sans-serif;
+  padding: 0;
+  margin: 0;
+  color: $dark;
+  box-sizing: border-box;
+  word-wrap: break-word;
+  font-family: "Ubuntu", sans-serif;
 }
 
 body {
-	min-height: 100%;
+  min-height: 100%;
 }
 
 h1 {
-	letter-spacing: -1px
+  letter-spacing: -1px;
 }
 
 a {
-	color: $dark;
-	text-decoration: unset
+  color: $dark;
+  text-decoration: unset;
 }
 
 .login-root {
-	display: flex;
-	width: 100%;
-	min-height: 100vh;
-	overflow: hidden
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  overflow: hidden;
 }
 
 .flex-flex {
-	display: flex
+  display: flex;
 }
 
 .center-center {
-	align-items: center;
-	justify-content: center
+  align-items: center;
+  justify-content: center;
 }
 
 .box-root {
-	box-sizing: border-box
+  box-sizing: border-box;
 }
 
 .flex-direction--column {
-	-ms-flex-direction: column;
-	flex-direction: column
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .padding-top--64 {
-	padding-top: 64px
+  padding-top: 64px;
 }
 
 .padding-top--24 {
-	padding-top: 24px
+  padding-top: 24px;
 }
 
 .padding-top--48 {
-	padding-top: 48px
+  padding-top: 48px;
 }
 
 .padding-bottom--24 {
-	color: $dark;
-	padding-bottom: 24px
+  color: $dark;
+  padding-bottom: 24px;
 }
 
 .padding-horizontal--48 {
-	padding: 48px
+  padding: 48px;
 }
 
 .padding-bottom--15 {
-	padding-bottom: 15px
+  padding-bottom: 15px;
 }
 
 .flex-justifyContent--center {
-	-ms-flex-pack: center;
-	justify-content: center
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 
 .formbg {
-	margin: 0 auto;
-	width: 100%;
-	max-width: 448px;
-	background: $light;
-	border-radius: 10px;
-	box-shadow: rgba(60, 66, 87, .12) 0 7px 14px 0, rgba(0, 0, 0, .12) 0 3px 6px 0
+  margin: 0 auto;
+  width: 100%;
+  max-width: 448px;
+  background: $light;
+  border-radius: 10px;
+  box-shadow: rgba(60, 66, 87, 0.12) 0 7px 14px 0,
+    rgba(0, 0, 0, 0.12) 0 3px 6px 0;
 }
 
 span {
-	display: block;
-	font-size: 20px;
-	line-height: 28px;
+  display: block;
+  font-size: 20px;
+  line-height: 28px;
 }
 
 label {
-	margin-bottom: 10px;
-    color: $dark;
+  margin-bottom: 10px;
+  color: $dark;
 }
 
 label {
-	font-size: 14px;
-	font-weight: 600;
-	display: block
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
 }
 
-.reset-pass a,label {
-	color: $dark;
-    font-size: 14px;
-    font-weight: 600;
-    display: block;
+.reset-pass a,
+label {
+  color: $dark;
+  font-size: 14px;
+  font-weight: 600;
+  display: block;
 }
 .reset-pass > a {
-    text-align: right;
-    margin-bottom: 10px;
+  text-align: right;
+  margin-bottom: 10px;
 }
 
 .grid--50-50 {
-	display: grid;
-	grid-template-columns: 50% 50%;
-	align-items: center
+  display: grid;
+  grid-template-columns: 50% 50%;
+  align-items: center;
 }
 
 .field input {
-	color: $light;
-    font-size: 16px;
-    line-height: 28px;
-    padding: 8px 16px;
-    width: 100%;
-    min-height: 44px;
-    border: unset;
-    border-radius: 6px;
-    outline-color: #000;
-    background-color: $dark;
-    box-shadow: transparent 0 0 0 0, transparent 0 0 0 0, transparent 0 0 0 0, rgba(60, 66, 87, .16) 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0, transparent 0 0 0 0;
+  color: $light;
+  font-size: 16px;
+  line-height: 28px;
+  padding: 8px 16px;
+  width: 100%;
+  min-height: 44px;
+  border: unset;
+  border-radius: 6px;
+  outline-color: #000;
+  background-color: $dark;
+  box-shadow: transparent 0 0 0 0, transparent 0 0 0 0, transparent 0 0 0 0,
+    rgba(60, 66, 87, 0.16) 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0,
+    transparent 0 0 0 0;
 }
 
-
-input[type=submit] {
-    background-color: $dark !important;
-    box-shadow: transparent 0 0 0 0, transparent 0 0 0 0, rgba(0, 0, 0, .12) 0 1px 1px 0, $bg 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0, rgba(60, 66, 87, .08) 0 2px 5px 0 !important;
-    color: $bg;
-    font-weight: 600;
-    cursor: pointer;
+input[type="submit"] {
+  background-color: $dark !important;
+  box-shadow: transparent 0 0 0 0, transparent 0 0 0 0,
+    rgba(0, 0, 0, 0.12) 0 1px 1px 0, $bg 0 0 0 1px, transparent 0 0 0 0,
+    transparent 0 0 0 0, rgba(60, 66, 87, 0.08) 0 2px 5px 0 !important;
+  color: $bg;
+  font-weight: 600;
+  cursor: pointer;
 }
 
 .footer-link span {
-	font-size: 14px;
-	text-align: center
+  font-size: 14px;
+  text-align: center;
 }
 
 .footer-login {
-	color: #efe9da;
+  color: #efe9da;
 }
 .listing a {
-	color: $dark;
-	font-weight: 600;
-	margin: 0 10px
+  color: $dark;
+  font-weight: 600;
+  margin: 0 10px;
 }
 
 @keyframes animationLeftRight {
-	0% {
-		transform: translateX(0)
-	}
-	50% {
-		transform: translateX(1000px)
-	}
-	100% {
-		transform: translateX(0)
-	}
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(1000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 @keyframes animationRightLeft {
-	0% {
-		transform: translateX(0)
-	}
-	50% {
-		transform: translateX(-1000px)
-	}
-	100% {
-		transform: translateX(0)
-	}
+  0% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-1000px);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 mat-icon {
-    font-family: 'Material Icons' !important;
-	vertical-align: middle;
+  font-family: "Material Icons" !important;
+  vertical-align: middle;
 }
 
 .success-div {
-	padding-top: 20px;
-	text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .success-text {
-	font-weight: bold;
-	color: #4BB543;
+  font-weight: bold;
+  color: #4bb543;
 }
 
 .error-div {
-	padding-top: 20px;
-	text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .error-text {
-	font-weight: bold;
-	color: $dark;
+  font-weight: bold;
+  color: $dark;
 }

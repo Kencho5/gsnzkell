@@ -1,301 +1,366 @@
 <body>
-   <header>
-      <!-- Hero Section HTML Start -->
-      <section id="Hero">
-         <div class="hero-wrapper position-relative">
-            <div class="container-fluid">
-               <div class="row">
-                  <div class="col-lg-6">
-                     <div class="hero-content">
-                        <h1>
-                           <span class="adopt position-relative">
-                           Adopt <img src="assets/images/adopt.svg" alt="adopt" />
-                           </span>
-                           <span class="sell position-relative">
-                           Sell <img src="assets/images/sell.svg" alt="sell" />
-                           </span>
-                           <span class="meet position-relative">
-                           Meet <img src="assets/images/meet.svg" alt="meet" />
-                           </span>
-                           <br />
-                           Your Pet Here
-                        </h1>
-                        <div class="hero-btn mt-5">
-                           <a href="/upload">Upload Post</a>
-                        </div>
-                        <div class="pets-box">
-                           <div class="single-pet">
-                              <img src="assets/images/dog.png" alt="dog" />
-                              <h4>Dogs</h4>
-                           </div>
-                           <div class="single-pet">
-                              <img src="assets/images/cat.png" alt="cat" />
-                              <h4>Cats</h4>
-                           </div>
-                           <div class="single-pet">
-                              <img src="assets/images/birds.png" alt="bird" />
-                              <h4>Birds</h4>
-                           </div>
-                        </div>
-                     </div>
+  <header>
+    <!-- Hero Section HTML Start -->
+    <section id="Hero">
+      <div class="hero-wrapper position-relative">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-lg-6">
+              <div class="hero-content">
+                <h1>
+                  <span class="adopt position-relative">
+                    Adopt <img src="assets/images/adopt.svg" alt="adopt" />
+                  </span>
+                  <span class="sell position-relative">
+                    Sell <img src="assets/images/sell.svg" alt="sell" />
+                  </span>
+                  <span class="meet position-relative">
+                    Meet <img src="assets/images/meet.svg" alt="meet" />
+                  </span>
+                  <br />
+                  Your Pet Here
+                </h1>
+                <div class="hero-btn mt-5">
+                  <a href="/upload">Upload Post</a>
+                </div>
+                <div class="pets-box">
+                  <div class="single-pet">
+                    <img src="assets/images/dog.png" alt="dog" />
+                    <h4>Dogs</h4>
                   </div>
-                  <div class="col-lg-6">
-                     <div class="hero-img">
-                        <img
-                           class="img-fluid"
-                           src="assets/images/hero-img.png"
-                           alt="hero-img"
-                           />
-                     </div>
+                  <div class="single-pet">
+                    <img src="assets/images/cat.png" alt="cat" />
+                    <h4>Cats</h4>
                   </div>
-               </div>
-            </div>
-            <div class="hero-shape1">
-               <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
-            </div>
-            <div class="hero-shape2">
-               <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
-            </div>
-         </div>
-      </section>
-      <!-- Hero Section HTML End -->
-   </header>
-   <!-- Header Part HTML End -->
-   <!-- Main Part HTML Start -->
-   <main class="main-bg position-relative">
-      <div class="main-top-shape">
-         <img src="assets/images/main-shape.png" alt="main-shape" />
-      </div>
-
-      <!-- Post Section HTML Start -->
-        <section id="Post">
-         <div class="post-wrapper position-relative">
-            <div class="container-fluid">
-               <div class="section-title">
-                  <h2>VIP Posts</h2>
-               </div>
-               <div class="row align-items-center">
-                  <div class="col-sm-6 col-lg-3" *ngFor="let post of vipPosts" (click)="openPost(post.id)">
-                  <div class="post-card vip-post">
-                     <div class="post-card-img position-relative">
-                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" alt="post-img" />
-                           <span class="post-type-label">{{post.postType|titlecase}}</span>
-                           <span class="vip-label" *ngIf="post.vip">VIP</span>
-                     </div>
-                     <h5>{{post.breed}}</h5>
-                     <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
-                     <ng-template #age>
-                        <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
-                     </ng-template>
+                  <div class="single-pet">
+                    <img src="assets/images/birds.png" alt="bird" />
+                    <h4>Birds</h4>
                   </div>
-               </div>
-            </div>
-            <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
-            <!--    <a href="#">See More</a> -->
-            <!-- </div> -->
-         </div>
-         <div class="latest-post-shape">
-            <img
-               src="assets/images/latest-post-shape.png"
-               alt="latest-post-shape"
-               />
-         </div>
-         </div>
-      </section>
-
-      <section id="Post" class="latest-posts-section">
-         <div class="post-wrapper position-relative">
-            <div class="container-fluid">
-               <div class="section-title">
-                  <h2>Latest Posts</h2>
-               </div>
-               <div class="row align-items-center">
-                  <div class="col-sm-6 col-lg-3" *ngFor="let post of posts" (click)="openPost(post.id)">
-                  <div class="post-card" [ngClass]="{'vip-post': post.vip}">
-                     <div class="post-card-img position-relative">
-                        <img src="/assets/postImages/{{post.id}}/{{post.imgs[0]}}" alt="post-img" />
-                           <span class="post-type-label">{{post.postType|titlecase}}</span>
-                           <span class="vip-label" *ngIf="post.vip">VIP</span>
-                     </div>
-                     <h5>{{post.breed}}</h5>
-                     <p *ngIf="post.price != null else age">{{post.price}} ₾</p>
-                     <ng-template #age>
-                        <p>{{post.age}} {{post.ageType|titlecase}} Old</p>
-                     </ng-template>
-                  </div>
-               </div>
-            </div>
-            <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
-            <!--    <a href="#">See More</a> -->
-            <!-- </div> -->
-         </div>
-         <div class="latest-post-shape">
-            <img
-               src="assets/images/latest-post-shape.png"
-               alt="latest-post-shape"
-               />
-         </div>
-         </div>
-      </section>
-      <!-- Post Section HTML End -->
-      <!-- Upload Post Section HTML Start -->
-      <section id="Upload-post">
-         <div class="upload-post-wrapper position-relative">
-            <div class="container-fluid">
-               <div class="upload-post-container">
-                  <div class="upload-post-title">
-                     <h4>Upload Your Post</h4>
-                  </div>
-                  <div class="row align-items-center">
-                     <div class="col-md-6">
-                        <div class="upload-post-img">
-                           <img
-                              src="assets/images/upload-post.png"
-                              alt="upload-post"
-                              />
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="upload-post-form-container">
-                           <form [formGroup]="uploadForm" (ngSubmit)="upload()">
-                           <div class="upload-post-form">
-                              <div class="up-form-field">
-                                 <select class="form-select" formControlName="animal"
-                                    required>
-                                    <option value="" selected disabled>Select Animal</option>
-                                    <option>Dog</option>
-                                    <option>Cat</option>
-                                    <option>Fish</option>
-                                    <option>Bird</option>
-                                    <option>Reptile</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="Breed" 
-                                    formControlName="breed"
-                                    required>
-                              </div>
-                              <div class="up-form-field">
-                                 <select (change)="changeInput($event)"
-                                    formControlName="postType"
-                                    class="form-select"
-                                    required>
-                                    <option value="" disabled>Select Post Type</option>
-                                    <option>Selling</option>
-                                    <option>Meeting</option>
-                                    <option>Adopting</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field" id="price">
-                                 <input type="text" placeholder="Price (GEL)" formControlName="price"/>
-                              </div>
-                              <div class="up-form-field double">
-                                 <input type="text" placeholder="Age" formControlName="age" />
-                                 <select class="form-select" formControlName="ageType"
-                                    required>
-                                    <option value="" selected disabled>Year/Month</option>
-                                    <option>Years</option>
-                                    <option>Months</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field">
-                                 <textarea placeholder="Description"  maxlength="150" formControlName="description"></textarea>
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="Phone Number"  formControlName="phone" />
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="City" formControlName="city"/>
-                              </div>
-                              <div class="up-form-field">
-                                              <div class="upload-icon">
-                      <button type="button" (click)="fileInput.click()" class="files-btn"><mat-icon>file_upload</mat-icon> Photos (Max 3)</button>
+                </div>
               </div>
-                <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
-                <div *ngIf="message" class="error-div">
-                  <h2 class="error-text">3 Photos Maximum!</h2>
-                </div>
-                <div class="images">
-                    <div class="image-div" *ngFor="let url of urls">
-                            <mat-icon class="{{url}}" id="cancel-icon" (click)="removeImage($event)">cancel</mat-icon>
-                        <img [src]="url" class="uploaded-img">
-                    </div>
-                </div>
-                              </div>
-                              <div class="up-form-btn text-center text-md-end mt-3">
-                          <input type="submit" placeholder="Next" />
-                        </div>
-                                    <div class="error-div" *ngIf="form_msg">
-              <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
             </div>
+            <div class="col-lg-6">
+              <div class="hero-img">
+                <img
+                  class="img-fluid"
+                  src="assets/images/hero-img.png"
+                  alt="hero-img"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="hero-shape1">
+          <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
+        </div>
+        <div class="hero-shape2">
+          <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
+        </div>
+      </div>
+    </section>
+    <!-- Hero Section HTML End -->
+  </header>
+  <!-- Header Part HTML End -->
+  <!-- Main Part HTML Start -->
+  <main class="main-bg position-relative">
+    <div class="main-top-shape">
+      <img src="assets/images/main-shape.png" alt="main-shape" />
+    </div>
 
-                           </div>
-                           </form>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="upload-post-shape">
-               <img
-                  src="assets/images/upload-post-shape.png"
-                  alt="upload-post-shape"
+    <!-- Post Section HTML Start -->
+    <section id="Post">
+      <div class="post-wrapper position-relative">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h2>VIP Posts</h2>
+          </div>
+          <div class="row align-items-center">
+            <div
+              class="col-sm-6 col-lg-3"
+              *ngFor="let post of vipPosts"
+              (click)="openPost(post.id)"
+            >
+              <div class="post-card vip-post">
+                <div class="post-card-img position-relative">
+                  <img
+                    src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
+                    alt="post-img"
                   />
+                  <span class="post-type-label">{{
+                    post.postType | titlecase
+                  }}</span>
+                  <span class="vip-label" *ngIf="post.vip">VIP</span>
+                </div>
+                <h5>{{ post.breed }}</h5>
+                <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
+                <ng-template #age>
+                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
+                </ng-template>
+              </div>
             </div>
-         </div>
-      </section>
-      <!-- Upload Post Section HTML End -->
-      <footer id="User-footer" class="user-footer">
-   <div class="container-fluid">
-      <div class="user-footer-container">
-         <div class="row align-items-center">
+          </div>
+          <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
+          <!--    <a href="#">See More</a> -->
+          <!-- </div> -->
+        </div>
+        <div class="latest-post-shape">
+          <img
+            src="assets/images/latest-post-shape.png"
+            alt="latest-post-shape"
+          />
+        </div>
+      </div>
+    </section>
+
+    <section id="Post" class="latest-posts-section">
+      <div class="post-wrapper position-relative">
+        <div class="container-fluid">
+          <div class="section-title">
+            <h2>Latest Posts</h2>
+          </div>
+          <div class="row align-items-center">
+            <div
+              class="col-sm-6 col-lg-3"
+              *ngFor="let post of posts"
+              (click)="openPost(post.id)"
+            >
+              <div class="post-card" [ngClass]="{ 'vip-post': post.vip }">
+                <div class="post-card-img position-relative">
+                  <img
+                    src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
+                    alt="post-img"
+                  />
+                  <span class="post-type-label">{{
+                    post.postType | titlecase
+                  }}</span>
+                  <span class="vip-label" *ngIf="post.vip">VIP</span>
+                </div>
+                <h5>{{ post.breed }}</h5>
+                <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
+                <ng-template #age>
+                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
+          <!--    <a href="#">See More</a> -->
+          <!-- </div> -->
+        </div>
+        <div class="latest-post-shape">
+          <img
+            src="assets/images/latest-post-shape.png"
+            alt="latest-post-shape"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Post Section HTML End -->
+    <!-- Upload Post Section HTML Start -->
+    <section id="Upload-post">
+      <div class="upload-post-wrapper position-relative">
+        <div class="container-fluid">
+          <div class="upload-post-container">
+            <div class="upload-post-title">
+              <h4>Upload Your Post</h4>
+            </div>
+            <div class="row align-items-center">
+              <div class="col-md-6">
+                <div class="upload-post-img">
+                  <img src="assets/images/upload-post.png" alt="upload-post" />
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="upload-post-form-container">
+                  <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+                    <div class="upload-post-form">
+                      <div class="up-form-field">
+                        <select
+                          class="form-select"
+                          formControlName="animal"
+                          required
+                        >
+                          <option value="" selected disabled>
+                            Select Animal
+                          </option>
+                          <option>Dog</option>
+                          <option>Cat</option>
+                          <option>Fish</option>
+                          <option>Bird</option>
+                          <option>Reptile</option>
+                        </select>
+                      </div>
+                      <div class="up-form-field">
+                        <input
+                          type="text"
+                          placeholder="Breed"
+                          formControlName="breed"
+                          required
+                        />
+                      </div>
+                      <div class="up-form-field">
+                        <select
+                          (change)="changeInput($event)"
+                          formControlName="postType"
+                          class="form-select"
+                          required
+                        >
+                          <option value="" disabled>Select Post Type</option>
+                          <option>Selling</option>
+                          <option>Meeting</option>
+                          <option>Adopting</option>
+                        </select>
+                      </div>
+                      <div class="up-form-field" id="price">
+                        <input
+                          type="text"
+                          placeholder="Price (GEL)"
+                          formControlName="price"
+                        />
+                      </div>
+                      <div class="up-form-field double">
+                        <input
+                          type="text"
+                          placeholder="Age"
+                          formControlName="age"
+                        />
+                        <select
+                          class="form-select"
+                          formControlName="ageType"
+                          required
+                        >
+                          <option value="" selected disabled>Year/Month</option>
+                          <option>Years</option>
+                          <option>Months</option>
+                        </select>
+                      </div>
+                      <div class="up-form-field">
+                        <textarea
+                          placeholder="Description"
+                          maxlength="150"
+                          formControlName="description"
+                        ></textarea>
+                      </div>
+                      <div class="up-form-field">
+                        <input
+                          type="text"
+                          placeholder="Phone Number"
+                          formControlName="phone"
+                        />
+                      </div>
+                      <div class="up-form-field">
+                        <input
+                          type="text"
+                          placeholder="City"
+                          formControlName="city"
+                        />
+                      </div>
+                      <div class="up-form-field">
+                        <div class="upload-icon">
+                          <button
+                            type="button"
+                            (click)="fileInput.click()"
+                            class="files-btn"
+                          >
+                            <mat-icon>file_upload</mat-icon> Photos (Max 3)
+                          </button>
+                        </div>
+                        <input
+                          hidden
+                          (change)="selectFiles($event)"
+                          #fileInput
+                          type="file"
+                          multiple
+                          formControlName="imgs"
+                        />
+                        <div *ngIf="message" class="error-div">
+                          <h2 class="error-text">3 Photos Maximum!</h2>
+                        </div>
+                        <div class="images">
+                          <div class="image-div" *ngFor="let url of urls">
+                            <mat-icon
+                              class="{{ url }}"
+                              id="cancel-icon"
+                              (click)="removeImage($event)"
+                              >cancel</mat-icon
+                            >
+                            <img [src]="url" class="uploaded-img" />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="up-form-btn text-center text-md-end mt-3">
+                        <input type="submit" placeholder="Next" />
+                      </div>
+                      <div class="error-div" *ngIf="form_msg">
+                        <h2 align="center" class="error-text">
+                          <mat-icon>cancel</mat-icon> Please fill out the form.
+                        </h2>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="upload-post-shape">
+          <img
+            src="assets/images/upload-post-shape.png"
+            alt="upload-post-shape"
+          />
+        </div>
+      </div>
+    </section>
+    <!-- Upload Post Section HTML End -->
+    <footer id="User-footer" class="user-footer">
+      <div class="container-fluid">
+        <div class="user-footer-container">
+          <div class="row align-items-center">
             <div class="col-md-4">
-               <div class="footer-logo">
-                  <a class="logo" href="index.html"
-                     ><img src="assets/images/logo.svg" alt="logo" />Pender</a
-                     >
-               </div>
+              <div class="footer-logo">
+                <a class="logo" href="index.html"
+                  ><img src="assets/images/logo.svg" alt="logo" />Pender</a
+                >
+              </div>
             </div>
             <div class="col-md-4">
-               <div
-                  class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
-                  >
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/instagram-gray-icon.svg"
-                        alt="instagram-gray-icon"
-                        /></a>
-                  </li>
-                  <li>
-                     <a href="#"
-                        ><img
-                        src="assets/images/facebook-gray-icon.svg"
-                        alt="facebook-gray-icon"
-                        /></a>
-                  </li>
-               </div>
+              <div
+                class="user-social user-footer-social d-flex justify-content-center align-items-center mt-4 mt-md-0"
+              >
+                <li>
+                  <a href="#"
+                    ><img
+                      src="assets/images/instagram-gray-icon.svg"
+                      alt="instagram-gray-icon"
+                  /></a>
+                </li>
+                <li>
+                  <a href="#"
+                    ><img
+                      src="assets/images/facebook-gray-icon.svg"
+                      alt="facebook-gray-icon"
+                  /></a>
+                </li>
+              </div>
             </div>
             <div class="col-md-4 mt-4 mt-md-0">
-               <div
-                  class="footer-copyright text-center text-md-start float-md-end"
-                  >
-                  <p>
-                     <img
-                        class="me-3"
-                        src="assets/images/copyright-icon.svg"
-                        alt="copyright-icon"
-                        />All rights reserved.
-                  </p>
-               </div>
+              <div
+                class="footer-copyright text-center text-md-start float-md-end"
+              >
+                <p>
+                  <img
+                    class="me-3"
+                    src="assets/images/copyright-icon.svg"
+                    alt="copyright-icon"
+                  />All rights reserved.
+                </p>
+              </div>
             </div>
-         </div>
+          </div>
+        </div>
       </div>
-   </div>
-</footer>
-
-   </main>
-   <!-- Main Part HTML End -->
-   <!-- User Footer Section HTML Start -->
-
+    </footer>
+  </main>
+  <!-- Main Part HTML End -->
+  <!-- User Footer Section HTML Start -->
 </body>

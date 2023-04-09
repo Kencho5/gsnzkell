@@ -8,9 +8,8 @@ describe('ResetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResetComponent ]
-    })
-    .compileComponents();
+      declarations: [ResetComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

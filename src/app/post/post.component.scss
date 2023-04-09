@@ -1,14 +1,13 @@
-
-body,html{
-    font-family:Ubuntu,sans-serif;
+body,
+html {
+  font-family: Ubuntu, sans-serif;
 }
 
 $dark: #ee8240;
 $dim: #2e3134;
 $light: #fff;
-$button: #D0175F;
+$button: #d0175f;
 $button-hover: #ad1650;
-
 
 /* Post Section CSS Start */
 
@@ -23,7 +22,7 @@ $button-hover: #ad1650;
   padding: 30px;
   margin-top: 40px;
   border-radius: 44px;
-  transition: transform .2s;
+  transition: transform 0.2s;
   cursor: pointer;
 }
 
@@ -109,9 +108,9 @@ Post Page CSS
 }
 
 .vip {
-    -webkit-box-shadow:0px 0px 40px 0px rgba(255,203,46,1);
-  -moz-box-shadow: 0px 0px 40px 0px rgba(255,203,46,1);
-  box-shadow: 0px 0px 40px 0px rgba(255,203,46,1);
+  -webkit-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
+  box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   width: 60px;
   font-weight: bold;
@@ -208,7 +207,7 @@ Post Page CSS
 }
 
 .slide img {
-    width: 100%; /* set the width */
+  width: 100%; /* set the width */
   height: 100%; /* set the height */
   object-fit: cover; /* maintaining aspect ratio */
   border-radius: 20px;
@@ -219,7 +218,7 @@ Post Page CSS
 }
 
 .slide1 {
-    background: radial-gradient(
+  background: radial-gradient(
     44.1% 44.1% at 50% 50%,
     rgba(236, 86, 108, 0.6) 0%,
     #a6031a 100%
@@ -229,7 +228,7 @@ Post Page CSS
 }
 
 .slide2 {
-   background: radial-gradient(
+  background: radial-gradient(
     51.5% 76.56% at 50% 50%,
     rgba(96, 161, 193, 0.6) 0%,
     #095775eb 100%
@@ -239,7 +238,7 @@ Post Page CSS
 }
 
 .slide3 {
-    background: radial-gradient(
+  background: radial-gradient(
     54.74% 54.74% at 50% 50%,
     rgba(247, 206, 109, 0.6) 0%,
     #eabc4e 100%
@@ -471,7 +470,6 @@ Post Page CSS
   padding: 0 10px;
 }
 
-
 /* User page Post Section CSS Start */
 
 .user-page-bottom-body {
@@ -490,4 +488,3 @@ Post Page CSS
 }
 
 /* User page Post Section CSS End */
-

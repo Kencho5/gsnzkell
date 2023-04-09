@@ -1,24 +1,36 @@
-import { Component, HostListener, OnInit, ViewChild, ElementRef, Renderer2} from '@angular/core';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  Renderer2,
+} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SearchService } from './search.service';
 // import { MatPaginator, PageEvent } from '@angular/material/paginator';
-import { FormBuilder, FormControl, Validators, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  Validators,
+  FormGroup,
+} from '@angular/forms';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss', '../responsive.css']
+  styleUrls: ['./search.component.scss', '../responsive.css'],
 })
 export class SearchComponent implements OnInit {
   filterForm = new FormGroup({
-    animal:  new FormControl(''),
-    postType:  new FormControl('', Validators.required),
-    city:  new FormControl(''),
-    ageMin:  new FormControl('', Validators.required),
-    ageMax:  new FormControl('', Validators.required),
-    ageType:  new FormControl('', Validators.required),
-    priceMin:  new FormControl('', Validators.required),
-    priceMax: new FormControl('', Validators.required)
+    animal: new FormControl(''),
+    postType: new FormControl('', Validators.required),
+    city: new FormControl(''),
+    ageMin: new FormControl('', Validators.required),
+    ageMax: new FormControl('', Validators.required),
+    ageType: new FormControl('', Validators.required),
+    priceMin: new FormControl('', Validators.required),
+    priceMax: new FormControl('', Validators.required),
   });
 
   posts = [];
@@ -29,7 +41,7 @@ export class SearchComponent implements OnInit {
   filterError;
   pages = [];
   vipCount = 0;
-  
+
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // pageEvent: PageEvent;
 
@@ -40,7 +52,7 @@ export class SearchComponent implements OnInit {
     private el: ElementRef,
     private renderer: Renderer2,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     const bars = this.el.nativeElement.querySelector('.bars');
@@ -49,8 +61,8 @@ export class SearchComponent implements OnInit {
     this.renderer.listen(bars, 'click', () => {
       sidebar.classList.toggle('active');
     });
-    
-    this.activatedRoute.params.subscribe(params => {
+
+    this.activatedRoute.params.subscribe((params) => {
       this.text = params['text'];
 
       this.searchPosts();
@@ -58,25 +70,27 @@ export class SearchComponent implements OnInit {
   }
 
   searchPosts() {
-    this.searchService.searchPost({
-      text: this.text,
-      filters: this.filterForm.value,
-      pageIndex: this.pageIndex
-    }).subscribe((res) => {
-        if (res["code"] == 200) {
+    this.searchService
+      .searchPost({
+        text: this.text,
+        filters: this.filterForm.value,
+        pageIndex: this.pageIndex,
+      })
+      .subscribe((res) => {
+        if (res['code'] == 200) {
           this.posts = res['data'];
-          this.posts.forEach(post => {
-            if(post.vip) {
+          this.posts.forEach((post) => {
+            if (post.vip) {
               this.vipCount += 1;
             }
-          })
+          });
 
           this.count = res['count'];
           this.pages = this.numToArray(Math.ceil(res['count'] / 10));
 
           this.time = res['time'];
-          
-          if(this.pageIndex > this.pages.length) {
+
+          if (this.pageIndex > this.pages.length) {
             this.pageIndex = 1;
           }
         }
@@ -84,7 +98,7 @@ export class SearchComponent implements OnInit {
   }
 
   openPost(id) {
-    window.open(`/post/${id}`)
+    window.open(`/post/${id}`);
   }
 
   filter() {
@@ -106,14 +120,14 @@ export class SearchComponent implements OnInit {
 
   resetFilters() {
     this.filterForm.reset({
-      'animal': '',
-      'postType': '',
-      'city': '',
-      'ageType': '',
-      'ageMin': '',
-      'ageMax': '',
-      'priceMin': '',
-      'priceMax': '',
+      animal: '',
+      postType: '',
+      city: '',
+      ageType: '',
+      ageMin: '',
+      ageMax: '',
+      priceMin: '',
+      priceMax: '',
     });
 
     this.pageIndex = 1;
@@ -121,15 +135,17 @@ export class SearchComponent implements OnInit {
   }
 
   closeFilter() {
-    this.el.nativeElement.querySelector('#Profile-sidebar').classList.toggle('active');
+    this.el.nativeElement
+      .querySelector('#Profile-sidebar')
+      .classList.toggle('active');
   }
 
   changeInput(event) {
-    var priceDiv = (document.getElementById('price-div') as HTMLDivElement);
+    var priceDiv = document.getElementById('price-div') as HTMLDivElement;
 
-    if(event.target.value != "Selling") {
+    if (event.target.value != 'Selling') {
       priceDiv.style.display = 'none';
-      
+
       this.filterForm.controls['priceMin'].setValue('none');
       this.filterForm.controls['priceMax'].setValue('none');
     } else {
@@ -138,18 +154,17 @@ export class SearchComponent implements OnInit {
   }
 
   pagination(event) {
-    if(event.target.className == 'arrow-left' && this.pageIndex != 1) {
+    if (event.target.className == 'arrow-left' && this.pageIndex != 1) {
       this.pageIndex -= 1;
-    } 
-
-    else if(event.target.className == 'arrow-right' && this.pageIndex != this.pages.length) {
+    } else if (
+      event.target.className == 'arrow-right' &&
+      this.pageIndex != this.pages.length
+    ) {
       this.pageIndex += 1;
-    } 
-
-    else if(event.target.classList[0] == 'pageNum') {
+    } else if (event.target.classList[0] == 'pageNum') {
       this.pageIndex = parseInt(event.target.textContent);
     }
-    
+
     this.searchPosts();
   }
 
@@ -160,5 +175,4 @@ export class SearchComponent implements OnInit {
     }
     return result;
   }
-
 }

@@ -3,9 +3,9 @@ $bg: #fceddc;
 $light: #fff;
 
 body {
-    font-family: 'Ubuntu', sans-serif;
-    color: $light;
-  }
+  font-family: "Ubuntu", sans-serif;
+  color: $light;
+}
 
 mat-icon {
   vertical-align: middle;
@@ -14,13 +14,13 @@ mat-icon {
 li {
   user-select: none;
 }
-  
+
 /* Post Section CSS Start */
 
 .vip-post {
--webkit-box-shadow:0px 0px 33px 0px rgba(255,202,43,1) !important;
--moz-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
+  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
 }
 
 .post-card {
@@ -34,7 +34,7 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   padding: 30px;
   margin-top: 40px;
   border-radius: 44px;
-  transition: transform .2s;
+  transition: transform 0.2s;
   cursor: pointer;
 }
 
@@ -64,9 +64,9 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 }
 
 .vip-label {
-  -webkit-box-shadow:0px 0px 50px 0px rgba(255,203,46,1);
-  -moz-box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
-  box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
+  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   position: absolute;
   right: 20px;
@@ -118,7 +118,6 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 }
 
 /* Post Section CSS End */
-
 
 /* 
 ===========***===========
@@ -183,7 +182,7 @@ Profile Page CSS
   justify-content: space-between;
 }
 
-.form-btn input[type=button] {
+.form-btn input[type="button"] {
   background-color: #ff1c2f;
 }
 
@@ -225,7 +224,7 @@ Profile Page CSS
   box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
   border-radius: 30px;
 }
-  
+
 .sorted-by label {
   font-size: 18px;
   font-weight: 700;
@@ -330,7 +329,7 @@ Profile Page CSS
 }
 
 .error-div {
-  word-wrap: break-word
+  word-wrap: break-word;
 }
 
 .filter-error {
@@ -408,4 +407,3 @@ Profile Page CSS
 .user-social li a {
   padding: 0 10px;
 }
-

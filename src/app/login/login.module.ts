@@ -5,10 +5,6 @@ import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [],
-  imports: [
-    BrowserModule,
-    CommonModule,
-    HttpClientModule
-  ]
+  imports: [BrowserModule, CommonModule, HttpClientModule],
 })
-export class LoginModule { }
+export class LoginModule {}

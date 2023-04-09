@@ -1,12 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { UploadService } from '../upload/upload.service';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', '../responsive.css']
+  styleUrls: ['./home.component.scss', '../responsive.css'],
 })
 export class HomeComponent implements OnInit {
   posts = [];
@@ -16,21 +21,20 @@ export class HomeComponent implements OnInit {
   form_msg: boolean;
 
   uploadForm = new FormGroup({
-    animal:  new FormControl('', Validators.required),
-    breed:  new FormControl('', Validators.required),
-    price:  new FormControl(''),
-    age:  new FormControl('', Validators.required),
-    ageType:  new FormControl('', Validators.required),
-    description:  new FormControl('', Validators.maxLength(200)),
-    postType:  new FormControl('', Validators.required),
-    phone:  new FormControl('', Validators.required),
-    imgs:  new FormControl('', Validators.required),
-    city:  new FormControl('', Validators.required)
+    animal: new FormControl('', Validators.required),
+    breed: new FormControl('', Validators.required),
+    price: new FormControl(''),
+    age: new FormControl('', Validators.required),
+    ageType: new FormControl('', Validators.required),
+    description: new FormControl('', Validators.maxLength(200)),
+    postType: new FormControl('', Validators.required),
+    phone: new FormControl('', Validators.required),
+    imgs: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
   });
 
-
   searchForm = this.formBuilder.group({
-    text:  new FormControl()
+    text: new FormControl(),
   });
 
   constructor(
@@ -38,20 +42,19 @@ export class HomeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private uploadService: UploadService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
     this.latestPosts();
 
     this.searchForm = new FormGroup({
-      text: new FormControl('', [Validators.required])
-   });
+      text: new FormControl('', [Validators.required]),
+    });
   }
-
 
   latestPosts() {
     this.homeService.latestPosts().subscribe((res) => {
-      if (res["code"] == 200) {
+      if (res['code'] == 200) {
         this.posts = res['posts'];
         this.vipPosts = res['vipPosts'];
       }
@@ -59,72 +62,76 @@ export class HomeComponent implements OnInit {
   }
 
   openPost(id) {
-      this.router.navigate([`/post/${id}`]);
+    this.router.navigate([`/post/${id}`]);
   }
-  
+
   scrollLeft() {
-    var div = document.getElementsByClassName("latest-posts")[0] as HTMLImageElement;
+    var div = document.getElementsByClassName(
+      'latest-posts'
+    )[0] as HTMLImageElement;
 
     div.scrollLeft -= div.offsetWidth;
   }
 
   scrollRight() {
-    var div = document.getElementsByClassName("latest-posts")[0] as HTMLImageElement;
+    var div = document.getElementsByClassName(
+      'latest-posts'
+    )[0] as HTMLImageElement;
 
     div.scrollLeft += div.offsetWidth;
   }
 
   changeInput(event) {
-    var priceInput = (document.getElementById('price') as HTMLInputElement);
-    if(event.target.value != "Selling") {
+    var priceInput = document.getElementById('price') as HTMLInputElement;
+    if (event.target.value != 'Selling') {
       priceInput.style.display = 'none';
     } else {
       priceInput.style.display = 'block';
     }
   }
 
-    selectFiles(event) {
-    if(event.target.files) {
-      if(event.target.files.length > 3 || this.urls.length > 3) {
+  selectFiles(event) {
+    if (event.target.files) {
+      if (event.target.files.length > 3 || this.urls.length > 3) {
         this.message = true;
         return;
       }
       this.message = false;
-      for(var i = 0; i <= File.length; i++) {
+      for (var i = 0; i <= File.length; i++) {
         var reader = new FileReader();
 
         reader.readAsDataURL(event.target.files[i]);
         reader.onload = (event: any) => {
-          this.urls.push(event.target.result)
-        }
+          this.urls.push(event.target.result);
+        };
       }
     }
   }
 
-    removeImage(event) {
+  removeImage(event) {
     var tmp = [];
-    this.urls.forEach(url => {
-      if(url != event.target.classList[2]) {
-        tmp.push(url)
+    this.urls.forEach((url) => {
+      if (url != event.target.classList[2]) {
+        tmp.push(url);
       }
     });
     this.urls = tmp;
   }
 
-    upload() {
-    if(localStorage.getItem('token') == null) {
+  upload() {
+    if (localStorage.getItem('token') == null) {
       this.router.navigate(['/login']);
-      return
+      return;
     }
-    if(this.uploadForm.valid) {
+    if (this.uploadForm.valid) {
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
-        urls: this.urls
-      }
+        urls: this.urls,
+      };
 
       this.uploadService.uploadPost(data).subscribe((res) => {
-        if (res["code"] == 200) {
+        if (res['code'] == 200) {
           this.router.navigate(['/post', res['id']]);
         }
       });
@@ -132,6 +139,4 @@ export class HomeComponent implements OnInit {
       this.form_msg = true;
     }
   }
-
-
 }

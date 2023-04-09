@@ -3,11 +3,11 @@ $light: #fceddc;
 $dim: #2e3134;
 
 * {
-  font-family: 'Ubuntu', sans-serif !important;
+  font-family: "Ubuntu", sans-serif !important;
 }
 
 mat-icon {
-  font-family: 'Material Icons' !important;
+  font-family: "Material Icons" !important;
   vertical-align: middle;
 }
 
@@ -152,9 +152,9 @@ span.meet img {
 }
 
 .vip-post {
--webkit-box-shadow:0px 0px 33px 0px rgba(255,202,43,1) !important;
--moz-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
+  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
 }
 
 .post-card {
@@ -168,7 +168,7 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   padding: 30px;
   margin-top: 40px;
   border-radius: 44px;
-  transition: transform .2s;
+  transition: transform 0.2s;
   cursor: pointer;
 }
 
@@ -198,9 +198,9 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 }
 
 .vip-label {
-  -webkit-box-shadow:0px 0px 50px 0px rgba(255,203,46,1);
-  -moz-box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
-  box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
+  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   position: absolute;
   right: 20px;
@@ -315,7 +315,8 @@ textarea {
   font-weight: bold;
 }
 
-.up-form-field input, .files-btn  {
+.up-form-field input,
+.files-btn {
   width: 100%;
   background: #ffffff;
   border: 1px solid #0b2f5b;
@@ -349,7 +350,7 @@ textarea {
   padding: 16px 40px;
   border: none;
   border-radius: 30px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .up-form-btn input:hover {
@@ -362,34 +363,34 @@ textarea {
 }
 
 .images {
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .image-div {
-    width: 250px;
-    height: 230px;
-    margin-top: 50px;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 60px;
+  width: 250px;
+  height: 230px;
+  margin-top: 50px;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 60px;
 }
 
 .uploaded-img {
-    width: 100%;
-    height: 100%;
-    outline: 3px solid $dark;
-    border-radius: 8px;
+  width: 100%;
+  height: 100%;
+  outline: 3px solid $dark;
+  border-radius: 8px;
 }
 
 #cancel-icon {
-    color: $dark;
-    font-size: 30px;
-    width: 30px;
-    height: 30px;
-    margin-bottom: 5px;
-    cursor: pointer;
+  color: $dark;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
+  margin-bottom: 5px;
+  cursor: pointer;
 }
 
 .upload-post-shape img {
@@ -397,20 +398,20 @@ textarea {
 }
 
 .error-div {
-	padding-top: 20px;
-	text-align: center;
+  padding-top: 20px;
+  text-align: center;
 }
 
 .error-text {
-	font-weight: bold;
-	color: $dim;
+  font-weight: bold;
+  color: $dim;
 }
 
-.error-div mat-icon { 
-    color: $dim;
-    font-size: 20px;
-    width: 20px;
-    height: 20px;
+.error-div mat-icon {
+  color: $dim;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 /* Upload Post Section CSS End */
@@ -472,4 +473,3 @@ textarea {
 .user-social li a {
   padding: 0 10px;
 }
-

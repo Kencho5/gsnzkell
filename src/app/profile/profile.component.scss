@@ -4,11 +4,11 @@ $light: #fff;
 $dim: #2e3134;
 
 body {
-  font-family: 'Ubuntu', sans-serif;
+  font-family: "Ubuntu", sans-serif;
 }
 
 mat-icon {
-  font-family: 'Material Icons' !important;
+  font-family: "Material Icons" !important;
   vertical-align: middle;
 }
 
@@ -17,20 +17,20 @@ li {
 }
 
 .posts-fade {
-    animation: postsFadeAnimation ease 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
+  animation: postsFadeAnimation ease 0.5s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
 }
-  
+
 @keyframes postsFadeAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-     }
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
 }
-// :host ::ng-deep .custom-spinner circle{   
+// :host ::ng-deep .custom-spinner circle{
 //     stroke: $dark;
 // }
 
@@ -136,7 +136,8 @@ User Page CSS
 
 /* User Form Section CSS Start */
 /* The Modal (background) */
-.vip-modal, .renew-modal {
+.vip-modal,
+.renew-modal {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -144,7 +145,7 @@ User Page CSS
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0,0,0,0.4);
+  background-color: rgba(0, 0, 0, 0.4);
 }
 
 /* Modal Content */
@@ -158,10 +159,13 @@ User Page CSS
   width: 400px;
   height: 350px;
   position: absolute;
-  top: 0; bottom: 0; left: 0; right: 0; /* Center the modal both horizontally and vertically */
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0; /* Center the modal both horizontally and vertically */
 }
 
-.vip-form h1{
+.vip-form h1 {
   font-weight: bold;
 }
 
@@ -306,7 +310,6 @@ select {
 
 /* User Form Section CSS End */
 
-
 /* User Hero Section CSS End */
 
 /* Post Section CSS Start */
@@ -335,7 +338,8 @@ select {
   margin-top: 40px;
 }
 
-.details h1, p {
+.details h1,
+p {
   font-weight: bold;
 }
 
@@ -363,7 +367,7 @@ select {
 
 .bottom mat-icon {
   cursor: pointer;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .bottom p {
@@ -371,7 +375,7 @@ select {
   border: 1px solid grey;
   border-radius: 10px;
   padding-inline: 5px;
-  transition: transform .2s;
+  transition: transform 0.2s;
 }
 
 .bottom p:hover {
@@ -383,9 +387,9 @@ select {
 }
 
 .vip-post {
--webkit-box-shadow:0px 0px 33px 0px rgba(255,202,43,1) !important;
--moz-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
-box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
+  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
 }
 
 .post-card {
@@ -423,9 +427,9 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 }
 
 .vip-label {
-  -webkit-box-shadow:0px 0px 50px 0px rgba(255,203,46,1);
-  -moz-box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
-  box-shadow: 0px 0px 50px 0px rgba(255,203,46,1);
+  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   position: absolute;
   right: 20px;
@@ -436,7 +440,6 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   padding: 8px 12px;
   color: #1d1d1d;
 }
-
 
 .post-card h5 {
   font-size: 24px;
@@ -478,7 +481,7 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   backdrop-filter: blur(5px);
   margin: auto;
   margin-top: 10px;
-  transition: transform .3s ease-in-out;
+  transition: transform 0.3s ease-in-out;
 }
 
 .renew-div:hover {
@@ -550,7 +553,7 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 .function-button {
   border: none;
   border-radius: 10px;
-    background: linear-gradient(
+  background: linear-gradient(
     180deg,
     #ffffff 0%,
     rgba(255, 255, 255, 0.7) 100%
@@ -567,7 +570,6 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
 }
 
 /* Post Section CSS End */
-
 
 /* User page Post Section CSS Start */
 
@@ -640,4 +642,3 @@ box-shadow: 0px 0px 33px 0px rgba(255,202,43,1) !important;
   background: #54a0b2;
   border: 1px solid #54a0b2;
 }
-

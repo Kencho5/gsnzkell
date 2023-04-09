@@ -1,110 +1,159 @@
 <body>
-        <!-- Upload Post Section HTML Start -->
-      <section id="Upload-post">
-         <div class="upload-post-wrapper position-relative">
-            <div class="container-fluid">
-               <div class="upload-post-container">
-                  <div class="upload-post-title">
-                     <h4>Upload Your Post</h4>
-                  </div>
-                  <div class="row align-items-center">
-                     <div class="col-md-6">
-                        <div class="upload-post-img">
-                           <img
-                              src="assets/images/upload-post.png"
-                              alt="upload-post"
-                              />
-                        </div>
-                     </div>
-                     <div class="col-md-6">
-                        <div class="upload-post-form-container">
-                           <form [formGroup]="uploadForm" (ngSubmit)="upload()">
-                           <div class="upload-post-form">
-                              <div class="up-form-field">
-                                 <select class="form-select" formControlName="animal"
-                                    required>
-                                    <option value="" selected disabled>Select Animal</option>
-                                    <option>Dog</option>
-                                    <option>Cat</option>
-                                    <option>Fish</option>
-                                    <option>Bird</option>
-                                    <option>Reptile</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="Breed" 
-                                    formControlName="breed"
-                                    required>
-                              </div>
-                              <div class="up-form-field">
-                                 <select (change)="changeInput($event)"
-                                    formControlName="postType"
-                                    class="form-select"
-                                    required>
-                                    <option value="" disabled>Select Post Type</option>
-                                    <option>Selling</option>
-                                    <option>Meeting</option>
-                                    <option>Adopting</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="number" placeholder="Price (GEL)" formControlName="price" id="price"/>
-                              </div>
-                              <div class="up-form-field double">
-                                 <input type="number" placeholder="Age" formControlName="age" />
-                                 <select class="form-select" formControlName="ageType"
-                                    required>
-                                    <option value="" selected disabled>Year/Month</option>
-                                    <option>Years</option>
-                                    <option>Months</option>
-                                 </select>
-                              </div>
-                              <div class="up-form-field">
-                                 <textarea placeholder="Description"  maxlength="150" formControlName="description"></textarea>
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="Phone Number"  formControlName="phone" />
-                              </div>
-                              <div class="up-form-field">
-                                 <input type="text" placeholder="City" formControlName="city"/>
-                              </div>
-                              <div class="up-form-field">
-                                              <div class="upload-icon">
-                      <button type="button" (click)="fileInput.click()" class="files-btn"><mat-icon>file_upload</mat-icon> Photos (Min/Max 3)</button>
+  <!-- Upload Post Section HTML Start -->
+  <section id="Upload-post">
+    <div class="upload-post-wrapper position-relative">
+      <div class="container-fluid">
+        <div class="upload-post-container">
+          <div class="upload-post-title">
+            <h4>Upload Your Post</h4>
+          </div>
+          <div class="row align-items-center">
+            <div class="col-md-6">
+              <div class="upload-post-img">
+                <img src="assets/images/upload-post.png" alt="upload-post" />
               </div>
-                <input hidden (change)="selectFiles($event)" #fileInput type="file" multiple formControlName="imgs">
-                <div *ngIf="message" class="error-div">
-                  <h2 class="error-text">3 Photos Required!</h2>
-                </div>
-                <div class="images">
-                    <div class="image-div" *ngFor="let url of urls">
-                            <mat-icon class="{{url}}" id="cancel-icon" (click)="removeImage($event)">cancel</mat-icon>
-                        <img [src]="url" class="uploaded-img">
+            </div>
+            <div class="col-md-6">
+              <div class="upload-post-form-container">
+                <form [formGroup]="uploadForm" (ngSubmit)="upload()">
+                  <div class="upload-post-form">
+                    <div class="up-form-field">
+                      <select
+                        class="form-select"
+                        formControlName="animal"
+                        required
+                      >
+                        <option value="" selected disabled>
+                          Select Animal
+                        </option>
+                        <option>Dog</option>
+                        <option>Cat</option>
+                        <option>Fish</option>
+                        <option>Bird</option>
+                        <option>Reptile</option>
+                      </select>
                     </div>
-                </div>
-                              </div>
-                              <div class="up-form-btn text-center text-md-end mt-3">
-                          <input type="submit" placeholder="Next" />
+                    <div class="up-form-field">
+                      <input
+                        type="text"
+                        placeholder="Breed"
+                        formControlName="breed"
+                        required
+                      />
+                    </div>
+                    <div class="up-form-field">
+                      <select
+                        (change)="changeInput($event)"
+                        formControlName="postType"
+                        class="form-select"
+                        required
+                      >
+                        <option value="" disabled>Select Post Type</option>
+                        <option>Selling</option>
+                        <option>Meeting</option>
+                        <option>Adopting</option>
+                      </select>
+                    </div>
+                    <div class="up-form-field">
+                      <input
+                        type="number"
+                        placeholder="Price (GEL)"
+                        formControlName="price"
+                        id="price"
+                      />
+                    </div>
+                    <div class="up-form-field double">
+                      <input
+                        type="number"
+                        placeholder="Age"
+                        formControlName="age"
+                      />
+                      <select
+                        class="form-select"
+                        formControlName="ageType"
+                        required
+                      >
+                        <option value="" selected disabled>Year/Month</option>
+                        <option>Years</option>
+                        <option>Months</option>
+                      </select>
+                    </div>
+                    <div class="up-form-field">
+                      <textarea
+                        placeholder="Description"
+                        maxlength="150"
+                        formControlName="description"
+                      ></textarea>
+                    </div>
+                    <div class="up-form-field">
+                      <input
+                        type="text"
+                        placeholder="Phone Number"
+                        formControlName="phone"
+                      />
+                    </div>
+                    <div class="up-form-field">
+                      <input
+                        type="text"
+                        placeholder="City"
+                        formControlName="city"
+                      />
+                    </div>
+                    <div class="up-form-field">
+                      <div class="upload-icon">
+                        <button
+                          type="button"
+                          (click)="fileInput.click()"
+                          class="files-btn"
+                        >
+                          <mat-icon>file_upload</mat-icon> Photos (Min/Max 3)
+                        </button>
+                      </div>
+                      <input
+                        hidden
+                        (change)="selectFiles($event)"
+                        #fileInput
+                        type="file"
+                        multiple
+                        formControlName="imgs"
+                      />
+                      <div *ngIf="message" class="error-div">
+                        <h2 class="error-text">3 Photos Required!</h2>
+                      </div>
+                      <div class="images">
+                        <div class="image-div" *ngFor="let url of urls">
+                          <mat-icon
+                            class="{{ url }}"
+                            id="cancel-icon"
+                            (click)="removeImage($event)"
+                            >cancel</mat-icon
+                          >
+                          <img [src]="url" class="uploaded-img" />
                         </div>
-                                    <div class="error-div" *ngIf="form_msg">
-              <h2 align="center" class="error-text"><mat-icon>cancel</mat-icon> Please fill out the form.</h2>
-            </div>
-
-                           </div>
-                           </form>
-                        </div>
-                     </div>
+                      </div>
+                    </div>
+                    <div class="up-form-btn text-center text-md-end mt-3">
+                      <input type="submit" placeholder="Next" />
+                    </div>
+                    <div class="error-div" *ngIf="form_msg">
+                      <h2 align="center" class="error-text">
+                        <mat-icon>cancel</mat-icon> Please fill out the form.
+                      </h2>
+                    </div>
                   </div>
-               </div>
+                </form>
+              </div>
             </div>
-            <div class="upload-post-shape">
-               <img
-                  src="assets/images/upload-post-shape.png"
-                  alt="upload-post-shape"
-                  />
-            </div>
-         </div>
-      </section>
-      <!-- Upload Post Section HTML End -->
-
+          </div>
+        </div>
+      </div>
+      <div class="upload-post-shape">
+        <img
+          src="assets/images/upload-post-shape.png"
+          alt="upload-post-shape"
+        />
+      </div>
+    </div>
+  </section>
+  <!-- Upload Post Section HTML End -->
 </body>

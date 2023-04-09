@@ -8,7 +8,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss', '../responsive.css']
+  styleUrls: ['./post.component.scss', '../responsive.css'],
 })
 export class PostComponent implements OnInit {
   postID: string;
@@ -22,10 +22,10 @@ export class PostComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private postService: PostService
-  ) { }
+  ) {}
 
   ngOnInit(): void {
-    this.routeSub = this.route.params.subscribe(params => {
+    this.routeSub = this.route.params.subscribe((params) => {
       this.postID = params['id'];
     });
 
@@ -33,36 +33,39 @@ export class PostComponent implements OnInit {
   }
 
   getPostData() {
-      this.postService.getPostData({'id': this.postID}).subscribe((res) => {
-    if(res['code'] == 200) {      
+    this.postService.getPostData({ id: this.postID }).subscribe((res) => {
+      if (res['code'] == 200) {
         this.post = res['data'];
         this.getSimilarPosts();
 
-        this.post['date'] = new Date(res['data']['date']).toDateString().slice(3);
+        this.post['date'] = new Date(res['data']['date'])
+          .toDateString()
+          .slice(3);
 
         this.getID();
-    } else {
-      this.router.navigate(['']);
-    }
-  });
-  }
-
-  getSimilarPosts() {
-    this.postService.getSimilarPosts({
-        'id': this.post.id,
-        'breed': this.post.breed,
-        'city': this.post.city,
-        'postType': this.post.postType
-      })
-        .subscribe((res) => {
-      if(res['code'] == 200) {
-        this.similarPosts = res['data'];
+      } else {
+        this.router.navigate(['']);
       }
     });
   }
 
+  getSimilarPosts() {
+    this.postService
+      .getSimilarPosts({
+        id: this.post.id,
+        breed: this.post.breed,
+        city: this.post.city,
+        postType: this.post.postType,
+      })
+      .subscribe((res) => {
+        if (res['code'] == 200) {
+          this.similarPosts = res['data'];
+        }
+      });
+  }
+
   getID() {
-    this.postService.getUserID({'email': this.post.email}).subscribe((res) => {
+    this.postService.getUserID({ email: this.post.email }).subscribe((res) => {
       this.userID = res['data'];
     });
   }
@@ -72,11 +75,10 @@ export class PostComponent implements OnInit {
   }
 
   openPost(id) {
-    window.open(`/post/${id}`)
+    window.open(`/post/${id}`);
   }
 
-
- customOptions: OwlOptions = {
+  customOptions: OwlOptions = {
     items: 1,
     dots: true,
     nav: true,
@@ -84,5 +86,5 @@ export class PostComponent implements OnInit {
     navText: ['<', '>'],
     autoplay: true,
     autoplayTimeout: 2500,
-  }
+  };
 }
