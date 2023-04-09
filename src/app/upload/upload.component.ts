@@ -24,13 +24,13 @@ export class UploadComponent implements OnInit {
     description: new FormControl('', Validators.maxLength(200)),
     postType: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
-    imgs: new FormControl('', Validators.required),
+    imgs: new FormControl(''),
     city: new FormControl('', Validators.required),
   });
 
   urls = [];
-  message: boolean;
-  form_msg: boolean;
+  message: string;
+  form_msg: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -58,7 +58,7 @@ export class UploadComponent implements OnInit {
         };
       }
       if (this.urls.length == 3) {
-        this.message = false;
+        this.message = '';
       }
     }
   }
@@ -74,8 +74,9 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
+    console.log(this.urls, this.uploadForm.value)
     if (this.urls.length != 3) {
-      this.message = true;
+      this.message = 'Only 3 Photos Required!';
       return;
     }
 
@@ -88,11 +89,16 @@ export class UploadComponent implements OnInit {
 
       this.uploadService.uploadPost(data).subscribe((res) => {
         if (res['code'] == 200) {
+          if (res['token']) {
+            localStorage.setItem('token', res['token']);
+          }
           this.router.navigate(['/post', res['id']]);
+        } else {
+          this.form_msg = 'Not Enough Balance!';
         }
       });
     } else {
-      this.form_msg = true;
+      this.form_msg = 'Fill Out The Form';
     }
   }
 

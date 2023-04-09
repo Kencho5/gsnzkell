@@ -178,6 +178,7 @@ app.post("/api/register", (req, res) => {
           city: req.body.city,
           password: hash,
           balance: 0,
+          freeUpload: true,
         };
         users.insertOne(data, (err, result) => {
           if (result) {
@@ -436,6 +437,61 @@ app.post("/api/upload", async (req, res) => {
   const imgs = await saveImages(postID, req);
   const form = req.body.form;
 
+  const user = await users
+    .find({
+      email: email,
+    })
+    .next();
+  const freeUpload = user["freeUpload"];
+  const balance = user["balance"];
+
+  if (freeUpload) {
+    await users.updateOne(
+      {
+        email: email,
+      },
+      {
+        $set: {
+          freeUpload: false,
+        },
+      }
+    );
+  } else {
+    if (balance - 0.1 >= 0) {
+      var updated = await users.findOneAndUpdate(
+        {
+          email: email,
+        },
+        {
+          $inc: {
+            balance: -0.1,
+          },
+        },
+        {
+          returnDocument: "after",
+        }
+      );
+      
+      var payload = {
+        id: updated.value._id,
+        username: updated.value.username,
+        email: updated.value.email,
+        phone: updated.value.phone,
+        instagram: updated.value.instagram,
+        facebook: updated.value.facebook,
+        city: updated.value.city,
+        balance: updated.value.balance,
+        pfp: updated.value.pfp,
+      };
+
+      var newToken = jwt.sign(payload, privateKEY, signOptions);
+    } else {
+      return res.status(200).send({
+        code: 402,
+      });
+    }
+  }
+
   const data = {
     _id: postID,
     email,
@@ -460,6 +516,7 @@ app.post("/api/upload", async (req, res) => {
       res.status(200).send({
         code: 200,
         id: postID,
+        token: newToken,
       });
     } else {
       res.status(500).send({

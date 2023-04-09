@@ -118,7 +118,7 @@
                         formControlName="imgs"
                       />
                       <div *ngIf="message" class="error-div">
-                        <h2 class="error-text">3 Photos Required!</h2>
+                        <h2 class="error-text">{{message}}</h2>
                       </div>
                       <div class="images">
                         <div class="image-div" *ngFor="let url of urls">
@@ -137,7 +137,7 @@
                     </div>
                     <div class="error-div" *ngIf="form_msg">
                       <h2 align="center" class="error-text">
-                        <mat-icon>cancel</mat-icon> Please fill out the form.
+                        <mat-icon>cancel</mat-icon> {{form_msg}}
                       </h2>
                     </div>
                   </div>
