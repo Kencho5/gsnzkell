@@ -21,9 +21,9 @@ import { Router } from '@angular/router';
   ],
 })
 export class ResetComponent implements OnInit {
-  message: boolean;
+  message: string;
   step = 1;
-  codeMessage = false;
+  codeMessage: string;
 
   resetForm: FormGroup;
   codeForm: FormGroup;
@@ -47,22 +47,24 @@ export class ResetComponent implements OnInit {
   }
 
   sendCode() {
-    this.message = false;
+    this.message = "";
 
     if (this.resetForm.valid) {
       const email = this.resetForm.value.email;
       this.resetService.sendEmail({ email }).subscribe((res) => {
         if (res['code'] === 200) {
           this.step = 2;
+        } else {
+          this.message = "Email Not Found";
         }
       });
     } else {
-      this.message = true;
+      this.message = "Enter Your Email";
     }
   }
 
   resetPass() {
-    this.message = false;
+    this.message = "";
 
     if (this.codeForm.valid) {
       const code = this.codeForm.value.code;
@@ -72,11 +74,11 @@ export class ResetComponent implements OnInit {
         if (res['code'] === 200) {
           this.router.navigate(['/login']);
         } else {
-          this.codeMessage = true;
+          this.codeMessage = "Code Not Found";
         }
       });
     } else {
-      this.message = true;
+      this.message = "Enter Your Details";
     }
   }
 }
