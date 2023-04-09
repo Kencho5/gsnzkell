@@ -601,8 +601,8 @@ app.post("/api/similar", (req, res) => {
 
   userPosts
     .find({
-      $text: {
-        $search: breed,
+      breed: {
+        $regex: new RegExp(breed, "i"),
       },
       city: city,
       postType: postType,
