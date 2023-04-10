@@ -37,10 +37,9 @@
                     <h4 id="birds">Birds</h4>
                   </div>
                 </div>
-                          <div class="post-see-more-btn text-center mt-5 pt-4">
-             <a href="#">See More</a>
-          </div>
-
+                <div class="post-see-more-btn text-center mt-5 pt-4">
+                  <a href="#">See More</a>
+                </div>
               </div>
             </div>
             <div class="col-lg-6">
@@ -90,9 +89,9 @@
                     src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
                     alt="post-img"
                   />
-                  <span class="post-type-label">{{
-                    post.postType | titlecase
-                  }}</span>
+                  <span class="post-type-label"
+                    >{{ post.postType | titlecase }}</span
+                  >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
                 <h5>{{ post.breed }}</h5>
@@ -131,9 +130,9 @@
                     src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
                     alt="post-img"
                   />
-                  <span class="post-type-label">{{
-                    post.postType | titlecase
-                  }}</span>
+                  <span class="post-type-label"
+                    >{{ post.postType | titlecase }}</span
+                  >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
                 <h5>{{ post.breed }}</h5>
