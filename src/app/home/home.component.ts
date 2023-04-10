@@ -139,4 +139,10 @@ export class HomeComponent implements OnInit {
       this.form_msg = true;
     }
   }
+
+  openAll(event) {
+    const animal = event.target.id;
+
+    this.router.navigate(['/all', animal]);
+  }
 }
