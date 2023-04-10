@@ -109,14 +109,14 @@ span.meet img {
   position: absolute;
   left: 0;
   bottom: 160px;
-  z-index: 0;
+  z-index: -1;
 }
 
 .hero-shape2 {
   position: absolute;
   right: 0;
   bottom: 200px;
-  z-index: 0;
+  z-index: -1;
 }
 
 .hero-bottom-shape {
@@ -243,7 +243,7 @@ span.meet img {
   position: absolute;
   right: 0;
   bottom: -335px;
-  z-index: 0;
+  z-index: -1;
 }
 
 .latest-post-shape img {
