@@ -652,7 +652,8 @@ app.post("/api/getid", async (req, res) => {
       if (response) {
         res.status(200).send({
           code: 200,
-          data: response._id,
+          id: response._id,
+          pfp: response.pfp
         });
       } else {
         res.status(200).send({

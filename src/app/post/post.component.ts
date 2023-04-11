@@ -15,6 +15,7 @@ export class PostComponent implements OnInit {
   post;
   similarPosts;
   userID: string;
+  userPfp: boolean;
 
   private routeSub: Subscription;
 
@@ -66,7 +67,8 @@ export class PostComponent implements OnInit {
 
   getID() {
     this.postService.getUserID({ email: this.post.email }).subscribe((res) => {
-      this.userID = res['data'];
+      this.userID = res['id'];
+      this.userPfp = res['pfp'];
     });
   }
 

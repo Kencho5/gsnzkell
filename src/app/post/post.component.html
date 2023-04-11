@@ -109,14 +109,15 @@
                 class="post-user-info d-flex align-items-center mt-4 mt-md-0"
               >
                 <div class="post-user-img">
-                  <img
-                    src="assets/images/user-pfps/{{ userID }}.jpg"
-                    alt="user-pfp"
-                  />
-                  <!-- <img -->
-                  <!--   src="assets/images/user-profile.png" -->
-                  <!--   alt="user-profile" -->
-                  <!-- /> -->
+                      <img
+                        *ngIf="userPfp == true; else default"
+                        src="assets/images/user-pfps/{{ userID }}.jpg"
+                        alt="user"
+                        id="user-pfp"
+                      />
+                      <ng-template #default>
+                        <img src="assets/images/default_pfp.png" alt="user" />
+                      </ng-template>
                 </div>
                 <div class="post-user-info-text">
                   <h4>{{ post.name }}</h4>
