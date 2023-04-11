@@ -28,7 +28,6 @@ import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoadingComponent } from './loading/loading.component';
-import { AllComponent } from './all/all.component';
 
 @NgModule({
   declarations: [
@@ -44,7 +43,6 @@ import { AllComponent } from './all/all.component';
     SearchComponent,
     EditProfileComponent,
     LoadingComponent,
-    AllComponent,
   ],
   imports: [
     BrowserModule,
