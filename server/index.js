@@ -731,16 +731,28 @@ app.post("/api/search", async (req, res) => {
 
   try {
     const searchText = req.body.text;
+    let animal = req.body.animal;
     const pageIndex = parseInt(req.body.pageIndex) || 1;
     const filters = req.body.filters || {};
 
     const start = pageIndex === 1 ? 0 : (pageIndex - 1) * 10;
 
-    const query = {
-      breed: {
-        $regex: new RegExp(searchText, "i"),
-      },
-    };
+    var query = {};
+
+    if (animal) {
+      if (animal != "all") {
+        animal = animal.charAt(0).toUpperCase() + animal.slice(1);
+        query = {
+          animal: animal,
+        };
+      }
+    } else {
+      query = {
+        breed: {
+          $regex: new RegExp(searchText, "i"),
+        },
+      };
+    }
 
     for (const key in filters) {
       if (filters[key] && filters[key] !== "none") {

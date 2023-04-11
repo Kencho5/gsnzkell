@@ -143,6 +143,6 @@ export class HomeComponent implements OnInit {
   openAll(event) {
     const animal = event.target.id;
 
-    this.router.navigate(['/all', animal]);
+    this.router.navigate(['/search', { animal: animal }]);
   }
 }

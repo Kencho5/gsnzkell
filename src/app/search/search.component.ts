@@ -41,6 +41,7 @@ export class SearchComponent implements OnInit {
   filterError;
   pages = [];
   vipCount = 0;
+  animal: string;
 
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // pageEvent: PageEvent;
@@ -64,6 +65,7 @@ export class SearchComponent implements OnInit {
 
     this.activatedRoute.params.subscribe((params) => {
       this.text = params['text'];
+      this.animal = params['animal'];
 
       this.searchPosts();
     });
@@ -73,6 +75,7 @@ export class SearchComponent implements OnInit {
     this.searchService
       .searchPost({
         text: this.text,
+        animal: this.animal,
         filters: this.filterForm.value,
         pageIndex: this.pageIndex,
       })
