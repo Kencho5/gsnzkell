@@ -9,7 +9,7 @@ import { AllService } from './all.service';
   styleUrls: ['./all.component.scss'],
 })
 export class AllComponent {
-  type: string;
+  animal: string;
   posts = [];
   private routeSub: Subscription;
 
@@ -17,14 +17,14 @@ export class AllComponent {
 
   ngOnInit(): void {
     this.routeSub = this.route.params.subscribe((params) => {
-      this.type = params['animal'];
+      this.animal = params['animal'];
 
       this.getAll();
     });
   }
 
   getAll() {
-    this.allService.getPosts({ type: this.type }).subscribe((res) => {
+    this.allService.getPosts({ animal: this.animal }).subscribe((res) => {
       if (res['code'] == 200) {
         this.posts = res['posts'];
       }

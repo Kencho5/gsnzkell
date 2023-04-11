@@ -471,7 +471,7 @@ app.post("/api/upload", async (req, res) => {
           returnDocument: "after",
         }
       );
-      
+
       var payload = {
         id: updated.value._id,
         username: updated.value.username,
@@ -1087,5 +1087,20 @@ const sendEmail = async (email) => {
   });
   return code;
 };
+
+app.post("/api/all", async (req, res) => {
+  var animal = req.body.animal;
+
+  animal = animal.charAt(0).toUpperCase() + animal.slice(1);
+  const posts = await userPosts.find({
+    animal: animal
+  })
+  .limit(10).toArray();
+
+  res.status(200).send({
+    code: 200,
+    posts: posts
+  });
+});
 
 app.listen(3000, () => console.log(`Started server at http://localhost:3000!`));
