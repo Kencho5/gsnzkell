@@ -118,14 +118,14 @@
             <div class="section-title">
               <h2>VIP Posts</h2>
             </div>
-            <div class="position-relative mt-5 pt-5">
+            <div class="position-relative pt-3">
               <div class="vip-post-wrapper row align-items-center mt-4">
                 <div
                   class="col-sm-6 col-lg-6 col-xl-4"
-                  *ngFor="let post of posts"
+                  *ngFor="let post of vipPosts"
                   (click)="openPost(post._id)"
                 >
-                  <div class="post-card vip-post" *ngIf="post.vip">
+                  <div class="post-card vip-post">
                     <div class="post-card-img position-relative">
                       <img
                         src="/assets/postImages/{{ post._id }}/{{

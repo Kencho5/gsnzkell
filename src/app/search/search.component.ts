@@ -34,6 +34,7 @@ export class SearchComponent implements OnInit {
   });
 
   posts = [];
+  vipPosts = [];
   text: string;
   pageIndex = 1;
   count;
@@ -85,6 +86,7 @@ export class SearchComponent implements OnInit {
           this.posts.forEach((post) => {
             if (post.vip) {
               this.vipCount += 1;
+              this.vipPosts.push(post);
             }
           });
 
