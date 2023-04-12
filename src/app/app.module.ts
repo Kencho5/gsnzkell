@@ -23,7 +23,6 @@ import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatDialogModule } from '@angular/material/dialog';
-import { EditProfileComponent } from './edit-profile/edit-profile.component';
 import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
@@ -41,7 +40,6 @@ import { LoadingComponent } from './loading/loading.component';
     PostComponent,
     UserComponent,
     SearchComponent,
-    EditProfileComponent,
     LoadingComponent,
   ],
   imports: [
