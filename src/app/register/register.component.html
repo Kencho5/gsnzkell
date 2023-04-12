@@ -13,13 +13,13 @@
         <h1><a href="/" rel="dofollow">Pender</a></h1>
       </div>
       <div class="formbg-outer">
-        <div class="formbg">
+        <div class="formbg" *ngIf="step == 1">
           <div class="formbg-inner padding-horizontal--48">
             <span class="padding-bottom--24">Register On Pender</span>
             <form
               id="stripe-login"
               [formGroup]="registerForm"
-              (ngSubmit)="registerRequest()"
+              (ngSubmit)="sendCode()"
             >
               <div class="field padding-bottom--24">
                 <label for="email">Email</label>
@@ -55,19 +55,39 @@
               <div class="field padding-bottom--24">
                 <input type="submit" name="submit" value="Register" />
               </div>
-              <div *ngIf="displayError" class="error-div">
-                <h4 class="error-text">
-                  <mat-icon>cancel</mat-icon> Please fill out the form.
-                </h4>
-              </div>
               <div *ngIf="httpError" class="error-div">
                 <h4 class="error-text">
-                  <mat-icon>cancel</mat-icon> Email already in use.
+                  <mat-icon>cancel</mat-icon> {{httpError}} 
                 </h4>
               </div>
             </form>
           </div>
         </div>
+        <!-- EMAIL CODE -->
+        <div class="formbg" *ngIf="step == 2">
+          <div class="formbg-inner padding-horizontal--48">
+            <span class="padding-bottom--24">Confirm Your Email</span>
+            <form
+              id="stripe-login"
+              [formGroup]="codeForm"
+              (ngSubmit)="registerRequest()"
+            >
+              <div class="field padding-bottom--24">
+                <label for="name">Code</label>
+                <input type="text" formControlName="code" />
+              </div>
+              <div class="field padding-bottom--24">
+                <input type="submit" name="submit" value="Confirm" />
+              </div>
+              <div *ngIf="httpError" class="error-div">
+                <h4 class="error-text">
+                  <mat-icon>cancel</mat-icon> {{httpError}}
+                </h4>
+              </div>
+            </form>
+          </div>
+        </div>
+
         <div class="footer-link padding-top--24">
           <span
             >Have an account?

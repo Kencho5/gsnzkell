@@ -162,6 +162,13 @@ app.post("/api/login", (req, res) => {
 });
 
 app.post("/api/register", (req, res) => {
+  if (req.body.code != req.session.code) {
+    return res.status(200).send({
+      code: 400,
+      message: "Incorret Code",
+    });
+  }
+
   users.findOne({ email: req.body.email }, (err, response) => {
     if (response) {
       res.status(200).send({
@@ -653,7 +660,7 @@ app.post("/api/getid", async (req, res) => {
         res.status(200).send({
           code: 200,
           id: response._id,
-          pfp: response.pfp
+          pfp: response.pfp,
         });
       } else {
         res.status(200).send({
@@ -1061,6 +1068,30 @@ app.post("/api/code", async (req, res) => {
       code: 500,
     });
   }
+});
+
+app.post("/api/confirmEmail", async (req, res) => {
+  const email = req.body.email;
+
+  const exists = await users
+    .find({
+      email: email,
+    })
+    .next();
+
+  if (exists) {
+    return res.status(200).send({
+      code: 404,
+    });
+  }
+
+  const code = await sendEmail(email);
+  req.session.code = code;
+  req.session.email = email;
+
+  res.status(200).send({
+    code: 200,
+  });
 });
 
 const sendEmail = async (email) => {

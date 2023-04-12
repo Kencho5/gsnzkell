@@ -10,9 +10,10 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
   registerForm: FormGroup;
-  displayError: boolean;
-  httpError: boolean;
+  codeForm: FormGroup;
+  httpError: string;
   isRegistered = 'Successfully Registered!';
+  step = 1;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -28,24 +29,58 @@ export class RegisterComponent implements OnInit {
       city: [null, Validators.required],
       password: [null, Validators.required],
     });
+
+    this.codeForm = this.formBuilder.group({
+      code: [null, Validators.required],
+    });
+  }
+
+  changeStep() {
+    if (this.registerForm.valid) {
+      this.httpError = '';
+      this.step = 2;
+
+      this.sendCode();
+    } else {
+      this.httpError = 'Please Fill Out The Form';
+    }
+  }
+
+  sendCode() {
+    this._registerService
+      .sendCode({
+        email: this.registerForm.value.email,
+        register: true,
+      })
+      .subscribe((res) => {
+        if (res['code'] == 404) {
+          this.httpError = 'Email Already Exists';
+          this.step = 1;
+        } else {
+          this.changeStep();
+        }
+      });
   }
 
   registerRequest() {
     if (this.registerForm.valid) {
-      this.displayError = false;
+      this.httpError = '';
 
       this._registerService
-        .insertRegisterData(this.registerForm.value)
+        .insertRegisterData({
+          data: this.registerForm.value,
+          code: this.codeForm.value.code,
+        })
         .subscribe((res) => {
-          if (res['code'] == 500) {
-            this.httpError = true;
-          } else {
+          if (res['code'] == 200) {
             localStorage.setItem('isRegistered', this.isRegistered);
             this.router.navigate(['/login']);
+          } else {
+            this.httpError = "Incorrect Code";
           }
         });
     } else {
-      this.displayError = true;
+      this.httpError = 'Please Fill Out The Form';
     }
   }
 }

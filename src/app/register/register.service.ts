@@ -15,4 +15,13 @@ export class RegisterService {
       })
     );
   }
+
+  sendCode(data) {
+    return this._http.post('/api/confirmEmail', data).pipe(
+      map((res: HttpResponse<Response>) => {
+        return res;
+      })
+    );
+  }
+
 }
