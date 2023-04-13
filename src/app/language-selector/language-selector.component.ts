@@ -18,6 +18,10 @@ export class LanguageSelectorComponent {
   ngOnInit() {
     this.translate.use(localStorage.getItem('lang'));
     this.currentLanguage = localStorage.getItem('lang');
+
+    if(!localStorage.getItem('lang')) {
+      this.currentLanguage = 'ge';
+    }
   }
 
   toggleDropdown() {
