@@ -11,8 +11,8 @@ const shell = require("shelljs");
 var os = require("os");
 const axios = require("axios");
 const { exec } = require("child_process");
-const nodemailer = require("nodemailer");
 const session = require("express-session");
+const AWS = require("aws-sdk");
 
 const url = "mongodb://127.0.0.1:27017";
 const client = new MongoClient(url);
@@ -72,6 +72,13 @@ app.use(
 
 app.use(express.json());
 
+// create an SES client
+const ses = new AWS.SES({
+  accessKeyId: "AKIAVFT6KDRIBYGAWR7F",
+  secretAccessKey: "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",
+  region: "eu-north-1",
+});
+
 app.post("/api/webhook", (req, res) => {
   const { ref } = req.body;
 
@@ -84,7 +91,7 @@ app.post("/api/webhook", (req, res) => {
         return res.sendStatus(500);
       }
 
-      console.log(`Pull successful: ${stdout}`, 'building...');
+      console.log(`Pull successful: ${stdout}`, "building...");
 
       exec(
         "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build",
@@ -1095,39 +1102,49 @@ app.post("/api/confirmEmail", async (req, res) => {
 });
 
 const sendEmail = async (email) => {
-  const SMTP_SERVER = "smtp-relay.sendinblue.com";
-  const SMTP_PORT = 587;
-  const SMTP_USERNAME = "pendersupp@gmail.com";
-  const SMTP_PASSWORD = "1XcKNmfvdYpODSwI";
-  const EMAIL_FROM = "pendersupp@gmail.com";
-  const EMAIL_TO = email;
-  const EMAIL_SUBJECT = "Verification Code";
   const code = Math.floor(Math.random() * 90000) + 10000;
-  const co_msg = `Code: ${code}`;
 
-  const transporter = nodemailer.createTransport({
-    host: SMTP_SERVER,
-    port: SMTP_PORT,
-    secure: false,
-    auth: {
-      user: SMTP_USERNAME,
-      pass: SMTP_PASSWORD,
+  const htmlBody = `
+  <html>
+    <head>
+      <style>
+        .verification-code {
+          font-size: 48px;
+          font-weight: bold;
+          color: #007bff;
+        }
+      </style>
+    </head>
+    <body>
+      <p>To complete your task, please use the following verification code:</p>
+      <p class="verification-code">${code}</p>
+      <p>Thank you,</p>
+      <p>Pender</p>
+    </body>
+  </html>
+`;
+
+  // send an email
+  const params = {
+    Source: "Pender <support@pender.ge>",
+    Destination: {
+      ToAddresses: [email],
     },
-  });
-
-  const mailOptions = {
-    from: EMAIL_FROM,
-    to: EMAIL_TO,
-    subject: EMAIL_SUBJECT,
-    text: co_msg,
+    Message: {
+      Subject: {
+        Data: "Verification Code",
+      },
+      Body: {
+        Html: {
+          Data: htmlBody,
+        },
+      },
+    },
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.log(error);
-    } else {
-      console.log(`Email sent: ${info.response}`);
-    }
+  ses.sendEmail(params, (err, data) => {
+    if (err) console.log(err, err.stack);
+    else console.log(data);
   });
   return code;
 };

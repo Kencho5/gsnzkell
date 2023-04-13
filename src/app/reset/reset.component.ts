@@ -74,7 +74,7 @@ export class ResetComponent implements OnInit {
         if (res['code'] === 200) {
           this.router.navigate(['/login']);
         } else {
-          this.codeMessage = "Code Not Found";
+          this.codeMessage = "Incorrect Code";
         }
       });
     } else {
