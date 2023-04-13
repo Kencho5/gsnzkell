@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { LoginService } from './login.service';
 import { Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import citiesJson from '../../assets/i18n/cities.json';
 
 @Component({
   selector: 'app-login',
