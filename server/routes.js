@@ -63,3 +63,4 @@ router.post('/api/code', code);
 router.post('/api/confirmEmail', confirmEmail);
 
 module.exports = router;
+
