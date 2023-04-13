@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { UploadService } from '../upload/upload.service';
 import { TranslateService } from '@ngx-translate/core';
+import citiesJson from '../../assets/i18n/cities.json';
 
 @Component({
   selector: 'app-home',
@@ -21,6 +22,7 @@ export class HomeComponent implements OnInit {
   urls = [];
   message: boolean;
   form_msg: boolean;
+  cities = citiesJson.cities[this.translate.currentLang];
 
   uploadForm = new FormGroup({
     animal: new FormControl('', Validators.required),
@@ -44,7 +46,7 @@ export class HomeComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private uploadService: UploadService,
-    private translate: TranslateService
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -147,5 +149,9 @@ export class HomeComponent implements OnInit {
     const animal = event.target.id;
 
     this.router.navigate(['/search', { animal: animal }]);
+  }
+
+  translateCity(key: unknown): string {
+    return this.translate.instant(key as string);
   }
 }

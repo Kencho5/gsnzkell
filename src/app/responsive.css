@@ -614,6 +614,11 @@
   .owl-similar-posts {
     display: none;
   }
+  span.adopt,
+  span.sell,
+  span.meet {
+    font-size: 52px;
+  }
 }
 
 @media only screen and (max-width: 767px) {

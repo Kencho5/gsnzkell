@@ -64,6 +64,7 @@ span.meet img {
   position: absolute;
   left: 0;
   bottom: 0;
+  z-index: -1;
 }
 
 .hero-btn a {
@@ -209,7 +210,7 @@ span.meet img {
   left: 0;
   bottom: 40px;
   border-radius: 0px 10px 10px 0px;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: bold !important;
   padding: 8px 12px;
   color: #1d1d1d;

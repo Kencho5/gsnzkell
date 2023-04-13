@@ -9,16 +9,19 @@
               <div class="hero-content">
                 <h1>
                   <span class="adopt position-relative">
-                    Adopt <img src="assets/images/adopt.svg" alt="adopt" />
+                    {{ 'adopt' | translate}}
+                    <img src="assets/images/adopt.svg" alt="adopt" />
                   </span>
                   <span class="sell position-relative">
-                    Sell <img src="assets/images/sell.svg" alt="sell" />
+                    {{ 'sell' | translate}}
+                    <img src="assets/images/sell.svg" alt="sell" />
                   </span>
                   <span class="meet position-relative">
-                    Meet <img src="assets/images/meet.svg" alt="meet" />
+                    {{ 'meet' | translate}}
+                    <img src="assets/images/meet.svg" alt="meet" />
                   </span>
                   <br />
-                  Your Pet Here
+                  {{ 'your_pet_here' | translate}}
                 </h1>
                 <div class="hero-btn mt-5">
                   <a href="/upload">{{ 'upload_post' | translate}}</a>
@@ -26,18 +29,18 @@
                 <div class="pets-box">
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/dog.png" alt="dog" id="dog" />
-                    <h4 id="dog">Dogs</h4>
+                    <h4 id="dog">{{ 'dogs' | translate}}</h4>
                   </div>
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/cat.png" alt="cat" id="cat" />
-                    <h4 id="cat">Cats</h4>
+                    <h4 id="cat">{{ 'cats' | translate}}</h4>
                   </div>
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/birds.png" alt="bird" id="bird" />
-                    <h4 id="bird">Birds</h4>
+                    <h4 id="bird">{{ 'birds' | translate}}</h4>
                   </div>
                   <div class="single-pet more" (click)="openAll($event)">
-                    <a href="/search;animal=all">See More</a>
+                    <a href="/search;animal=all">{{ 'see_more' | translate}}</a>
                   </div>
                 </div>
                 <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
@@ -78,7 +81,7 @@
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
-            <h2>VIP Posts</h2>
+            <h2>{{ 'vip_posts' | translate}}</h2>
           </div>
           <div class="row align-items-center">
             <div
@@ -93,14 +96,17 @@
                     alt="post-img"
                   />
                   <span class="post-type-label"
-                    >{{ post.postType | titlecase }}</span
+                    >{{ post.postType | titlecase | translate }}</span
                   >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
                 <h5>{{ post.breed }}</h5>
                 <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
                 <ng-template #age>
-                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
+                  <p>
+                    {{ post.age }} {{ post.ageType | translate | titlecase }}
+                    <span *ngIf="translate.currentLang == 'en'">Old</span>
+                  </p>
                 </ng-template>
               </div>
             </div>
@@ -119,7 +125,7 @@
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
-            <h2>Latest Posts</h2>
+            <h2>{{ 'latest_posts' | translate }}</h2>
           </div>
           <div class="row align-items-center">
             <div
@@ -134,14 +140,17 @@
                     alt="post-img"
                   />
                   <span class="post-type-label"
-                    >{{ post.postType | titlecase }}</span
+                    >{{ post.postType | translate}}</span
                   >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
                 <h5>{{ post.breed }}</h5>
                 <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
                 <ng-template #age>
-                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
+                  <p>
+                    {{ post.age }} {{ post.ageType | translate }}
+                    <span *ngIf="translate.currentLang == 'en'">Old</span>
+                  </p>
                 </ng-template>
               </div>
             </div>
@@ -165,7 +174,7 @@
         <div class="container-fluid">
           <div class="upload-post-container">
             <div class="upload-post-title">
-              <h4>Upload Your Post</h4>
+              <h4>{{ 'upload_post' | translate }}</h4>
             </div>
             <div class="row align-items-center">
               <div class="col-md-6">
@@ -184,19 +193,19 @@
                           required
                         >
                           <option value="" selected disabled>
-                            Select Animal
+                            {{ 'select_animal' | translate }}
                           </option>
-                          <option>Dog</option>
-                          <option>Cat</option>
-                          <option>Fish</option>
-                          <option>Bird</option>
-                          <option>Reptile</option>
+                          <option>{{ 'dog' | translate }}</option>
+                          <option>{{ 'cat' | translate }}</option>
+                          <option>{{ 'fish' | translate }}</option>
+                          <option>{{ 'bird' | translate }}</option>
+                          <option>{{ 'reptile' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field">
                         <input
                           type="text"
-                          placeholder="Breed"
+                          placeholder="{{ 'breed' | translate }}"
                           formControlName="breed"
                           required
                         />
@@ -208,23 +217,25 @@
                           class="form-select"
                           required
                         >
-                          <option value="" disabled>Select Post Type</option>
-                          <option>Selling</option>
-                          <option>Meeting</option>
-                          <option>Adopting</option>
+                          <option value="" disabled>
+                            {{ 'select_post_type' | translate }}
+                          </option>
+                          <option>{{ 'Selling' | translate }}</option>
+                          <option>{{ 'Meeting' | translate }}</option>
+                          <option>{{ 'Adopting' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field" id="price">
                         <input
                           type="number"
-                          placeholder="Price (GEL)"
+                          placeholder="{{ 'price' | translate }}"
                           formControlName="price"
                         />
                       </div>
                       <div class="up-form-field double">
                         <input
                           type="text"
-                          placeholder="Age"
+                          placeholder="{{ 'age' | translate }}"
                           formControlName="age"
                         />
                         <select
@@ -232,14 +243,16 @@
                           formControlName="ageType"
                           required
                         >
-                          <option value="" selected disabled>Year/Month</option>
-                          <option>Years</option>
-                          <option>Months</option>
+                          <option value="" selected disabled>
+                            {{ 'age_type' | translate }}
+                          </option>
+                          <option>{{ 'years' | translate }}</option>
+                          <option>{{ 'months' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field">
                         <textarea
-                          placeholder="Description"
+                          placeholder="{{ 'description' | translate }}"
                           maxlength="150"
                           formControlName="description"
                         ></textarea>
@@ -247,79 +260,18 @@
                       <div class="up-form-field">
                         <input
                           type="text"
-                          placeholder="Phone Number"
+                          placeholder="{{ 'phone' | translate }}"
                           formControlName="phone"
                         />
                       </div>
                       <div class="up-form-field">
                         <select formControlName="city" class="form-select">
                           <option value="" selected disabled>
-                            Select a City
+                            {{ 'select_city' | translate }}
                           </option>
-
-                          <option value="Abasha">Abasha</option>
-                          <option value="Abastumani">Abastumani</option>
-                          <option value="Adigeni">Adigeni</option>
-                          <option value="Akhalgori">Akhalgori</option>
-                          <option value="Akhalkalaki">Akhalkalaki</option>
-                          <option value="Akhmeta">Akhmeta</option>
-                          <option value="Ambrolauri">Ambrolauri</option>
-                          <option value="Aspindza">Aspindza</option>
-                          <option value="Baghdati">Baghdati</option>
-                          <option value="Bakuriani">Bakuriani</option>
-                          <option value="Bolnisi">Bolnisi</option>
-                          <option value="Borjomi">Borjomi</option>
-                          <option value="Chakvi">Chakvi</option>
-                          <option value="Chokhatauri">Chokhatauri</option>
-                          <option value="Dedoplistsqaro">Dedoplistsqaro</option>
-                          <option value="Gagra">Gagra</option>
-                          <option value="Gali">Gali</option>
-                          <option value="Gardabani">Gardabani</option>
-                          <option value="Gori">Gori</option>
-                          <option value="Gudauri">Gudauri</option>
-                          <option value="Gurjaani">Gurjaani</option>
-                          <option value="Jvari">Jvari</option>
-                          <option value="Kakheti">Kakheti</option>
-                          <option value="Kaspi">Kaspi</option>
-                          <option value="Kazbegi">Kazbegi</option>
-                          <option value="Kharagauli">Kharagauli</option>
-                          <option value="Khashuri">Khashuri</option>
-                          <option value="Khobi">Khobi</option>
-                          <option value="Khoni">Khoni</option>
-                          <option value="Kobuleti">Kobuleti</option>
-                          <option value="Kutaisi">Kutaisi</option>
-                          <option value="Lagodekhi">Lagodekhi</option>
-                          <option value="Manglisi">Manglisi</option>
-                          <option value="Marneuli">Marneuli</option>
-                          <option value="Mestia">Mestia</option>
-                          <option value="Ninotsminda">Ninotsminda</option>
-                          <option value="Oni">Oni</option>
-                          <option value="Ozurgeti">Ozurgeti</option>
-                          <option value="Pankisi">Pankisi</option>
-                          <option value="Pitsunda">Pitsunda</option>
-                          <option value="Poti">Poti</option>
-                          <option value="Racha">Racha</option>
-                          <option value="Rustavi">Rustavi</option>
-                          <option value="Sachkhere">Sachkhere</option>
-                          <option value="Sagarejo">Sagarejo</option>
-                          <option value="Samtredia">Samtredia</option>
-                          <option value="Senaki">Senaki</option>
-                          <option value="Shekvetili">Shekvetili</option>
-                          <option value="Shuakhevi">Shuakhevi</option>
-                          <option value="Sighnaghi">Sighnaghi</option>
-                          <option value="Stepantsminda">Stepantsminda</option>
-                          <option value="Sukhumi">Sukhumi</option>
-                          <option value="Tbilisi">Tbilisi</option>
-                          <option value="Telavi">Telavi</option>
-                          <option value="Tianeti">Tianeti</option>
-                          <option value="Tkibuli">Tkibuli</option>
-                          <option value="Tskaltubo">Tskaltubo</option>
-                          <option value="Tsnori">Tsnori</option>
-                          <option value="Tsqaltubo">Tsqaltubo</option>
-                          <option value="Tusheti">Tusheti</option>
-                          <option value="Ureki">Ureki</option>
-                          <option value="Vani">Vani</option>
-                          <option value="Zestaponi">Zestaponi</option>
+                          <option *ngFor="let city of cities | keyvalue" value="city.key">
+                          {{ translateCity(city.key) }}
+</option>
                         </select>
 
                         <!-- <input -->
@@ -335,7 +287,7 @@
                             (click)="fileInput.click()"
                             class="files-btn"
                           >
-                            <mat-icon>file_upload</mat-icon> Photos (Max 3)
+                          <mat-icon>file_upload</mat-icon> {{ 'photos' | translate }}
                           </button>
                         </div>
                         <input
@@ -362,7 +314,7 @@
                         </div>
                       </div>
                       <div class="up-form-btn text-center text-md-end mt-3">
-                        <input type="submit" placeholder="Next" />
+                        <input type="submit" value="{{ 'submit' | translate }}" />
                       </div>
                       <div class="error-div" *ngIf="form_msg">
                         <h2 align="center" class="error-text">
