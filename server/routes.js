@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-const webhook = require('./utils/webhook');
+const webhook = require('./webhook');
 const login = require('./controllers/auth/login');
 const register = require('./controllers/auth/register');
 const getUser = require('./controllers/user/getUser');
