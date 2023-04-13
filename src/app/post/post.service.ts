@@ -17,7 +17,7 @@ export class PostService {
   }
 
   getUserID(data) {
-    return this._http.post('/api/getid', data).pipe(
+    return this._http.post('/api/getId', data).pipe(
       map((res: HttpResponse<Response>) => {
         return res;
       })
