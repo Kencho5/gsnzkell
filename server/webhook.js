@@ -34,7 +34,7 @@ function webhook(req, res) {
 
               console.log(`Copy successful: ${stdout}`);
 
-              exec("pm2 restart index", (err, stdout, stderr) => {
+              exec("pm2 restart server", (err, stdout, stderr) => {
                 if (err) {
                   console.error(`Error: ${err}`);
                   return res.sendStatus(500);
