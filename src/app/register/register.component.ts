@@ -57,7 +57,7 @@ export class RegisterComponent implements OnInit {
           this.httpError = 'Email Already Exists';
           this.step = 1;
         } else {
-          this.changeStep();
+          this.step = 2;
         }
       });
   }
