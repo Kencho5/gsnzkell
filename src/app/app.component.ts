@@ -9,6 +9,7 @@ import {
 } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SearchService } from './search/search.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-root',
@@ -38,6 +39,8 @@ export class AppComponent {
   time;
   filterError;
   isLoading = true;
+  supportedLanguages = ['en', 'ge'];
+  currentLanguage: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,8 +48,12 @@ export class AppComponent {
     public loginService: LoginService,
     private el: ElementRef,
     private renderer: Renderer2,
-    private searchService: SearchService
-  ) {}
+    private searchService: SearchService,
+    private translate: TranslateService
+  ) {
+    // Set the default language
+    translate.setDefaultLang('ge');
+  }
 
   ngOnInit(): void {
     this.isLoading = true;

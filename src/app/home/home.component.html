@@ -21,7 +21,7 @@
                   Your Pet Here
                 </h1>
                 <div class="hero-btn mt-5">
-                  <a href="/upload">Upload Post</a>
+                  <a href="/upload">{{ 'upload_post' | translate}}</a>
                 </div>
                 <div class="pets-box">
                   <div class="single-pet" (click)="openAll($event)">
@@ -216,7 +216,7 @@
                       </div>
                       <div class="up-form-field" id="price">
                         <input
-                          type="text"
+                          type="number"
                           placeholder="Price (GEL)"
                           formControlName="price"
                         />

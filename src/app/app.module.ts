@@ -27,6 +27,14 @@ import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoadingComponent } from './loading/loading.component';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { LanguageSelectorComponent } from './language-selector/language-selector.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
   declarations: [
@@ -41,6 +49,7 @@ import { LoadingComponent } from './loading/loading.component';
     UserComponent,
     SearchComponent,
     LoadingComponent,
+    LanguageSelectorComponent,
   ],
   imports: [
     BrowserModule,
@@ -58,6 +67,14 @@ import { LoadingComponent } from './loading/loading.component';
     MatDialogModule,
     FormsModule,
     CarouselModule,
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
     // MatProgressSpinnerModule
   ],
   providers: [],

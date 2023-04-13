@@ -231,6 +231,11 @@ a.login:hover {
   background-color: #151515;
 }
 
+.lang-selector {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 1200px) {
   .navbar-nav {
     background: #ffffff;

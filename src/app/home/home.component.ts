@@ -8,6 +8,8 @@ import {
 import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { UploadService } from '../upload/upload.service';
+import { TranslateService } from '@ngx-translate/core';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -41,7 +43,8 @@ export class HomeComponent implements OnInit {
     private homeService: HomeService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private uploadService: UploadService
+    private uploadService: UploadService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {

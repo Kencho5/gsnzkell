@@ -1,0 +1,33 @@
+<div class="dropdown">
+  <input type="checkbox" id="dropdown" />
+
+  <label class="dropdown__face" for="dropdown">
+    <div class="dropdown__text">
+      <img
+        src="/assets/flags/{{currentLanguage}}.png"
+        alt="Georgian"
+        id="{{currentLanguage}}"
+      />
+    </div>
+
+    <div class="dropdown__arrow"></div>
+  </label>
+
+  <ul class="dropdown__items" (click)="selectLanguage($event)">
+    <li id="ge"><img src="/assets/flags/ge.png" alt="Georgian" id="ge" /></li>
+    <li id="en"><img src="/assets/flags/en.png" alt="English" id="en" /></li>
+  </ul>
+</div>
+
+<svg>
+  <filter id="goo">
+    <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+    <feColorMatrix
+      in="blur"
+      type="matrix"
+      values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 18 -7"
+      result="goo"
+    />
+    <feBlend in="SourceGraphic" in2="goo" />
+  </filter>
+</svg>
