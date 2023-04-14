@@ -1,5 +1,6 @@
 const session = require("express-session");
 const { db, userPosts, users } = require("../../utils/db");
+const bcrypt = require("bcrypt");
 
 async function code(req, res) {
   const serverCode = req.session.code;
