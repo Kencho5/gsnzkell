@@ -54,10 +54,7 @@ async function update(req, res) {
 }
 
 function savePfp(pfp, id) {
-  const savePath =
-    os.platform() === "darwin"
-      ? "../src/assets/images"
-      : "/usr/share/nginx/pender/assets/images";
+  const savePath = '/var/uploads/';
 
   const base64Data = pfp;
 
