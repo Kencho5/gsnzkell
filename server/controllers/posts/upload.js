@@ -109,10 +109,7 @@ async function upload(req, res) {
 }
 
 async function saveImages(postID, req) {
-  const savePath =
-    os.platform() === "darwin"
-      ? "../src/assets/"
-      : "/usr/share/nginx/pender/assets/";
+  const savePath = '/var/uploads';
   await fs.promises.mkdir(`${savePath}/postImages/${postID}`);
 
   const imgs = [];
