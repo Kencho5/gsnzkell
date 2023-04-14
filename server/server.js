@@ -13,9 +13,9 @@ app.use(
 );
 
 const limiter = rateLimit({
-  windowMs: 30000,
+  windowMs: 180000,
   max: 150,
-  message: 'Too many requests from this IP, please try again',
+  message: 'You have exceeded the maximum number of API requests. Please try again later.',
 });
 app.use(limiter);
 
