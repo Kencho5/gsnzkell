@@ -17,7 +17,7 @@
                     <div class="user-info-img">
                       <img
                         *ngIf="userData.pfp == true; else default"
-                        src="assets/images/user-pfps/{{ userData.id }}.jpg"
+                        src="assets/user-pfps/{{ userData.id }}.jpg"
                         alt="user"
                         id="user-pfp"
                       />
@@ -152,7 +152,7 @@
           <div class="user-upload-img mb-4 mb-lg-0">
             <img
               *ngIf="userData.pfp == true; else default"
-              src="assets/images/user-pfps/{{ userData.id }}.jpg"
+              src="assets/user-pfps/{{ userData.id }}.jpg"
               alt="user"
               id="user-pfp"
               class="edit-profile-pfp"

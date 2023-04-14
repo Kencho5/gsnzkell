@@ -44,7 +44,7 @@
               <div class="user-profile position-relative" href="#">
                 <img
                   *ngIf="loginService.user.pfp == true; else default"
-                  src="assets/images/user-pfps/{{ loginService.user.id }}.jpg"
+                  src="assets/user-pfps/{{ loginService.user.id }}.jpg"
                   alt="user-profile"
                   class="user-profile-icon"
                   (click)="openModal()"
@@ -61,7 +61,7 @@
                   <div class="profile-user-info d-flex align-items-center">
                     <img
                       *ngIf="loginService.user.pfp == true; else default"
-                      src="assets/images/user-pfps/{{
+                      src="assets/user-pfps/{{
                         loginService.user.id
                       }}.jpg"
                       alt="user-profile"
