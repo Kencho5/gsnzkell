@@ -31,6 +31,7 @@ export class UploadComponent implements OnInit {
   urls = [];
   message: string;
   form_msg: string;
+  uploadLoading: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -74,13 +75,16 @@ export class UploadComponent implements OnInit {
   }
 
   upload() {
-    console.log(this.urls, this.uploadForm.value)
+    this.uploadLoading = false;
+
     if (this.urls.length != 3) {
       this.message = 'Only 3 Photos Required!';
       return;
     }
 
     if (this.uploadForm.valid) {
+      this.uploadLoading = true;
+
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
