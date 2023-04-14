@@ -1,7 +1,7 @@
 const { db, userPosts, users } = require("../../utils/db");
 const jwt = require("jsonwebtoken");
 const { privateKEY, publicKEY, signOptions } = require("../../models/token");
-const { v4: uuidv4 } = require('uuid');
+const { v4: uuidv4 } = require("uuid");
 var os = require("os");
 const fs = require("fs");
 
@@ -109,7 +109,7 @@ async function upload(req, res) {
 }
 
 async function saveImages(postID, req) {
-  const savePath = '/var/uploads';
+  const savePath = "/var/uploads";
   await fs.promises.mkdir(`${savePath}/postImages/${postID}`);
 
   const imgs = [];
