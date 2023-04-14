@@ -4,13 +4,7 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "strict": false,
-    "baseUrl": "./src",
-    "paths": {
-      "@app/*": ["app/*"],
-      "@assets/*": ["assets/*"],
-      "@i18n/*": ["assets/i18n/*"],
-      "@env/*": ["environments/*"]
-    },
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
