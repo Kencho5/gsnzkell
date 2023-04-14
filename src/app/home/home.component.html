@@ -150,7 +150,7 @@
                 <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
                 <ng-template #age>
                   <p>
-                    {{ post.age }} {{ post.ageType | translate }}
+                    {{ post.age }} {{ 'POST.' + post.ageType | translate }}
                     <span *ngIf="translate.currentLang == 'en'">Old</span>
                   </p>
                 </ng-template>
@@ -176,7 +176,7 @@
         <div class="container-fluid">
           <div class="upload-post-container">
             <div class="upload-post-title">
-              <h4>{{ 'upload_post' | translate }}</h4>
+              <h4>{{ 'HOME.upload_post' | translate }}</h4>
             </div>
             <div class="row align-items-center">
               <div class="col-md-6">
@@ -195,19 +195,19 @@
                           required
                         >
                           <option value="" selected disabled>
-                            {{ 'select_animal' | translate }}
+                            {{ 'UPLOAD.select_animal' | translate }}
                           </option>
-                          <option>{{ 'dog' | translate }}</option>
-                          <option>{{ 'cat' | translate }}</option>
-                          <option>{{ 'fish' | translate }}</option>
-                          <option>{{ 'bird' | translate }}</option>
-                          <option>{{ 'reptile' | translate }}</option>
+                          <option>{{ 'ANIMALS.dog' | translate }}</option>
+                          <option>{{ 'ANIMALS.cat' | translate }}</option>
+                          <option>{{ 'ANIMALS.fish' | translate }}</option>
+                          <option>{{ 'ANIMALS.bird' | translate }}</option>
+                          <option>{{ 'ANIMALS.reptile' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field">
                         <input
                           type="text"
-                          placeholder="{{ 'breed' | translate }}"
+                          placeholder="{{ 'UPLOAD.breed' | translate }}"
                           formControlName="breed"
                           required
                         />
@@ -220,24 +220,24 @@
                           required
                         >
                           <option value="" disabled>
-                            {{ 'select_post_type' | translate }}
+                            {{ 'UPLOAD.select_post_type' | translate }}
                           </option>
-                          <option>{{ 'Selling' | translate }}</option>
-                          <option>{{ 'Meeting' | translate }}</option>
-                          <option>{{ 'Adopting' | translate }}</option>
+                          <option>{{ 'POST.Selling' | translate }}</option>
+                          <option>{{ 'POST.Meeting' | translate }}</option>
+                          <option>{{ 'POST.Adopting' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field" id="price">
                         <input
                           type="number"
-                          placeholder="{{ 'price' | translate }}"
+                          placeholder="{{ 'UPLOAD.price' | translate }}"
                           formControlName="price"
                         />
                       </div>
                       <div class="up-form-field double">
                         <input
                           type="text"
-                          placeholder="{{ 'age' | translate }}"
+                          placeholder="{{ 'UPLOAD.age' | translate }}"
                           formControlName="age"
                         />
                         <select
@@ -246,15 +246,15 @@
                           required
                         >
                           <option value="" selected disabled>
-                            {{ 'age_type' | translate }}
+                            {{ 'UPLOAD.age_type' | translate }}
                           </option>
-                          <option>{{ 'years' | translate }}</option>
-                          <option>{{ 'months' | translate }}</option>
+                          <option>{{ 'POST.Years' | translate }}</option>
+                          <option>{{ 'POST.Months' | translate }}</option>
                         </select>
                       </div>
                       <div class="up-form-field">
                         <textarea
-                          placeholder="{{ 'description' | translate }}"
+                          placeholder="{{ 'UPLOAD.description' | translate }}"
                           maxlength="150"
                           formControlName="description"
                         ></textarea>
@@ -262,17 +262,17 @@
                       <div class="up-form-field">
                         <input
                           type="text"
-                          placeholder="{{ 'phone' | translate }}"
+                          placeholder="{{ 'UPLOAD.phone' | translate }}"
                           formControlName="phone"
                         />
                       </div>
                       <div class="up-form-field">
                         <select formControlName="city" class="form-select">
                           <option value="" selected disabled>
-                            {{ 'select_city' | translate }}
+                            {{ 'UPLOAD.select_city' | translate }}
                           </option>
                           <option *ngFor="let city of cities | keyvalue" value="city.key">
-                          {{ translateCity(city.key) }}
+                          {{ 'CITIES.' + city.key | translate }}
 </option>
                         </select>
 
@@ -289,7 +289,7 @@
                             (click)="fileInput.click()"
                             class="files-btn"
                           >
-                          <mat-icon>file_upload</mat-icon> {{ 'photos' | translate }}
+                          <mat-icon>file_upload</mat-icon> {{ 'UPLOAD.photos' | translate }}
                           </button>
                         </div>
                         <input
@@ -316,11 +316,11 @@
                         </div>
                       </div>
                       <div class="up-form-btn text-center text-md-end mt-3">
-                        <input type="submit" value="{{ 'submit' | translate }}" />
+                        <input type="submit" value="{{ 'UPLOAD.submit' | translate }}" />
                       </div>
                       <div class="error-div" *ngIf="form_msg">
                         <h2 align="center" class="error-text">
-                          <mat-icon>cancel</mat-icon> Please fill out the form.
+                          <mat-icon>cancel</mat-icon> {{ 'UPLOAD.error' | translate }}
                         </h2>
                       </div>
                     </div>

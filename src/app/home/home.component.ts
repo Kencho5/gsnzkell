@@ -150,8 +150,4 @@ export class HomeComponent implements OnInit {
 
     this.router.navigate(['/search', { animal: animal }]);
   }
-
-  translateCity(key: unknown): string {
-    return this.translate.instant(key as string);
-  }
 }
