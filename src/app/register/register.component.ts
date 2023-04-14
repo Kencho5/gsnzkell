@@ -47,6 +47,10 @@ export class RegisterComponent implements OnInit {
   }
 
   sendCode() {
+    if(!this.registerForm.valid) {
+      this.httpError = 'Please Fill Out The Form';
+      return;
+    }
     this._registerService
       .sendCode({
         email: this.registerForm.value.email,
