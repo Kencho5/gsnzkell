@@ -2,8 +2,11 @@ const config = require("../../utils/config");
 const AWS = require("aws-sdk");
 
 // create an SES client
-const ses = new AWS.SES(config);
-
+const ses = new AWS.SES({
+  accessKeyId: config.accessKeyId,
+  secretAccessKey: config.secretAccessKey,
+  region: config.region
+});
 async function sendEmail(email) {
   const code = Math.floor(Math.random() * 90000) + 10000;
 
