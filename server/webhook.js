@@ -25,6 +25,18 @@ function webhook(req, res) {
           console.log(`Build successful: ${stdout}`);
 
           exec(
+            "find /path/to/folder ! -name 'assets' -type f -delete",
+            (err, stdout, stderr) => {
+              if (err) {
+                console.error(`Error: ${err}`);
+                return res.sendStatus(500);
+              }
+
+              console.log(`Delete successful: ${stdout}`);
+            }
+          );
+
+          exec(
             "cp -r ../dist/pender/* /usr/share/nginx/pender/",
             (err, stdout, stderr) => {
               if (err) {
