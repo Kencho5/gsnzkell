@@ -25,7 +25,7 @@ function webhook(req, res) {
           console.log(`Build successful: ${stdout}`);
 
           exec(
-            "find /usr/share/nginx/pender ! -name 'assets' -type f -delete",
+            "find /usr/share/nginx/pender -mindepth 1 ! -name 'assets' -delete",
             (err, stdout, stderr) => {
               if (err) {
                 console.error(`Error: ${err}`);
