@@ -1,6 +1,7 @@
 const { db, userPosts, users } = require("../../utils/db");
 const jwt = require("jsonwebtoken");
 const { privateKEY, publicKEY, signOptions } = require('../../models/token');
+const fs = require("fs");
 
 async function update(req, res) {
   const {
