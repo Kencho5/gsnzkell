@@ -49,7 +49,7 @@ async function home(req, res) {
             price: result.price,
             age: result.age,
             ageType: result.ageType,
-            postType: result.postType.toUpperCase(),
+            postType: result.postType,
             date: result.date,
             imgs: result.img_path,
             vip: result.vip,

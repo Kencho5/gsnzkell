@@ -9,38 +9,38 @@
               <div class="hero-content">
                 <h1>
                   <span class="adopt position-relative">
-                    {{ 'adopt' | translate}}
+                    {{ 'HOME.adopt' | translate}}
                     <img src="assets/images/adopt.svg" alt="adopt" />
                   </span>
                   <span class="sell position-relative">
-                    {{ 'sell' | translate}}
+                    {{ 'HOME.sell' | translate}}
                     <img src="assets/images/sell.svg" alt="sell" />
                   </span>
                   <span class="meet position-relative">
-                    {{ 'meet' | translate}}
+                    {{ 'HOME.meet' | translate}}
                     <img src="assets/images/meet.svg" alt="meet" />
                   </span>
                   <br />
-                  {{ 'your_pet_here' | translate}}
+                  {{ 'HOME.your_pet_here' | translate}}
                 </h1>
                 <div class="hero-btn mt-5">
-                  <a href="/upload">{{ 'upload_post' | translate}}</a>
+                  <a href="/upload">{{ 'HOME.upload_post' | translate}}</a>
                 </div>
                 <div class="pets-box">
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/dog.png" alt="dog" id="dog" />
-                    <h4 id="dog">{{ 'dogs' | translate}}</h4>
+                    <h4 id="dog">{{ 'HOME.dogs' | translate}}</h4>
                   </div>
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/cat.png" alt="cat" id="cat" />
-                    <h4 id="cat">{{ 'cats' | translate}}</h4>
+                    <h4 id="cat">{{ 'HOME.cats' | translate}}</h4>
                   </div>
                   <div class="single-pet" (click)="openAll($event)">
                     <img src="assets/images/birds.png" alt="bird" id="bird" />
-                    <h4 id="bird">{{ 'birds' | translate}}</h4>
+                    <h4 id="bird">{{ 'HOME.birds' | translate}}</h4>
                   </div>
                   <div class="single-pet more" (click)="openAll($event)">
-                    <a href="/search;animal=all">{{ 'see_more' | translate}}</a>
+                    <a href="/search;animal=all">{{ 'HOME.see_more' | translate}}</a>
                   </div>
                 </div>
                 <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
@@ -81,7 +81,7 @@
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
-            <h2>{{ 'vip_posts' | translate}}</h2>
+            <h2>{{ 'HOME.vip_posts' | translate}}</h2>
           </div>
           <div class="row align-items-center">
             <div
@@ -96,7 +96,9 @@
                     alt="post-img"
                   />
                   <span class="post-type-label"
-                    >{{ post.postType | titlecase | translate }}</span
+                    >
+                    {{ 'POST.' + post.postType | translate }}
+                  </span
                   >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
@@ -104,7 +106,7 @@
                 <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
                 <ng-template #age>
                   <p>
-                    {{ post.age }} {{ post.ageType | translate | titlecase }}
+                    {{ post.age }} {{ 'POST.' + post.ageType | translate }}
                     <span *ngIf="translate.currentLang == 'en'">Old</span>
                   </p>
                 </ng-template>
@@ -125,7 +127,7 @@
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
-            <h2>{{ 'latest_posts' | translate }}</h2>
+            <h2>{{ 'HOME.latest_posts' | translate }}</h2>
           </div>
           <div class="row align-items-center">
             <div
@@ -140,7 +142,7 @@
                     alt="post-img"
                   />
                   <span class="post-type-label"
-                    >{{ post.postType | translate}}</span
+                    >{{ 'POST.' + post.postType | translate}}</span
                   >
                   <span class="vip-label" *ngIf="post.vip">VIP</span>
                 </div>
