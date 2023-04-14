@@ -44,3 +44,4 @@ src/assets/postImages
 src/assets/images/user-pfps
 
 update.sh
+.env
