@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
 import { HomeService } from './home.service';
 import { UploadService } from '../upload/upload.service';
 import { TranslateService } from '@ngx-translate/core';
-import citiesJson from '../../assets/i18n/cities.json';
+import citiesJson from '@i18n/cities.json';
 
 @Component({
   selector: 'app-home',
