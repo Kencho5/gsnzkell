@@ -1,17 +1,28 @@
 import { Component } from '@angular/core';
-import citiesJson from '@i18n/cities.json';
 import { TranslateService } from '@ngx-translate/core';
+import { CitiesSelectorService } from './cities-selector.service';
 
 @Component({
   selector: 'app-cities-selector',
   templateUrl: './cities-selector.component.html',
-  styleUrls: ['./cities-selector.component.scss']
+  styleUrls: ['../upload-form/upload-form.component.scss'],
 })
 export class CitiesSelectorComponent {
-  cities = citiesJson.cities[this.translate.currentLang];
+  // cities = citiesJson.cities[this.translate.currentLang];
+  cities;
 
   constructor(
-    public translate: TranslateService
+    public translate: TranslateService,
+    private citiesSelectorService: CitiesSelectorService
   ) {}
 
+  ngOnInit() {
+    this.getCities();
+  }
+
+  getCities() {
+    this.citiesSelectorService.getCities().subscribe((res) => {
+      this.cities = res.cities[this.translate.currentLang];
+    });
+  }
 }

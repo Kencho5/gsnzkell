@@ -21,6 +21,7 @@ const renew = require('./controllers/posts/renew');
 const reset = require('./controllers/auth/reset');
 const code = require('./controllers/auth/code');
 const confirmEmail = require('./controllers/auth/confirmEmail');
+const cities = require('./utils/cities');
 
 router.post('/api/webhook', webhook);
 
@@ -61,6 +62,8 @@ router.post('/api/reset', reset);
 router.post('/api/code', code);
 
 router.post('/api/confirmEmail', confirmEmail);
+
+router.get('/api/cities', cities);
 
 module.exports = router;
 

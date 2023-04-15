@@ -15,7 +15,13 @@ import { UploadService } from './upload.service';
   styleUrls: ['./upload.component.scss', '../responsive.css'],
 })
 export class UploadComponent implements OnInit {
+  constructor(private login: LoginService, private router: Router) {}
+
   ngOnInit(): void {
-      
+    this.login.isLoggedIn$.subscribe((res) => {
+      if (res == false) {
+        this.router.navigate(['/login']);
+      }
+    });
   }
 }

@@ -8,7 +8,6 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { UploadFormService } from './upload-form.service';
-import citiesJson from '@i18n/cities.json';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
@@ -34,7 +33,7 @@ export class UploadFormComponent {
   message: string;
   form_msg: string;
   uploadLoading: boolean;
-  cities = citiesJson.cities[this.translate.currentLang];
+  cities;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -45,10 +44,12 @@ export class UploadFormComponent {
   ) {}
 
   ngOnInit(): void {
-    this.login.isLoggedIn$.subscribe((res) => {
-      if (res == false) {
-        this.router.navigate(['/login']);
-      }
+    this.getCities();
+  }
+
+  getCities() {
+    this.uploadService.getCities().subscribe((res) => {
+      this.cities = res.cities[this.translate.currentLang];
     });
   }
 
@@ -79,6 +80,7 @@ export class UploadFormComponent {
   }
 
   upload() {
+    console.log(this.uploadForm.value.city)
     this.uploadLoading = false;
 
     if (this.urls.length != 3) {
