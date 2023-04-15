@@ -24,19 +24,29 @@
                         required
                       >
                         <option value="" selected disabled>
-                          Select Animal
+                          {{ 'UPLOAD.select_animal' | translate }}
                         </option>
-                        <option>Dog</option>
-                        <option>Cat</option>
-                        <option>Fish</option>
-                        <option>Bird</option>
-                        <option>Reptile</option>
+                        <option value="Dog">
+                          {{ 'ANIMALS.dog' | translate }}
+                        </option>
+                        <option value="Cat">
+                          {{ 'ANIMALS.cat' | translate }}
+                        </option>
+                        <option value="Fish">
+                          {{ 'ANIMALS.fish' | translate }}
+                        </option>
+                        <option value="Bird">
+                          {{ 'ANIMALS.bird' | translate }}
+                        </option>
+                        <option value="Reptile">
+                          {{ 'ANIMALS.reptile' | translate }}
+                        </option>
                       </select>
                     </div>
                     <div class="up-form-field">
                       <input
                         type="text"
-                        placeholder="Breed"
+                        placeholder="{{ 'UPLOAD.breed' | translate }}"
                         formControlName="breed"
                         required
                       />
@@ -48,24 +58,31 @@
                         class="form-select"
                         required
                       >
-                        <option value="" disabled>Select Post Type</option>
-                        <option>Selling</option>
-                        <option>Meeting</option>
-                        <option>Adopting</option>
+                        <option value="" disabled>
+                          {{ 'UPLOAD.select_post_type' | translate }}
+                        </option>
+                        <option value="Selling">
+                          {{ 'POST.Selling' | translate }}
+                        </option>
+                        <option value="Meeting">
+                          {{ 'POST.Meeting' | translate }}
+                        </option>
+                        <option value="Adopting">
+                          {{ 'POST.Adopting' | translate }}
+                        </option>
                       </select>
                     </div>
-                    <div class="up-form-field">
+                    <div class="up-form-field" id="price">
                       <input
                         type="number"
-                        placeholder="Price (GEL)"
+                        placeholder="{{ 'UPLOAD.price' | translate }}"
                         formControlName="price"
-                        id="price"
                       />
                     </div>
                     <div class="up-form-field double">
                       <input
-                        type="number"
-                        placeholder="Age"
+                        type="text"
+                        placeholder="{{ 'UPLOAD.age' | translate }}"
                         formControlName="age"
                       />
                       <select
@@ -73,14 +90,20 @@
                         formControlName="ageType"
                         required
                       >
-                        <option value="" selected disabled>Year/Month</option>
-                        <option>Years</option>
-                        <option>Months</option>
+                        <option value="" selected disabled>
+                          {{ 'UPLOAD.age_type' | translate }}
+                        </option>
+                        <option value="Years">
+                          {{ 'POST.Years' | translate }}
+                        </option>
+                        <option value="Months">
+                          {{ 'POST.Months' | translate }}
+                        </option>
                       </select>
                     </div>
                     <div class="up-form-field">
                       <textarea
-                        placeholder="Description"
+                        placeholder="{{ 'UPLOAD.description' | translate }}"
                         maxlength="150"
                         formControlName="description"
                       ></textarea>
@@ -88,81 +111,11 @@
                     <div class="up-form-field">
                       <input
                         type="text"
-                        placeholder="Phone Number"
+                        placeholder="{{ 'UPLOAD.phone' | translate }}"
                         formControlName="phone"
                       />
                     </div>
-                    <div class="up-form-field">
-                      <select formControlName="city" class="form-select">
-                        <option value="" selected disabled>
-                          Select a City
-                        </option>
-
-                        <option value="Abasha">Abasha</option>
-                        <option value="Abastumani">Abastumani</option>
-                        <option value="Adigeni">Adigeni</option>
-                        <option value="Akhalgori">Akhalgori</option>
-                        <option value="Akhalkalaki">Akhalkalaki</option>
-                        <option value="Akhmeta">Akhmeta</option>
-                        <option value="Ambrolauri">Ambrolauri</option>
-                        <option value="Aspindza">Aspindza</option>
-                        <option value="Baghdati">Baghdati</option>
-                        <option value="Bakuriani">Bakuriani</option>
-                        <option value="Bolnisi">Bolnisi</option>
-                        <option value="Borjomi">Borjomi</option>
-                        <option value="Chakvi">Chakvi</option>
-                        <option value="Chokhatauri">Chokhatauri</option>
-                        <option value="Dedoplistsqaro">Dedoplistsqaro</option>
-                        <option value="Gagra">Gagra</option>
-                        <option value="Gali">Gali</option>
-                        <option value="Gardabani">Gardabani</option>
-                        <option value="Gori">Gori</option>
-                        <option value="Gudauri">Gudauri</option>
-                        <option value="Gurjaani">Gurjaani</option>
-                        <option value="Jvari">Jvari</option>
-                        <option value="Kakheti">Kakheti</option>
-                        <option value="Kaspi">Kaspi</option>
-                        <option value="Kazbegi">Kazbegi</option>
-                        <option value="Kharagauli">Kharagauli</option>
-                        <option value="Khashuri">Khashuri</option>
-                        <option value="Khobi">Khobi</option>
-                        <option value="Khoni">Khoni</option>
-                        <option value="Kobuleti">Kobuleti</option>
-                        <option value="Kutaisi">Kutaisi</option>
-                        <option value="Lagodekhi">Lagodekhi</option>
-                        <option value="Manglisi">Manglisi</option>
-                        <option value="Marneuli">Marneuli</option>
-                        <option value="Mestia">Mestia</option>
-                        <option value="Ninotsminda">Ninotsminda</option>
-                        <option value="Oni">Oni</option>
-                        <option value="Ozurgeti">Ozurgeti</option>
-                        <option value="Pankisi">Pankisi</option>
-                        <option value="Pitsunda">Pitsunda</option>
-                        <option value="Poti">Poti</option>
-                        <option value="Racha">Racha</option>
-                        <option value="Rustavi">Rustavi</option>
-                        <option value="Sachkhere">Sachkhere</option>
-                        <option value="Sagarejo">Sagarejo</option>
-                        <option value="Samtredia">Samtredia</option>
-                        <option value="Senaki">Senaki</option>
-                        <option value="Shekvetili">Shekvetili</option>
-                        <option value="Shuakhevi">Shuakhevi</option>
-                        <option value="Sighnaghi">Sighnaghi</option>
-                        <option value="Stepantsminda">Stepantsminda</option>
-                        <option value="Sukhumi">Sukhumi</option>
-                        <option value="Tbilisi">Tbilisi</option>
-                        <option value="Telavi">Telavi</option>
-                        <option value="Tianeti">Tianeti</option>
-                        <option value="Tkibuli">Tkibuli</option>
-                        <option value="Tskaltubo">Tskaltubo</option>
-                        <option value="Tsnori">Tsnori</option>
-                        <option value="Tsqaltubo">Tsqaltubo</option>
-                        <option value="Tusheti">Tusheti</option>
-                        <option value="Ureki">Ureki</option>
-                        <option value="Vani">Vani</option>
-                        <option value="Zestaponi">Zestaponi</option>
-                      </select>
-                    </div>
+                    <app-cities-selector></app-cities-selector>
                     <div class="up-form-field">
                       <div class="upload-icon">
                         <button
@@ -170,7 +123,8 @@
                           (click)="fileInput.click()"
                           class="files-btn"
                         >
-                          <mat-icon>file_upload</mat-icon> Photos (Min/Max 3)
+                          <mat-icon>file_upload</mat-icon> {{ 'UPLOAD.photos' |
+                          translate }}
                         </button>
                       </div>
                       <input
@@ -182,7 +136,7 @@
                         formControlName="imgs"
                       />
                       <div *ngIf="message" class="error-div">
-                        <h2 class="error-text">{{message}}</h2>
+                        <h2 class="error-text">3 Photos Maximum!</h2>
                       </div>
                       <div class="images">
                         <div class="image-div" *ngFor="let url of urls">
@@ -197,19 +151,17 @@
                       </div>
                     </div>
                     <div class="up-form-btn text-center text-md-end mt-3">
-                      <input type="submit" placeholder="Next" />
+                      <input
+                        type="submit"
+                        value="{{ 'UPLOAD.submit' | translate }}"
+                      />
                     </div>
                     <div class="error-div" *ngIf="form_msg">
                       <h2 align="center" class="error-text">
-                        <mat-icon>cancel</mat-icon> {{form_msg}}
+                        <mat-icon>cancel</mat-icon> {{ 'UPLOAD.error' |
+                        translate }}
                       </h2>
                     </div>
-                    <!-- <div -->
-                    <!--   class="text-center upload-loading" -->
-                    <!--   *ngIf="uploadLoading" -->
-                    <!-- > -->
-                    <!--   <app-loading></app-loading> -->
-                    <!-- </div> -->
                   </div>
                 </form>
               </div>

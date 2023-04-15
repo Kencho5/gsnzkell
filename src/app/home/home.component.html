@@ -197,11 +197,21 @@
                           <option value="" selected disabled>
                             {{ 'UPLOAD.select_animal' | translate }}
                           </option>
-                          <option>{{ 'ANIMALS.dog' | translate }}</option>
-                          <option>{{ 'ANIMALS.cat' | translate }}</option>
-                          <option>{{ 'ANIMALS.fish' | translate }}</option>
-                          <option>{{ 'ANIMALS.bird' | translate }}</option>
-                          <option>{{ 'ANIMALS.reptile' | translate }}</option>
+                          <option value="Dog">
+                            {{ 'ANIMALS.dog' | translate }}
+                          </option>
+                          <option value="Cat">
+                            {{ 'ANIMALS.cat' | translate }}
+                          </option>
+                          <option value="Fish">
+                            {{ 'ANIMALS.fish' | translate }}
+                          </option>
+                          <option value="Bird">
+                            {{ 'ANIMALS.bird' | translate }}
+                          </option>
+                          <option value="Reptile">
+                            {{ 'ANIMALS.reptile' | translate }}
+                          </option>
                         </select>
                       </div>
                       <div class="up-form-field">
@@ -222,9 +232,15 @@
                           <option value="" disabled>
                             {{ 'UPLOAD.select_post_type' | translate }}
                           </option>
-                          <option value="Selling">{{ 'POST.Selling' | translate }}</option>
-                          <option>{{ 'POST.Meeting' | translate }}</option>
-                          <option>{{ 'POST.Adopting' | translate }}</option>
+                          <option value="Selling">
+                            {{ 'POST.Selling' | translate }}
+                          </option>
+                          <option value="Meeting">
+                            {{ 'POST.Meeting' | translate }}
+                          </option>
+                          <option value="Adopting">
+                            {{ 'POST.Adopting' | translate }}
+                          </option>
                         </select>
                       </div>
                       <div class="up-form-field" id="price">
@@ -248,8 +264,12 @@
                           <option value="" selected disabled>
                             {{ 'UPLOAD.age_type' | translate }}
                           </option>
-                          <option>{{ 'POST.Years' | translate }}</option>
-                          <option>{{ 'POST.Months' | translate }}</option>
+                          <option value="Years">
+                            {{ 'POST.Years' | translate }}
+                          </option>
+                          <option value="Months">
+                            {{ 'POST.Months' | translate }}
+                          </option>
                         </select>
                       </div>
                       <div class="up-form-field">
@@ -273,7 +293,7 @@
                           </option>
                           <option
                             *ngFor="let city of cities | keyvalue"
-                              value="{{city.key}}"
+                            value="{{city.key}}"
                           >
                             {{ 'CITIES.' + city.key | translate }}
                           </option>
