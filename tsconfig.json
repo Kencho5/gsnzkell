@@ -4,7 +4,11 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "strict": false,
-    "baseUrl": "./",
+    "baseUrl": "./src",
+    "paths": {
+      "@i18n/*": ["assets/i18n/*"]
+    },
+    "resolveJsonModule": true,
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "noImplicitOverride": true,
@@ -22,12 +26,8 @@
     "target": "ES2022",
     "module": "ES2022",
     "useDefineForClassFields": false,
-    "types": [
-    ],
-    "lib": [
-      "ES2022",
-      "dom"
-    ]
+    "types": [],
+    "lib": ["ES2022", "dom"]
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import citiesJson from '../../assets/i18n/cities.json';
+import citiesJson from '@i18n/cities.json';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({

@@ -26,12 +26,12 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 // import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { LoadingComponent } from './loading/loading.component';
+import { LoadingComponent } from './shared/loading/loading.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
-import { LanguageSelectorComponent } from './language-selector/language-selector.component';
-import { CitiesSelectorComponent } from './cities-selector/cities-selector.component';
+import { LanguageSelectorComponent } from './shared/language-selector/language-selector.component';
+import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
