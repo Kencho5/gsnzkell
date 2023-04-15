@@ -222,7 +222,7 @@
                           <option value="" disabled>
                             {{ 'UPLOAD.select_post_type' | translate }}
                           </option>
-                          <option>{{ 'POST.Selling' | translate }}</option>
+                          <option value="Selling">{{ 'POST.Selling' | translate }}</option>
                           <option>{{ 'POST.Meeting' | translate }}</option>
                           <option>{{ 'POST.Adopting' | translate }}</option>
                         </select>
@@ -273,7 +273,7 @@
                           </option>
                           <option
                             *ngFor="let city of cities | keyvalue"
-                            value="city.key"
+                              value="{{city.key}}"
                           >
                             {{ 'CITIES.' + city.key | translate }}
                           </option>
