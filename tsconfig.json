@@ -4,9 +4,9 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "strict": false,
-    "baseUrl": "./src",
+    "baseUrl": "./",
     "paths": {
-      "@i18n/*": ["assets/i18n/*"]
+      "@i18n/*": ["src/assets/i18n/*"]
     },
     "resolveJsonModule": true,
     "outDir": "./dist/out-tsc",
