@@ -8,7 +8,7 @@ import {
 import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { UploadFormService } from './upload-form.service';
-import citiesJson from '../../../assets/i18n/cities.json';
+import citiesJson from '@i18n/cities.json';
 import { TranslateService } from '@ngx-translate/core';
 
 @Component({
