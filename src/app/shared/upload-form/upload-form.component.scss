@@ -8,6 +8,10 @@ body {
   font-weight: 600;
 }
 
+mat-icon {
+  vertical-align: middle;
+}
+
 /* Upload Post Section CSS Start */
 
 .upload-post-wrapper {
@@ -79,6 +83,7 @@ textarea {
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
+  text-decoration: none;
 }
 
 .up-form-field input:focus {
