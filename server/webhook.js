@@ -12,8 +12,16 @@ function webhook(req, res) {
         return res.sendStatus(500);
       }
 
-      console.log(`Pull successful: ${stdout}`, "building...");
+      console.log(`Pull successful: ${stdout}`, "Building...");
 
+      exec("rm -r /usr/share/nginx/pender/*", (err, stdout, stderr) => {
+        if (err) {
+          console.error(`Error: ${err}`);
+          return res.sendStatus(500);
+        }
+
+        console.log(`Delete successful: ${stdout}`);
+      });
       exec(
         "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build",
         (err, stdout, stderr) => {
