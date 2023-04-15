@@ -31,7 +31,6 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LanguageSelectorComponent } from './shared/language-selector/language-selector.component';
-import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
 import { UploadFormComponent } from './shared/upload-form/upload-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -52,7 +51,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     SearchComponent,
     LoadingComponent,
     LanguageSelectorComponent,
-    CitiesSelectorComponent,
     UploadFormComponent,
   ],
   imports: [

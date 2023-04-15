@@ -50,6 +50,7 @@ export class UploadFormComponent {
   getCities() {
     this.uploadService.getCities().subscribe((res) => {
       this.cities = res.cities[this.translate.currentLang];
+      console.log(this.cities)
     });
   }
 
