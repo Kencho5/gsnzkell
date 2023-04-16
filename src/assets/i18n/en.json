@@ -62,6 +62,14 @@
     "date_asc": "Date Asc."
   },
 
+  "NAV": {
+    "search": "Search Breed...",
+    "view_profile": "View Profile",
+    "upload": "Upload",
+    "add_balance": "Add Balance",
+    "log_out": "Log Out"
+  },
+
   "CITIES": {
     "abasha": "Abasha",
     "abastumani": "Abastumani",
