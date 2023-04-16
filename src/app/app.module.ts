@@ -35,6 +35,7 @@ import { UploadFormComponent } from './shared/upload-form/upload-form.component'
 import { ServiceCostComponent } from './shared/service-cost/service-cost.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { PostsComponent } from './shared/posts/posts.component';
+import { VipPostsComponent } from './shared/vip-posts/vip-posts.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -58,6 +59,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ServiceCostComponent,
     FooterComponent,
     PostsComponent,
+    VipPostsComponent,
   ],
   imports: [
     BrowserModule,

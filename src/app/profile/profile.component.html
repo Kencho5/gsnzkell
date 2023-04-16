@@ -307,47 +307,6 @@
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
-          <!-- <div class="section-title"> -->
-          <!--    <h2>{{userData.username|titlecase}}’s Posts</h2> -->
-          <!-- </div> -->
-          <!-- <div class="row align-items-center"> -->
-          <!--    <div class="col-sm-6 col-lg-3" *ngFor="let post of posts"> -->
-          <!--      <div class="post-card" (click)="openPost(post._id)" [ngClass]="{'vip-post': post.vip}"> -->
-          <!--        <h1 class="expires-in"> -->
-          <!--          Expires In {{post.expires}} Days -->
-          <!--        </h1> -->
-          <!--          <div class="post-card-img position-relative"> -->
-          <!--             <img src="/assets/postImages/{{post._id}}/{{post.img_path[0]}}" alt="post-img" /> -->
-          <!--             <span class="post-type-label">{{post.postType|titlecase}}</span> -->
-          <!--             <span class="vip-label" *ngIf="post.vip">VIP</span> -->
-          <!--          </div> -->
-          <!--          <h5>{{post.breed}}</h5> -->
-          <!--          <p *ngIf="post.price != null else age">{{post.price}} ₾</p> -->
-          <!--          <ng-template #age> -->
-          <!--             <p>{{post.age}} {{post.ageType|titlecase}} Old</p> -->
-          <!--          </ng-template> -->
-          <!--       </div> -->
-          <!--       <div class="post-buttons"> -->
-          <!--          <button class="function-button" type="button" (click)="openEdit(post)"> -->
-          <!--             <mat-icon>edit</mat-icon> -->
-          <!--          </button> -->
-          <!--          <button class="vip-button" type="button" (click)="openVip(post._id)" *ngIf="!post.vip; else vip"> -->
-          <!--             <h1>Buy VIP</h1> -->
-          <!--          </button> -->
-          <!--          <ng-template #vip> -->
-          <!--          <button class="vip-button" type="button"> -->
-          <!--             <h1>VIP</h1> -->
-          <!--          </button> -->
-          <!--          </ng-template> -->
-          <!--          <button class="function-button" type="button" (click)="deletePost(post._id)"> -->
-          <!--             <mat-icon>delete</mat-icon> -->
-          <!--          </button> -->
-          <!--       </div> -->
-          <!--       <div class="renew-div" (click)="toggleRenew(post._id)"> -->
-          <!--        <mat-icon>cached</mat-icon> -->
-          <!--      </div> -->
-          <!--    </div> -->
-          <!-- </div> -->
           <div class="sort-div">
             <h1 style="font-weight: bold">Sort By:</h1>
             <select class="sort-select" (change)="sort($event)">

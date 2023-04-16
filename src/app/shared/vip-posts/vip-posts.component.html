@@ -1,0 +1,28 @@
+<div class="vip-post-wrapper row align-items-center mt-4">
+  <div
+    class="col-sm-6 col-lg-3 col-xl-4"
+    *ngFor="let post of vipPosts"
+    (click)="openPost(post._id)"
+  >
+    <div class="post-card vip-post">
+      <div class="post-card-img position-relative">
+        <img
+          src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+          alt="post-img"
+        />
+        <span class="post-type-label">
+          {{ 'POST.' + post.postType | translate }}
+        </span>
+        <span class="vip-label" *ngIf="post.vip">VIP</span>
+      </div>
+      <h5>{{ post.breed }}</h5>
+      <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
+      <ng-template #age>
+        <p>
+          {{ post.age }} {{ 'POST.' + post.ageType | translate }}
+          <span *ngIf="translate.currentLang == 'en'">Old</span>
+        </p>
+      </ng-template>
+    </div>
+  </div>
+</div>

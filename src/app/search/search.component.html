@@ -188,37 +188,7 @@
               <h2>VIP Posts</h2>
             </div>
             <div class="position-relative pt-3">
-              <div class="vip-post-wrapper row align-items-center mt-4">
-                <div
-                  class="col-sm-6 col-lg-6 col-xl-4"
-                  *ngFor="let post of vipPosts"
-                  (click)="openPost(post._id)"
-                >
-                  <div class="post-card vip-post">
-                    <div class="post-card-img position-relative">
-                      <img
-                        src="/assets/postImages/{{ post._id }}/{{
-                          post.img_path[0]
-                        }}"
-                        alt="post-img1"
-                      />
-                      <span class="post-type-label"
-                        >{{ post.postType | titlecase }}</span
-                      >
-                      <span class="vip-label">VIP</span>
-                    </div>
-                    <h5>{{ post.breed }}</h5>
-                    <div class="d-flex justify-content-between align-items-end">
-                      <p *ngIf="post.price != null; else age">
-                        {{ post.price }} ₾
-                      </p>
-                      <ng-template #age>
-                        <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
-                      </ng-template>
-                    </div>
-                  </div>
-                </div>
-              </div>
+              <app-vip-posts [vipPosts]="vipPosts"></app-vip-posts>
             </div>
             <div class="profile-shape2">
               <img
