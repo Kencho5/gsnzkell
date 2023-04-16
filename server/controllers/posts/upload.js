@@ -62,7 +62,7 @@ async function upload(req, res) {
         instagram: updated.value.instagram,
         facebook: updated.value.facebook,
         city: updated.value.city,
-        balance: updated.value.balance,
+        balance: updated.value.balance.toFixed(2),
         pfp: updated.value.pfp,
       };
 

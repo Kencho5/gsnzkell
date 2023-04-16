@@ -18,7 +18,7 @@ async function login(req, res) {
           instagram: responseDB.instagram,
           facebook: responseDB.facebook,
           city: responseDB.city,
-          balance: responseDB.balance,
+          balance: responseDB.balance.toFixed(2),
           pfp: responseDB.pfp,
         };
         const token = jwt.sign(payload, privateKEY, signOptions);
