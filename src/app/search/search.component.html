@@ -237,38 +237,7 @@
                 <label>Found {{ count }} results ({{ time }} seconds).</label>
               </div>
             </div>
-            <div class="row align-items-center mt-4">
-              <div
-                class="col-sm-6 col-lg-6 col-xl-4"
-                *ngFor="let post of posts"
-                (click)="openPost(post._id)"
-              >
-                <div class="post-card" [ngClass]="{ 'vip-post': post.vip }">
-                  <div class="post-card-img position-relative">
-                    <img
-                      src="/assets/postImages/{{ post._id }}/{{
-                        post.img_path[0]
-                      }}"
-                      alt="post-img1"
-                    />
-                    <span class="post-type-label"
-                      >{{ post.postType | titlecase }}</span
-                    >
-
-                    <span class="vip-label" *ngIf="post.vip">VIP</span>
-                  </div>
-                  <h5>{{ post.breed }}</h5>
-                  <div class="d-flex justify-content-between align-items-end">
-                    <p *ngIf="post.price != null; else age">
-                      {{ post.price }} ₾
-                    </p>
-                    <ng-template #age>
-                      <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
-                    </ng-template>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <app-posts [posts]="posts"></app-posts>
           </div>
 
           <!-- Latest Post Pagination -->

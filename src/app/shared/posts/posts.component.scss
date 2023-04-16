@@ -1,0 +1,110 @@
+/* Post Section CSS Start */
+
+.latest-posts-section {
+  margin-top: 100px;
+}
+
+.vip-post {
+  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+}
+
+.post-card {
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 44px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.post-card:hover {
+  transform: scale(1.05);
+}
+
+.post-card-img img {
+  width: 100%;
+  min-height: 200px;
+  max-height: 200px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+
+.post-type-label {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  border-radius: 0px 10px 10px 0px;
+  font-size: 18px;
+  font-weight: bold !important;
+  padding: 8px 12px;
+  color: #1d1d1d;
+  background: #ffffff;
+}
+
+.vip-label {
+  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  background-color: #ffca2b;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: bold !important;
+  padding: 8px 12px;
+  color: #1d1d1d;
+}
+
+.post-card h5 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #1d1d1d;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+
+.post-card p {
+  font-weight: 400;
+  font-size: 32px;
+  color: #27525c;
+  margin: 0;
+}
+
+.post-card p span img {
+  margin-top: -20px;
+}
+
+.post-see-more-btn a {
+  font-size: 24px;
+  font-weight: 700;
+  text-decoration: underline;
+  color: #211f54;
+  position: relative;
+  z-index: 999;
+}
+
+.latest-post-shape {
+  position: absolute;
+  right: 0;
+  bottom: -335px;
+  z-index: -1;
+}
+
+.latest-post-shape img {
+  max-width: 80%;
+  float: right;
+}
+
+/* Post Section CSS End */
+

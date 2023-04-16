@@ -34,6 +34,7 @@ import { LanguageSelectorComponent } from './shared/language-selector/language-s
 import { UploadFormComponent } from './shared/upload-form/upload-form.component';
 import { ServiceCostComponent } from './shared/service-cost/service-cost.component';
 import { FooterComponent } from './shared/footer/footer.component';
+import { PostsComponent } from './shared/posts/posts.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -56,6 +57,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UploadFormComponent,
     ServiceCostComponent,
     FooterComponent,
+    PostsComponent,
   ],
   imports: [
     BrowserModule,

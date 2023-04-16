@@ -85,34 +85,34 @@
           <div class="section-title">
             <h2>{{ 'HOME.vip_posts' | translate}}</h2>
           </div>
-          <div class="row align-items-center">
-            <div
-              class="col-sm-6 col-lg-3"
-              *ngFor="let post of vipPosts"
-              (click)="openPost(post.id)"
-            >
-              <div class="post-card vip-post">
-                <div class="post-card-img position-relative">
-                  <img
-                    src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
-                    alt="post-img"
-                  />
-                  <span class="post-type-label">
-                    {{ 'POST.' + post.postType | translate }}
-                  </span>
-                  <span class="vip-label" *ngIf="post.vip">VIP</span>
-                </div>
-                <h5>{{ post.breed }}</h5>
-                <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
-                <ng-template #age>
-                  <p>
-                    {{ post.age }} {{ 'POST.' + post.ageType | translate }}
-                    <span *ngIf="translate.currentLang == 'en'">Old</span>
-                  </p>
-                </ng-template>
-              </div>
-            </div>
-          </div>
+          <!-- <div class="row align-items-center"> -->
+          <!--   <div -->
+          <!--     class="col-sm-6 col-lg-3" -->
+          <!--     *ngFor="let post of vipPosts" -->
+          <!--     (click)="openPost(post.id)" -->
+          <!--   > -->
+          <!--     <div class="post-card vip-post"> -->
+          <!--       <div class="post-card-img position-relative"> -->
+          <!--         <img -->
+          <!--           src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}" -->
+          <!--           alt="post-img" -->
+          <!--         /> -->
+          <!--         <span class="post-type-label"> -->
+          <!--           {{ 'POST.' + post.postType | translate }} -->
+          <!--         </span> -->
+          <!--         <span class="vip-label" *ngIf="post.vip">VIP</span> -->
+          <!--       </div> -->
+          <!--       <h5>{{ post.breed }}</h5> -->
+          <!--       <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p> -->
+          <!--       <ng-template #age> -->
+          <!--         <p> -->
+          <!--           {{ post.age }} {{ 'POST.' + post.ageType | translate }} -->
+          <!--           <span *ngIf="translate.currentLang == 'en'">Old</span> -->
+          <!--         </p> -->
+          <!--       </ng-template> -->
+          <!--     </div> -->
+          <!--   </div> -->
+          <!-- </div> -->
         </div>
         <div class="latest-post-shape">
           <img
@@ -129,37 +129,7 @@
           <div class="section-title">
             <h2>{{ 'HOME.latest_posts' | translate }}</h2>
           </div>
-          <div class="row align-items-center">
-            <div
-              class="col-sm-6 col-lg-3"
-              *ngFor="let post of posts"
-              (click)="openPost(post.id)"
-            >
-              <div class="post-card" [ngClass]="{ 'vip-post': post.vip }">
-                <div class="post-card-img position-relative">
-                  <img
-                    src="/assets/postImages/{{ post.id }}/{{ post.imgs[0] }}"
-                    alt="post-img"
-                  />
-                  <span class="post-type-label"
-                    >{{ 'POST.' + post.postType | translate}}</span
-                  >
-                  <span class="vip-label" *ngIf="post.vip">VIP</span>
-                </div>
-                <h5>{{ post.breed }}</h5>
-                <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
-                <ng-template #age>
-                  <p>
-                    {{ post.age }} {{ 'POST.' + post.ageType | translate }}
-                    <span *ngIf="translate.currentLang == 'en'">Old</span>
-                  </p>
-                </ng-template>
-              </div>
-            </div>
-          </div>
-          <!-- <div class="post-see-more-btn text-center mt-5 pt-4"> -->
-          <!--    <a href="#">See More</a> -->
-          <!-- </div> -->
+          <app-posts [posts]="posts"></app-posts>
         </div>
         <div class="latest-post-shape">
           <img

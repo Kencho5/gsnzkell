@@ -66,10 +66,6 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  openPost(id) {
-    this.router.navigate([`/post/${id}`]);
-  }
-
   scrollLeft() {
     var div = document.getElementsByClassName(
       'latest-posts'

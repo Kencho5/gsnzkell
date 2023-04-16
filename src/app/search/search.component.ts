@@ -15,6 +15,7 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-search',
