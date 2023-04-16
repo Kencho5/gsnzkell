@@ -92,13 +92,7 @@
             <mat-icon>cached</mat-icon>
             Renew Post
           </h1>
-          <div class="available-balance">
-            <p>Service Price <span>0.25 ₾</span></p>
-            <p style="font-size: 14px">
-              Available Balance
-              <span style="font-size: 20px">{{ userData.balance }} ₾</span>
-            </p>
-          </div>
+          <app-service-cost [serviceCost]="0.25"></app-service-cost>
           <button class="form-done-btn" (click)="renewPost()">Renew</button>
           <button class="form-close-btn" type="button" (click)="toggleRenew(0)">
             Close
@@ -131,13 +125,9 @@
               <option value="6">6 Days</option>
               <option value="7">7 Days</option>
             </select>
-            <div class="available-balance">
-              <p>Service Price <span>{{ daysSelected * 2 }} ₾</span></p>
-              <p style="font-size: 14px">
-                Available Balance
-                <span style="font-size: 20px">{{ userData.balance }} ₾</span>
-              </p>
-            </div>
+            <app-service-cost
+              [serviceCost]="daysSelected * 2"
+            ></app-service-cost>
             <button class="form-done-btn" type="submit">Buy</button>
             <button class="form-close-btn" type="button" (click)="closeVip()">
               Close

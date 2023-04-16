@@ -39,14 +39,14 @@ async function upload(req, res) {
       }
     );
   } else {
-    if (balance - 0.1 >= 0) {
+    if (balance - 0.2 >= 0) {
       var updated = await users.findOneAndUpdate(
         {
           email: email,
         },
         {
           $inc: {
-            balance: -0.1,
+            balance: -0.2,
           },
         },
         {
