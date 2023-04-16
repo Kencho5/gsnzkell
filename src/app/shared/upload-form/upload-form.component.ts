@@ -35,6 +35,7 @@ export class UploadFormComponent {
   form_msg: string;
   uploadLoading: boolean;
   cities;
+  loggedIn: boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,6 +47,10 @@ export class UploadFormComponent {
 
   ngOnInit(): void {
     this.getCities();
+
+    if(this.login.user) {
+      this.loggedIn = true;
+    }
   }
 
   getCities() {

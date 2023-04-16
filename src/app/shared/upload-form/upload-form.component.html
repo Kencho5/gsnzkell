@@ -172,7 +172,7 @@
                       }}
                     </h2>
                   </div>
-                  <app-service-cost [serviceCost]="0.20"></app-service-cost>
+                  <app-service-cost *ngIf="loggedIn" [serviceCost]="0.20"></app-service-cost>
                 </div>
               </form>
             </div>
