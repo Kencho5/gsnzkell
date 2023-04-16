@@ -1,0 +1,11 @@
+<div class="cost-box">
+  <div class="cost-description">
+    <p>Service Cost:</p>
+    <p>User Balance:</p>
+  </div>
+  <div class="cost-values">
+    <p *ngIf="freeUpload">Free</p>
+    <p *ngIf="!freeUpload">{{ serviceCost | number: '1.2-2' }} ₾</p>
+    <p>{{ balance }} ₾</p>
+  </div>
+</div>

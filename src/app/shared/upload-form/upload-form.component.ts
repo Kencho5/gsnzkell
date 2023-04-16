@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 import { LoginService } from '../../login/login.service';
 import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
+import jwtDecode from 'jwt-decode';
 
 @Component({
   selector: 'app-upload-form',
