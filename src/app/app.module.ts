@@ -33,6 +33,7 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { LanguageSelectorComponent } from './shared/language-selector/language-selector.component';
 import { UploadFormComponent } from './shared/upload-form/upload-form.component';
 import { ServiceCostComponent } from './shared/service-cost/service-cost.component';
+import { TopComponent } from './shared/top/top.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -54,6 +55,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     LanguageSelectorComponent,
     UploadFormComponent,
     ServiceCostComponent,
+    TopComponent,
   ],
   imports: [
     BrowserModule,
