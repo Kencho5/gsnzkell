@@ -35,12 +35,18 @@
     "photos": "ფოტოები (მაქსიმუმ 3)",
     "submit": "ატვირთვა"
   },
+
   "POST": {
     "Selling": "იყიდება",
     "Meeting": "შეჯვარება",
     "Adopting": "შეფარება",
     "Years": "წლის",
     "Months": "თვის"
+  },
+
+  "SERVICE": {
+    "service_cost": "ღირებულება",
+    "balance": "ბალანსი"
   },
 
   "CITIES": {

@@ -35,12 +35,18 @@
     "photos": "Photos (Max 3)",
     "submit": "Upload"
   },
+
   "POST": {
     "Selling": "Selling",
     "Meeting": "Meeting",
     "Adopting": "Adopting",
     "Years": "Years",
     "Months": "Months"
+  },
+
+  "SERVICE": {
+    "service_cost": "Service Cost",
+    "balance": "Balance"
   },
 
   "CITIES": {
