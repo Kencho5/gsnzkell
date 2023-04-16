@@ -36,6 +36,7 @@ import { ServiceCostComponent } from './shared/service-cost/service-cost.compone
 import { FooterComponent } from './shared/footer/footer.component';
 import { PostsComponent } from './shared/posts/posts.component';
 import { VipPostsComponent } from './shared/vip-posts/vip-posts.component';
+import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -60,6 +61,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     PostsComponent,
     VipPostsComponent,
+    CitiesSelectorComponent,
   ],
   imports: [
     BrowserModule,

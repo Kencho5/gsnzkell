@@ -1,0 +1,16 @@
+select {
+  border: none;
+}
+
+.form-select:focus {
+  outline: 0 !important;
+}
+
+.flex {
+  display: flex;
+  align-items: center;
+  border: 1px solid #0b2f5b;
+  padding: 15px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+}

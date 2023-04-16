@@ -46,17 +46,9 @@ export class UploadFormComponent {
   ) {}
 
   ngOnInit(): void {
-    this.getCities();
-
     if(this.login.user) {
       this.loggedIn = true;
     }
-  }
-
-  getCities() {
-    this.uploadService.getCities().subscribe((res) => {
-      this.cities = res.cities[this.translate.currentLang];
-    });
   }
 
   selectFiles(event) {

@@ -1,0 +1,11 @@
+<div [formGroup]="form">
+  <div class="flex">
+    <mat-icon>location_on</mat-icon>
+    <select [formControlName]="controlName" class="form-select">
+      <option [selected]="true">{{ 'CITIES.' + currentCity | translate }}</option>
+      <option *ngFor="let city of cities$ | async | keyvalue" value="{{city.key}}">
+        {{ 'CITIES.' + city.key | translate }}
+      </option>
+    </select>
+  </div>
+</div>
