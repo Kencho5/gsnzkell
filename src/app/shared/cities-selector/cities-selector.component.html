@@ -1,11 +1,29 @@
 <div [formGroup]="form">
-  <div class="flex">
+  <div class="flex" *ngIf="currentCity != 'Select Your City'; else search">
     <mat-icon>location_on</mat-icon>
     <select [formControlName]="controlName" class="form-select">
-      <option [selected]="true">{{ 'CITIES.' + currentCity | translate }}</option>
-      <option *ngFor="let city of cities$ | async | keyvalue" value="{{city.key}}">
+      <option [selected]="true">
+        {{ 'CITIES.' + currentCity | translate }}
+      </option>
+      <option
+        *ngFor="let city of cities$ | async | keyvalue"
+        value="{{city.key}}"
+      >
         {{ 'CITIES.' + city.key | translate }}
       </option>
     </select>
   </div>
+  <ng-template #search>
+    <select [formControlName]="controlName" class="form-input-field">
+      <option value="" selected disabled>
+        {{ 'UPLOAD.select_city' | translate }}
+      </option>
+      <option
+        *ngFor="let city of cities$ | async | keyvalue"
+        value="{{city.key}}"
+      >
+        {{ 'CITIES.' + city.key | translate }}
+      </option>
+    </select>
+  </ng-template>
 </div>

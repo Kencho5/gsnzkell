@@ -24,6 +24,7 @@
     "select_animal": "Select Animal",
     "breed": "Breed",
     "select_post_type": "Select Post Type",
+    "post_type": "Post Type",
     "price": "Price (GEL)",
     "age": "Age",
     "age_type": "Year/Month",
@@ -32,6 +33,7 @@
     "description": "Description",
     "phone": "Phone Number",
     "select_city": "Select Your City",
+    "city": "City",
     "photos": "Photos (Max 3)",
     "submit": "Upload"
   },
@@ -68,6 +70,19 @@
     "upload": "Upload",
     "add_balance": "Add Balance",
     "log_out": "Log Out"
+  },
+
+  "SEARCH": {
+    "filters": "Filters",
+    "found": "Found {{count}} Results ({{time}} Seconds).",
+    "animal": "Animal",
+    "age_type": "Age Type",
+    "min": "Min...",
+    "max": "Max...",
+    "reset_filters": "Reset Filters",
+    "filter": "Filter",
+    "close": "Close",
+    "search_results": "Search Results"
   },
 
   "CITIES": {

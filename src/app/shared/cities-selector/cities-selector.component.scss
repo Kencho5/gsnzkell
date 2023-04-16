@@ -14,3 +14,19 @@ select {
   margin-bottom: 16px;
   border-radius: 30px;
 }
+
+.form-input-field {
+  padding-top: 20px;
+}
+
+.form-input-field {
+  width: 100%;
+  padding: 12px 20px;
+  border: 1px solid #54a0b2;
+  border-radius: 30px;
+}
+
+.form-input-field:focus {
+  outline: 0;
+}
+
