@@ -236,6 +236,11 @@ select {
   display: block;
 }
 
+.edit-modal-buttons {
+  display: flex;
+  justify-content: space-around;
+}
+
 .user-upload-img {
   position: relative;
   width: 150px;

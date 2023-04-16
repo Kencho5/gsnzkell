@@ -49,6 +49,19 @@
     "balance": "ბალანსი"
   },
 
+  "MODAL": {
+    "done": "შენახვა",
+    "close": "დახურვა"
+  },
+
+  "PROFILE": {
+    "sort": "დალაგება",
+    "expires_desc": "ვადა დაღმავალი",
+    "expires_asc": "ვადა აღმავალი",
+    "date_desc": "თარიღი აღმავალი",
+    "date_asc": "თარიღი დაღმავალი"
+  },
+
   "CITIES": {
     "abasha": "აბაშა",
     "abastumani": "აბასთუმანი",

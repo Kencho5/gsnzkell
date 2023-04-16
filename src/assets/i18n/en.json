@@ -49,6 +49,19 @@
     "balance": "Balance"
   },
 
+  "MODAL": {
+    "done": "Done",
+    "close": "Close"
+  },
+
+  "PROFILE": {
+    "sort": "Sort By",
+    "expires_desc": "Expires Desc.",
+    "expires_asc": "Expires Asc.",
+    "date_desc": "Date Desc.",
+    "date_asc": "Date Asc."
+  },
+
   "CITIES": {
     "abasha": "Abasha",
     "abastumani": "Abastumani",
