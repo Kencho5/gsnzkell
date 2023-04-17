@@ -19,6 +19,7 @@ export class CitiesSelectorComponent {
   @Input() controlName: string;
   @Input() form: FormGroup;
   @Input() currentCity: string;
+  @Input() type: string;
 
   cities$: Observable<any>;
 

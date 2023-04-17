@@ -57,6 +57,7 @@
                 <div class="form-input-field">
                   <label>{{ 'UPLOAD.city' | translate }}</label>
                   <app-cities-selector
+                    [type]="'search'"
                     [form]="filterForm"
                     controlName="city"
                     [currentCity]="'Select Your City'"

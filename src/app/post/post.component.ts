@@ -4,6 +4,7 @@ import jwtDecode from 'jwt-decode';
 import { Subscription } from 'rxjs';
 import { PostService } from './post.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-post',
@@ -22,7 +23,8 @@ export class PostComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private router: Router,
-    private postService: PostService
+    private postService: PostService,
+    private translate: TranslateService
   ) {}
 
   ngOnInit(): void {
