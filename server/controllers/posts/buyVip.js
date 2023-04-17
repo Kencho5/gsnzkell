@@ -49,6 +49,7 @@ var postID = req.body.id;
           {
             $set: {
               vip: true,
+              vipExpires: new Date(Date.now() + days * 24 * 60 * 60 * 1000),
               expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
             },
           }
