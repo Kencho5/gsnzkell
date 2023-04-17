@@ -92,8 +92,13 @@ a {
   max-width: 448px;
   background: $light;
   border-radius: 10px;
-  box-shadow: rgba(60, 66, 87, 0.12) 0 7px 14px 0,
-    rgba(0, 0, 0, 0.12) 0 3px 6px 0;
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
 }
 
 span {
@@ -224,3 +229,18 @@ mat-icon {
   font-weight: bold;
   color: $dark;
 }
+
+.hero-shape1 {
+  position: absolute;
+  left: 0;
+  bottom: 160px;
+  z-index: -1;
+}
+
+.hero-shape2 {
+  position: absolute;
+  right: 0;
+  bottom: 200px;
+  z-index: -1;
+}
+

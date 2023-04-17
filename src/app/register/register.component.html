@@ -34,78 +34,10 @@
                 />
               </div>
               <!-- <div class="field padding-bottom--24"> -->
-                <label for="name">City</label>
-
-                <select formControlName="city" class="form-select">
-                  <option value="" selected disabled>Select a City</option>
-
-                  <option value="Abasha">Abasha</option>
-                  <option value="Abastumani">Abastumani</option>
-                  <option value="Adigeni">Adigeni</option>
-                  <option value="Akhalgori">Akhalgori</option>
-                  <option value="Akhalkalaki">Akhalkalaki</option>
-                  <option value="Akhmeta">Akhmeta</option>
-                  <option value="Ambrolauri">Ambrolauri</option>
-                  <option value="Aspindza">Aspindza</option>
-                  <option value="Baghdati">Baghdati</option>
-                  <option value="Bakuriani">Bakuriani</option>
-                  <option value="Bolnisi">Bolnisi</option>
-                  <option value="Borjomi">Borjomi</option>
-                  <option value="Chakvi">Chakvi</option>
-                  <option value="Chokhatauri">Chokhatauri</option>
-                  <option value="Dedoplistsqaro">Dedoplistsqaro</option>
-                  <option value="Gagra">Gagra</option>
-                  <option value="Gali">Gali</option>
-                  <option value="Gardabani">Gardabani</option>
-                  <option value="Gori">Gori</option>
-                  <option value="Gudauri">Gudauri</option>
-                  <option value="Gurjaani">Gurjaani</option>
-                  <option value="Jvari">Jvari</option>
-                  <option value="Kakheti">Kakheti</option>
-                  <option value="Kaspi">Kaspi</option>
-                  <option value="Kazbegi">Kazbegi</option>
-                  <option value="Kharagauli">Kharagauli</option>
-                  <option value="Khashuri">Khashuri</option>
-                  <option value="Khobi">Khobi</option>
-                  <option value="Khoni">Khoni</option>
-                  <option value="Kobuleti">Kobuleti</option>
-                  <option value="Kutaisi">Kutaisi</option>
-                  <option value="Lagodekhi">Lagodekhi</option>
-                  <option value="Manglisi">Manglisi</option>
-                  <option value="Marneuli">Marneuli</option>
-                  <option value="Mestia">Mestia</option>
-                  <option value="Ninotsminda">Ninotsminda</option>
-                  <option value="Oni">Oni</option>
-                  <option value="Ozurgeti">Ozurgeti</option>
-                  <option value="Pankisi">Pankisi</option>
-                  <option value="Pitsunda">Pitsunda</option>
-                  <option value="Poti">Poti</option>
-                  <option value="Racha">Racha</option>
-                  <option value="Rustavi">Rustavi</option>
-                  <option value="Sachkhere">Sachkhere</option>
-                  <option value="Sagarejo">Sagarejo</option>
-                  <option value="Samtredia">Samtredia</option>
-                  <option value="Senaki">Senaki</option>
-                  <option value="Shekvetili">Shekvetili</option>
-                  <option value="Shuakhevi">Shuakhevi</option>
-                  <option value="Sighnaghi">Sighnaghi</option>
-                  <option value="Stepantsminda">Stepantsminda</option>
-                  <option value="Sukhumi">Sukhumi</option>
-                  <option value="Tbilisi">Tbilisi</option>
-                  <option value="Telavi">Telavi</option>
-                  <option value="Tianeti">Tianeti</option>
-                  <option value="Tkibuli">Tkibuli</option>
-                  <option value="Tskaltubo">Tskaltubo</option>
-                  <option value="Tsnori">Tsnori</option>
-                  <option value="Tsqaltubo">Tsqaltubo</option>
-                  <option value="Tusheti">Tusheti</option>
-                  <option value="Ureki">Ureki</option>
-                  <option value="Vani">Vani</option>
-                  <option value="Zestaponi">Zestaponi</option>
-                </select>
-
-                <!-- <input type="text" formControlName="city" /> -->
-              <!-- </div> -->
+              <label for="name">City</label>
+              <div class="field padding-bottom--24">
+                <app-cities-selector [type]="'register'" [form]="registerForm" controlName="city" [currentCity]="'Select Your City'"></app-cities-selector>
+              </div>
               <div class="field padding-bottom--24">
                 <div class="grid--50-50">
                   <label for="password">Password</label>
@@ -167,7 +99,14 @@
             <span><a href="#">Contact</a></span>
           </div>
         </div>
+        <div class="hero-shape1">
+          <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
+        </div>
+        <div class="hero-shape2">
+          <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
+        </div>
       </div>
     </div>
   </div>
 </div>
+<app-footer></app-footer>

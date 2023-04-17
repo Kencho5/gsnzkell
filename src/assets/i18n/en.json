@@ -75,6 +75,7 @@
 
   "SEARCH": {
     "filters": "Filters",
+    "filter_by": "Filter By",
     "found": "Found {{count}} Results ({{time}} Seconds).",
     "animal": "Animal",
     "age_type": "Age Type",

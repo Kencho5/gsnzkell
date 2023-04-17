@@ -41,4 +41,17 @@
       </option>
     </select>
   </ng-template>
+  <ng-template [ngIf]="type == 'register'">
+    <select [formControlName]="controlName" class="register-select">
+      <option value="" selected disabled>
+        {{ 'UPLOAD.select_city' | translate }}
+      </option>
+      <option
+        *ngFor="let city of cities$ | async | keyvalue"
+        value="{{city.key}}"
+      >
+        {{ 'CITIES.' + city.key | translate }}
+      </option>
+    </select>
+  </ng-template>
 </div>
