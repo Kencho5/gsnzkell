@@ -1,7 +1,7 @@
 const { db, userPosts, users } = require("../../utils/db");
 
 async function search(req, res) {
-const startTime = Date.now();
+  const startTime = Date.now();
 
   try {
     const searchText = req.body.text;
