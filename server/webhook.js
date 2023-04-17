@@ -32,6 +32,15 @@ function webhook(req, res) {
             console.log(`Delete successful: ${stdout}`);
           });
 
+          exec("mkdir /usr/share/nginx/pender", (err, stdout, stderr) => {
+            if (err) {
+              console.error(`Error: ${err}`);
+              return res.sendStatus(500);
+            }
+
+            console.log(`Delete successful: ${stdout}`);
+          });
+
           exec(
             "cp -r ../dist/pender /usr/share/nginx/",
             (err, stdout, stderr) => {
