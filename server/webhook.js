@@ -23,7 +23,7 @@ function webhook(req, res) {
 
           console.log(`Build successful: ${stdout}`);
 
-          exec("rm -r /usr/share/nginx/pender", (err, stdout, stderr) => {
+          exec("rm -rf /usr/share/nginx/pender", (err, stdout, stderr) => {
             if (err) {
               console.error(`Error: ${err}`);
               return res.sendStatus(500);
