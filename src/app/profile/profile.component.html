@@ -53,7 +53,10 @@
                             src="assets/images/location-icon.svg"
                             alt="location-icon"
                           />
-                          <a>{{ 'CITIES.' + userData.city.toLowerCase() | translate}}</a>
+                          <a
+                            >{{ 'CITIES.' + userData.city.toLowerCase() |
+                            translate}}</a
+                          >
                         </li>
                       </div>
                     </div>
@@ -187,7 +190,12 @@
               />
             </div>
             <div>
-              <app-cities-selector [type]="'edit'" [form]="profileForm" controlName="city" [currentCity]="userData.city"></app-cities-selector>
+              <app-cities-selector
+                [type]="'edit'"
+                [form]="profileForm"
+                controlName="city"
+                [currentCity]="userData.city"
+              ></app-cities-selector>
             </div>
             <div class="user-form-field">
               <img
@@ -210,14 +218,16 @@
                 required
               />
             </div>
-            <div class="text-center text-lg-end mt-4 edit-modal-buttons ">
-              <button class="form-done-btn" type="submit">{{ 'MODAL.done' | translate }}</button>
+            <div class="text-center text-lg-end mt-4 edit-modal-buttons">
+              <button class="form-done-btn" type="submit">
+                {{ 'MODAL.done' | translate }}
+              </button>
               <button
                 class="form-close-btn"
                 type="button"
                 (click)="closeModal()"
               >
-              {{ 'MODAL.close' | translate }}
+                {{ 'MODAL.close' | translate }}
               </button>
             </div>
           </form>
@@ -228,7 +238,7 @@
   </header>
   <!-- Header Part HTML
       <!-- User Page Body Section HTML Start -->
-  <div class="user-page-bottom-body">
+  <div class="user-page-bottom-body" *ngIf="posts.length != 0">
     <!-- Post Section HTML Start -->
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative">
@@ -236,10 +246,18 @@
           <div class="sort-div">
             <h1 style="font-weight: bold">{{ 'PROFILE.sort' | translate }}:</h1>
             <select class="sort-select" (change)="sort($event)">
-              <option value="expiresDesc">{{ 'PROFILE.expires_desc' | translate }}</option>
-              <option value="expiresAsc">{{ 'PROFILE.expires_asc' | translate }}</option>
-              <option value="dateDesc">{{ 'PROFILE.date_desc' | translate }}</option>
-              <option value="dateAsc">{{ 'PROFILE.date_asc' | translate }}</option>
+              <option value="expiresDesc">
+                {{ 'PROFILE.expires_desc' | translate }}
+              </option>
+              <option value="expiresAsc">
+                {{ 'PROFILE.expires_asc' | translate }}
+              </option>
+              <option value="dateDesc">
+                {{ 'PROFILE.date_desc' | translate }}
+              </option>
+              <option value="dateAsc">
+                {{ 'PROFILE.date_asc' | translate }}
+              </option>
             </select>
           </div>
           <div class="posts">
@@ -368,9 +386,10 @@
       </div>
     </section>
     <!-- Post Section HTML End -->
-    <!-- User Footer Section HTML Start -->
-    <app-footer></app-footer>
-    <!-- User Footer Section HTML End -->
   </div>
+  <!-- User Footer Section HTML Start -->
+  <app-footer></app-footer>
+  <!-- User Footer Section HTML End -->
+
   <!-- User Page Body Section HTML End -->
 </body>
