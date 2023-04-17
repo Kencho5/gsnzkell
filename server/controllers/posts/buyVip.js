@@ -1,10 +1,10 @@
 const jwt = require("jsonwebtoken");
 const { db, userPosts, users } = require("../../utils/db");
 const { privateKEY, publicKEY, signOptions } = require("../../models/token");
-const getUserBalance = require('../user/getUserBalance');
+const getUserBalance = require("../user/getUserBalance");
 
 async function buyVip(req, res) {
-var postID = req.body.id;
+  var postID = req.body.id;
   var days = parseInt(req.body.days);
   var authToken = req.body.authToken;
 
