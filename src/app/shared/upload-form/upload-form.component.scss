@@ -173,5 +173,34 @@ textarea {
   height: 20px;
 }
 
-/* Upload Post Section CSS End */
+.vip-box {
+  display: flex;
+  flex-direction: column;
+}
 
+.vip-box h1 {
+  font-weight: bold;
+}
+
+.vip-checkbox {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: auto;
+  width: 70px;
+  margin-bottom: 30px;
+  margin-top: 30px;
+}
+
+.vip-checkbox input {
+  line-height: 1;
+  width: 20px;
+  height: 20px;
+}
+
+.vip-checkbox h1 {
+  margin: 0;
+  line-height: 1;
+}
+
+/* Upload Post Section CSS End */

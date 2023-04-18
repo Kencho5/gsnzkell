@@ -19,6 +19,11 @@ async function upload(req, res) {
   const imgs = await saveImages(postID, req);
   const form = req.body.form;
 
+  const vip = form.days > 0;
+  const vipExpires = vip
+    ? new Date(Date.now() + form.days * 24 * 60 * 60 * 1000)
+    : null;
+
   const user = await users
     .find({
       email: email,
@@ -89,9 +94,13 @@ async function upload(req, res) {
     date: new Date(),
     img_path: imgs,
     city: form.city,
-    vip: false,
+    vip: vip,
     expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
   };
+
+  if (vipExpires) {
+    data.vipExpires = vipExpires;
+  }
 
   userPosts.insertOne(data, function (err, result) {
     if (result) {
@@ -133,4 +142,3 @@ async function saveImages(postID, req) {
 }
 
 module.exports = upload;
-

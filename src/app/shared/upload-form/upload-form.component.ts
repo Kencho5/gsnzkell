@@ -14,7 +14,7 @@ import jwtDecode from 'jwt-decode';
 @Component({
   selector: 'app-upload-form',
   templateUrl: './upload-form.component.html',
-  styleUrls: ['./upload-form.component.scss', '../../responsive.css']
+  styleUrls: ['./upload-form.component.scss', '../../responsive.css'],
 })
 export class UploadFormComponent {
   uploadForm = new FormGroup({
@@ -28,6 +28,7 @@ export class UploadFormComponent {
     phone: new FormControl('', Validators.required),
     imgs: new FormControl(''),
     city: new FormControl('', Validators.required),
+    days: new FormControl('', Validators.required),
   });
 
   urls = [];
@@ -36,6 +37,8 @@ export class UploadFormComponent {
   uploadLoading: boolean;
   cities;
   loggedIn: boolean;
+  daysSelected = 0;
+  vipSum = 0;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -46,9 +49,10 @@ export class UploadFormComponent {
   ) {}
 
   ngOnInit(): void {
-    if(this.login.user) {
+    if (this.login.user) {
       this.loggedIn = true;
     }
+    this.uploadForm.get('days').disable();
   }
 
   selectFiles(event) {
@@ -78,7 +82,6 @@ export class UploadFormComponent {
   }
 
   upload() {
-    console.log(this.uploadForm.value.city)
     this.uploadLoading = false;
 
     if (this.urls.length != 3) {
@@ -117,6 +120,16 @@ export class UploadFormComponent {
     } else {
       priceInput.style.display = 'block';
     }
+  }
+
+  unlockDays(event) {
+    if (!event.target.checked) {
+      this.uploadForm.get('days').disable();
+      this.daysSelected = 0;
+      
+      return;
+    }
+    this.uploadForm.get('days').enable();
   }
 
 }

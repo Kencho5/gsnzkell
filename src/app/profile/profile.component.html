@@ -119,14 +119,16 @@
               <mat-icon>bolt</mat-icon>
             </h1>
             <select [(ngModel)]="daysSelected" formControlName="days">
-              <option value="" selected disabled>Select Days</option>
-              <option value="1">1 Day</option>
-              <option value="2">2 Days</option>
-              <option value="3">3 Days</option>
-              <option value="4">4 Days</option>
-              <option value="5">5 Days</option>
-              <option value="6">6 Days</option>
-              <option value="7">7 Days</option>
+              <option value="" [selected]="true" disabled>
+                {{ 'UPLOAD.select_days' | translate }}
+              </option>
+              <option value="1">1 {{ 'UPLOAD.day' | translate }}</option>
+              <option value="2">2 {{ 'UPLOAD.days' | translate }}</option>
+              <option value="3">3 {{ 'UPLOAD.days' | translate }}</option>
+              <option value="4">4 {{ 'UPLOAD.days' | translate }}</option>
+              <option value="5">5 {{ 'UPLOAD.days' | translate }}</option>
+              <option value="6">6 {{ 'UPLOAD.days' | translate }}</option>
+              <option value="7">7 {{ 'UPLOAD.days' | translate }}</option>
             </select>
             <app-service-cost
               [serviceCost]="daysSelected * 2"

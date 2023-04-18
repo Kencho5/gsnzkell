@@ -155,23 +155,13 @@
                       </div>
                     </div>
                   </div>
-                  <div class="up-form-btn text-center text-md-end mt-3 vip-box">
-                    <div class="vip-checkbox">
-                      <input type="checkbox" (change)="unlockDays($event)"/>
-                      <h1>VIP</h1>
-                    </div>
-                    <select [(ngModel)]="daysSelected" formControlName="days">
-                      <option value="0" [selected]="true" disabled>
-                      {{ 'UPLOAD.select_days' | translate }}
-                      </option>
-                      <option value="1">1 {{ 'UPLOAD.day' | translate }}</option>
-                      <option value="2">2 {{ 'UPLOAD.days' | translate }}</option>
-                      <option value="3">3 {{ 'UPLOAD.days' | translate }}</option>
-                      <option value="4">4 {{ 'UPLOAD.days' | translate }}</option>
-                      <option value="5">5 {{ 'UPLOAD.days' | translate }}</option>
-                      <option value="6">6 {{ 'UPLOAD.days' | translate }}</option>
-                      <option value="7">7 {{ 'UPLOAD.days' | translate }}</option>
-                    </select>
+                  <div class="up-form-btn text-center text-md-end mt-3">
+                    <label>
+                    <input
+                      type="checkbox"
+                    />
+                    VIP
+                    </label>
                   </div>
 
                   <div class="up-form-btn text-center text-md-end mt-3">
@@ -188,7 +178,7 @@
                   </div>
                   <app-service-cost
                     *ngIf="loggedIn"
-                    [serviceCost]="0.20 + daysSelected * 2"
+                    [serviceCost]="0.20"
                   ></app-service-cost>
                 </div>
               </form>

@@ -12,6 +12,7 @@
     "vip_posts": "VIP Posts",
     "latest_posts": "Latest Posts"
   },
+
   "ANIMALS": {
     "dog": "Dog",
     "cat": "Cat",
@@ -35,6 +36,9 @@
     "select_city": "Select Your City",
     "city": "City",
     "photos": "Photos (Max 3)",
+    "select_days": "Select Days",
+    "day": "Day",
+    "days": "Days",
     "submit": "Upload"
   },
 
