@@ -74,6 +74,9 @@ export class SearchComponent implements OnInit {
   }
 
   searchPosts() {
+    this.posts = [];
+    this.vipPosts = [];
+
     this.searchService
       .searchPost({
         text: this.text,
