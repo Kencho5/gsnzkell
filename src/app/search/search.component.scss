@@ -75,7 +75,7 @@ Profile Page CSS
 
 .form-btn {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .form-btn input[type="button"] {
@@ -247,4 +247,11 @@ Profile Page CSS
     top: 20px;
   }
 }
+
+@media (min-width: 992px) {
+  .close-btn {
+    display: none;
+  }
+}
+
 
