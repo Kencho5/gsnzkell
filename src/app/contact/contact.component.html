@@ -1,0 +1,43 @@
+<body>
+  <div class="container">
+    <h1>{{ 'CONTACT.contact_us' | translate }}</h1>
+    <div class="social-links">
+      <a href="#" class="social-link">
+        <img
+          src="assets/images/instagram-white-icon.svg"
+          alt="instagram-icon"
+        />
+      </a>
+      <a href="#" class="social-link">
+        <mat-icon>facebook</mat-icon>
+      </a>
+    </div>
+    <div class="contact-info">
+      <div class="contact-item">
+        <i class="far fa-envelope"></i>
+        <h2>
+          <mat-icon>email</mat-icon>
+          {{ 'CONTACT.email' | translate }}
+        </h2>
+        <p>{{ 'CONTACT.email_text' | translate }}</p>
+        <a href="mailto:support@pender.ge">support@pender.ge</a>
+      </div>
+      <div class="contact-item">
+        <i class="fas fa-phone-alt"></i>
+        <h2>
+          <mat-icon>phone</mat-icon>
+          {{ 'CONTACT.phone' | translate }}
+        </h2>
+        <p>{{ 'CONTACT.phone_text' | translate }}</p>
+        <a href="tel:+995557325325">+995 557 325 325</a>
+      </div>
+    </div>
+  </div>
+  <div class="hero-shape1">
+    <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
+  </div>
+  <div class="hero-shape2">
+    <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
+  </div>
+  <app-footer></app-footer>
+</body>

@@ -91,6 +91,14 @@
     "search_results": "Search Results"
   },
 
+  "CONTACT": {
+    "contact_us": "Contact Us",
+    "email": "Email",
+    "email_text": "Send us an email and we'll get back to you as soon as possible.",
+    "phone": "Phone",
+    "phone_text": "Call us to speak with a representative."
+  },
+
   "CITIES": {
     "abasha": "Abasha",
     "abastumani": "Abastumani",

@@ -37,6 +37,7 @@ import { FooterComponent } from './shared/footer/footer.component';
 import { PostsComponent } from './shared/posts/posts.component';
 import { VipPostsComponent } from './shared/vip-posts/vip-posts.component';
 import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
+import { ContactComponent } from './contact/contact.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -62,6 +63,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     PostsComponent,
     VipPostsComponent,
     CitiesSelectorComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,125 @@
+mat-icon {
+  vertical-align: middle;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 50px;
+
+  background: linear-gradient(
+    180deg,
+    #ffffff 0%,
+    rgba(255, 255, 255, 0.7) 10%
+  );
+  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(2px);
+
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 150px;
+  margin-bottom: 100px;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.social-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  margin: 0 10px;
+  border-radius: 50%;
+  background-color: #333;
+  font-size: 20px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.social-link img {
+  width: 20px;
+  height: 20px;
+}
+
+.social-link:hover {
+  background-color: #52bed9;
+}
+
+.contact-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.contact-item {
+  flex: 1 1 250px;
+  margin: 20px;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+}
+
+.contact-item i {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #52bed9;
+}
+
+.contact-item h2 {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.contact-item p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.contact-item a {
+  display: inline-block;
+  font-size: 18px;
+  font-weight: 700;
+  color: #52bed9;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-item a:hover {
+  color: #333;
+}
+
+.hero-shape1 {
+  position: absolute;
+  left: 0;
+  bottom: 160px;
+  z-index: -1;
+}
+
+.hero-shape2 {
+  position: absolute;
+  right: 0;
+  bottom: -300px;
+  z-index: -1;
+}

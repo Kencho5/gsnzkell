@@ -9,6 +9,7 @@ import { UploadComponent } from './upload/upload.component';
 import { PostComponent } from './post/post.component';
 import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'user/:id', component: UserComponent },
   { path: 'search', component: SearchComponent },
   { path: 'reset', component: ResetComponent },
+  { path: 'contact', component: ContactComponent },
 ];
 
 @NgModule({

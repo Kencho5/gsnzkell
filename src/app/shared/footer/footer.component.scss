@@ -1,5 +1,10 @@
 /* Footer Section CSS */
 
+mat-icon {
+  vertical-align: middle;
+  margin-bottom: 4px;
+}
+
 .user-footer {
   padding: 30px;
 }
@@ -16,8 +21,11 @@
   padding-right: 12px;
 }
 
-.footer-copyright p {
-  color: #000000;
+.footer-copyright a {
+  font-size: 20px;
+  font-weight: bold;
+  color: #334368;
+  cursor: pointer;
   margin: 0;
 }
 

@@ -1,0 +1,9 @@
+<svg version="1.2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 31 30" width="31" height="30">
+	<title>instagram-icon-svg</title>
+	<defs>
+		<image  width="30" height="30" id="img1" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAB4AAAAeCAMAAAAM7l6QAAAAAXNSR0IB2cksfwAAAFRQTFRF////////////////////////////////////////////////////////////////////////////////////////////////////////////////lDHgPQAAABx0Uk5TAFCfv9//j08wYODP76APf4DAsF9wLxCvQCBvkJuOWYUAAADtSURBVHichZNZFoMgDEWjSAuaMjh22P8+S6RRrKj50ZPLC+QRACiKUlQyiUrc7sBRbNCyREWqc5BCz9ojKiXp62MsDsRNoTHKHzlsACx9Hfgki61zLcnCnh0lfLI16thJj7I0QxXxut/IPqiGcytGospaakYhZxfcAYyCfqbxd64UYxD9TjmFhf+4BHhyLtQXf9gCOMY9QHmC9R6H4orxa188OVoLYLKNzbzNNSbRkB/OkS3D3hbZGDZ1SExNrqSL9L1oA95c6GTthEnC58eBw51N4mzvySj660G+eAZBn61fq/WVPfxmSe0/xQy+TSoTMTPwD3wAAAAASUVORK5CYII="/>
+	</defs>
+	<style>
+	</style>
+	<use id="Layer" href="#img1" x="1" y="0"/>
+</svg>
