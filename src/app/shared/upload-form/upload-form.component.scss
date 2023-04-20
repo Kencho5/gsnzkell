@@ -58,6 +58,7 @@ select {
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
+  -webkit-appearance: none; /* Add this line to remove the default styles on mobile */
 }
 
 .double {
@@ -83,6 +84,7 @@ textarea {
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
+  outline: none; /* Add this line to remove the blue outline */
 }
 
 .up-form-field input:focus {
