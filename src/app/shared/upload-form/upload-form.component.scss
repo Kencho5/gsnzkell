@@ -189,7 +189,8 @@ textarea {
   justify-content: space-between;
   align-items: center;
   margin: auto;
-  width: 70px;
+  max-width: 70px;
+  min-width: 70px;
   margin-bottom: 30px;
   margin-top: 30px;
 }

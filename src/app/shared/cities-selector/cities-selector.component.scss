@@ -1,5 +1,6 @@
 select {
   border: none;
+  -webkit-appearance: none; /* Add this line to remove the default styles on mobile */
 }
 
 .form-select:focus {
@@ -54,4 +55,3 @@ select {
     rgba(60, 66, 87, 0.16) 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0,
     transparent 0 0 0 0;
 }
-
