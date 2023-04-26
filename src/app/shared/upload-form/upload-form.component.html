@@ -156,10 +156,24 @@
                     </div>
                   </div>
                   <div class="up-form-btn text-center text-md-end mt-3 vip-box">
-                    <div class="vip-checkbox">
-                      <input type="checkbox" (change)="unlockDays($event)" />
-                      <h1>VIP</h1>
-                    </div>
+                    <fieldset class="checkbox-group">
+                      <div class="checkbox">
+                        <label class="checkbox-wrapper">
+                          <input
+                            type="checkbox"
+                            class="checkbox-input"
+                            (change)="unlockDays($event)"
+                          />
+                          <span class="checkbox-tile">
+                            <span class="checkbox-icon">
+                              <mat-icon>bolt</mat-icon>
+                            </span>
+                            <span class="checkbox-label">VIP</span>
+                          </span>
+                        </label>
+                      </div>
+                    </fieldset>
+
                     <select [(ngModel)]="daysSelected" formControlName="days">
                       <option value="0" [selected]="true" disabled>
                         {{ 'UPLOAD.select_days' | translate }}
