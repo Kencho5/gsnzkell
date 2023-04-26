@@ -61,6 +61,10 @@ select {
   -webkit-appearance: none; /* Add this line to remove the default styles on mobile */
 }
 
+button {
+  -webkit-appearance: none;
+}
+
 .double {
   display: flex;
 }
