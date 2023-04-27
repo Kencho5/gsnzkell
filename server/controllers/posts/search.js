@@ -32,11 +32,11 @@ async function search(req, res) {
       if (filters[key] && filters[key] !== "none") {
         if (key.includes("Min") || key.includes("Max")) {
           const field = key.substring(0, key.indexOf("M"));
-          query[field] = {
+          query[`${field}${filters.ageType}`] = {
             $gte: parseInt(filters[field + "Min"]),
             $lte: parseInt(filters[field + "Max"]),
           };
-        } else {
+        } else if(key != "ageType") {
           query[key] = filters[key];
         }
       }

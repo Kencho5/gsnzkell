@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
         if (res['status'] == 200) {
           localStorage.setItem('token', res['token']);
           this.router.navigate(['/profile']);
-        }
+        } 
       });
       this.message = 'Email Or Password Incorrect.';
     } else {
