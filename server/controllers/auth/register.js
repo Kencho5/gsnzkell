@@ -1,5 +1,5 @@
-const bcrypt = require('bcrypt');
-const { v4: uuidv4 } = require('uuid');
+const bcrypt = require("bcrypt");
+const { v4: uuidv4 } = require("uuid");
 const { db, userPosts, users } = require("../../utils/db");
 
 function register(req, res) {
