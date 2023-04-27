@@ -38,6 +38,7 @@ export class AppComponent {
   count;
   time;
   filterError;
+  isLoading = true;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
 
@@ -58,6 +59,11 @@ export class AppComponent {
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
     }
+
+    this.isLoading = true;
+    window.addEventListener('load', () => {
+      this.isLoading = false;
+    });
 
     this.searchForm = new FormGroup({
       text: new FormControl('', [Validators.required]),
