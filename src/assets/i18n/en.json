@@ -37,7 +37,7 @@
     "phone": "Phone Number",
     "select_city": "Select Your City",
     "city": "City",
-    "photos": "Photos (Max 3)",
+    "photos": "Photos (Min/Max 3)",
     "select_days": "Select Days",
     "day": "Day",
     "days": "Days",

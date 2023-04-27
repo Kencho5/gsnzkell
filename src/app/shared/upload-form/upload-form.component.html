@@ -80,12 +80,14 @@
                   <div class="up-form-field">
                     <input
                       type="text"
+                      value="0"
                       placeholder="{{ 'UPLOAD.ageYears' | translate }}"
                       formControlName="ageYears"
                     />
                   </div>
                   <div class="up-form-field">
                     <input
+                      value="0"
                       type="text"
                       placeholder="{{ 'UPLOAD.ageMonths' | translate }}"
                       formControlName="ageMonths"
@@ -134,7 +136,7 @@
                       formControlName="imgs"
                     />
                     <div *ngIf="message" class="error-div">
-                      <h2 class="error-text">3 Photos Maximum!</h2>
+                      <h2 class="error-text">3 Photos Min/Max!</h2>
                     </div>
                     <div class="images">
                       <div class="image-div" *ngFor="let url of urls">
