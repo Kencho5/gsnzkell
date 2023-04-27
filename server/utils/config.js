@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 
 module.exports = {
   accessKeyId: process.env.AWS_ACCESS_KEY_ID,
