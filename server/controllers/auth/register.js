@@ -10,24 +10,25 @@ function register(req, res) {
     });
   }
 
-  users.findOne({ email: req.body.email }, (err, response) => {
+  users.findOne({ email: req.body.data.email }, (err, response) => {
     if (response) {
       res.status(200).send({
         code: 500,
         message: "Email Already In Use.",
       });
     } else {
-      bcrypt.hash(req.body.password, 10, (errorHash, hash) => {
+      bcrypt.hash(req.body.data.password, 10, (errorHash, hash) => {
         const data = {
           _id: uuidv4(),
-          email: req.body.email,
-          username: req.body.name,
-          phone: req.body.phoneNumber,
-          city: req.body.city,
+          email: req.body.data.email,
+          username: req.body.data.name,
+          phone: req.body.data.phoneNumber,
+          city: req.body.data.city,
           password: hash,
           balance: 0,
           freeUpload: true,
         };
+
         users.insertOne(data, (err, result) => {
           if (result) {
             res.status(200).send({
