@@ -51,6 +51,11 @@ export class AppComponent {
     private searchService: SearchService,
     private translate: TranslateService
   ) {
+    // Set the default language
+    translate.setDefaultLang('ge');
+  }
+
+  ngOnInit(): void {
     if (document.readyState === 'complete') {
       this.isLoading = false;
     } else {
@@ -58,11 +63,6 @@ export class AppComponent {
         this.isLoading = false;
       };
     }
-    // Set the default language
-    translate.setDefaultLang('ge');
-  }
-
-  ngOnInit(): void {
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
     }
@@ -88,9 +88,9 @@ export class AppComponent {
     }
   }
 
-  ngAfterViewInit() {
-    // this.isLoading = false;
-  }
+  // ngAfterViewInit() {
+  //   this.isLoading = false;
+  // }
 
   search() {
     if (this.searchForm.valid) {
