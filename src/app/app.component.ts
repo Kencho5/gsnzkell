@@ -39,7 +39,6 @@ export class AppComponent {
   time;
   filterError;
   isLoading = true;
-  isPageLoaded = false;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
 
@@ -57,11 +56,6 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    window.addEventListener('load', () => {
-      this.isPageLoaded = true;
-      this.isLoading = false;
-    });
-
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
     }
@@ -87,9 +81,9 @@ export class AppComponent {
     }
   }
 
-  // ngAfterViewInit() {
-  //   this.isLoading = false;
-  // }
+  ngAfterViewInit() {
+    this.isLoading = false;
+  }
 
   search() {
     if (this.searchForm.valid) {

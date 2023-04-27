@@ -29,7 +29,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClientModule, HttpClient } from '@angular/common/http';
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { LanguageSelectorComponent } from './shared/language-selector/language-selector.component';
 import { UploadFormComponent } from './shared/upload-form/upload-form.component';
 import { ServiceCostComponent } from './shared/service-cost/service-cost.component';
@@ -38,6 +38,7 @@ import { PostsComponent } from './shared/posts/posts.component';
 import { VipPostsComponent } from './shared/vip-posts/vip-posts.component';
 import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
 import { ContactComponent } from './contact/contact.component';
+import { LoadingInterceptor } from './shared/loading/loading.interceptor';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -91,7 +92,13 @@ export function HttpLoaderFactory(http: HttpClient) {
     }),
     // MatProgressSpinnerModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
