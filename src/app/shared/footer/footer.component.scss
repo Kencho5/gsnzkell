@@ -62,3 +62,13 @@ mat-icon {
   padding: 0 10px;
 }
 
+.middle {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  position: relative;
+  top: 55px;
+  margin-bottom: 40px;
+}
