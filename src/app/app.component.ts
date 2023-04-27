@@ -51,6 +51,13 @@ export class AppComponent {
     private searchService: SearchService,
     private translate: TranslateService
   ) {
+    if (document.readyState === 'complete') {
+      this.isLoading = false;
+    } else {
+      window.onload = () => {
+        this.isLoading = false;
+      };
+    }
     // Set the default language
     translate.setDefaultLang('ge');
   }
@@ -82,7 +89,7 @@ export class AppComponent {
   }
 
   ngAfterViewInit() {
-    this.isLoading = false;
+    // this.isLoading = false;
   }
 
   search() {
