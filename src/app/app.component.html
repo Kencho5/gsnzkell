@@ -1,4 +1,4 @@
-<app-loading *ngIf="isLoading"></app-loading>
+<app-loading *ngIf="(loadingService.isLoading$ | async)"></app-loading>
 <header>
   <section id="Header">
     <nav class="navbar navbar-expand-xl sticky">

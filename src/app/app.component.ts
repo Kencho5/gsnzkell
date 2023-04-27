@@ -10,6 +10,7 @@ import {
 import { Router } from '@angular/router';
 import { SearchService } from './search/search.service';
 import { TranslateService } from '@ngx-translate/core';
+import { LoadingService } from './shared/loading/loading.service';
 
 @Component({
   selector: 'app-root',
@@ -38,7 +39,7 @@ export class AppComponent {
   count;
   time;
   filterError;
-  isLoading = true;
+  // isLoading = true;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
 
@@ -49,21 +50,23 @@ export class AppComponent {
     private el: ElementRef,
     private renderer: Renderer2,
     private searchService: SearchService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    public loadingService: LoadingService
   ) {
     // Set the default language
     translate.setDefaultLang('ge');
   }
 
   ngOnInit(): void {
+        this.loadingService.showLoading();
+
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
     }
 
-    this.isLoading = true;
-    window.addEventListener('load', () => {
-      this.isLoading = false;
-    });
+    // window.addEventListener('load', () => {
+    //   this.isLoading = false;
+    // });
 
     this.searchForm = new FormGroup({
       text: new FormControl('', [Validators.required]),

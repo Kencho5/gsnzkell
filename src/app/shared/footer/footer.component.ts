@@ -6,10 +6,9 @@ import { Component, AfterViewInit } from '@angular/core';
   styleUrls: ['./footer.component.scss', '../../responsive.css'],
 })
 export class FooterComponent {
-  // ngOnInit() {
-  //   const script = document.createElement('script');
-  //   script.src = '//counter.top.ge/counter.js';
-  //   script.async = true;
-  //   document.body.appendChild(script);
-  // }
+  ngAfterViewInit() {
+    const script = document.createElement('script');
+    script.src = '//counter.top.ge/counter.js';
+    document.body.appendChild(script);
+  }
 }
