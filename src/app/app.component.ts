@@ -39,6 +39,7 @@ export class AppComponent {
   time;
   filterError;
   isLoading = true;
+  isPageLoaded = false;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
 
@@ -56,13 +57,11 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    if (document.readyState === 'complete') {
+    window.onload = () => {
+      this.isPageLoaded = true;
       this.isLoading = false;
-    } else {
-      window.onload = () => {
-        this.isLoading = false;
-      };
-    }
+    };
+
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
     }
