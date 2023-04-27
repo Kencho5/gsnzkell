@@ -21,8 +21,8 @@ export class UploadFormComponent {
     animal: new FormControl('', Validators.required),
     breed: new FormControl('', Validators.required),
     price: new FormControl(''),
-    age: new FormControl('', Validators.required),
-    ageType: new FormControl('', Validators.required),
+    ageYears: new FormControl('', Validators.required),
+    ageMonths: new FormControl('', Validators.required),
     description: new FormControl('', Validators.maxLength(200)),
     postType: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
@@ -123,13 +123,18 @@ export class UploadFormComponent {
   }
 
   unlockDays(event) {
+    const daysSelector = document.getElementsByClassName(
+      'days-selector'
+    )[0] as HTMLElement;
+
     if (!event.target.checked) {
       this.uploadForm.get('days').disable();
       this.daysSelected = 0;
-      
+      daysSelector.style.display = 'none';
+
       return;
     }
     this.uploadForm.get('days').enable();
+    daysSelector.style.display = 'block';
   }
-
 }

@@ -28,6 +28,8 @@
     "post_type": "Post Type",
     "price": "Price (GEL)",
     "age": "Age",
+    "ageYears": "Age In Years",
+    "ageMonths": "Age In Months",
     "age_type": "Year/Month",
     "Years": "Years",
     "Months": "Months",

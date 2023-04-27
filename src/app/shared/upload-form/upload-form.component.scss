@@ -178,10 +178,6 @@ button {
   color: $dim;
 }
 
-.double {
-  display: flex;
-}
-
 textarea {
   width: 100%;
   background: #ffffff;
@@ -296,4 +292,9 @@ textarea {
   display: flex;
   flex-direction: column;
 }
+
+.days-selector {
+  display: none;
+}
+
 /* Upload Post Section CSS End */

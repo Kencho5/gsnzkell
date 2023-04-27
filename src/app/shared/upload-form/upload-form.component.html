@@ -77,28 +77,21 @@
                       formControlName="price"
                     />
                   </div>
-                  <div class="up-form-field double">
+                  <div class="up-form-field">
                     <input
                       type="text"
-                      placeholder="{{ 'UPLOAD.age' | translate }}"
-                      formControlName="age"
+                      placeholder="{{ 'UPLOAD.ageYears' | translate }}"
+                      formControlName="ageYears"
                     />
-                    <select
-                      class="form-select"
-                      formControlName="ageType"
-                      required
-                    >
-                      <option value="" selected disabled>
-                        {{ 'UPLOAD.age_type' | translate }}
-                      </option>
-                      <option value="Years">
-                        {{ 'POST.Years' | translate }}
-                      </option>
-                      <option value="Months">
-                        {{ 'POST.Months' | translate }}
-                      </option>
-                    </select>
                   </div>
+                  <div class="up-form-field">
+                    <input
+                      type="text"
+                      placeholder="{{ 'UPLOAD.ageMonths' | translate }}"
+                      formControlName="ageMonths"
+                    />
+                  </div>
+
                   <div class="up-form-field">
                     <textarea
                       placeholder="{{ 'UPLOAD.description' | translate }}"
@@ -173,7 +166,11 @@
                         </label>
                       </div>
                     </fieldset>
-                    <select [(ngModel)]="daysSelected" formControlName="days" class="form-select">
+                    <select
+                      [(ngModel)]="daysSelected"
+                      formControlName="days"
+                      class="form-select days-selector"
+                    >
                       <option value="0" [selected]="true" disabled>
                         {{ 'UPLOAD.select_days' | translate }}
                       </option>
