@@ -64,13 +64,6 @@ export class AppComponent {
       text: new FormControl('', [Validators.required]),
     });
 
-    const filterIcon = this.el.nativeElement.querySelector('.filterIcon');
-    const searchFilter = this.el.nativeElement.querySelector('.search-filter');
-
-    this.renderer.listen(filterIcon, 'click', () => {
-      searchFilter.classList.toggle('active');
-    });
-
     if (localStorage.getItem('token')) {
       var ts = jwtDecode(localStorage.getItem('token'))['exp'];
       var exp = new Date(ts * 1000).getDate() - new Date().getDate();
