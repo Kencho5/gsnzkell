@@ -9,7 +9,7 @@ export class FooterComponent {
   ngAfterViewInit() {
     const script = document.createElement('script');
     script.src = '//counter.top.ge/counter.js';
-    script.async = true;
+    script.defer = true;
     document.body.appendChild(script);
   }
 }
