@@ -17,7 +17,7 @@
               <div class="filter-form">
                 <div class="form-input-field">
                   <label>{{ 'SEARCH.animal' | translate }}</label>
-                  <select formControlName="animal">
+                  <select formControlName="animal" class="form-select">
                     <option value="" selected disabled>
                       {{ 'UPLOAD.select_animal' | translate }}
                     </option>
@@ -39,6 +39,7 @@
                   <select
                     formControlName="postType"
                     (change)="changeInput($event)"
+                    class="form-select"
                   >
                     <option value="" selected disabled>
                       {{ 'UPLOAD.select_post_type' | translate }}
@@ -65,7 +66,7 @@
                 </div>
                 <div class="form-input-field">
                   <label>{{ 'SEARCH.age_type' | translate }}</label>
-                  <select formControlName="ageType">
+                  <select formControlName="ageType" class="form-select">
                     <option value="" selected disabled>
                       {{ 'UPLOAD.age_type' | translate }}
                     </option>
