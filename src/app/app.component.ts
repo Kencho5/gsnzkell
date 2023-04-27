@@ -61,7 +61,7 @@ export class AppComponent {
     }
 
     this.isLoading = true;
-    window.addEventListener('load', () => {
+    document.addEventListener('DOMContentLoaded', () => {
       this.isLoading = false;
     });
 
