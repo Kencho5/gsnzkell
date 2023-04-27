@@ -57,10 +57,10 @@ export class AppComponent {
   }
 
   ngOnInit(): void {
-    window.onload = () => {
+    window.addEventListener('load', () => {
       this.isPageLoaded = true;
       this.isLoading = false;
-    };
+    });
 
     if (!localStorage.getItem('lang')) {
       localStorage.setItem('lang', 'ge');
