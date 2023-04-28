@@ -1,7 +1,7 @@
 const session = require("express-session");
 const { db, users, payments } = require("../../utils/db");
 const jwt = require("jsonwebtoken");
-const { privateKEY, publicKEY, signOptions } = require("../../models/token");
+const { privateKEY, signOptions } = require("../../models/token");
 
 async function paymentStatus(req, res) {
   const email = req.body.email;
