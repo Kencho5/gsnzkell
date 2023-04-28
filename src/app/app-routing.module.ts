@@ -10,6 +10,7 @@ import { PostComponent } from './post/post.component';
 import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
 import { ContactComponent } from './contact/contact.component';
+import { BalanceComponent } from './balance/balance.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -22,6 +23,7 @@ const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'reset', component: ResetComponent },
   { path: 'contact', component: ContactComponent },
+  { path: 'balance', component: BalanceComponent },
 ];
 
 @NgModule({

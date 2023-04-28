@@ -39,6 +39,7 @@ import { VipPostsComponent } from './shared/vip-posts/vip-posts.component';
 import { CitiesSelectorComponent } from './shared/cities-selector/cities-selector.component';
 import { ContactComponent } from './contact/contact.component';
 import { LoadingInterceptor } from './shared/loading/loading.interceptor';
+import { BalanceComponent } from './balance/balance.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -65,6 +66,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     VipPostsComponent,
     CitiesSelectorComponent,
     ContactComponent,
+    BalanceComponent,
   ],
   imports: [
     BrowserModule,
