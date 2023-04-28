@@ -28,7 +28,7 @@ async function checkPayment(req, res) {
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber,
         });
-        console.log(email, response.data.amount)
+        console.log(email, response.data.amount);
         await users.updateOne(
           { email: email },
           { $inc: { balance: response.data.amount } },
