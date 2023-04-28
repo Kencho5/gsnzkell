@@ -6,7 +6,8 @@
       <div class="container-fluid">
         <div class="post-hero-title">
           <h2>
-            {{ 'POST.' + post.postType | translate }} - {{ 'ANIMALS.' + post.animal.toLowerCase() | translate }}
+            {{ 'POST.' + post.postType | translate }} - {{ 'ANIMALS.' +
+            post.animal.toLowerCase() | translate }}
             <div class="post-hero-title-border">
               <img
                 src="assets/images/post-hero-title-border-shape.svg"
@@ -90,7 +91,13 @@
                   <h2>
                     {{ post.breed }}
                     <img src="assets/images/slash.svg" alt="slash" />
-                    {{ post.age }} {{ 'POST.' + post.ageType | translate }}
+                    <span *ngIf="post.ageYears > 0">
+                      {{ post.ageYears }} {{ 'POST.Years' | translate }}
+                    </span>
+                    <span *ngIf="post.ageYears > 0 && post.ageMonths > 0">{{ 'POST.and' | translate }}</span>
+                    <span *ngIf="post.ageMonths > 0">
+                      {{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                    </span>
                   </h2>
                 </div>
                 <div class="post-info-price" *ngIf="post.price != null">
@@ -98,9 +105,7 @@
                 </div>
                 <div class="post-info-description mt-5">
                   <h4>{{ 'UPLOAD.description' | translate }}</h4>
-                  <p>
-                    {{ post.description }}
-                  </p>
+                  <p>{{ post.description }}</p>
                 </div>
               </div>
             </div>
@@ -109,15 +114,15 @@
                 class="post-user-info d-flex align-items-center mt-4 mt-md-0"
               >
                 <div class="post-user-img">
-                      <img
-                        *ngIf="userPfp == true; else default"
-                        src="assets/user-pfps/{{ userID }}.jpg"
-                        alt="user"
-                        id="user-pfp"
-                      />
-                      <ng-template #default>
-                        <img src="assets/images/default_pfp.png" alt="user" />
-                      </ng-template>
+                  <img
+                    *ngIf="userPfp == true; else default"
+                    src="assets/user-pfps/{{ userID }}.jpg"
+                    alt="user"
+                    id="user-pfp"
+                  />
+                  <ng-template #default>
+                    <img src="assets/images/default_pfp.png" alt="user" />
+                  </ng-template>
                 </div>
                 <div class="post-user-info-text">
                   <h4>{{ post.name }}</h4>
