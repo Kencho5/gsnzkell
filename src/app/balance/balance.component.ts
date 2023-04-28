@@ -32,7 +32,7 @@ export class BalanceComponent {
       user: this.login.user
     }).subscribe((res) => {
       if (res['code'] === 200) {
-        console.log(res)
+        window.location.href = res.url;
       } else {
         this.message = 'Payment Error.';
       }

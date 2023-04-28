@@ -50,10 +50,6 @@ async function payment(req, res) {
         code: 500,
       });
     });
-
-  return res.status(200).send({
-    code: 200,
-  });
 }
 
 module.exports = payment;
