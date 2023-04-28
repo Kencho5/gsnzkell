@@ -19,25 +19,25 @@ async function checkPayment(req, res) {
   axios
     .get(`${apiUrl}/${payId}`, { headers })
     .then(async (response) => {
-      const status = response.data.status;
-      if (status === "Success") {
-        
-        const payload = {
+      const status = response.data.httpStatusCode;
+      if (status === 200) {
+        await payments.insertOne({
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
-          card: response.data.paymentCardNumber
-        };
-        console.log(payload)
-        await payments.insertOne(payload)
+          card: response.data.paymentCardNumber,
+        });
 
-        await users.updateOne({email}, {$inc: { balance: response.data.amount }}, options)
+        await users.updateOne(
+          { email },
+          { $inc: { balance: response.data.amount } },
+          options
+        );
 
         return res.status(200).send({
           code: 200,
         });
       } else {
-        console.log(response.data)
         return res.status(200).send({
           code: 404,
         });
