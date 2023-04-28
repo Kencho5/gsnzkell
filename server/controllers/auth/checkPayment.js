@@ -7,7 +7,6 @@ const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
 
 async function checkPayment(req, res) {
-  console.log(req.body)
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
   const headers = {

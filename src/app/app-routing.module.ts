@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'reset', component: ResetComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'balance', component: BalanceComponent },
-  { path: 'paymentStatus', component: PaymentStatusComponent },
+  { path: 'paymentStatus/:id', component: PaymentStatusComponent },
 ];
 
 @NgModule({
