@@ -19,6 +19,12 @@
               <div class="field padding-bottom--24">
                 <input type="submit" name="submit" value="Pay" />
               </div>
+              <div *ngIf="message" class="error-div">
+                <h4 class="error-text">
+                  <mat-icon>cancel</mat-icon>
+                  {{ message }}
+                </h4>
+              </div>
             </form>
           </div>
         </div>
