@@ -1,7 +1,7 @@
 const axios = require("axios");
 const config = require("../../utils/config");
 const session = require("express-session");
-const { db, userPosts, users } = require("../../utils/db");
+const { db, userPosts, users, payments } = require("../../utils/db");
 
 const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { PaymentStatusService } from './payment-status.service';
 
 @Component({
   selector: 'app-payment-status',
@@ -11,7 +12,10 @@ import { Subscription } from 'rxjs';
   ],
 })
 export class PaymentStatusComponent {
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private paymentStatusService: PaymentStatusService
+  ) {}
 
   message: string;
   paymentId: string;
@@ -25,6 +29,16 @@ export class PaymentStatusComponent {
   }
 
   paymentStatus() {
-
+    this.paymentStatusService
+      .checkStatus({
+        paymentId: this.paymentId
+      })
+      .subscribe((res) => {
+        if (res['code'] === 200) {
+          this.message = "Payment Successful!"
+        } else {
+          this.message = 'Payment Error.';
+        }
+      });
   }
 }

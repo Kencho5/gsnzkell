@@ -1,9 +1,17 @@
 const session = require("express-session");
-const { db, userPosts, users } = require("../../utils/db");
+const { db, payments } = require("../../utils/db");
 
 async function paymentStatus(req, res) {
-  db.payments.findOne(req.body.paymentId, (response, err) => {
-    console.log(response);
+  payments.findOne({ paymentId: req.body.paymentId }, (err, payment) => {
+    if (err || payment == null) {
+      return res.status(200).send({
+        code: 404,
+      });
+    } else {
+      return res.status(200).send({
+        code: 200,
+      });
+    }
   });
 }
 

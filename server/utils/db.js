@@ -7,9 +7,11 @@ client.connect();
 const db = client.db("pender");
 const userPosts = db.collection("userPosts");
 const users = db.collection("users");
+const payments = db.collection("payments");
 
 module.exports = {
   db,
   userPosts,
   users,
+  payments
 };
