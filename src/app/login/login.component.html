@@ -10,21 +10,21 @@
       <div class="formbg-outer">
         <div class="formbg">
           <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--24">Log in to your account</span>
+            <span class="padding-bottom--24">{{ 'LOGIN.login_to_account' | translate }}</span>
             <form
               id="stripe-login"
               [formGroup]="loginForm"
               (ngSubmit)="loginRequest()"
             >
               <div class="field padding-bottom--24">
-                <label for="email">Email</label>
+                <label for="email">{{ 'LOGIN.email' | translate }}</label>
                 <input type="email" formControlName="email" />
               </div>
               <div class="field padding-bottom--24">
                 <div class="grid--50-50">
-                  <label for="password">Password</label>
+                  <label for="password">{{ 'LOGIN.password' | translate }}</label>
                   <div class="reset-pass">
-                    <a href="/reset">Forgot your password?</a>
+                    <a href="/reset">{{ 'LOGIN.forgot_password' | translate }}</a>
                   </div>
                 </div>
                 <input
@@ -34,7 +34,7 @@
                 />
               </div>
               <div class="field padding-bottom--24">
-                <input type="submit" name="submit" value="Log In" />
+                <input type="submit" name="submit" value="{{ 'LOGIN.login' | translate }}" />
               </div>
               <div *ngIf="isRegistered" class="success-div">
                 <h4 class="success-text">
@@ -52,8 +52,8 @@
         </div>
         <div class="footer-link padding-top--24">
           <span
-            >Don't have an account?
-            <a href="/register" style="color: #2e3134">Register</a></span
+            >{{ 'LOGIN.no_account' | translate }}
+            <a href="/register" style="color: #2e3134; font-size: 16px; text-decoration: underline;">{{ 'LOGIN.register' | translate }}</a></span
           >
           <div
             class="listing padding-top--24 padding-bottom--24 flex-flex center-center"

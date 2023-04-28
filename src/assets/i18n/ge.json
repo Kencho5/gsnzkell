@@ -110,6 +110,16 @@
     "new_balance": "თქვენი ახალი ბალანსი:"
   },
 
+  "LOGIN": {
+    "login_to_account": "შედით თქვენს ანგარიშზე",
+    "email": "ელ. ფოსტა",
+    "password": "პაროლი",
+    "forgot_password": "დაგავიწყდა პაროლი?",
+    "login": "შესვლა",
+    "no_account": "არ გაქვთ ანგარიში?",
+    "register": "დარეგისტრირდით"
+  },
+
   "CITIES": {
     "abasha": "აბაშა",
     "abastumani": "აბასთუმანი",

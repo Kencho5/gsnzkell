@@ -107,8 +107,18 @@
     "pay": "Pay",
     "payment_error": "Payment Error",
     "payment_success": "Payment Successful!",
-    "new_balance": "Your New Balance:",
-  }
+    "new_balance": "Your New Balance:"
+  },
+
+  "LOGIN": {
+    "login_to_account": "Log in to your account",
+    "email": "Email",
+    "password": "Password",
+    "forgot_password": "Forgot your password?",
+    "login": "Log In",
+    "no_account": "Don't have an account?",
+    "register": "Register"
+  },
 
   "CITIES": {
     "abasha": "Abasha",
