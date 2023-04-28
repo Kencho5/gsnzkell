@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from 'app/login/login.service';
 import { Subscription } from 'rxjs';
 import { PaymentStatusService } from './payment-status.service';
 
@@ -14,7 +15,8 @@ import { PaymentStatusService } from './payment-status.service';
 export class PaymentStatusComponent {
   constructor(
     private route: ActivatedRoute,
-    private paymentStatusService: PaymentStatusService
+    private paymentStatusService: PaymentStatusService,
+    private login: LoginService
   ) {}
 
   message: string;
@@ -31,11 +33,13 @@ export class PaymentStatusComponent {
   paymentStatus() {
     this.paymentStatusService
       .checkStatus({
-        paymentId: this.paymentId
+        paymentId: this.paymentId,
+        email: this.login.user.email
       })
       .subscribe((res) => {
         if (res['code'] === 200) {
-          this.message = "Payment Successful!"
+          this.message = "Payment Successful!";
+          localStorage.setItem('token', res['token']);
         } else {
           this.message = 'Payment Error.';
         }
