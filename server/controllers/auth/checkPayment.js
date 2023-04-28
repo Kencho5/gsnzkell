@@ -20,7 +20,7 @@ async function checkPayment(req, res) {
     .get(`${apiUrl}/${payId}`, { headers })
     .then(async (response) => {
       const status = response.data.httpStatusCode;
-      console.log(status)
+
       if (status === 200) {
         await payments.insertOne({
           merchantId: response.data.merchantPaymentId,
@@ -32,8 +32,7 @@ async function checkPayment(req, res) {
 
         await users.updateOne(
           { email: email },
-          { $inc: { balance: response.data.amount } },
-          options
+          { $inc: { balance: response.data.amount } }
         );
 
         return res.status(200).send({
