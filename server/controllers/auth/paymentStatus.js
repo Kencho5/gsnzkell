@@ -12,26 +12,36 @@ async function paymentStatus(req, res) {
         code: 404,
       });
     } else {
-      await users.findOne({ email }, (err, responseDB) => {
-        const payload = {
-          id: responseDB._id,
-          username: responseDB.username,
-          email,
-          phone: responseDB.phone,
-          instagram: responseDB.instagram,
-          facebook: responseDB.facebook,
-          city: responseDB.city,
-          balance: responseDB.balance.toFixed(2),
-          freeUpload: responseDB.freeUpload,
-          pfp: responseDB.pfp,
-        };
+      const options = { returnOriginal: false };
 
-        const token = jwt.sign(payload, privateKEY, signOptions);
+      const updated = await users.findOneAndUpdate(
+        { email },
+        { $inc: { balance: payment.amount } },
+        options
+      );
 
-        return res.status(200).send({
-          code: 200,
-          token: token,
-        });
+      const responseDB = updated.value;
+
+      const payload = {
+        id: responseDB._id,
+        username: responseDB.username,
+        email,
+        phone: responseDB.phone,
+        instagram: responseDB.instagram,
+        facebook: responseDB.facebook,
+        city: responseDB.city,
+        balance: responseDB.balance.toFixed(2),
+        freeUpload: responseDB.freeUpload,
+        pfp: responseDB.pfp,
+      };
+
+      const balance = responseDB.balance.toFixed(2);
+      const token = jwt.sign(payload, privateKEY, signOptions);
+
+      return res.status(200).send({
+        code: 200,
+        token: token,
+        balance: balance,
       });
     }
   });

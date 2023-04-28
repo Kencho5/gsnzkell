@@ -21,6 +21,7 @@ export class PaymentStatusComponent {
 
   message: string;
   paymentId: string;
+  balance: string;
   private routeSub: Subscription;
 
   ngOnInit() {
@@ -39,7 +40,10 @@ export class PaymentStatusComponent {
       .subscribe((res) => {
         if (res['code'] === 200) {
           this.message = "Payment Successful!";
+          this.balance = res['balance'];
+
           localStorage.setItem('token', res['token']);
+          this.login.user.balance = res['balance'];
         } else {
           this.message = 'Payment Error.';
         }
