@@ -37,6 +37,7 @@ async function checkPayment(req, res) {
           code: 200,
         });
       } else {
+        console.log(response.data)
         return res.status(200).send({
           code: 404,
         });
