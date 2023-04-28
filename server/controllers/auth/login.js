@@ -29,6 +29,10 @@ async function login(req, res) {
           message: "Successfully Logged In!",
           token,
         });
+      } else {
+        res.status(200).send({
+          status: 500,
+        });
       }
     } else {
       res.status(200).send({

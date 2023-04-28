@@ -38,7 +38,6 @@ export class AppComponent {
   count;
   time;
   filterError;
-  isLoading = true;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
 
@@ -72,10 +71,6 @@ export class AppComponent {
         localStorage.removeItem('token');
       }
     }
-  }
-
-  ngAfterViewInit() {
-    this.isLoading = false;
   }
 
   search() {
