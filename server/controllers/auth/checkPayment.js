@@ -24,14 +24,14 @@ async function checkPayment(req, res) {
 
       if (status === 200) {
         await payments.insertOne({
-          email: req.session.email,
+          email: req.session.paymentEmail,
           merchantId: response.data.merchantPaymentId,
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber,
         });
-
+        console.log('here', req.session.paymentEmail)
         await users.updateOne(
           { email: req.session.paymentEmail },
           { $inc: { balance: response.data.amount } }
