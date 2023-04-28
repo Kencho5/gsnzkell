@@ -40,13 +40,13 @@ export class PaymentStatusComponent {
       })
       .subscribe((res) => {
         if (res['code'] === 200) {
-          this.message = 'Payment Successful!';
+          this.message = 'PAYMENT.payment_success';
           this.balance = res['balance'];
 
           localStorage.setItem('token', res['token']);
           this.login.user.balance = res['balance'];
         } else {
-          this.message = 'Payment Error.';
+          this.message = 'PAYMENT.payment_error';
           this.error = true;
         }
       });

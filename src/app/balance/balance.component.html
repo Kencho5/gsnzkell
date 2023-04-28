@@ -10,14 +10,14 @@
       <div class="formbg-outer">
         <div class="formbg">
           <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--24">Add Balance</span>
+            <span class="padding-bottom--24">{{ 'PAYMENT.add_balance' | translate }}</span>
             <form id="stripe-login" (ngSubmit)="pay()" [formGroup]="amountForm">
               <div class="field padding-bottom--24">
-                <label for="amount">Amount</label>
+                <label for="amount">{{ 'PAYMENT.amount' | translate }}</label>
                 <input type="number" formControlName="amount" />
               </div>
               <div class="field padding-bottom--24">
-                <input type="submit" name="submit" value="Pay" />
+                <input type="submit" name="submit" value="{{ 'PAYMENT.pay' | translate }}" />
               </div>
               <div *ngIf="message" class="error-div">
                 <h4 class="error-text">

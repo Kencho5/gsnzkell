@@ -101,6 +101,15 @@
     "phone_text": "Call us to speak with a representative."
   },
 
+  "PAYMENT": {
+    "add_balance": "Add Balance",
+    "amount": "Amount",
+    "pay": "Pay",
+    "payment_error": "Payment Error",
+    "payment_success": "Payment Successful!",
+    "new_balance": "Your New Balance:",
+  }
+
   "CITIES": {
     "abasha": "Abasha",
     "abastumani": "Abastumani",

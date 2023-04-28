@@ -10,8 +10,8 @@
       <div class="formbg-outer">
         <div class="formbg">
           <div class="formbg-inner padding-horizontal--48">
-            <h1>{{ message }}</h1>
-            <h2 *ngIf="!error">Your New Balance: {{ balance }} ₾</h2>
+            <h1>{{ message | translate }}</h1>
+            <h2 *ngIf="!error">{{ 'PAYMENT.new_balance' | translate }} {{ balance }} ₾</h2>
           </div>
         </div>
         <div class="hero-shape1">
