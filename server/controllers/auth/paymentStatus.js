@@ -7,7 +7,7 @@ async function paymentStatus(req, res) {
   const email = req.body.email;
 
   payments.findOne({ merchantPaymentId: req.body.merchantPaymentId }, async (err, payment) => {
-    console.log(payment)
+    console.log(payment, req.body.merchantPaymentId, req.body)
     if (err || payment == null) {
       return res.status(200).send({
         code: 404,
