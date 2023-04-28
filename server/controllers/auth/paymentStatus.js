@@ -6,7 +6,7 @@ const { privateKEY, publicKEY, signOptions } = require("../../models/token");
 async function paymentStatus(req, res) {
   const email = req.body.email;
 
-  payments.findOne({ paymentId: req.body.paymentId }, async (err, payment) => {
+  payments.findOne({ merchantPaymentId: req.body.merchantPaymentId }, async (err, payment) => {
     if (err || payment == null) {
       return res.status(200).send({
         code: 404,

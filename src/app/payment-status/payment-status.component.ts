@@ -20,14 +20,14 @@ export class PaymentStatusComponent {
   ) {}
 
   message: string;
-  paymentId: string;
+  merchantPaymentId: string;
   balance: string;
   error = false;
   private routeSub: Subscription;
 
   ngOnInit() {
     this.routeSub = this.route.params.subscribe((params) => {
-      this.paymentId = params['id'];
+      this.merchantPaymentId = params['id'];
       this.paymentStatus();
     });
   }
@@ -35,7 +35,7 @@ export class PaymentStatusComponent {
   paymentStatus() {
     this.paymentStatusService
       .checkStatus({
-        paymentId: this.paymentId,
+        merchantPaymentId: this.merchantPaymentId,
         email: this.login.user.email,
       })
       .subscribe((res) => {

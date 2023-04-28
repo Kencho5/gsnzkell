@@ -22,6 +22,7 @@ async function checkPayment(req, res) {
       const status = response.data.httpStatusCode;
       if (status === 200) {
         await payments.insertOne({
+          merchantId: response.data.merchantPaymentId,
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
