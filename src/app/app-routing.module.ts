@@ -11,6 +11,7 @@ import { UserComponent } from './user/user.component';
 import { SearchComponent } from './search/search.component';
 import { ContactComponent } from './contact/contact.component';
 import { BalanceComponent } from './balance/balance.component';
+import { PaymentStatusComponent } from './payment-status/payment-status.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'reset', component: ResetComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'balance', component: BalanceComponent },
+  { path: 'paymentStatus', component: PaymentStatusComponent },
 ];
 
 @NgModule({

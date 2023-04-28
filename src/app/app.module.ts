@@ -40,6 +40,7 @@ import { CitiesSelectorComponent } from './shared/cities-selector/cities-selecto
 import { ContactComponent } from './contact/contact.component';
 import { LoadingInterceptor } from './shared/loading/loading.interceptor';
 import { BalanceComponent } from './balance/balance.component';
+import { PaymentStatusComponent } from './payment-status/payment-status.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -67,6 +68,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     CitiesSelectorComponent,
     ContactComponent,
     BalanceComponent,
+    PaymentStatusComponent,
   ],
   imports: [
     BrowserModule,
