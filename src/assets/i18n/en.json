@@ -120,6 +120,20 @@
     "register": "Register"
   },
 
+  "REGISTER": {
+    "register_on_pender": "Register On Pender",
+    "name": "Name",
+    "phone": "Phone Number",
+    "city": "City",
+    "password": "Password",
+    "register": "Register",
+    "have_account": "Have an account?",
+    "login": "Log In",
+    "confirm_email": "Confirm Your Email",
+    "code": "Code",
+    "confirm": "Confirm"
+  },
+
   "CITIES": {
     "abasha": "Abasha",
     "abastumani": "Abastumani",

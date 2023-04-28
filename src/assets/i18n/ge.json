@@ -120,6 +120,20 @@
     "register": "დარეგისტრირდით"
   },
 
+  "REGISTER": {
+    "register_on_pender": "რეგისტრაცია",
+    "name": "სახელი",
+    "phone": "ტელ. ნომერი",
+    "city": "ქალაქი",
+    "password": "პაროლი",
+    "register": "დარეგისტრირება",
+    "have_account": "გაქვთ ანგარიში?",
+    "login": "შესვლა",
+    "confirm_email": "დაადასტურეთ თქვენი ელ. ფოსტა",
+    "code": "კოდი",
+    "confirm": "შემოწმება"
+  },
+
   "CITIES": {
     "abasha": "აბაშა",
     "abastumani": "აბასთუმანი",
