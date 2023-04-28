@@ -21,7 +21,7 @@ async function payment(req, res) {
       tax: 0,
       shipping: 0,
     },
-    returnurl: "https://pender.ge/profile",
+    returnurl: "https://pender.ge/paymentStatus",
     expirationMinutes: "5",
     methods: [5, 7],
     callbackUrl: "https://pender.ge/api/checkpayment",
