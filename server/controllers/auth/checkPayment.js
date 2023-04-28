@@ -23,7 +23,7 @@ async function checkPayment(req, res) {
       const status = response.data.status;
       if (status === "Success") {
 
-        await db.payments.insertOne({
+        await payments.insertOne({
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
