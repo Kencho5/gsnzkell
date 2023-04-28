@@ -7,6 +7,7 @@ const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
 
 async function checkPayment(req, res) {
+  console.log(req.body)
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
   const headers = {
@@ -19,12 +20,12 @@ async function checkPayment(req, res) {
 
   axios
     .get(`${apiUrl}/${payId}`, { headers })
-    .then((response) => {
+    .then(async (response) => {
       const status = response.data.status;
       if (status === "Success") {
         req.session.paymentStatus = true;
 
-        db.payments.insertOne({
+        await db.payments.insertOne({
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
