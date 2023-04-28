@@ -5,6 +5,7 @@ import {
   FormGroup,
   FormControl,
 } from '@angular/forms';
+import { LoginService } from 'app/login/login.service';
 import { BalanceService } from './balance.service';
 
 @Component({
@@ -15,7 +16,8 @@ import { BalanceService } from './balance.service';
 export class BalanceComponent {
   constructor(
     private formBuilder: FormBuilder,
-    private balanceService: BalanceService
+    private balanceService: BalanceService,
+    private login: LoginService
   ) {}
 
   amountForm = new FormGroup({
@@ -25,7 +27,10 @@ export class BalanceComponent {
   message: string;
 
   pay() {
-    this.balanceService.pay(this.amountForm.value).subscribe((res) => {
+    this.balanceService.pay({
+      amount: this.amountForm.value.amount,
+      user: this.login.user
+    }).subscribe((res) => {
       if (res['code'] === 200) {
         console.log(res)
       } else {
