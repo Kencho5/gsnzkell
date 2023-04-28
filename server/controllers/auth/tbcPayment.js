@@ -11,7 +11,7 @@ const paymentId = uuidv4();
 async function payment(req, res) {
   const amount = req.body.amount;
   const user = req.body.user;
-  
+  console.log(user.email)
   req.session.paymentEmail = user.email;
 
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
