@@ -2,6 +2,7 @@ const { db, userPosts, users } = require("../../utils/db");
 const axios = require("axios");
 const { v4: uuidv4 } = require("uuid");
 const config = require("../../utils/config");
+const session = require("express-session");
 
 const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
@@ -10,6 +11,8 @@ const paymentId = uuidv4();
 async function payment(req, res) {
   const amount = req.body.amount;
   const user = req.body.user;
+  
+  req.session.paymentEmail = user.email;
 
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 

@@ -1,6 +1,7 @@
 const axios = require("axios");
 const config = require("../../utils/config");
 const { db, users, payments } = require("../../utils/db");
+const session = require("express-session");
 
 const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
@@ -31,7 +32,7 @@ async function checkPayment(req, res) {
         });
 
         await users.updateOne(
-          { email: email },
+          { email: req.session.paymentEmail },
           { $inc: { balance: response.data.amount } }
         );
 
