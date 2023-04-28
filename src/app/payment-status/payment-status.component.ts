@@ -22,6 +22,7 @@ export class PaymentStatusComponent {
   message: string;
   paymentId: string;
   balance: string;
+  error = false;
   private routeSub: Subscription;
 
   ngOnInit() {
@@ -35,17 +36,18 @@ export class PaymentStatusComponent {
     this.paymentStatusService
       .checkStatus({
         paymentId: this.paymentId,
-        email: this.login.user.email
+        email: this.login.user.email,
       })
       .subscribe((res) => {
         if (res['code'] === 200) {
-          this.message = "Payment Successful!";
+          this.message = 'Payment Successful!';
           this.balance = res['balance'];
 
           localStorage.setItem('token', res['token']);
           this.login.user.balance = res['balance'];
         } else {
           this.message = 'Payment Error.';
+          this.error = true;
         }
       });
   }
