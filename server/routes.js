@@ -22,6 +22,7 @@ const reset = require('./controllers/auth/reset');
 const code = require('./controllers/auth/code');
 const confirmEmail = require('./controllers/auth/confirmEmail');
 const cities = require('./utils/cities');
+const payment = require('./controllers/auth/tbcPayment');
 
 router.post('/api/webhook', webhook);
 
@@ -64,6 +65,8 @@ router.post('/api/code', code);
 router.post('/api/confirmEmail', confirmEmail);
 
 router.get('/api/cities', cities);
+
+router.post('/api/tbcpayment', payment);
 
 module.exports = router;
 
