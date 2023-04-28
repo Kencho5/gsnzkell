@@ -6,7 +6,6 @@ const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
 
 async function checkPayment(req, res) {
-  console.log(req.body)
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
   const headers = {
@@ -22,13 +21,15 @@ async function checkPayment(req, res) {
     .then(async (response) => {
       const status = response.data.status;
       if (status === "Success") {
-
-        await payments.insertOne({
+        
+        const payload = {
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber
-        })
+        };
+        console.log(payload)
+        await payments.insertOne(payload)
 
         await users.updateOne({email}, {$inc: { balance: response.data.amount }}, options)
 
