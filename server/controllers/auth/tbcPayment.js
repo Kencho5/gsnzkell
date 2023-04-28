@@ -1,15 +1,55 @@
 const { db, userPosts, users } = require("../../utils/db");
-const axios = require('axios');
-const { v4: uuidv4 } = require('uuid');
+const axios = require("axios");
+const { v4: uuidv4 } = require("uuid");
 const config = require("../../utils/config");
+
+const accessToken = config.tbcAccessToken;
+const apiKey = config.tbcApiKey;
+const paymentId = uuidv4();
 
 async function payment(req, res) {
   const amount = req.body.amount;
   const user = req.body.user;
 
-  const apiUrl = 'https://api.tbcbank.ge/v1/tpay/payments';
-  const accessToken = config.tbcAccessToken;
-  const apiKey = config.tbcApiKey;
+  const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
+
+  const paymentData = {
+    amount: {
+      currency: "GEL",
+      total: amount,
+      subTotal: 0,
+      tax: 0,
+      shipping: 0,
+    },
+    returnurl: "pender.ge/profile",
+    expirationMinutes: "5",
+    methods: [5, 7],
+    callbackUrl: "pender.ge/api/checkpayment",
+    preAuth: false,
+    language: "KA",
+    merchantPaymentId: paymentId,
+    saveCard: false,
+  };
+
+  const headers = {
+    "Content-Type": "application/json",
+    Authorization: `Bearer ${accessToken}`,
+    apikey: apiKey,
+  };
+
+  axios
+    .post(apiUrl, paymentData, { headers })
+    .then((response) => {
+      return res.status(200).send({
+        code: 200,
+        url: response.data.links[1].uri,
+      });
+    })
+    .catch((error) => {
+      return res.status(200).send({
+        code: 500,
+      });
+    });
 
   return res.status(200).send({
     code: 200,
