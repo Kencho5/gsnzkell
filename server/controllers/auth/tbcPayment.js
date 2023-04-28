@@ -11,8 +11,6 @@ const paymentId = uuidv4();
 async function payment(req, res) {
   const amount = req.body.amount;
   const user = req.body.user;
-  console.log(user.email)
-  req.session.paymentEmail = user.email;
 
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
@@ -27,7 +25,7 @@ async function payment(req, res) {
     returnurl: `https://pender.ge/paymentStatus/${paymentId}`,
     expirationMinutes: "5",
     methods: [5, 7],
-    callbackUrl: "https://pender.ge/api/checkpayment",
+    callbackUrl: `https://pender.ge/api/checkpayment?email=${encodeURIComponent(user.email)}`,
     preAuth: false,
     language: "KA",
     merchantPaymentId: paymentId,

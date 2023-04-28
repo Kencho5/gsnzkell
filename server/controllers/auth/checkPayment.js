@@ -16,6 +16,7 @@ async function checkPayment(req, res) {
   };
 
   const payId = req.body.PaymentId;
+  const email = req.query.email;
 
   axios
     .get(`${apiUrl}/${payId}`, { headers })
@@ -24,16 +25,16 @@ async function checkPayment(req, res) {
 
       if (status === 200) {
         await payments.insertOne({
-          email: req.session.paymentEmail,
+          email: email,
           merchantId: response.data.merchantPaymentId,
           paymentId: response.data.payId,
           amount: response.data.amount,
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber,
         });
-        console.log('here', req.session.paymentEmail)
+
         await users.updateOne(
-          { email: req.session.paymentEmail },
+          { email: email },
           { $inc: { balance: response.data.amount } }
         );
 
