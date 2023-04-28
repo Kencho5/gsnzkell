@@ -24,6 +24,7 @@ async function checkPayment(req, res) {
 
       if (status === 200) {
         await payments.insertOne({
+          email: req.session.email,
           merchantId: response.data.merchantPaymentId,
           paymentId: response.data.payId,
           amount: response.data.amount,
