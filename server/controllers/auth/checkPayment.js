@@ -4,7 +4,6 @@ const config = require("../../utils/config");
 const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
 
-
 async function checkPayment() {
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
@@ -22,16 +21,22 @@ async function checkPayment() {
     .then((response) => {
       const status = response.data.status;
       if (status === "Success") {
-        console.log(response.data)
-        return 200;
+        console.log(response.data);
+
+        return res.status(200).send({
+          code: 200,
+        });
       } else {
-        return 404;
+        return res.status(200).send({
+          code: 404,
+        });
       }
     })
     .catch((error) => {
-      return 404;
+      return res.status(200).send({
+        code: 404,
+      });
     });
 }
 
 module.exports = checkPayment;
-
