@@ -21,8 +21,8 @@ export class UploadFormComponent {
     animal: new FormControl('', Validators.required),
     breed: new FormControl('', Validators.required),
     price: new FormControl(''),
-    ageYears: new FormControl(''),
-    ageMonths: new FormControl(''),
+    ageYears: new FormControl(),
+    ageMonths: new FormControl(),
     description: new FormControl('', Validators.maxLength(200)),
     postType: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
@@ -83,6 +83,14 @@ export class UploadFormComponent {
 
   upload() {
     this.uploadLoading = false;
+
+    if(this.uploadForm.value.ageYears == null) {
+      this.uploadForm.value.ageYears = 0;
+    } 
+
+    if(this.uploadForm.value.ageMonths == null) {
+      this.uploadForm.value.ageMonths = 0;
+    }
 
     if (this.urls.length != 3) {
       this.message = 'Only 3 Photos Required!';
