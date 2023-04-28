@@ -1,7 +1,6 @@
 const axios = require("axios");
 const config = require("../../utils/config");
-const session = require("express-session");
-const { db, userPosts, users, payments } = require("../../utils/db");
+const { db, users, payments } = require("../../utils/db");
 
 const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
@@ -23,7 +22,6 @@ async function checkPayment(req, res) {
     .then(async (response) => {
       const status = response.data.status;
       if (status === "Success") {
-        req.session.paymentStatus = true;
 
         await db.payments.insertOne({
           paymentId: response.data.payId,
@@ -31,6 +29,8 @@ async function checkPayment(req, res) {
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber
         })
+
+        await users.updateOne({email}, {$inc: { balance: response.data.amount }}, options)
 
         return res.status(200).send({
           code: 200,
