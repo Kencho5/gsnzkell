@@ -88,6 +88,7 @@ export class ProfileComponent implements OnInit {
           });
           this.pages = this.numToArray(Math.ceil(res['count'] / 5));
         }
+        console.log(this.posts)
       });
   }
 
@@ -273,6 +274,7 @@ export class ProfileComponent implements OnInit {
   deleteMultiple() {
     this._profileService.deletePost({ id: this.selected }).subscribe((res) => {
       if (res['code'] == 200) {
+        this.selectedPosts = 0;
         this.loadPosts();
       }
     });

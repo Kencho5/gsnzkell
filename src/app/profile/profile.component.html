@@ -238,7 +238,7 @@
     </section>
     <!-- User Hero Section HTML End -->
   </header>
-  <div class="user-page-bottom-body">
+  <div class="user-page-bottom-body" *ngIf="posts.length > 0">
     <div class="sort-div">
       <h1 style="font-weight: bold">{{ 'PROFILE.sort' | translate }}:</h1>
       <select class="sort-select" (change)="sort($event)">
@@ -255,7 +255,12 @@
 
     <h1 class="selected-text">Selected: {{selectedPosts}}</h1>
     <div class="actions">
-      <a><img src="assets/images/delete-icon.svg" alt="delete-icon" (click)="deleteMultiple()" /></a>
+      <a
+        ><img
+          src="assets/images/delete-icon.svg"
+          alt="delete-icon"
+          (click)="deleteMultiple()"
+      /></a>
     </div>
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative" *ngFor="let post of posts">
@@ -435,6 +440,8 @@
     </div>
     <app-footer></app-footer>
   </div>
+
+  <app-footer *ngIf="posts.length == 0"></app-footer>
 
   <!-- Post Section HTML End -->
 
