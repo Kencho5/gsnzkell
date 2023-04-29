@@ -271,6 +271,10 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteMultiple() {
-
+    this._profileService.deletePost({ id: this.selected }).subscribe((res) => {
+      if (res['code'] == 200) {
+        this.loadPosts();
+      }
+    });
   }
 }

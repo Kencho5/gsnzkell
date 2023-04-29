@@ -255,9 +255,7 @@
 
     <h1 class="selected-text">Selected: {{selectedPosts}}</h1>
     <div class="actions">
-      <a href="#"
-        ><img src="assets/images/delete-icon.svg" alt="delete-icon"
-      /></a>
+      <a><img src="assets/images/delete-icon.svg" alt="delete-icon" (click)="deleteMultiple()" /></a>
     </div>
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative" *ngFor="let post of posts">
@@ -276,13 +274,13 @@
                       alt="check"
                     />
                     <ng-template #fill>
-                      <img
-                        src="assets/images/check-fill.svg"
-                        alt="check"
-                      />
+                      <img src="assets/images/check-fill.svg" alt="check" />
                     </ng-template>
                   </div>
-                  <div class="v-post-card-text-wrapper d-md-flex" (click)="openPost(post._id)">
+                  <div
+                    class="v-post-card-text-wrapper d-md-flex"
+                    (click)="openPost(post._id)"
+                  >
                     <div class="v-post-card-img">
                       <img
                         src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
