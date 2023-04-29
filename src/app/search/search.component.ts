@@ -29,6 +29,8 @@ export class SearchComponent implements OnInit {
     city: new FormControl(''),
     ageMin: new FormControl('', Validators.required),
     ageMax: new FormControl('', Validators.required),
+    ageYears: new FormControl(),
+    ageMonths: new FormControl(),
     ageType: new FormControl('', Validators.required),
     priceMin: new FormControl('', Validators.required),
     priceMax: new FormControl('', Validators.required),
@@ -74,6 +76,13 @@ export class SearchComponent implements OnInit {
   }
 
   searchPosts() {
+    if(this.filterForm.value.ageType == "Years") {
+      this.filterForm.value.ageMonths = 0;
+    }
+    if(this.filterForm.value.ageType == "Months") {
+      this.filterForm.value.ageYears = 0;
+    }
+
     this.posts = [];
     this.vipPosts = [];
 

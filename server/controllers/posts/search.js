@@ -29,6 +29,19 @@ async function search(req, res) {
     }
 
     for (const key in filters) {
+      if (key == "ageYears" && filters[key] == 0) {
+        query[key] = {
+          $gte: 0,
+          $lte: 0
+        };
+      }
+      if (key == "ageMonths" && filters[key] == 0) {
+        query[key] = {
+          $gte: 0,
+          $lte: 100
+        };
+      }
+
       if (filters[key] && filters[key] !== "none") {
         if (key.includes("Min") || key.includes("Max")) {
           const field = key.substring(0, key.indexOf("M"));
@@ -36,11 +49,12 @@ async function search(req, res) {
             $gte: parseInt(filters[field + "Min"]),
             $lte: parseInt(filters[field + "Max"]),
           };
-        } else if(key != "ageType") {
+        } else if (key != "ageType") {
           query[key] = filters[key];
         }
       }
     }
+    console.log(query);
 
     const count = await countSearchResults(query);
     const response = await userPosts
