@@ -94,7 +94,9 @@
                     <span *ngIf="post.ageYears > 0">
                       {{ post.ageYears }} {{ 'POST.Years' | translate }}
                     </span>
-                    <span *ngIf="post.ageYears > 0 && post.ageMonths > 0">{{ 'POST.and' | translate }}</span>
+                    <span *ngIf="post.ageYears > 0 && post.ageMonths > 0"
+                      >{{ 'POST.and' | translate }}</span
+                    >
                     <span *ngIf="post.ageMonths > 0">
                       {{ post.ageMonths }} {{ 'POST.Months' | translate }}
                     </span>
