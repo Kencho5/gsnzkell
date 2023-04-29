@@ -54,7 +54,6 @@ async function search(req, res) {
         }
       }
     }
-    console.log(query);
 
     const count = await countSearchResults(query);
     const response = await userPosts

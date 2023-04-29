@@ -95,7 +95,7 @@
             <mat-icon>cached</mat-icon>
             Renew Post
           </h1>
-          <app-service-cost [serviceCost]="0.25"></app-service-cost>
+          <app-service-cost [serviceCost]="0.20"></app-service-cost>
           <button class="form-done-btn" (click)="renewPost()">Renew</button>
           <button class="form-close-btn" type="button" (click)="toggleRenew(0)">
             Close
@@ -131,7 +131,7 @@
               <option value="7">7 {{ 'UPLOAD.days' | translate }}</option>
             </select>
             <app-service-cost
-              [serviceCost]="daysSelected * 2"
+              [serviceCost]="daysSelected * 1.5"
             ></app-service-cost>
             <button class="form-done-btn" type="submit">Buy</button>
             <button class="form-close-btn" type="button" (click)="closeVip()">
