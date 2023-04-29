@@ -27,6 +27,11 @@ export class BalanceComponent {
   message: string;
 
   pay() {
+    if(parseInt(this.amountForm.value.amount) < 1) {
+      this.message = "Minimum 1 GEL.";
+      return;
+    }
+
     this.balanceService.pay({
       amount: this.amountForm.value.amount,
       user: this.login.user

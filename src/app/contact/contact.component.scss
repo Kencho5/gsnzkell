@@ -7,11 +7,7 @@ mat-icon {
   margin: 0 auto;
   padding: 50px;
 
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 10%
-  );
+  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0.7) 10%);
   box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
   backdrop-filter: blur(2px);
 
@@ -122,4 +118,19 @@ h1 {
   right: 0;
   bottom: -300px;
   z-index: -1;
+}
+
+.rules {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  text-align: center;
+  text-decoration: underline;
+  margin: 30px;
+  height: 120px;
+}
+
+.rules a {
+  color: black;
+  font-weight: bold;
 }

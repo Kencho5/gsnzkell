@@ -12,6 +12,9 @@ import { SearchComponent } from './search/search.component';
 import { ContactComponent } from './contact/contact.component';
 import { BalanceComponent } from './balance/balance.component';
 import { PaymentStatusComponent } from './payment-status/payment-status.component';
+import { RulesComponent } from './rules/rules.component';
+import { ReturnComponent } from './return/return.component';
+import { UsageComponent } from './usage/usage.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -26,6 +29,9 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'balance', component: BalanceComponent },
   { path: 'paymentStatus/:id', component: PaymentStatusComponent },
+  { path: 'rules', component: RulesComponent },
+  { path: 'return', component: ReturnComponent },
+  { path: 'usage', component: UsageComponent },
 ];
 
 @NgModule({

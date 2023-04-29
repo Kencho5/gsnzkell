@@ -41,6 +41,9 @@ import { ContactComponent } from './contact/contact.component';
 import { LoadingInterceptor } from './shared/loading/loading.interceptor';
 import { BalanceComponent } from './balance/balance.component';
 import { PaymentStatusComponent } from './payment-status/payment-status.component';
+import { RulesComponent } from './rules/rules.component';
+import { ReturnComponent } from './return/return.component';
+import { UsageComponent } from './usage/usage.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -69,6 +72,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ContactComponent,
     BalanceComponent,
     PaymentStatusComponent,
+    RulesComponent,
+    ReturnComponent,
+    UsageComponent,
   ],
   imports: [
     BrowserModule,
