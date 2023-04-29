@@ -238,160 +238,207 @@
     </section>
     <!-- User Hero Section HTML End -->
   </header>
-  <!-- Header Part HTML
-      <!-- User Page Body Section HTML Start -->
-  <div class="user-page-bottom-body" *ngIf="posts.length != 0">
-    <!-- Post Section HTML Start -->
+  <div class="user-page-bottom-body">
+    <div class="sort-div">
+      <h1 style="font-weight: bold">{{ 'PROFILE.sort' | translate }}:</h1>
+      <select class="sort-select" (change)="sort($event)">
+        <option value="expiresDesc">
+          {{ 'PROFILE.expires_desc' | translate }}
+        </option>
+        <option value="expiresAsc">
+          {{ 'PROFILE.expires_asc' | translate }}
+        </option>
+        <option value="dateDesc">{{ 'PROFILE.date_desc' | translate }}</option>
+        <option value="dateAsc">{{ 'PROFILE.date_asc' | translate }}</option>
+      </select>
+    </div>
+
+    <h1 class="selected-text">Selected: {{selectedPosts}}</h1>
+    <div class="actions">
+      <a href="#"
+        ><img src="assets/images/delete-icon.svg" alt="delete-icon"
+      /></a>
+    </div>
     <section id="Post" class="user-post">
-      <div class="post-wrapper position-relative">
+      <div class="post-wrapper position-relative" *ngFor="let post of posts">
         <div class="container-fluid">
-          <div class="sort-div">
-            <h1 style="font-weight: bold">{{ 'PROFILE.sort' | translate }}:</h1>
-            <select class="sort-select" (change)="sort($event)">
-              <option value="expiresDesc">
-                {{ 'PROFILE.expires_desc' | translate }}
-              </option>
-              <option value="expiresAsc">
-                {{ 'PROFILE.expires_asc' | translate }}
-              </option>
-              <option value="dateDesc">
-                {{ 'PROFILE.date_desc' | translate }}
-              </option>
-              <option value="dateAsc">
-                {{ 'PROFILE.date_asc' | translate }}
-              </option>
-            </select>
-          </div>
-          <div class="posts">
-            <div class="post" *ngFor="let post of posts">
-              <div class="top" (click)="openPost(post._id)">
-                <img
-                  src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
-                  alt=""
-                />
-                <div class="details">
-                  <h1>
-                    {{ post.postType }} -
-                    <span *ngIf="post.postType != 'Selling'">
-                      {{ post.animal }}
-                    </span>
-                    <span *ngIf="post.price">{{ post.price }} ₾ </span>
-                  </h1>
-                  <p>
-                    <mat-icon>pets</mat-icon>
-                    {{ post.breed | titlecase }}
-                  </p>
-                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
-                  <p>
-                    <mat-icon>today</mat-icon>
-                    {{ post.date }}
-                  </p>
-                  <p>
-                    <mat-icon>info_outline</mat-icon>
-                    Expires In {{ post.expires }} Days
-                  </p>
-                </div>
-              </div>
-              <div class="bottom">
-                <mat-icon (click)="toggleRenew(post._id)">sync</mat-icon>
-                <p (click)="openVip(post._id)">VIP</p>
-                <!-- <mat-icon>verified</mat-icon> -->
-                <mat-icon (click)="openEdit(post)">edit</mat-icon>
-                <mat-icon (click)="deletePost(post._id)">delete</mat-icon>
-              </div>
-            </div>
-          </div>
-          <div class="latest-pagination">
-            <div class="latest-pagi-wrapper">
-              <ul (click)="pagination($event)">
-                <li class="arrow-left">
-                  <img
-                    src="assets/images/chevron-left.svg"
-                    alt="chevron-left"
-                    class="arrow-left"
-                  />
-                </li>
-                <li
-                  *ngFor="let page of pages"
-                  class="pageNum"
-                  [ngClass]="{ active: page === pageIndex }"
-                >
-                  {{ page }}
-                </li>
-                <li class="arrow-right">
-                  <img
-                    src="assets/images/chevron-right.svg"
-                    alt="chevron-right"
-                    class="arrow-right"
-                  />
-                </li>
-              </ul>
-              <section id="User-form">
-                <div class="user-modal edit-modal">
-                  <div class="user-form-container d-lg-flex">
-                    <form
-                      [formGroup]="postForm"
-                      (ngSubmit)="editPost()"
-                      class="edit-post-form"
-                    >
-                      <label>Breed</label>
-                      <div class="user-form-field">
-                        <mat-icon>badge</mat-icon>
-                        <input type="text" formControlName="breed" required />
-                      </div>
-                      <label *ngIf="postForm.controls.price.value">Price</label>
-                      <div
-                        class="user-form-field"
-                        *ngIf="postForm.controls.price.value"
-                      >
-                        <mat-icon>sell</mat-icon>
-                        <input type="text" formControlName="price" required />
-                      </div>
-                      <label>Description</label>
-                      <div class="user-form-field">
-                        <mat-icon>description</mat-icon>
-                        <input
-                          type="text"
-                          formControlName="description"
-                          required
-                        />
-                      </div>
-                      <label>Phone</label>
-                      <div class="user-form-field">
-                        <mat-icon>phone</mat-icon>
-                        <input type="text" formControlName="phone" required />
-                      </div>
-                      <label>City</label>
-                      <div class="user-form-field">
-                        <mat-icon>place</mat-icon>
-                        <input type="text" formControlName="city" required />
-                      </div>
-                      <div class="text-center text-lg-end mt-4">
-                        <button class="form-done-btn" type="submit">
-                          Done
-                        </button>
-                        <button
-                          class="form-close-btn"
-                          type="button"
-                          (click)="closeEdit()"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </form>
+          <div class="v-post-card-wrapper">
+            <div class="row align-items-center">
+              <div class="col-lg-6">
+                <div class="v-post-card-content d-md-flex align-items-center">
+                  <div
+                    class="v-post-card-check text-center pb-3 pb-md-0 pe-md-4"
+                    (click)="selectPost(post._id, $event)"
+                  >
+                    <img
+                      *ngIf="!selected.includes(post._id); else fill"
+                      src="assets/images/check.svg"
+                      alt="check"
+                    />
+                    <ng-template #fill>
+                      <img
+                        src="assets/images/check-fill.svg"
+                        alt="check"
+                      />
+                    </ng-template>
+                  </div>
+                  <div class="v-post-card-text-wrapper d-md-flex" (click)="openPost(post._id)">
+                    <div class="v-post-card-img">
+                      <img
+                        src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                        alt="post-card-img"
+                      />
+                    </div>
+                    <div class="v-post-card-text">
+                      <h6>{{ 'POST.' + post.postType | translate}}</h6>
+                      <h5>{{ post.breed }}</h5>
+                      <p *ngIf="post.price">{{ post.price }} ₾</p>
+
+                      <p class="age-text">
+                        <span *ngIf="post.ageYears > 0">
+                          {{ post.ageYears }} {{ 'POST.Years' | translate }}
+                        </span>
+                        <span *ngIf="post.ageMonths > 0">
+                          {{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                        </span>
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </section>
+              </div>
+              <div class="col-lg-3">
+                <div
+                  class="post-time d-flex justify-content-between align-items-center"
+                >
+                  <div class="right-time"></div>
+                  <div
+                    class="left-time"
+                    [ngStyle]="{ 'width': post.percentage + '%' }"
+                  ></div>
+
+                  <p>Created: <span>{{ post.date | date:"dd.MM.yy"}}</span></p>
+                  <p>
+                    {{ 'POST.expires' | translate }}: {{ post.expires }} {{
+                    'POST.days' | translate }}
+                  </p>
+                </div>
+              </div>
+              <div class="col-lg-3 ps-lg-5">
+                <div class="v-post-card-actions">
+                  <ul class="d-flex justify-content-between align-items-center">
+                    <li>
+                      <a href="#"
+                        ><img
+                          src="assets/images/reload-icon.svg"
+                          alt="reload-icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><img src="assets/images/vip-icon.svg" alt="vip-icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><img src="assets/images/edit-icon.svg" alt="edit-icon"
+                      /></a>
+                    </li>
+                    <li>
+                      <a href="#"
+                        ><img
+                          src="assets/images/delete-icon.svg"
+                          alt="delete-icon"
+                      /></a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- Post Section HTML End -->
+    <div class="latest-pagination">
+      <div class="latest-pagi-wrapper">
+        <ul (click)="pagination($event)">
+          <li class="arrow-left">
+            <img
+              src="assets/images/chevron-left.svg"
+              alt="chevron-left"
+              class="arrow-left"
+            />
+          </li>
+          <li
+            *ngFor="let page of pages"
+            class="pageNum"
+            [ngClass]="{ active: page === pageIndex }"
+          >
+            {{ page }}
+          </li>
+          <li class="arrow-right">
+            <img
+              src="assets/images/chevron-right.svg"
+              alt="chevron-right"
+              class="arrow-right"
+            />
+          </li>
+        </ul>
+        <section id="User-form">
+          <div class="user-modal edit-modal">
+            <div class="user-form-container d-lg-flex">
+              <form
+                [formGroup]="postForm"
+                (ngSubmit)="editPost()"
+                class="edit-post-form"
+              >
+                <label>Breed</label>
+                <div class="user-form-field">
+                  <mat-icon>badge</mat-icon>
+                  <input type="text" formControlName="breed" required />
+                </div>
+                <label *ngIf="postForm.controls.price.value">Price</label>
+                <div
+                  class="user-form-field"
+                  *ngIf="postForm.controls.price.value"
+                >
+                  <mat-icon>sell</mat-icon>
+                  <input type="text" formControlName="price" required />
+                </div>
+                <label>Description</label>
+                <div class="user-form-field">
+                  <mat-icon>description</mat-icon>
+                  <input type="text" formControlName="description" required />
+                </div>
+                <label>Phone</label>
+                <div class="user-form-field">
+                  <mat-icon>phone</mat-icon>
+                  <input type="text" formControlName="phone" required />
+                </div>
+                <label>City</label>
+                <div class="user-form-field">
+                  <mat-icon>place</mat-icon>
+                  <input type="text" formControlName="city" required />
+                </div>
+                <div class="text-center text-lg-end mt-4">
+                  <button class="form-done-btn" type="submit">Done</button>
+                  <button
+                    class="form-close-btn"
+                    type="button"
+                    (click)="closeEdit()"
+                  >
+                    Close
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+    <app-footer></app-footer>
   </div>
-  <!-- User Footer Section HTML Start -->
-  <app-footer></app-footer>
-  <!-- User Footer Section HTML End -->
+
+  <!-- Post Section HTML End -->
 
   <!-- User Page Body Section HTML End -->
 </body>

@@ -619,6 +619,10 @@
   span.meet {
     font-size: 52px;
   }
+
+  .v-post-card-text {
+    margin-left: 20px;
+  }
 }
 
 @media only screen and (max-width: 767px) {
@@ -626,5 +630,120 @@
   .slide2,
   .slide3 {
     padding: 20px 25px;
+  }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-hero-wrapper .container-fluid,
+  .user-footer .container-fluid,
+  .user-hero-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+  .hero-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+  .hero-content {
+    position: relative;
+    padding-top: 120px;
+    text-align: center;
+  }
+  .hero-content h1 {
+    font-size: 32px;
+    line-height: 45px;
+  }
+  span.sell img {
+    width: 90%;
+  }
+  span.sell::after {
+    top: 16px;
+  }
+  .hero-img {
+    display: none;
+  }
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+  .post-card-img img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
+  }
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+  .upload-post-form {
+    padding: 0 20px 50px;
+    margin: auto;
+  }
+  .user-hero-top {
+    background-position: center center;
+    height: 100px;
+  }
+  .user-hero-bottom-wrapper {
+    padding: 0 40px 70px 20px;
+  }
+  .user-info-img img {
+    width: 120px;
+    height: 120px;
+    margin-top: -60px;
+  }
+  .user-contact-details li {
+    margin-bottom: 15px;
+  }
+  .user-info-content h4 {
+    font-size: 28px;
+  }
+  .user-form-container {
+    width: 300px;
+    margin-top: 80px;
+    padding: 40px 20px;
+  }
+  .user-upload-img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  .post-hero-wrapper {
+    margin-top: 120px;
+  }
+  .post-info-description h4,
+  .post-info-price h3 {
+    font-size: 25px;
+  }
+  .post-user-info {
+    float: none;
+    margin: auto;
+  }
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
+  .v-post-card-wrapper {
+    padding: 20px 20px 30px;
+  }
+  .post-time {
+    padding: 20px 0 40px;
+  }
+  .post-time::after,
+  .post-time::before {
+    bottom: 25px;
+  }
+  .post-time::after {
+    bottom: 27px;
+  }
+}
+@media (min-width: 577px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
+}
+@media (min-width: 400px) and (max-width: 576px) {
+  .post-card-img img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
   }
 }

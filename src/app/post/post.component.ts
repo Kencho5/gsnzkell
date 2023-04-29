@@ -40,7 +40,6 @@ export class PostComponent implements OnInit {
       if (res['code'] == 200) {
         this.post = res['data'];
         this.getSimilarPosts();
-        console.log(this.post)
 
         this.post['date'] = new Date(res['data']['date'])
           .toDateString()

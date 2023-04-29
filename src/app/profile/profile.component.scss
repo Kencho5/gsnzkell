@@ -1,27 +1,10 @@
-$dark: #ee8240;
-$bg: #fceddc;
-$light: #fff;
-$dim: #2e3134;
-
-body {
-  font-family: "Ubuntu", sans-serif;
-}
-
 mat-icon {
   font-family: "Material Icons" !important;
   vertical-align: middle;
 }
-
 li {
   user-select: none;
 }
-
-.posts-fade {
-  animation: postsFadeAnimation ease 0.5s;
-  animation-iteration-count: 1;
-  animation-fill-mode: forwards;
-}
-
 @keyframes postsFadeAnimation {
   0% {
     opacity: 0;
@@ -30,27 +13,13 @@ li {
     opacity: 1;
   }
 }
-// :host ::ng-deep .custom-spinner circle{
-//     stroke: $dark;
-// }
-
-/* ======***=======
-User Page CSS 
-/* ======***======= */
-
-/* User Hero Section CSS Start */
-
-.user-hero-wrapper {
-  margin-top: 150px;
-}
-
 .user-hero-container {
-  background: #ffffff;
-  filter: drop-shadow(0px 7px 15px rgba(0, 0, 0, 0.2));
+  margin-top: 200px;
+  background: #fff;
+  filter: drop-shadow(0 7px 15px rgba(0, 0, 0, 0.2));
   border-radius: 50px;
   overflow: hidden;
 }
-
 .user-hero-top {
   background: url(/assets/images/user-top-bg.png);
   background-size: cover;
@@ -59,53 +28,45 @@ User Page CSS
   height: 180px;
   position: relative;
 }
-
 .user-edit-icon {
   position: absolute;
   top: 50%;
   right: 50px;
   transform: translateY(-50%);
 }
-
 .user-hero-bottom-wrapper {
   padding: 0 40px 70px 100px;
 }
-
 .user-info-img img {
   position: relative;
   width: 200px;
   height: 200px;
   object-fit: cover;
   margin-top: -100px;
-  border: 10px solid #ffffff;
+  border: 10px solid #fff;
   border-radius: 100%;
 }
-
 .user-info-content h4 {
   font-size: 32px;
   font-weight: 700;
-  color: #000000;
+  color: #000;
   padding: 35px 0;
   margin: 0;
 }
-
 .user-contact-details li {
   margin-right: 30px;
   padding-bottom: 15px;
 }
-
 .user-contact-details a {
   font-size: 18px;
   font-weight: 600;
   color: #1d1d1d;
   padding-left: 10px;
 }
-
 .user-social li {
   position: relative;
-  margin: 0px 25px;
+  margin: 0 25px;
 }
-
 .user-social li::after {
   position: absolute;
   content: "";
@@ -116,28 +77,21 @@ User Page CSS
   height: 1px;
   background: #b24a3f;
 }
-
 .user-footer-social li::after {
   background: #5a6381;
 }
-
 .user-social li:last-child {
   margin-right: 0;
   padding-right: 0;
 }
-
 .user-social li:last-child:after {
   display: none;
 }
-
 .user-social li a {
   padding: 0 10px;
 }
-
-/* User Form Section CSS Start */
-/* The Modal (background) */
-.vip-modal,
-.renew-modal {
+.renew-modal,
+.vip-modal {
   position: fixed;
   z-index: 1;
   left: 0;
@@ -147,13 +101,11 @@ User Page CSS
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
-/* Modal Content */
 .modal-content {
   text-align: center;
   background-color: #fefefe;
   border-radius: 20px;
-  margin: auto; /* Center the modal both horizontally and vertically */
+  margin: auto;
   padding: 20px;
   border: 1px solid #888;
   width: 400px;
@@ -162,85 +114,55 @@ User Page CSS
   top: 0;
   bottom: 0;
   left: 0;
-  right: 0; /* Center the modal both horizontally and vertically */
+  right: 0;
 }
-
 .renew-modal-content {
   height: 300px !important;
 }
-
 .vip-form h1 {
-  font-weight: bold;
+  font-weight: 700;
 }
-
-.available-balance {
-  border: 2px solid #d4efdd;
-  background-color: #f2fbf7;
-  opacity: 0.7;
-  padding: 5px;
-  font-weight: bold;
-  margin: 20px;
-  // text-align: left;
-}
-
-.available-balance span {
-  font-size: 22px;
-}
-
-.available-balance p {
-  margin: 0;
-}
-
 select {
   border: 1px solid #0b2f5b;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 .user-form-container {
   margin-top: 150px;
   position: fixed;
   top: 46%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: #ffffff;
+  background: #fff;
   padding: 60px 50px;
-  filter: drop-shadow(0px 7px 15px rgba(0, 0, 0, 0.2));
+  filter: drop-shadow(0 7px 15px rgba(0, 0, 0, 0.2));
   border-radius: 30px;
   z-index: 11;
 }
-
 .user-modal {
   display: none;
 }
-
 .user-modal.active {
   display: block;
 }
-
 .vip-modal {
   display: none;
 }
-
 .vip-modal.active {
   display: block;
 }
-
 .renew-modal {
   display: none;
 }
-
 .renew-modal.active {
   display: block;
 }
-
 .edit-modal-buttons {
   display: flex;
   justify-content: space-around;
 }
-
 .user-upload-img {
   position: relative;
   width: 150px;
@@ -248,13 +170,11 @@ select {
   object-fit: cover;
   margin-right: 30px;
 }
-
 .user-upload-img img {
   width: 100%;
   height: 100%;
   border-radius: 100%;
 }
-
 .upload-btn {
   position: absolute;
   right: 5px;
@@ -265,98 +185,95 @@ select {
   width: 35px;
   height: 35px;
   font-size: 20px;
-  color: #000000;
+  color: #000;
   background: #fca311;
   border-radius: 100%;
   padding: 20px;
 }
-
 .user-form-field {
   max-width: 400px;
   width: 100%;
   display: flex;
   align-items: center;
-  background: #ffffff;
+  background: #fff;
   padding: 0 20px;
   margin-bottom: 15px;
   border: 1px solid #0b2f5b;
   border-radius: 30px;
 }
-
 .user-form-field img {
   width: 18px;
   height: 18px;
 }
-
 .user-form-field input {
   width: 100%;
   border: none;
-  background: transparent;
+  background: 0 0;
   padding: 12px 15px;
 }
-
 .user-form-field input:focus {
   outline: 0;
 }
-
 .form-close-btn,
 .form-done-btn {
-  color: #ffffff;
+  color: #fff;
   background: red;
   padding: 10px 30px;
   border: none;
   border-radius: 30px;
 }
-
 .form-done-btn {
-  color: #000000;
+  color: #000;
   background: #fca311;
 }
-
 .form-close-btn {
   margin-left: 20px;
 }
-
-/* User Form Section CSS End */
-
-/* User Hero Section CSS End */
-
-/* Post Section CSS Start */
-
 .sort-div {
   text-align: center;
   margin-left: 20px;
 }
-
 .sort-select {
   border: none;
 }
 
-.post {
+.selected-text {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-around;
+  width: 100px;
+  height: 50px;
+  align-items: center;
   background-color: white;
+  border-radius: 30px;
+  margin: auto;
+}
+
+.post {
+  background-color: #fff;
   margin: 20px;
   border-radius: 15px;
   height: 330px;
 }
-
 .top {
   display: flex;
 }
-
 .details {
   margin-top: 40px;
 }
-
 .details h1,
 p {
-  font-weight: bold;
+  font-weight: 700;
 }
-
 .details mat-icon {
   vertical-align: middle;
   font-size: 20px;
 }
-
 .top img {
   width: 30%;
   min-height: 200px;
@@ -366,19 +283,16 @@ p {
   border-radius: 20px;
   margin: 30px;
 }
-
 .bottom {
   display: flex;
   justify-content: space-evenly;
   color: #3d3d3d;
   margin-top: 20px;
 }
-
 .bottom mat-icon {
   cursor: pointer;
   transition: transform 0.2s;
 }
-
 .bottom p {
   cursor: pointer;
   border: 1px solid grey;
@@ -386,34 +300,25 @@ p {
   padding-inline: 5px;
   transition: transform 0.2s;
 }
-
 .bottom p:hover {
   transform: scale(1.25);
 }
-
 .bottom mat-icon:hover {
   transform: scale(1.25);
 }
-
 .vip-post {
-  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
-  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
-  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -webkit-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
 }
-
 .post-card {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
   backdrop-filter: blur(5px);
   padding: 30px;
   margin-top: 40px;
   border-radius: 44px;
 }
-
 .post-card-img img {
   width: 100%;
   min-height: 220px;
@@ -422,34 +327,31 @@ p {
   object-fit: cover;
   border-radius: 20px;
 }
-
 .post-type-label {
   position: absolute;
   left: 0;
   bottom: 40px;
-  border-radius: 0px 10px 10px 0px;
+  border-radius: 0 10px 10px 0;
   font-size: 16px;
-  font-weight: bold !important;
+  font-weight: 700 !important;
   padding: 8px 12px;
   color: #1d1d1d;
-  background: #ffffff;
+  background: #fff;
 }
-
 .vip-label {
-  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
-  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
-  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
+  -webkit-box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
+  box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   position: absolute;
   right: 20px;
   top: 20px;
   border-radius: 10px;
   font-size: 16px;
-  font-weight: bold !important;
+  font-weight: 700 !important;
   padding: 8px 12px;
   color: #1d1d1d;
 }
-
 .post-card h5 {
   font-size: 24px;
   font-weight: 700;
@@ -458,45 +360,35 @@ p {
   padding-top: 20px;
   margin-bottom: 10px;
 }
-
 .post-card p {
   font-weight: 400;
   font-size: 32px;
   color: #27525c;
   margin: 0;
 }
-
 .post-card span {
   font-size: 16px;
   font-weight: 400;
   color: #27525c;
 }
-
 .post-card p span img {
   margin-top: -20px;
 }
-
 .renew-div {
   text-align: center;
   width: 50px;
   border-radius: 100%;
   height: 50px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
   backdrop-filter: blur(5px);
   margin: auto;
   margin-top: 10px;
   transition: transform 0.3s ease-in-out;
 }
-
 .renew-div:hover {
   transform: rotate(360deg);
 }
-
 .renew-div mat-icon {
   font-size: 35px;
   width: 35px;
@@ -504,34 +396,12 @@ p {
   margin-top: 6px;
   cursor: pointer;
 }
-
 .expires-in {
   text-align: center;
-  font-weight: bold;
-}
-
-.post-see-more-btn a {
-  font-size: 24px;
   font-weight: 700;
-  text-decoration: underline;
-  color: #211f54;
 }
-
-.latest-post-shape {
-  position: absolute;
-  right: 0;
-  bottom: -335px;
-  z-index: -1;
-}
-
-.latest-post-shape img {
-  max-width: 80%;
-  float: right;
-}
-
 .vip-button {
-  box-shadow: 0px 0px 20px #ffca2b;
-
+  box-shadow: 0 0 20px #ffca2b;
   background-color: #ffc107 !important;
   border: none;
   border-radius: 10px;
@@ -539,77 +409,48 @@ p {
   margin: 10px;
   transition: box-shadow 0.3s ease-in-out;
 }
-
 .vip-button:hover {
-  box-shadow: 0px 0px 30px #ff9c08;
+  box-shadow: 0 0 30px #ff9c08;
 }
-
 .vip-button h1 {
-  color: white;
+  color: #fff;
   font-size: 17px;
 }
-
 .post-buttons {
   display: flex;
   justify-content: space-around;
 }
-
 .post-buttons h1 {
   margin: 0;
-  font-weight: bold;
+  font-weight: 700;
 }
-
-.function-button {
-  border: none;
-  border-radius: 10px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  backdrop-filter: blur(5px);
-  padding: 10px 20px;
-  margin: 10px;
-}
-
 .edit-post-form label {
-  font-weight: bold;
+  font-weight: 700;
   margin-left: 10px;
   padding-bottom: 10px;
 }
-
-/* Post Section CSS End */
-
-/* User page Post Section CSS Start */
-
 .user-page-bottom-body {
   background: linear-gradient(
     155.53deg,
     #ffce1d5d 10.5%,
     rgba(157, 26, 113, 0.096) 98.28%
   );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   padding: 50px 0;
   margin-top: 100px;
 }
-
 .user-post {
   padding-bottom: 120px;
 }
-
-/* Pagination */
-
 .latest-pagi-wrapper {
   padding-top: 100px;
   padding-bottom: 60px;
 }
-
 .latest-pagi-wrapper ul {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .latest-pagi-wrapper ul li {
   font-size: 16px;
   color: #54a0b2;
@@ -618,15 +459,111 @@ p {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: #ffffff;
+  background: #fff;
   margin: 0 8px;
   border: 1px solid #54a0b2;
   border-radius: 100%;
   cursor: pointer;
 }
-
 .latest-pagi-wrapper ul li.active {
-  color: #ffffff;
+  color: #fff;
   background: #54a0b2;
   border: 1px solid #54a0b2;
+}
+.v-post-card-wrapper {
+  padding: 30px 70px 30px 30px;
+  margin-top: 40px;
+  background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  border-radius: 44.4251px;
+}
+.v-post-card-img img {
+  max-width: 372px;
+  width: 100%;
+  min-height: 228px;
+  max-height: 228px;
+  height: 100%;
+  object-fit: cover;
+  margin-right: 25px;
+  border-radius: 20px;
+}
+.v-post-card-text {
+  padding-top: 20px;
+}
+
+.age-text {
+  font-size: 20px !important;
+}
+
+.v-post-card-text h6 {
+  font-family: Merriweather;
+  font-size: 16px;
+  color: #27525c;
+}
+.v-post-card-text h5 {
+  font-weight: 700;
+  font-size: 24px;
+  color: #1d1d1d;
+}
+.v-post-card-text p {
+  font-family: Merriweather;
+  font-size: 32px;
+  color: #27525c;
+}
+.v-post-card-text p span img {
+  margin-top: -10px !important;
+  margin-left: 5px;
+}
+.post-time {
+  position: relative;
+  padding: 0 10px;
+}
+// .post-time::before {
+//   position: absolute;
+//   content: "";
+//   left: 0;
+//   bottom: -15px;
+//   width: 100%;
+//   height: 10px;
+//   background: rgba(84, 160, 178, 0.5);
+//   border-radius: 50px;
+// }
+// .post-time::after {
+//   position: absolute;
+//   content: "";
+//   right: 2px;
+//   bottom: -13px;
+//   height: 6px;
+//   background: tomato;
+//   border-radius: 50px;
+// }
+
+.right-time {
+  position: absolute;
+  margin-top: 60px;
+  content: "";
+  width: 100%;
+  height: 10px;
+  background: rgb(255, 99, 71);
+  border-radius: 50px;
+}
+
+.left-time {
+  position: absolute;
+  margin-top: 60px;
+  content: "";
+  width: 90%;
+  height: 10px;
+  background: rgba(84, 160, 178);
+  border-radius: 50px;
+}
+
+.post-time p {
+  font-size: 16px;
+  line-height: 16px;
+  color: rgba(29, 29, 29, 0.6);
+}
+.post-time p span {
+  color: #1d1d1d;
 }

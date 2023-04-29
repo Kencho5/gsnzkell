@@ -51,7 +51,9 @@
     "Years": "Years",
     "Months": "Months",
     "similar": "Similar Posts",
-    "and": "And"
+    "and": "And",
+    "expires": "Expires",
+    "days": "Days"
   },
 
   "SERVICE": {

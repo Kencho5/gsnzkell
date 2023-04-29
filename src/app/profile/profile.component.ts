@@ -9,6 +9,7 @@ import {
   Validators,
   FormGroup,
 } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
@@ -55,6 +56,8 @@ export class ProfileComponent implements OnInit {
   balanceMessage: string;
   expiredSort: boolean;
   sortType;
+  selectedPosts = 0;
+  selected = [];
 
   constructor(
     private router: Router,
@@ -79,9 +82,9 @@ export class ProfileComponent implements OnInit {
           this.posts.forEach((post) => {
             var remaining =
               new Date(post.expires).getTime() - new Date().getTime();
-
             post.expires = Math.floor(remaining / (1000 * 60 * 60 * 24));
-            post.date = new Date(post.date).toDateString().slice(3);
+
+            post.percentage = post.expires * 5;
           });
           this.pages = this.numToArray(Math.ceil(res['count'] / 5));
         }
@@ -254,5 +257,20 @@ export class ProfileComponent implements OnInit {
     this.sortType = event.target.value;
 
     this.loadPosts();
+  }
+
+  selectPost(id, event) {
+    if (event.target.src.includes('fill')) {
+      this.selected = this.selected.filter((arrItem) => arrItem !== id);
+
+      this.selectedPosts -= 1;
+      return;
+    }
+    this.selectedPosts += 1;
+    this.selected.push(id);
+  }
+
+  deleteMultiple() {
+
   }
 }
