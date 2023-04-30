@@ -125,6 +125,7 @@ export class UploadFormComponent {
     var priceInput = document.getElementById('price') as HTMLInputElement;
     if (event.target.value != 'Selling') {
       priceInput.style.display = 'none';
+      this.uploadForm.value.price = '';
     } else {
       priceInput.style.display = 'block';
     }
