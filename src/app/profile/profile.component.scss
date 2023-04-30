@@ -329,6 +329,15 @@ p {
   -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
   box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
 }
+
+.vip-button-active {
+  background-color: rgba(255, 202, 43, 1);
+  padding: 1px 0px 3px 0px;
+    -webkit-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+}
+
 .post-card {
   background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
   box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);

@@ -291,7 +291,7 @@
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative" *ngFor="let post of posts">
         <div class="container-fluid">
-          <div class="v-post-card-wrapper">
+          <div class="v-post-card-wrapper" [ngClass]="{'vip-post': post.vip}">
             <div class="row align-items-center">
               <div class="col-lg-6">
                 <div class="v-post-card-content d-md-flex align-items-center">
@@ -366,9 +366,17 @@
                       /></a>
                     </li>
                     <li>
-                      <a (click)="openVip(post._id)"
-                        ><img src="assets/images/vip-icon.svg" alt="vip-icon"
+                      <a
+                        *ngIf="!post.vip; else vip"
+                        (click)="openVip(post._id)"
+                      >
+                        <img src="assets/images/vip-icon.svg" alt="vip-icon"
                       /></a>
+                      <ng-template #vip>
+                        <a class="vip-button-active">
+                          <img src="assets/images/vip-icon.svg" alt="vip-icon"
+                        /></a>
+                      </ng-template>
                     </li>
                     <li>
                       <a (click)="openEdit(post)"
