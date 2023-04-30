@@ -95,8 +95,14 @@
             <mat-icon>delete</mat-icon>
             Delete Post
           </h1>
-          <button class="form-done-btn" (click)="deletePost(deletePostId)">Delete</button>
-          <button class="form-close-btn" type="button" (click)="openDeleteModal(deletePostId)">
+          <button class="form-done-btn" (click)="deletePost(deletePostId)">
+            Delete
+          </button>
+          <button
+            class="form-close-btn"
+            type="button"
+            (click)="openDeleteModal(deletePostId)"
+          >
             Close
           </button>
         </div>
@@ -260,27 +266,26 @@
     <!-- User Hero Section HTML End -->
   </header>
   <div class="user-page-bottom-body" *ngIf="posts.length > 0">
-    <div class="sort-div">
-      <h1 style="font-weight: bold">{{ 'PROFILE.sort' | translate }}:</h1>
-      <select class="sort-select" (change)="sort($event)">
-        <option value="expiresDesc">
-          {{ 'PROFILE.expires_desc' | translate }}
-        </option>
-        <option value="expiresAsc">
-          {{ 'PROFILE.expires_asc' | translate }}
-        </option>
-        <option value="dateDesc">{{ 'PROFILE.date_desc' | translate }}</option>
-        <option value="dateAsc">{{ 'PROFILE.date_asc' | translate }}</option>
-      </select>
-    </div>
+    <div class="posts-top-div">
+      <div class="sort-div">
+        <h1 style="font-weight: bold"></h1>
+        <select class="sort-select form-select" (change)="sort($event)">
+          <option value="expiresDesc">
+            {{ 'PROFILE.expires_desc' | translate }}
+          </option>
+          <option value="expiresAsc">
+            {{ 'PROFILE.expires_asc' | translate }}
+          </option>
+          <option value="dateDesc">
+            {{ 'PROFILE.date_desc' | translate }}
+          </option>
+          <option value="dateAsc">{{ 'PROFILE.date_asc' | translate }}</option>
+        </select>
+      </div>
 
-    <h1 class="selected-text">Selected: {{selectedPosts}}</h1>
-    <div class="actions">
-      <a
-        ><img
-          src="assets/images/delete-icon.svg"
-          alt="delete-icon"
-          (click)="deleteMultiple()"
+      <a class="delete-multiple-button" (click)="deleteMultiple()">
+        Delete {{ selected.length }}
+        <img src="assets/images/delete-icon.svg" alt="delete-icon"
       /></a>
     </div>
     <section id="Post" class="user-post">
