@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
   sortType;
   selectedPosts = 0;
   selected = [];
+  deletePostId;
 
   constructor(
     private router: Router,
@@ -180,9 +181,16 @@ export class ProfileComponent implements OnInit {
     this.closeModal();
   }
 
+  openDeleteModal(id) {
+    document.querySelector('.delete-modal').classList.toggle('active');
+
+    this.deletePostId = [id];
+  }
+
   deletePost(id) {
     this._profileService.deletePost({ id: id }).subscribe((res) => {
       if (res['code'] == 200) {
+        this.openDeleteModal(0);
         this.loadPosts();
       }
     });

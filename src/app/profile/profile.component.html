@@ -88,6 +88,27 @@
         </div>
       </div>
     </section>
+    <div class="delete-modal">
+      <div class="modal-content delete-modal-content">
+        <div>
+          <h1>
+            <mat-icon>delete</mat-icon>
+            Delete Post
+          </h1>
+          <button class="form-done-btn" (click)="deletePost(deletePostId)">Delete</button>
+          <button class="form-close-btn" type="button" (click)="openDeleteModal(deletePostId)">
+            Close
+          </button>
+        </div>
+        <p
+          *ngIf="balanceMessage"
+          style="color: red; font-weight: bold; margin-top: 50px"
+        >
+          {{ balanceMessage }}
+        </p>
+      </div>
+    </div>
+
     <div class="renew-modal">
       <div class="modal-content renew-modal-content">
         <div>
@@ -319,7 +340,10 @@
                     [ngStyle]="{ 'width': post.percentage + '%' }"
                   ></div>
 
-                  <p>{{ 'POST.created' | translate }}: <span>{{ post.date | date:"dd.MM.yy"}}</span></p>
+                  <p>
+                    {{ 'POST.created' | translate }}:
+                    <span>{{ post.date | date:"dd.MM.yy"}}</span>
+                  </p>
                   <p>
                     {{ 'POST.expires' | translate }}: {{ post.expires }} {{
                     'POST.days' | translate }}
@@ -347,7 +371,7 @@
                       /></a>
                     </li>
                     <li>
-                      <a (click)="deletePost(post._id)"
+                      <a (click)="openDeleteModal(post._id)"
                         ><img
                           src="assets/images/delete-icon.svg"
                           alt="delete-icon"
