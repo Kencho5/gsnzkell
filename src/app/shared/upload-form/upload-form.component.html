@@ -206,13 +206,12 @@
                   </div>
                   <div class="error-div" *ngIf="form_msg">
                     <h2 align="center" class="error-text">
-                      <mat-icon>cancel</mat-icon> {{ 'UPLOAD.error' | translate
-                      }}
+                      <mat-icon>cancel</mat-icon> {{ this.form_msg }}
                     </h2>
                   </div>
                   <app-service-cost
                     *ngIf="loggedIn"
-                    [serviceCost]="0.15 + daysSelected * 2"
+                    [serviceCost]="0.15 + daysSelected * 1.5"
                   ></app-service-cost>
                 </div>
               </form>
