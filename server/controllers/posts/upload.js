@@ -19,6 +19,10 @@ async function upload(req, res) {
   const imgs = await saveImages(postID, req);
   const form = req.body.form;
 
+  if(!form.days) {
+    form.days = 0;
+  }
+
   const vip = form.days > 0;
   const vipExpires = vip
     ? new Date(Date.now() + form.days * 24 * 60 * 60 * 1000)
