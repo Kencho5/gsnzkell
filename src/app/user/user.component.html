@@ -81,38 +81,7 @@
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
-          <div class="posts">
-            <div class="post" *ngFor="let post of posts">
-              <div class="top" (click)="openPost(post._id)">
-                <img
-                  src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
-                  alt=""
-                />
-                <div class="details">
-                  <h1>
-                    {{ post.postType }} -
-                    <span *ngIf="post.postType != 'Selling'">
-                      {{ post.animal }}
-                    </span>
-                    <span *ngIf="post.price">{{ post.price }} ₾ </span>
-                  </h1>
-                  <p>
-                    <mat-icon>pets</mat-icon>
-                    {{ post.breed | titlecase }}
-                  </p>
-                  <p>{{ post.age }} {{ post.ageType | titlecase }} Old</p>
-                  <p>
-                    <mat-icon>today</mat-icon>
-                    {{ post.date }}
-                  </p>
-                  <p>
-                    <mat-icon>info_outline</mat-icon>
-                    Expires In {{ post.expires }} Days
-                  </p>
-                </div>
-              </div>
-            </div>
-          </div>
+          <app-posts [posts]="posts"></app-posts>
           <div class="latest-pagination">
             <div class="latest-pagi-wrapper">
               <ul (click)="pagination($event)">
