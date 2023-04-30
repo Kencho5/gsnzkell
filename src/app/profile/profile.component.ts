@@ -88,7 +88,6 @@ export class ProfileComponent implements OnInit {
           });
           this.pages = this.numToArray(Math.ceil(res['count'] / 5));
         }
-        console.log(this.posts)
       });
   }
 
