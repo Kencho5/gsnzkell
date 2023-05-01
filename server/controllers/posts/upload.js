@@ -82,9 +82,9 @@ async function upload(req, res) {
       });
     }
   }
-
+  console.log('before')
   const imgs = await saveImages(postID, req);
-
+  console.log('finished')
   const data = {
     _id: postID,
     email,
