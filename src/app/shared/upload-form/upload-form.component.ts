@@ -82,6 +82,7 @@ export class UploadFormComponent {
   }
 
   upload() {
+    console.log(this.uploadForm.value)
     this.uploadLoading = false;
 
     if(this.uploadForm.value.ageYears == null) {
