@@ -19,7 +19,7 @@ async function upload(req, res) {
   const imgs = await saveImages(postID, req);
   const form = req.body.form;
 
-  if(!form.days) {
+  if (!form.days) {
     form.days = 0;
   }
 
@@ -48,14 +48,14 @@ async function upload(req, res) {
       }
     );
   } else {
-    if (balance - (0.15 + (form.days * 1.5)) >= 0) {
+    if (balance - (0.15 + form.days * 1.5) >= 0) {
       var updated = await users.findOneAndUpdate(
         {
           email: email,
         },
         {
           $inc: {
-            balance: -(0.15 + (form.days * 1.5)),
+            balance: -(0.15 + form.days * 1.5),
           },
         },
         {
