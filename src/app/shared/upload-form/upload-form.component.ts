@@ -79,7 +79,6 @@ export class UploadFormComponent {
       }
     });
     this.urls = tmp;
-    console.log(this.urls)
   }
 
   upload() {
