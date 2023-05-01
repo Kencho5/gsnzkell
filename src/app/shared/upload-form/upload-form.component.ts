@@ -79,10 +79,10 @@ export class UploadFormComponent {
       }
     });
     this.urls = tmp;
+    console.log(this.urls)
   }
 
   upload() {
-    console.log(this.uploadForm.value)
     this.uploadLoading = false;
 
     if(this.uploadForm.value.ageYears == null) {

@@ -6,6 +6,7 @@ var os = require("os");
 const fs = require("fs");
 
 async function upload(req, res) {
+  console.log(req.body)
   const token = req.body.user;
   if (!jwt.verify(token, publicKEY, signOptions)) {
     res.status(500).send({
@@ -106,7 +107,6 @@ async function upload(req, res) {
     data.vipExpires = vipExpires;
   }
   
-  console.log(data)
   userPosts.insertOne(data, function (err, result) {
     if (result) {
       res.status(200).send({
