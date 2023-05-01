@@ -31,12 +31,12 @@ app.use(
 
 app.use(
   bodyParser.json({
-    limit: "100mb",
+    limit: "800mb",
   })
 );
 app.use(
   bodyParser.urlencoded({
-    limit: "100mb",
+    limit: "800mb",
     extended: true,
   })
 );

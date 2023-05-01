@@ -101,7 +101,6 @@ async function upload(req, res) {
     vip: vip,
     expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
   };
-  console.log(data)
 
   if (vipExpires) {
     data.vipExpires = vipExpires;
