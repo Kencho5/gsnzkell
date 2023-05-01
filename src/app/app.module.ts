@@ -44,7 +44,6 @@ import { PaymentStatusComponent } from './payment-status/payment-status.componen
 import { RulesComponent } from './rules/rules.component';
 import { ReturnComponent } from './return/return.component';
 import { UsageComponent } from './usage/usage.component';
-import { Ng2ImgMaxModule } from 'ng2-img-max';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -101,7 +100,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient],
       },
     }),
-    Ng2ImgMaxModule
+    // MatProgressSpinnerModule
   ],
   providers: [
     {

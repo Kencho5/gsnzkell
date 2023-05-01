@@ -10,7 +10,6 @@ import { LoginService } from '../../login/login.service';
 import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
-import { Ng2ImgMaxService } from 'ng2-img-max';
 
 @Component({
   selector: 'app-upload-form',
@@ -45,8 +44,7 @@ export class UploadFormComponent {
     private uploadService: UploadFormService,
     private router: Router,
     private login: LoginService,
-    public translate: TranslateService,
-    private ng2ImgMax: Ng2ImgMaxService
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -56,26 +54,21 @@ export class UploadFormComponent {
     this.uploadForm.get('days').disable();
   }
 
-selectFiles(event) {
-  if (event.target.files) {
-    for (let i = 0; i < event.target.files.length; i++) {
+  selectFiles(event) {
+    if (event.target.files) {
+      for (var i = 0; i <= File.length; i++) {
+        var reader = new FileReader();
 
-      // Compress the image before adding it to the urls array
-      this.ng2ImgMax.compressImage(event.target.files[i], 0.5).subscribe(
-        result => {
-          this.urls.push(result);
-        },
-        error => {
-          console.log('Error:', error);
-        }
-      );
-
-    }
-    if (this.urls.length == 3) {
-      this.message = '';
+        reader.readAsDataURL(event.target.files[i]);
+        reader.onload = (event: any) => {
+          this.urls.push(event.target.result);
+        };
+      }
+      if (this.urls.length == 3) {
+        this.message = '';
+      }
     }
   }
-}
 
   removeImage(event) {
     var tmp = [];

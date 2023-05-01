@@ -33,7 +33,6 @@
     "jsonwebtoken": "^8.5.1",
     "jwt-decode": "^3.1.2",
     "mongodb": "^4.13.0",
-    "ng2-img-max": "^2.2.8",
     "ngx-owl-carousel-o": "^15.0.0",
     "ngx-unused-css": "^4.0.0-1",
     "node-cron": "^3.0.2",
