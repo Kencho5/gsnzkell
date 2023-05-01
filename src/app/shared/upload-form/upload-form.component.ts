@@ -81,7 +81,6 @@ export class UploadFormComponent {
   }
 
   upload() {
-    console.log(this.uploadForm.value)
     if(this.uploadForm.value.ageYears == null) {
       this.uploadForm.value.ageYears = 0;
     } 
@@ -102,6 +101,8 @@ export class UploadFormComponent {
         form: this.uploadForm.value,
         urls: this.urls,
       };
+
+      console.log(data)
 
       this.uploadService.uploadPost(data).subscribe((res) => {
         if (res['code'] == 200) {
