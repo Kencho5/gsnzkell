@@ -34,7 +34,6 @@ export class UploadFormComponent {
   urls = [];
   message: string;
   form_msg: string;
-  uploadLoading: boolean;
   cities;
   loggedIn: boolean;
   daysSelected = 0;
@@ -82,7 +81,7 @@ export class UploadFormComponent {
   }
 
   upload() {
-    this.uploadLoading = false;
+    console.log(this.uploadForm.value)
 
     if(this.uploadForm.value.ageYears == null) {
       this.uploadForm.value.ageYears = 0;
@@ -98,7 +97,6 @@ export class UploadFormComponent {
     }
 
     if (this.uploadForm.valid) {
-      this.uploadLoading = true;
 
       const data = {
         user: localStorage.getItem('token'),
