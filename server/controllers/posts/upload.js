@@ -105,7 +105,8 @@ async function upload(req, res) {
   if (vipExpires) {
     data.vipExpires = vipExpires;
   }
-
+  
+  console.log(data)
   userPosts.insertOne(data, function (err, result) {
     if (result) {
       res.status(200).send({
