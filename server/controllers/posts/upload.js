@@ -17,7 +17,6 @@ async function upload(req, res) {
 
   const postID = uuidv4();
   const { email, username } = jwt.verify(token, publicKEY, signOptions);
-  const imgs = await saveImages(postID, req);
   const form = req.body.form;
 
   if (!form.days) {
@@ -84,6 +83,8 @@ async function upload(req, res) {
     }
   }
 
+  const imgs = await saveImages(postID, req);
+
   const data = {
     _id: postID,
     email,
@@ -102,8 +103,6 @@ async function upload(req, res) {
     vip: vip,
     expires: new Date(Date.now() + 21 * 24 * 60 * 60 * 1000),
   };
-
-  console.log(data)
 
   if (vipExpires) {
     data.vipExpires = vipExpires;
