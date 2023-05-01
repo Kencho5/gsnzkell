@@ -6,12 +6,6 @@ var os = require("os");
 const fs = require("fs");
 
 async function upload(req, res) {
-  const size = req.get("content-length") / 1024 / 1024;
-  return res.status(500).send({
-    code: 200,
-    size: size
-  });
-
   const token = req.body.user;
   if (!jwt.verify(token, publicKEY, signOptions)) {
     res.status(500).send({
