@@ -1,71 +1,44 @@
-const { exec } = require("child_process");
+const util = require("util");
+const exec = util.promisify(require("child_process").exec);
 
-function webhook(req, res) {
+async function webhook(req, res) {
   const { ref } = req.body;
 
   if (ref === "refs/heads/master") {
     console.log("Received push event for master branch");
 
-    exec("git pull origin master", (err, stdout, stderr) => {
-      if (err) {
-        console.error(`Error: ${err}`);
-        return res.sendStatus(500);
-      }
+    try {
+      const { stdout: pullOutput } = await exec("git pull origin master");
+      console.log(`Pull successful: ${pullOutput}`, "Building...");
 
-      console.log(`Pull successful: ${stdout}`, "Building...");
-      exec(
-        "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build",
-        (err, stdout, stderr) => {
-          if (err) {
-            console.error(`Error: ${err}`);
-            return res.sendStatus(500);
-          }
-
-          console.log(`Build successful: ${stdout}`);
-
-          exec("rm -rf /usr/share/nginx/pender", (err, stdout, stderr) => {
-            if (err) {
-              console.error(`Error: ${err}`);
-              return res.sendStatus(500);
-            }
-
-            console.log(`Delete successful: ${stdout}`);
-          });
-
-          exec("mkdir /usr/share/nginx/pender", (err, stdout, stderr) => {
-            if (err) {
-              console.error(`Error: ${err}`);
-              return res.sendStatus(500);
-            }
-
-            console.log(`Delete successful: ${stdout}`);
-          });
-
-          exec(
-            "cp -r ../dist/pender /usr/share/nginx/",
-            (err, stdout, stderr) => {
-              if (err) {
-                console.error(`Error: ${err}`);
-                return res.sendStatus(500);
-              }
-
-              console.log(`Copy successful: ${stdout}`);
-
-              exec("pm2 restart server", (err, stdout, stderr) => {
-                if (err) {
-                  console.error(`Error: ${err}`);
-                  return res.sendStatus(500);
-                }
-
-                console.log(`Restart successful: ${stdout}`);
-
-                return res.sendStatus(200);
-              });
-            }
-          );
-        }
+      const { stdout: buildOutput } = await exec(
+        "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build"
       );
-    });
+      console.log(`Build successful: ${buildOutput}`);
+
+      const { stdout: deleteOutput } = await exec(
+        "rm -rf /usr/share/nginx/pender"
+      );
+      console.log(`Delete successful: ${deleteOutput}`);
+
+      const { stdout: mkdirOutput } = await exec(
+        "mkdir /usr/share/nginx/pender"
+      );
+      console.log(`Create directory successful: ${mkdirOutput}`);
+
+      const { stdout: copyOutput } = await exec(
+        "cp -r ../dist/pender /usr/share/nginx/"
+      );
+      console.log(`Copy successful: ${copyOutput}`);
+
+      const { stdout: restartOutput } = await exec("pm2 restart server");
+      console.log(`Restart successful: ${restartOutput}`);
+
+      return res.sendStatus(200);
+    } catch (error) {
+      console.error(`Error: ${error}`);
+      return res.sendStatus(500);
+    }
   } else {
     console.log(`Received push event for branch ${ref}`);
     return res.sendStatus(200);
@@ -73,4 +46,3 @@ function webhook(req, res) {
 }
 
 module.exports = webhook;
-
