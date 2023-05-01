@@ -8,7 +8,7 @@ const fs = require("fs");
 async function upload(req, res) {
   const size = req.get("content-length") / 1024 / 1024;
   return res.status(500).send({
-    code: 500,
+    code: 200,
     size: size
   });
 
