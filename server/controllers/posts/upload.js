@@ -6,6 +6,8 @@ var os = require("os");
 const fs = require("fs");
 
 async function upload(req, res) {
+  const startTime = process.hrtime();
+
   const token = req.body.user;
 
   if (!jwt.verify(token, publicKEY, signOptions)) {
@@ -109,6 +111,10 @@ async function upload(req, res) {
 
   userPosts.insertOne(data, function (err, result) {
     if (result) {
+      const endTime = process.hrtime(startTime);
+      const elapsedTime = (endTime[0] + endTime[1] / 1e9).toFixed(3);
+
+      console.log(`Time Took: ${elapsedTime} seconds`);
       res.status(200).send({
         code: 200,
         id: postID,
