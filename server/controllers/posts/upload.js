@@ -139,7 +139,7 @@ async function saveImages(postID, req) {
 
     // Compress the image using sharp
     const compressedBuffer = await sharp(buffer)
-      .jpeg({ quality: 50 })
+      .jpeg({ quality: 40 })
       .toBuffer();
 
     await fs.promises.writeFile(
