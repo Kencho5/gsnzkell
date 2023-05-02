@@ -286,6 +286,7 @@ export class ProfileComponent implements OnInit {
     this._profileService.deletePost({ id: this.selected }).subscribe((res) => {
       if (res['code'] == 200) {
         this.selectedPosts = 0;
+        this.selected = [];
         this.loadPosts();
       }
     });
