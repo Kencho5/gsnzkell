@@ -81,11 +81,11 @@ export class UploadFormComponent {
   }
 
   upload() {
-    if(this.uploadForm.value.ageYears == null) {
+    if (this.uploadForm.value.ageYears == null) {
       this.uploadForm.value.ageYears = 0;
-    } 
+    }
 
-    if(this.uploadForm.value.ageMonths == null) {
+    if (this.uploadForm.value.ageMonths == null) {
       this.uploadForm.value.ageMonths = 0;
     }
 
@@ -95,7 +95,6 @@ export class UploadFormComponent {
     }
 
     if (this.uploadForm.valid) {
-
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
