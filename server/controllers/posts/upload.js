@@ -4,6 +4,7 @@ const { privateKEY, publicKEY, signOptions } = require("../../models/token");
 const { v4: uuidv4 } = require("uuid");
 var os = require("os");
 const fs = require("fs");
+const sharp = require('sharp');
 
 async function upload(req, res) {
   const token = req.body.user;
@@ -134,15 +135,20 @@ async function saveImages(postID, req) {
     }
 
     const [, type, data] = matches;
+    const buffer = Buffer.from(data, "base64");
+
+    // Compress the image using sharp
+    const compressedBuffer = await sharp(buffer)
+      .jpeg({ quality: 75 })
+      .toBuffer();
+
     await fs.promises.writeFile(
       `${savePath}/postImages/${postID}/${i}.${type.split("/")[1]}`,
-      Buffer.from(data, "base64"),
-      "base64"
+      compressedBuffer
     );
     return `${i}.${type.split("/")[1]}`;
   }));
 
   return imgs.filter(img => img !== null);
 }
-
 module.exports = upload;
