@@ -103,9 +103,9 @@ export class UploadFormComponent {
       };
     console.log('before api')
       this.uploadService.uploadPost(data).subscribe((res) => {
+        console.log(res)
         if (res['code'] == 200) {
           if (res['token']) {
-            console.log('finish')
             localStorage.setItem('token', res['token']);
           }
           this.router.navigate(['/post', res['id']]);
