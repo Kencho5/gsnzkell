@@ -7,7 +7,7 @@ async function deletePost(req, res) {
       _id: id
     });
 
-    fs.rmdir(
+    fs.rm(
       `/var/uploads/postImages/${id}`,
       { recursive: true },
       (err) => {

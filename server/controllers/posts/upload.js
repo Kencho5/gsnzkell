@@ -6,7 +6,6 @@ var os = require("os");
 const fs = require("fs");
 
 async function upload(req, res) {
-  console.log("req came in", new Date());
   const token = req.body.user;
 
   if (!jwt.verify(token, publicKEY, signOptions)) {
@@ -83,9 +82,7 @@ async function upload(req, res) {
       });
     }
   }
-  console.log('before saving images', new Date());
   const imgs = await saveImages(postID, req);
-  console.log('after saving images', new Date());
 
   const data = {
     _id: postID,
@@ -111,7 +108,6 @@ async function upload(req, res) {
   }
 
   userPosts.insertOne(data, function (err, result) {
-    console.log('inserted in db', new Date())
     if (result) {
       res.status(200).send({
         code: 200,
