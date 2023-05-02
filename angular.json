@@ -30,7 +30,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              {"glob": "**/*", "input": "/var/uploads", "output": "./assets/"}
+              {"glob": "**/*", "input": "/var/uploads", "output": "./assets/postImages"}
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
@@ -100,7 +100,7 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              {"glob": "**/*", "input": "/var/uploads", "output": "./assets/"}
+              {"glob": "**/*", "input": "/var/uploads", "output": "./assets/postImages"}
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",

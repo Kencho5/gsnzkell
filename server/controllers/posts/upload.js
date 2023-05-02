@@ -126,13 +126,11 @@ async function saveImages(postID, req) {
   const savePath = "/var/uploads";
   await fs.promises.mkdir(`${savePath}/postImages/${postID}`);
 
-  const imgs = [];
-  for (let i = 0; i < req.body.urls.length; i++) {
-    const base64Data = req.body.urls[i];
+  const imgs = await Promise.all(req.body.urls.map(async (base64Data, i) => {
     const matches = base64Data.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/);
 
     if (!matches) {
-      continue;
+      return null;
     }
 
     const [, type, data] = matches;
@@ -141,9 +139,10 @@ async function saveImages(postID, req) {
       Buffer.from(data, "base64"),
       "base64"
     );
-    imgs.push(`${i}.${type.split("/")[1]}`);
-  }
-  return imgs;
+    return `${i}.${type.split("/")[1]}`;
+  }));
+
+  return imgs.filter(img => img !== null);
 }
 
 module.exports = upload;
