@@ -81,7 +81,6 @@ export class UploadFormComponent {
   }
 
   upload() {
-    console.log('first')
     if (this.uploadForm.value.ageYears == null) {
       this.uploadForm.value.ageYears = 0;
     }
@@ -101,9 +100,7 @@ export class UploadFormComponent {
         form: this.uploadForm.value,
         urls: this.urls,
       };
-    console.log('before api')
       this.uploadService.uploadPost(data).subscribe((res) => {
-        console.log(res)
         if (res['code'] == 200) {
           if (res['token']) {
             localStorage.setItem('token', res['token']);
