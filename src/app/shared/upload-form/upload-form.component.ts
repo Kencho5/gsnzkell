@@ -81,8 +81,6 @@ export class UploadFormComponent {
   }
 
   upload() {
-      const startTime = performance.now();
-
     if(this.uploadForm.value.ageYears == null) {
       this.uploadForm.value.ageYears = 0;
     } 
@@ -117,10 +115,6 @@ export class UploadFormComponent {
     } else {
       this.form_msg = 'Fill Out The Form';
     }
-    const endTime = performance.now();
-  const elapsedTime = ((endTime - startTime) / 1000).toFixed(3);
-
-  console.log(`Time Took: ${elapsedTime} seconds`);
   }
 
   changeInput(event) {
