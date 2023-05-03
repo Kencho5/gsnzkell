@@ -19,7 +19,7 @@
           "options": {
             "aot": true,
             "buildOptimizer": true,
-            "outputPath": "dist/pender",
+            "outputPath": "dist/pender/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -113,6 +113,60 @@
                "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
             ]
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/pender/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media"
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false,
+              "vendorChunk": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "pender:build:development",
+              "serverTarget": "pender:server:development"
+            },
+            "production": {
+              "browserTarget": "pender:build:production",
+              "serverTarget": "pender:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "pender:build:production",
+              "serverTarget": "pender:server:production"
+            },
+            "development": {
+              "browserTarget": "pender:build:development",
+              "serverTarget": "pender:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }
