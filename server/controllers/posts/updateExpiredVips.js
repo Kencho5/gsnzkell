@@ -2,7 +2,7 @@ const cron = require("node-cron");
 const { db, userPosts, users } = require("../../utils/db");
 
 // Schedule the task to run at noon every day
-cron.schedule("0 */2 * * *", function () {
+cron.schedule("0 */1 * * *", function () {
   console.log("Running task to update expired documents");
 
   // Update the vip field of expired documents
