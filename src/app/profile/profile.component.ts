@@ -280,7 +280,7 @@ export class ProfileComponent implements OnInit {
   }
 
   deleteMultiple() {
-    if(this.selected.length == 0) {
+    if (this.selected.length == 0) {
       return;
     }
 
