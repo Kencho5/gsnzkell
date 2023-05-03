@@ -55,7 +55,7 @@ async function update(req, res) {
 }
 
 function savePfp(pfp, id) {
-  const savePath = '/var/uploads/';
+  const savePath = '/var/uploads';
 
   const base64Data = pfp;
 
