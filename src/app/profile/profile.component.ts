@@ -176,6 +176,7 @@ export class ProfileComponent implements OnInit {
           this.login.user = jwtDecode(res['token']);
 
           this.getProfileData();
+          location.reload();
         }
       });
     this.closeModal();
