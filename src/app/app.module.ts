@@ -29,7 +29,11 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {
+  HttpClientModule,
+  HttpClient,
+  HTTP_INTERCEPTORS,
+} from '@angular/common/http';
 import { LanguageSelectorComponent } from './shared/language-selector/language-selector.component';
 import { UploadFormComponent } from './shared/upload-form/upload-form.component';
 import { ServiceCostComponent } from './shared/service-cost/service-cost.component';
@@ -77,7 +81,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     UsageComponent,
   ],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    BrowserModule,
     AppRoutingModule,
     LoginModule,
     ReactiveFormsModule,
