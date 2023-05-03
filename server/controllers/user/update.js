@@ -74,7 +74,6 @@ function savePfp(pfp, id) {
       console.error(err);
       return;
     }
-    console.log("File saved!");
   });
 }
 
