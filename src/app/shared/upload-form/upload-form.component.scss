@@ -53,12 +53,33 @@ mat-icon {
 }
 
 select {
-  border: 1px solid #0b2f5b;
+  border: 2px solid #54a0b2;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
   color: $dim;
+}
+
+.double-input {
+  display: flex;
+  justify-content: space-between;
+}
+
+.double-input input {
+  width: 48%;
+  background: #ffffff;
+  border: 2px solid #54a0b2;
+  text-align: center;
+  height: 62px;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  font-weight: bold;
+  outline: none;
+}
+
+#price {
+  display: none;
 }
 
 // VIP CHECKBOX
@@ -181,7 +202,7 @@ button {
 textarea {
   width: 100%;
   background: #ffffff;
-  border: 1px solid #0b2f5b;
+  border: 2px solid #54a0b2;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
@@ -192,7 +213,7 @@ textarea {
 .files-btn {
   width: 100%;
   background: #ffffff;
-  border: 1px solid #0b2f5b;
+  border: 2px solid #54a0b2;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
@@ -207,7 +228,7 @@ textarea {
 .up-form-field ::placeholder {
   font-size: 16px;
   font-weight: 700;
-  color: rgba(29, 29, 29, 0.8);
+  color: black;
 }
 
 .up-form-btn {
