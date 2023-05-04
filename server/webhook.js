@@ -12,7 +12,7 @@ async function webhook(req, res) {
       console.log(`Pull successful: ${pullOutput}`, "Building...");
 
       const { stdout: buildOutput } = await exec(
-        "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build --aot --configuration=production"
+        "node --max_old_space_size=8192 ../node_modules/@angular/cli/bin/ng build --aot --configuration=production --cache"
       );
       console.log(`Build successful: ${buildOutput}`);
 
