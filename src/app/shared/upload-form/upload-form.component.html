@@ -131,9 +131,6 @@
                       multiple
                       formControlName="imgs"
                     />
-                    <div *ngIf="message" class="error-div">
-                      <h2 class="error-text">3 Photos Min/Max!</h2>
-                    </div>
                     <div class="images">
                       <div class="image-div" *ngFor="let url of urls">
                         <mat-icon
@@ -202,6 +199,10 @@
                       value="{{ 'UPLOAD.submit' | translate }}"
                     />
                   </div>
+                  <div *ngIf="message" class="error-div">
+                    <h2 class="error-text">3 Photos Min/Max!</h2>
+                  </div>
+
                   <div class="error-div" *ngIf="form_msg">
                     <h2 align="center" class="error-text">
                       <mat-icon>cancel</mat-icon> {{ this.form_msg }}
