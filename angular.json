@@ -17,11 +17,8 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "cache": {
-              "enabled": true,
-              "key": "pender"
-            },
             "aot": true,
+            "cache": true,
             "buildOptimizer": true,
             "outputPath": "dist/pender",
             "index": "src/index.html",
