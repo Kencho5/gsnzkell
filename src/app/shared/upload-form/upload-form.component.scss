@@ -79,6 +79,12 @@ select {
   outline: none;
 }
 
+.double-input input::placeholder {
+  font-size: 16px;
+  font-weight: 700;
+  color: black;
+}
+
 #price {
   display: none;
 }
@@ -219,7 +225,8 @@ textarea {
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
-  outline: none; /* Add this line to remove the blue outline */
+  outline: none; 
+  font-size: 16px;
 }
 
 .up-form-field input:focus {
