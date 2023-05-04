@@ -18,7 +18,6 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "cache": true,
             "buildOptimizer": true,
             "outputPath": "dist/pender",
             "index": "src/index.html",
