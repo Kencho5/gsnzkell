@@ -131,16 +131,20 @@
                       multiple
                       formControlName="imgs"
                     />
-                    <div class="images">
-                      <div class="image-div" *ngFor="let url of urls">
-                        <mat-icon
-                          class="{{ url }}"
-                          id="cancel-icon"
-                          (click)="removeImage($event)"
-                          >cancel</mat-icon
-                        >
-                        <img [src]="url" class="uploaded-img" />
-                      </div>
+                    <div class="owl">
+                      <owl-carousel-o [options]="customOptions">
+                        <ng-template carouselSlide *ngFor="let url of urls">
+                          <div class="slide">
+                            <img [src]="url" class="slide-img" />
+                          </div>
+                          <mat-icon
+                            class="{{ url }}"
+                            id="cancel-icon"
+                            (click)="removeImage($event)"
+                            >delete</mat-icon
+                          >
+                        </ng-template>
+                      </owl-carousel-o>
                     </div>
                   </div>
                   <div class="up-form-btn text-center text-md-end mt-3 vip-box">

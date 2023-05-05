@@ -10,6 +10,7 @@ import { LoginService } from '../../login/login.service';
 import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-upload-form',
@@ -38,6 +39,16 @@ export class UploadFormComponent {
   loggedIn: boolean;
   daysSelected = 0;
   vipSum = 0;
+
+  customOptions: OwlOptions = {
+    items: 1,
+    dots: true,
+    nav: true,
+    loop: true,
+    navText: ['<', '>'],
+    autoplay: true,
+    autoplayTimeout: 4500,
+  };
 
   constructor(
     private formBuilder: FormBuilder,
