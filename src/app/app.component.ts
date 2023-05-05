@@ -75,7 +75,8 @@ export class AppComponent {
 
   search() {
     if (this.searchForm.valid) {
-      this.router.navigate(['/search', { text: this.searchForm.value.text }]);
+      // this.router.navigate(['/search', { text: this.searchForm.value.text }]);
+      window.open(`/search;text=${this.searchForm.value.text}`, '_self')
     }
   }
 
