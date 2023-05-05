@@ -33,6 +33,7 @@ export class PostComponent implements OnInit {
     });
 
     this.getPostData();
+    window.scrollTo(0, 0);
   }
 
   getPostData() {
