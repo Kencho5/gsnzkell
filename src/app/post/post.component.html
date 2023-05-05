@@ -73,7 +73,12 @@
           </owl-carousel-o>
         </div>
         <div class="post-info-container">
-          <h1 class="vip" *ngIf="post.vip">VIP</h1>
+          <div class="views-div">
+            <h1 class="vip" *ngIf="post.vip">VIP</h1>
+            <div class="views">
+              <h1><mat-icon>visibility</mat-icon> {{ post.views }}</h1>
+            </div>
+          </div>
           <div class="row">
             <div class="col-md-7">
               <div class="post-info-text">

@@ -27,6 +27,7 @@ async function post(req, res) {
           imgs: result.img_path,
           vip: result.vip,
           city: result.city,
+          views: result.views
         };
 
         res.status(200).send({

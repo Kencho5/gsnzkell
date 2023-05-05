@@ -107,6 +107,18 @@ Post Page CSS
   margin-bottom: -110px;
 }
 
+.views-div {
+  display: flex;
+  justify-content: space-between;
+  width: 130px;
+}
+
+mat-icon {
+  vertical-align: middle;
+  color: $dim;
+  margin-right: 5px;
+}
+
 .vip {
   -webkit-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
   -moz-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
