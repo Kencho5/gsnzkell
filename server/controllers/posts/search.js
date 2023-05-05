@@ -32,13 +32,13 @@ async function search(req, res) {
       if (key == "ageYears" && filters[key] == 0) {
         query[key] = {
           $gte: 0,
-          $lte: 0
+          $lte: 0,
         };
       }
       if (key == "ageMonths" && filters[key] == 0) {
         query[key] = {
           $gte: 0,
-          $lte: 100
+          $lte: 100,
         };
       }
 
@@ -61,6 +61,7 @@ async function search(req, res) {
       .skip(start)
       .limit(10)
       .sort({
+        views: -1,
         expires: -1,
       })
       .toArray();
