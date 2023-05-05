@@ -90,25 +90,22 @@ li {
 .user-social li a {
   padding: 0 10px;
 }
-
 .hero-btn {
   text-align: center;
   padding-top: 50px;
 }
-
 .hero-btn a {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #ffffff;
+  color: #fff;
   background: #1f879f;
   padding: 20px 32px;
   border-radius: 40px;
-  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 7px 29px 0;
 }
-
-.renew-modal,
 .delete-modal,
+.renew-modal,
 .vip-modal {
   position: fixed;
   z-index: 1;
@@ -119,7 +116,6 @@ li {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.4);
 }
-
 .modal-content {
   text-align: center;
   background-color: #fefefe;
@@ -135,11 +131,9 @@ li {
   left: 0;
   right: 0;
 }
-
 .delete-modal-content {
   height: 150px;
 }
-
 .renew-modal-content {
   height: 300px !important;
 }
@@ -259,36 +253,32 @@ select {
 .form-close-btn {
   margin-left: 20px;
 }
-
 .posts-top-div {
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-wrap: wrap;
 }
-
 .sort-select {
   border: 2px solid #54a0b2;
   border-radius: 30px;
-  font-weight: bold;
-  color: black;
+  font-weight: 700;
+  color: #000;
   width: 250px;
 }
-
 .delete-multiple-button {
   border: 2px solid #54a0b2;
   padding: 20px;
   width: 170px;
   height: 70px;
   align-items: center;
-  background-color: white;
+  background-color: #fff;
   border-radius: 30px;
-  color: black;
+  color: #000;
   display: flex;
   justify-content: space-around;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 .post {
   background-color: #fff;
   margin: 20px;
@@ -346,15 +336,13 @@ p {
   -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
   box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
 }
-
 .vip-button-active {
   background-color: rgba(255, 202, 43, 1);
-  padding: 1px 0px 4px 0px;
+  padding: 1px 0 4px 0;
   -webkit-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
   -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
   box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
 }
-
 .post-card {
   background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
   box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
@@ -439,10 +427,6 @@ p {
   height: 35px;
   margin-top: 6px;
   cursor: pointer;
-}
-.expires-in {
-  text-align: center;
-  font-weight: 700;
 }
 .vip-button {
   box-shadow: 0 0 20px #ffca2b;
@@ -532,7 +516,6 @@ p {
   margin-right: 25px;
   border-radius: 20px;
 }
-
 .v-post-card-img img {
   max-width: 372px;
   width: 100%;
@@ -546,11 +529,9 @@ p {
 .v-post-card-text {
   padding-top: 20px;
 }
-
 .age-text {
   font-size: 20px !important;
 }
-
 .v-post-card-text h6 {
   font-size: 16px;
   color: #27525c;
@@ -572,36 +553,6 @@ p {
   position: relative;
   padding: 0 10px;
 }
-// .post-time::before {
-//   position: absolute;
-//   content: "";
-//   left: 0;
-//   bottom: -15px;
-//   width: 100%;
-//   height: 10px;
-//   background: rgba(84, 160, 178, 0.5);
-//   border-radius: 50px;
-// }
-// .post-time::after {
-//   position: absolute;
-//   content: "";
-//   right: 2px;
-//   bottom: -13px;
-//   height: 6px;
-//   background: tomato;
-//   border-radius: 50px;
-// }
-
-.right-time {
-  position: absolute;
-  margin-top: 60px;
-  content: "";
-  width: 100%;
-  height: 10px;
-  background: rgb(255, 99, 71);
-  border-radius: 50px;
-}
-
 .left-time {
   position: absolute;
   margin-top: 60px;
@@ -611,7 +562,6 @@ p {
   background: rgba(84, 160, 178);
   border-radius: 50px;
 }
-
 .post-time p {
   font-size: 16px;
   line-height: 16px;

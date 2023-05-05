@@ -9,27 +9,22 @@ $dim: #2e3134;
   color: $dark;
   box-sizing: border-box;
   word-wrap: break-word;
-  font-family: "Ubuntu", sans-serif;
+  font-family: Ubuntu, sans-serif;
 }
-
 body {
   min-height: 100%;
 }
-
 h1 {
   letter-spacing: -1px;
-  font-weight: bold;
+  font-weight: 700;
 }
-
 .main-text {
-  font-weight: bold;
+  font-weight: 700;
 }
-
 a {
   color: $dark;
   text-decoration: unset;
 }
-
 .login-root {
   margin-top: 150px;
   display: flex;
@@ -37,105 +32,74 @@ a {
   min-height: 100vh;
   overflow: hidden;
 }
-
 .flex-flex {
   display: flex;
 }
-
 .center-center {
   align-items: center;
   justify-content: center;
 }
-
 .box-root {
   box-sizing: border-box;
 }
-
 .flex-direction--column {
   -ms-flex-direction: column;
   flex-direction: column;
 }
-
 .padding-top--64 {
   padding-top: 64px;
 }
-
 .padding-top--24 {
   padding-top: 24px;
 }
-
 .padding-top--48 {
   padding-top: 48px;
 }
-
 .padding-bottom--24 {
   color: $dark;
   padding-bottom: 24px;
 }
-
 .padding-horizontal--48 {
   padding: 48px;
 }
-
 .padding-bottom--15 {
   padding-bottom: 15px;
 }
-
-.flex-justifyContent--center {
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
 .formbg {
   margin: 0 auto;
   width: 100%;
   max-width: 448px;
   background: $light;
   border-radius: 10px;
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
   backdrop-filter: blur(5px);
 }
-
 span {
   display: block;
   font-size: 20px;
   line-height: 28px;
 }
-
 label {
   margin-bottom: 10px;
   color: $dark;
 }
-
 label {
   font-size: 14px;
   font-weight: 600;
   display: block;
 }
-
-.reset-pass a,
 label {
   color: $dark;
   font-size: 14px;
   font-weight: 600;
   display: block;
 }
-.reset-pass > a {
-  text-align: right;
-  margin-bottom: 10px;
-}
-
 .grid--50-50 {
   display: grid;
   grid-template-columns: 50% 50%;
   align-items: center;
 }
-
 .field input,
 select {
   color: $light;
@@ -152,11 +116,9 @@ select {
     rgba(60, 66, 87, 0.16) 0 0 0 1px, transparent 0 0 0 0, transparent 0 0 0 0,
     transparent 0 0 0 0;
 }
-
 select {
   margin-bottom: 15px;
 }
-
 input[type="submit"] {
   background-color: $dark !important;
   box-shadow: transparent 0 0 0 0, transparent 0 0 0 0,
@@ -166,21 +128,18 @@ input[type="submit"] {
   font-weight: 600;
   cursor: pointer;
 }
-
 .footer-link span {
   font-size: 14px;
   text-align: center;
 }
-
 .footer-login {
-  font-weight: bold;
+  font-weight: 700;
 }
 .listing a {
   color: $dark;
   font-weight: 600;
   margin: 0 10px;
 }
-
 @keyframes animationLeftRight {
   0% {
     transform: translateX(0);
@@ -192,7 +151,6 @@ input[type="submit"] {
     transform: translateX(0);
   }
 }
-
 @keyframes animationRightLeft {
   0% {
     transform: translateX(0);
@@ -204,43 +162,27 @@ input[type="submit"] {
     transform: translateX(0);
   }
 }
-
 mat-icon {
   font-family: "Material Icons" !important;
   vertical-align: middle;
 }
-
-.success-div {
-  padding-top: 20px;
-  text-align: center;
-}
-
-.success-text {
-  font-weight: bold;
-  color: #4bb543;
-}
-
 .error-div {
   padding-top: 20px;
   text-align: center;
 }
-
 .error-text {
-  font-weight: bold;
+  font-weight: 700;
   color: $dark;
 }
-
 .hero-shape1 {
   position: absolute;
   left: 0;
   bottom: 160px;
   z-index: -1;
 }
-
 .hero-shape2 {
   position: absolute;
   right: 0;
   bottom: 200px;
   z-index: -1;
 }
-

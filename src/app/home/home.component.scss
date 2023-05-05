@@ -2,44 +2,28 @@ $dark: #ee8240;
 $light: #fceddc;
 $dim: #2e3134;
 
-* {
-  font-family: "Ubuntu", sans-serif !important;
-}
-
-mat-icon {
-  font-family: "Material Icons" !important;
-  vertical-align: middle;
-}
-
-/* Hero Section CSS Start */
-
 .hero-wrapper {
   padding-bottom: 150px;
 }
-
 .hero-content {
   position: absolute;
   padding-top: 180px;
 }
-
 .hero-content h1 {
   font-size: 72px;
   font-weight: 700;
   line-height: 83px;
   color: #121049;
 }
-
 span.adopt,
-span.sell,
-span.meet {
+span.meet,
+span.sell {
   margin-right: 10px !important;
 }
-
-span.sell,
-span.meet {
+span.meet,
+span.sell {
   margin-left: 20px;
 }
-
 span.adopt::after,
 span.sell::after {
   position: absolute;
@@ -49,209 +33,102 @@ span.sell::after {
   height: 15px;
   border-radius: 100%;
 }
-
 span.adopt::after {
   background: #ffd234;
 }
-
 span.sell::after {
   background: #62d8f4;
 }
-
 span.adopt img,
-span.sell img,
-span.meet img {
+span.meet img,
+span.sell img {
   position: absolute;
   left: 0;
   bottom: 0;
   z-index: -1;
 }
-
 .hero-btn a {
   font-size: 18px;
   font-weight: 700;
   letter-spacing: 0.03em;
-  color: #ffffff;
+  color: #fff;
   background: #1f879f;
   padding: 20px 32px;
   border-radius: 40px;
 }
-
 .pets-box {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   margin-top: 120px;
 }
-
 .single-pet {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.4) 0%,
+    rgba(255, 255, 255, 0.4) 0,
     rgba(255, 255, 255, 0.16) 100%
   );
-  box-shadow: 0px 4px 20px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 20px -1px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(20px);
   border-radius: 30px;
   z-index: 1;
   text-align: center;
-
   transition: transform 0.2s;
   cursor: pointer;
 }
-
 .more a {
   font-size: 24px;
   font-weight: 700;
   color: #211f54;
 }
-
 .more {
   padding: 10px;
 }
-
 .single-pet:hover {
   transform: scale(1.05);
 }
-
 .single-pet img {
   padding: 30px;
 }
-
 .single-pet h4 {
   font-size: 24px;
   font-weight: 700;
   color: #121049;
   padding: 0 0 20px 30px;
 }
-
 .hero-shape1 {
   position: absolute;
   left: 0;
   bottom: 160px;
   z-index: -1;
 }
-
 .hero-shape2 {
   position: absolute;
   right: 0;
   bottom: 200px;
   z-index: -1;
 }
-
-.hero-bottom-shape {
-  position: relative;
-  margin-bottom: -100px;
-}
-
-/* Hero Section CSS End */
-
-/* Header Part CSS End */
-
-/* Main Part CSS Start */
-
 .main-bg {
   background: linear-gradient(
     155.53deg,
     #ffce1d5d 10.5%,
     rgba(157, 26, 113, 0.096) 98.28%
   );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   padding-top: 50px;
 }
-
 .main-top-shape {
   position: absolute;
   top: -85px;
 }
-
-/* Post Section CSS Start */
-
 .latest-posts-section {
   margin-top: 100px;
 }
-
 .vip-post {
-  -webkit-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
-  -moz-box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
-  box-shadow: 0px 0px 33px 0px rgba(255, 202, 43, 1) !important;
+  -webkit-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
 }
-
-.post-card {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
-  backdrop-filter: blur(5px);
-  padding: 30px;
-  margin-top: 40px;
-  border-radius: 44px;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-
-.post-card:hover {
-  transform: scale(1.05);
-}
-
-.post-card-img img {
-  width: 100%;
-  min-height: 200px;
-  max-height: 200px;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 20px;
-}
-
-.post-type-label {
-  position: absolute;
-  left: 0;
-  bottom: 40px;
-  border-radius: 0px 10px 10px 0px;
-  font-size: 18px;
-  font-weight: bold !important;
-  padding: 8px 12px;
-  color: #1d1d1d;
-  background: #ffffff;
-}
-
-.vip-label {
-  -webkit-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
-  -moz-box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
-  box-shadow: 0px 0px 50px 0px rgba(255, 203, 46, 1);
-  background-color: #ffca2b;
-  position: absolute;
-  right: 20px;
-  top: 20px;
-  border-radius: 10px;
-  font-size: 16px;
-  font-weight: bold !important;
-  padding: 8px 12px;
-  color: #1d1d1d;
-}
-
-.post-card h5 {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 28px;
-  color: #1d1d1d;
-  padding-top: 20px;
-  margin-bottom: 10px;
-}
-
-.post-card p {
-  font-weight: 400;
-  font-size: 32px;
-  color: #27525c;
-  margin: 0;
-}
-
-.post-card p span img {
-  margin-top: -20px;
-}
-
 .post-see-more-btn a {
   font-size: 24px;
   font-weight: 700;
@@ -260,38 +137,25 @@ span.meet img {
   position: relative;
   z-index: 999;
 }
-
 .latest-post-shape {
   position: absolute;
   right: 0;
   bottom: -335px;
   z-index: -1;
 }
-
 .latest-post-shape img {
   max-width: 80%;
   float: right;
 }
-
-/* Post Section CSS End */
-
-/* Upload Post Section CSS Start */
-
 .upload-post-wrapper {
   padding: 200px 0;
 }
-
 .upload-post-container {
-  background: linear-gradient(
-    107.16deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.6) 100%
-  );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  background: linear-gradient(107.16deg, #fff 0, rgba(255, 255, 255, 0.6) 100%);
+  box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   margin-top: 50px;
   border-radius: 30px;
 }
-
 .upload-post-title h4 {
   font-size: 24px;
   font-weight: 700;
@@ -299,144 +163,28 @@ span.meet img {
   color: #1d1d1d;
   padding-top: 50px;
 }
-
 .upload-post-img {
   max-width: 80%;
   margin: auto;
   padding: 80px 0 150px;
 }
-
 .upload-post-img img {
   width: 100%;
 }
-
 .upload-post-form {
   max-width: 400px;
   width: 100%;
-}
-
-select {
-  border: 1px solid #0b2f5b;
-  padding: 18px 40px;
-  margin-bottom: 16px;
-  border-radius: 30px;
-  font-weight: bold;
-}
-
-.double {
-  display: flex;
-}
-
-textarea {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #0b2f5b;
-  padding: 18px 40px;
-  margin-bottom: 16px;
-  border-radius: 30px;
-  font-weight: bold;
-}
-
-.up-form-field input,
-.files-btn {
-  width: 100%;
-  background: #ffffff;
-  border: 1px solid #0b2f5b;
-  padding: 18px 40px;
-  margin-bottom: 16px;
-  border-radius: 30px;
-  font-weight: bold;
-}
-
-.up-form-field input:focus {
-  outline: 0;
-}
-
-.up-form-field ::placeholder {
-  font-size: 16px;
-  font-weight: 700;
-  color: rgba(29, 29, 29, 0.8);
-}
-
-.up-form-btn {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 20px;
-}
-
-.up-form-btn input {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1d1d1d;
-  background: #fca311;
-  padding: 16px 40px;
-  border: none;
-  border-radius: 30px;
-  transition: transform 0.2s;
-}
-
-.up-form-btn input:hover {
-  transform: scale(1.1);
 }
 .upload-post-shape {
   position: absolute;
   left: 0;
   bottom: -20px;
 }
-
 .images {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
 }
-
-.image-div {
-  width: 250px;
-  height: 230px;
-  margin-top: 50px;
-  align-items: center;
-  text-align: center;
-  margin-bottom: 60px;
-}
-
-.uploaded-img {
-  width: 100%;
-  height: 100%;
-  outline: 3px solid $dark;
-  border-radius: 8px;
-}
-
-#cancel-icon {
-  color: $dark;
-  font-size: 30px;
-  width: 30px;
-  height: 30px;
-  margin-bottom: 5px;
-  cursor: pointer;
-}
-
 .upload-post-shape img {
   max-width: 80%;
 }
-
-.error-div {
-  padding-top: 20px;
-  text-align: center;
-}
-
-.error-text {
-  font-weight: bold;
-  color: $dim;
-}
-
-.error-div mat-icon {
-  color: $dim;
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
-}
-
-/* Upload Post Section CSS End */
-
-/* Main Part CSS End */
-

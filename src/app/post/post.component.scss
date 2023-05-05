@@ -1,35 +1,16 @@
-body,
-html {
-  font-family: Ubuntu, sans-serif;
-}
-
 $dark: #ee8240;
 $dim: #2e3134;
 $light: #fff;
 $button: #d0175f;
 $button-hover: #ad1650;
 
-/* Post Section CSS Start */
-
-.post-card {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.7) 100%
-  );
-  box-shadow: 0px 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
-  backdrop-filter: blur(5px);
-  padding: 30px;
-  margin-top: 40px;
-  border-radius: 44px;
-  transition: transform 0.2s;
-  cursor: pointer;
+body,
+html {
+  font-family: Ubuntu, sans-serif;
 }
-
 .post-card:hover {
   transform: scale(1.05);
 }
-
 .post-card-img img {
   width: 100%;
   min-height: 200px;
@@ -38,7 +19,6 @@ $button-hover: #ad1650;
   object-fit: cover;
   border-radius: 20px;
 }
-
 .post-card-img span {
   position: absolute;
   left: 0;
@@ -47,10 +27,9 @@ $button-hover: #ad1650;
   font-weight: 700;
   padding: 8px 12px;
   color: #1d1d1d;
-  background: #ffffff;
-  border-radius: 0px 10px 10px 0px;
+  background: #fff;
+  border-radius: 0 10px 10px 0;
 }
-
 .post-card h5 {
   font-size: 24px;
   font-weight: 700;
@@ -59,106 +38,66 @@ $button-hover: #ad1650;
   padding-top: 20px;
   margin-bottom: 10px;
 }
-
 .post-card p {
   font-weight: 400;
   font-size: 32px;
   color: #27525c;
   margin: 0;
 }
-
 .post-card p span img {
   margin-top: -20px;
 }
-
-.post-see-more-btn a {
-  font-size: 24px;
-  font-weight: 700;
-  text-decoration: underline;
-  color: #211f54;
-}
-
-.latest-post-shape {
-  position: absolute;
-  right: 0;
-  bottom: -335px;
-  z-index: -1;
-}
-
-.latest-post-shape img {
-  max-width: 80%;
-  float: right;
-}
-
-/* Post Section CSS End */
-
-/* ========***========
-Post Page CSS
-========***======== */
-
-/* Post Hero Section CSS Start */
-
 .post-hero-wrapper {
   margin-top: 180px;
 }
-
 .post-hero-title {
   position: relative;
   margin-bottom: -110px;
 }
-
 .views-div {
   display: flex;
   justify-content: space-between;
   width: 130px;
 }
-
 mat-icon {
   vertical-align: middle;
   color: $dim;
   margin-right: 5px;
 }
-
 .vip {
-  -webkit-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
-  -moz-box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
-  box-shadow: 0px 0px 40px 0px rgba(255, 203, 46, 1);
+  -webkit-box-shadow: 0 0 40px 0 rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0 0 40px 0 rgba(255, 203, 46, 1);
+  box-shadow: 0 0 40px 0 rgba(255, 203, 46, 1);
   background-color: #ffca2b;
   width: 60px;
-  font-weight: bold;
+  font-weight: 700;
   text-align: center;
   border-radius: 8px;
 }
-
 .post-hero-title h2 {
   position: relative;
   font-size: 35px;
   font-weight: 700;
   color: #121049;
 }
-
 .post-hero-title-border {
   position: absolute;
   left: 0;
   bottom: -40px;
 }
-
 .post-hero-title-border img {
   width: 75%;
 }
-
 .post-hero-container {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
 }
-
 .post-hero-card1,
 .post-hero-card3 {
   max-width: 29%;
   width: 100%;
 }
-
 .post-hero-card1 img,
 .post-hero-card3 img {
   width: 100%;
@@ -167,12 +106,10 @@ mat-icon {
   height: 100%;
   border-radius: 22px;
 }
-
 .post-hero-card2 {
   max-width: 39%;
   width: 100%;
 }
-
 .post-hero-card2 img {
   width: 100%;
   min-height: 450px;
@@ -180,104 +117,86 @@ mat-icon {
   height: 100%;
   border-radius: 22px;
 }
-
 .post-hero-card1 {
   background: radial-gradient(
     44.1% 44.1% at 50% 50%,
-    rgba(236, 86, 108, 0.6) 0%,
+    rgba(236, 86, 108, 0.6) 0,
     #a6031a 100%
   );
   padding: 30px 40px;
   border-radius: 30px;
 }
-
 .post-hero-card2 {
   background: radial-gradient(
     51.5% 76.56% at 50% 50%,
-    rgba(96, 161, 193, 0.6) 0%,
+    rgba(96, 161, 193, 0.6) 0,
     #095775eb 100%
   );
   padding: 30px 40px;
   border-radius: 30px;
 }
-
 .post-hero-card3 {
   background: radial-gradient(
     54.74% 54.74% at 50% 50%,
-    rgba(247, 206, 109, 0.6) 0%,
+    rgba(247, 206, 109, 0.6) 0,
     #eabc4e 100%
   );
   padding: 30px 40px;
   border-radius: 30px;
 }
-
 .post-hero-shape {
   position: absolute;
   left: 0;
   top: -60px;
   z-index: -1;
 }
-
 .slide img {
-  width: 100%; /* set the width */
-  height: 400px; /* set the height */
-  object-fit: cover; /* maintaining aspect ratio */
+  width: 100%;
+  height: 400px;
+  object-fit: cover;
   border-radius: 20px;
 }
-
 .slide {
   margin: 10px;
 }
-
 .slide1 {
   background: radial-gradient(
     44.1% 44.1% at 50% 50%,
-    rgba(236, 86, 108, 0.6) 0%,
+    rgba(236, 86, 108, 0.6) 0,
     #a6031a 100%
   );
   padding: 30px 40px;
   border-radius: 30px;
 }
-
 .slide2 {
   background: radial-gradient(
     51.5% 76.56% at 50% 50%,
-    rgba(96, 161, 193, 0.6) 0%,
+    rgba(96, 161, 193, 0.6) 0,
     #095775eb 100%
   );
   padding: 30px 40px;
   border-radius: 30px;
 }
-
 .slide3 {
   background: radial-gradient(
     54.74% 54.74% at 50% 50%,
-    rgba(247, 206, 109, 0.6) 0%,
+    rgba(247, 206, 109, 0.6) 0,
     #eabc4e 100%
   );
-
   padding: 30px 40px;
   border-radius: 30px;
 }
-
-/* Post Hero Section CSS End */
-
-/* Post Info Section CSS Start */
-
 .post-info-container {
   padding-top: 60px;
 }
-
 .post-info-location li {
   font-size: 18px;
   font-weight: 600;
   color: #1d1d1d;
 }
-
 .post-date {
   padding-right: 50px;
 }
-
 .post-date::after {
   position: absolute;
   content: "";
@@ -288,51 +207,43 @@ mat-icon {
   background: #ffd234;
   border-radius: 100%;
 }
-
 .post-info-title h2 {
   font-size: 43px;
   font-weight: 700;
   color: #121049;
   padding: 15px 0;
 }
-
 .post-info-title img {
   height: 56px;
 }
-
 .post-info-price h3 {
   font-size: 44px;
   color: #27525c;
 }
-
 .post-info-price h3 img {
   margin-top: -35px;
   margin-left: -15px;
 }
-
 .post-info-description h4 {
   font-size: 28px;
   font-weight: 700;
   color: #1d1d1d;
 }
-
 .post-info-description p {
   font-size: 18px;
   color: #1d1d1d;
   padding-top: 10px;
 }
-
 .post-user-info {
   max-width: 350px;
   width: 100%;
   padding: 40px 30px 40px 40px;
   float: right;
-  background: #ffffff;
-  box-shadow: 0px 10px 30px 5px rgba(39, 82, 92, 0.2);
+  background: #fff;
+  box-shadow: 0 10px 30px 5px rgba(39, 82, 92, 0.2);
   border-radius: 50px;
   cursor: pointer;
 }
-
 .post-user-img img {
   max-width: 60px;
   width: 100%;
@@ -342,34 +253,25 @@ mat-icon {
   border-radius: 100%;
   margin-right: 20px;
 }
-
 .post-user-info-text h4 {
   font-size: 24px;
   font-weight: 600;
   color: #1d1d1d;
   margin-bottom: 10px;
 }
-
 .post-user-info-text p {
   font-size: 16px;
   font-weight: 600;
   color: #1d1d1d;
   margin: 0;
 }
-
 .post-user-info-text p img {
   width: 30px;
   padding-right: 10px;
 }
-
-/* Post Info Section CSS End */
-
-/* Hero Slider CSS */
-
 .hero-slider {
   margin-top: 160px;
 }
-
 .hero-slider .post-hero-card1,
 .hero-slider .post-hero-card2,
 .hero-slider .post-hero-card3 {
@@ -377,7 +279,6 @@ mat-icon {
   width: 100%;
   padding: 30px;
 }
-
 .hero-slider .post-hero-card1 img,
 .hero-slider .post-hero-card2 img,
 .hero-slider .post-hero-card3 img {
@@ -386,20 +287,15 @@ mat-icon {
   max-height: 220px;
   border-radius: 22px;
 }
-
-/* Post Slider CSS */
-
 .post-card.item {
   box-shadow: none;
 }
-
 .post-card p img {
   max-width: 20px;
   width: 100%;
   margin-top: -44px !important;
   margin-left: 70px;
 }
-
 /* Customizing Slider Dots */
 
 .owl {
@@ -425,23 +321,16 @@ mat-icon {
   font-size: 20px !important;
   border-radius: 8px !important;
 }
-
-
-/* User page Post Section CSS Start */
-
 .user-page-bottom-body {
   background: linear-gradient(
     155.53deg,
     #ffce1d5d 10.5%,
     rgba(157, 26, 113, 0.096) 98.28%
   );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   padding: 50px 0;
   margin-top: 100px;
 }
-
 .user-post {
   padding-bottom: 120px;
 }
-
-/* User page Post Section CSS End */

@@ -1,13 +1,11 @@
 select {
   border: none;
   color: #2e3134;
-  -webkit-appearance: none; /* Add this line to remove the default styles on mobile */
+  -webkit-appearance: none;
 }
-
 .form-select:focus {
   outline: 0 !important;
 }
-
 .flex {
   display: flex;
   align-items: center;
@@ -16,33 +14,28 @@ select {
   margin-bottom: 16px;
   border-radius: 30px;
 }
-
 .form-input-field {
   padding-top: 20px;
 }
-
 .form-input-field {
   width: 100%;
   padding: 12px 20px;
   border: 1px solid #54a0b2;
   border-radius: 30px;
 }
-
 .form-input-field:focus {
   outline: 0;
 }
-
 .upload-select {
   border: 2px solid #54a0b2;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
+  font-weight: 700;
   width: 100%;
 }
-
 .register-select {
-  color: white;
+  color: #fff;
   font-size: 16px;
   line-height: 28px;
   padding: 8px 16px;
