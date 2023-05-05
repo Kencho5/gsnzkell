@@ -131,11 +131,11 @@
                       multiple
                       formControlName="imgs"
                     />
-                    <div class="owl">
+                    <div class="owl-upload">
                       <owl-carousel-o [options]="customOptions">
                         <ng-template carouselSlide *ngFor="let url of urls">
-                          <div class="slide">
-                            <img [src]="url" class="slide-img" />
+                          <div class="slide-upload">
+                            <img [src]="url" class="slide-img-upload" />
                           </div>
                           <mat-icon
                             class="{{ url }}"

@@ -283,7 +283,7 @@ textarea {
 
 /* Customizing Slider Dots */
 
-.owl {
+.owl-upload {
   margin-top: 20px;
   text-align: center;
 }
@@ -308,14 +308,14 @@ textarea {
   border-radius: 8px !important;
 }
 
-.slide img {
+.slide-upload img {
   width: 100%; /* set the width */
   height: 350px; /* set the height */
   object-fit: cover; /* maintaining aspect ratio */
   border-radius: 20px;
 }
 
-.slide {
+.slide-upload {
   margin: 10px;
   background: radial-gradient(
     51.5% 76.56% at 50% 50%,
