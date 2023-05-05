@@ -1,7 +1,9 @@
 const { db, userPosts, users } = require("../../utils/db");
 
 async function post(req, res) {
-    var postID = req.body.id;
+  var postID = req.body.id;
+
+  await incrementViewCount(req, res);
 
   userPosts.findOne(
     {
@@ -38,6 +40,33 @@ async function post(req, res) {
       }
     }
   );
+}
+
+function incrementViewCount(req, res, next) {
+  const postID = req.body.id;
+  const ip = req.ip;
+  const viewedPosts = req.cookies.viewedPosts || {};
+
+  if (!viewedPosts[postID]) {
+    userPosts.updateOne(
+      {
+        _id: postID,
+      },
+      {
+        $inc: { views: 1 },
+      },
+      (err, response) => {
+        viewedPosts[postID] = true;
+        res.cookie("viewedPosts", viewedPosts, {
+          maxAge: 900000,
+          httpOnly: true,
+        });
+        return;
+      }
+    );
+  } else {
+    return;
+  }
 }
 
 module.exports = post;
