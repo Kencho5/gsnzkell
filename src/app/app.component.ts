@@ -40,6 +40,12 @@ export class AppComponent {
   filterError;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
+  screenWidth: number;
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth = window.innerWidth;
+  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -52,6 +58,8 @@ export class AppComponent {
   ) {
     // Set the default language
     translate.setDefaultLang('ge');
+
+    this.screenWidth = window.innerWidth;
   }
 
   ngOnInit(): void {
@@ -76,7 +84,7 @@ export class AppComponent {
   search() {
     if (this.searchForm.valid) {
       // this.router.navigate(['/search', { text: this.searchForm.value.text }]);
-      window.open(`/search;text=${this.searchForm.value.text}`, '_self')
+      window.open(`/search;text=${this.searchForm.value.text}`, '_self');
     }
   }
 

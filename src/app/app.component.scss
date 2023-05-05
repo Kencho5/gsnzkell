@@ -240,6 +240,11 @@ a.login:hover {
   justify-content: center;
 }
 
+.mobile-lang-selector {
+  display: flex;
+  margin-right: 10px;
+}
+
 @media (max-width: 1200px) {
   .navbar-nav {
     background: #ffffff;
