@@ -27,7 +27,7 @@ async function post(req, res) {
           imgs: result.img_path,
           vip: result.vip,
           city: result.city,
-          views: result.views
+          views: result.views,
         };
 
         res.status(200).send({
@@ -43,30 +43,36 @@ async function post(req, res) {
   );
 }
 
-function incrementViewCount(req, res, next) {
+function incrementViewCount(req, res) {
   const postID = req.body.id;
   const ip = req.ip;
   const viewedPosts = req.cookies.viewedPosts || {};
 
   if (!viewedPosts[postID]) {
-    userPosts.updateOne(
-      {
-        _id: postID,
-      },
-      {
-        $inc: { views: 1 },
-      },
-      (err, response) => {
-        viewedPosts[postID] = true;
-        res.cookie("viewedPosts", viewedPosts, {
-          maxAge: 900000,
-          httpOnly: true,
-        });
-        return;
-      }
-    );
+    return new Promise((resolve, reject) => {
+      userPosts.updateOne(
+        {
+          _id: postID,
+        },
+        {
+          $inc: { views: 1 },
+        },
+        (err, response) => {
+          if (err) {
+            reject(err);
+          } else {
+            viewedPosts[postID] = true;
+            res.cookie("viewedPosts", viewedPosts, {
+              maxAge: 900000,
+              httpOnly: true,
+            });
+            resolve();
+          }
+        }
+      );
+    });
   } else {
-    return;
+    return Promise.resolve();
   }
 }
 
