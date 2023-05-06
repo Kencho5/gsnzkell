@@ -5,6 +5,7 @@ const rateLimit = require("express-rate-limit");
 const session = require("express-session");
 const { spawn } = require("child_process");
 const cookieParser = require("cookie-parser");
+const ipfilter = require('express-ipfilter').IpFilter;
 
 const routes = require("./routes");
 
@@ -17,7 +18,7 @@ app.use(
 app.use(cookieParser());
 
 const limiter = rateLimit({
-  windowMs: 180000,
+  windowMs: 600000,
   max: 200,
   message:
     "You have exceeded the maximum number of API requests. Please try again later.",
@@ -32,8 +33,23 @@ app.use(
   })
 );
 
-app.use(express.json({ limit: "100mb" }));
-app.use(express.urlencoded({ limit: "100mb", parameterLimit: 50000 }));
+app.use(express.json({ limit: "50mb" }));
+app.use(express.urlencoded({ limit: "50mb", parameterLimit: 50000 }));
+
+// Define the list of banned IPs
+const bannedIPs = ['127.0.0.1'];
+
+// Set up the IP filter middleware
+app.use(ipfilter(bannedIPs, { mode: 'deny', log: false }));
+
+app.use((req, res, next) => {
+  if (req.ipFilterError) {
+    // The request was blocked due to IP filtering
+    res.status(403).send('Access denied');
+  } else {
+    next();
+  }
+});
 
 app.use(express.json());
 
