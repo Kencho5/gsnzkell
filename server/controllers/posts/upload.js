@@ -38,7 +38,7 @@ async function upload(req, res) {
   const balance = user["balance"];
 
   if (freeUpload) {
-    await users.updateOne(
+    var updated = await users.findOneAndUpdate(
       {
         email: email,
       },
@@ -46,6 +46,9 @@ async function upload(req, res) {
         $set: {
           freeUpload: false,
         },
+      },
+      {
+        returnDocument: "after",
       }
     );
   } else {
@@ -63,26 +66,26 @@ async function upload(req, res) {
           returnDocument: "after",
         }
       );
-
-      var payload = {
-        id: updated.value._id,
-        username: updated.value.username,
-        email: updated.value.email,
-        phone: updated.value.phone,
-        instagram: updated.value.instagram,
-        facebook: updated.value.facebook,
-        city: updated.value.city,
-        balance: updated.value.balance.toFixed(2),
-        pfp: updated.value.pfp,
-      };
-
-      var newToken = jwt.sign(payload, privateKEY, signOptions);
     } else {
       return res.status(200).send({
         code: 402,
       });
     }
   }
+  var payload = {
+    id: updated.value._id,
+    username: updated.value.username,
+    email: updated.value.email,
+    phone: updated.value.phone,
+    instagram: updated.value.instagram,
+    facebook: updated.value.facebook,
+    city: updated.value.city,
+    balance: updated.value.balance.toFixed(2),
+    pfp: updated.value.pfp,
+  };
+
+  var newToken = jwt.sign(payload, privateKEY, signOptions);
+
   const imgs = await saveImages(postID, req);
 
   const data = {
