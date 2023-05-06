@@ -92,15 +92,15 @@ export class UploadFormComponent {
   }
 
   upload() {
-    if (this.uploadForm.value.ageYears == null) {
-      this.uploadForm.value.ageYears = 0;
+    const ageYears = this.uploadForm.value.ageYears || 0;
+    const ageMonths = this.uploadForm.value.ageMonths || 0;
+
+    if (ageYears === 0 && ageMonths === 0) {
+      this.form_msg = 'Fill Out The Form';
+      return;
     }
 
-    if (this.uploadForm.value.ageMonths == null) {
-      this.uploadForm.value.ageMonths = 0;
-    }
-
-    if (this.urls.length != 3) {
+    if (this.urls.length !== 3) {
       this.message = 'Only 3 Photos Required!';
       return;
     }
@@ -112,7 +112,7 @@ export class UploadFormComponent {
         urls: this.urls,
       };
       this.uploadService.uploadPost(data).subscribe((res) => {
-        if (res['code'] == 200) {
+        if (res['code'] === 200) {
           if (res['token']) {
             localStorage.setItem('token', res['token']);
           }
