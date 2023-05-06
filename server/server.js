@@ -24,7 +24,9 @@ const limiter = rateLimit({
     "You have exceeded the maximum number of API requests. Please try again later.",
   onLimitReached: (req, res) => {
     const sendWarning = require("./controllers/auth/warning");
-    sendWarning(req.ip);
+    const clientIP = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
+
+    sendWarning(clientIP);
   },
 });
 
