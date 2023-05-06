@@ -79,6 +79,17 @@ select {
   outline: none;
 }
 
+// REMOVE DEFAULT NUMBER INPUT ARROWS 
+.double-input input[type=number]::-webkit-outer-spin-button,
+.double-input input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.double-input input[type=number] {
+  -moz-appearance: textfield;
+}
+
 .double-input input::placeholder {
   font-size: 16px;
   font-weight: 700;
