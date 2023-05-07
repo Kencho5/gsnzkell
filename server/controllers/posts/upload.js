@@ -7,6 +7,9 @@ const fs = require("fs");
 const sharp = require("sharp");
 
 async function upload(req, res) {
+const contentLength = req.get('content-length');
+  const sizeInMB = contentLength / (1024 * 1024);
+  console.log(`Request size: ${sizeInMB.toFixed(2)} MB`);
   const token = req.body.user;
 
   if (!jwt.verify(token, publicKEY, signOptions)) {
