@@ -66,18 +66,25 @@ export class UploadFormComponent {
   }
 
   selectFiles(event) {
-    if (event.target.files) {
-      for (var i = 0; i <= File.length; i++) {
-        var reader = new FileReader();
+    const files = event.target.files;
+    if (!files) return;
 
-        reader.readAsDataURL(event.target.files[i]);
-        reader.onload = (event: any) => {
-          this.urls.push(event.target.result);
-        };
-      }
-      if (this.urls.length == 3) {
-        this.message = '';
-      }
+    const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
+    for (let i = 0; i < urlsToLoad; i++) {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onload = (event: any) => {
+        this.urls.push(event.target.result);
+        if (this.urls.length === 3) {
+          this.message = '';
+
+          this.uploadService.uploadImages({urls:this.urls}).subscribe((res) => {
+            if (res['code'] === 200) {
+              return
+            }
+          });
+        }
+      };
     }
   }
 
