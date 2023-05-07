@@ -92,6 +92,15 @@ export class UploadFormComponent {
   }
 
   upload() {
+    const controls = this.uploadForm.controls;
+    for (const name in controls) {
+      if (controls[name].invalid) {
+        document.getElementById(name).style.border = '2px solid red';
+      } else {
+        document.getElementById(name).style.border = '2px solid #54a0b2';
+      }
+    }
+
     const ageYears = this.uploadForm.value.ageYears || 0;
     const ageMonths = this.uploadForm.value.ageMonths || 0;
 

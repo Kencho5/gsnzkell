@@ -1,22 +1,25 @@
 <div [formGroup]="form">
   <ng-template [ngIf]="type === 'edit'">
-  <div class="flex">
-    <mat-icon>location_on</mat-icon>
-    <select [formControlName]="controlName" class="form-select">
-      <option [selected]="true">
-        {{ 'CITIES.' + currentCity | translate }}
-      </option>
-      <option
-        *ngFor="let city of cities$ | async | keyvalue"
-        value="{{city.key}}"
-      >
-        {{ 'CITIES.' + city.key | translate }}
-      </option>
-    </select>
-  </div>
+    <div class="flex">
+      <mat-icon>location_on</mat-icon>
+      <select [formControlName]="controlName" class="form-select">
+        <option [selected]="true">
+          {{ 'CITIES.' + currentCity | translate }}
+        </option>
+        <option
+          *ngFor="let city of cities$ | async | keyvalue"
+          value="{{city.key}}"
+        >
+          {{ 'CITIES.' + city.key | translate }}
+        </option>
+      </select>
+    </div>
   </ng-template>
   <ng-template [ngIf]="type == 'search'">
-    <select [formControlName]="controlName" class="form-select form-input-field">
+    <select
+      [formControlName]="controlName"
+      class="form-select form-input-field"
+    >
       <option value="" selected disabled>
         {{ 'UPLOAD.select_city' | translate }}
       </option>
@@ -29,7 +32,11 @@
     </select>
   </ng-template>
   <ng-template [ngIf]="type == 'upload'">
-    <select [formControlName]="controlName" class="upload-select form-select">
+    <select
+      [formControlName]="controlName"
+      class="upload-select form-select"
+      id="city"
+    >
       <option value="" selected disabled>
         {{ 'UPLOAD.select_city' | translate }}
       </option>

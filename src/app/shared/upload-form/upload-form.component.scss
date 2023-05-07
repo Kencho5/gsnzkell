@@ -79,14 +79,14 @@ select {
   outline: none;
 }
 
-// REMOVE DEFAULT NUMBER INPUT ARROWS 
-.double-input input[type=number]::-webkit-outer-spin-button,
-.double-input input[type=number]::-webkit-inner-spin-button {
+// REMOVE DEFAULT NUMBER INPUT ARROWS
+.double-input input[type="number"]::-webkit-outer-spin-button,
+.double-input input[type="number"]::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
 
-.double-input input[type=number] {
+.double-input input[type="number"] {
   -moz-appearance: textfield;
 }
 
@@ -217,6 +217,7 @@ button {
 }
 
 textarea {
+  outline: none;
   width: 100%;
   background: #ffffff;
   border: 2px solid #54a0b2;
@@ -235,7 +236,7 @@ textarea {
   margin-bottom: 16px;
   border-radius: 30px;
   font-weight: bold;
-  outline: none; 
+  outline: none;
   font-size: 16px;
 }
 
