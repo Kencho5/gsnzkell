@@ -16,13 +16,4 @@ export class UploadFormService {
       })
     );
   }
-
-  uploadImages(data) {
-    return this._http.post('/api/uploadImages', data).pipe(
-      map((res: HttpResponse<Response>) => {
-        return res;
-      })
-    );
-  }
-
 }

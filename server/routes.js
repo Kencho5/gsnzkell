@@ -10,7 +10,6 @@ const editPost = require('./controllers/posts/editPost');
 const profile = require('./controllers/user/profile');
 const update = require('./controllers/user/update');
 const upload = require('./controllers/posts/upload');
-const uploadImages = require('./controllers/posts/uploadImages');
 const post = require('./controllers/posts/post');
 const similar = require('./controllers/posts/similar');
 const getId = require('./controllers/user/getId');
@@ -44,8 +43,6 @@ router.post('/api/profile', profile);
 router.post('/api/update', update);
 
 router.post('/api/upload', upload);
-
-router.post('/api/uploadImages', uploadImages);
 
 router.post('/api/post', post);
 

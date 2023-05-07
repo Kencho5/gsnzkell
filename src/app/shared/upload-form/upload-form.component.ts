@@ -77,12 +77,6 @@ export class UploadFormComponent {
         this.urls.push(event.target.result);
         if (this.urls.length === 3) {
           this.message = '';
-
-          this.uploadService.uploadImages({urls:this.urls}).subscribe((res) => {
-            if (res['code'] === 200) {
-              return
-            }
-          });
         }
       };
     }
