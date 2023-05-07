@@ -11,9 +11,6 @@ import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { CloudinaryImage } from '@cloudinary/url-gen';
-import { HttpClient } from '@angular/common/http';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-upload-form',
@@ -36,7 +33,6 @@ export class UploadFormComponent {
   });
 
   urls = [];
-  files = [];
   message: string;
   form_msg: string;
   cities;
@@ -59,8 +55,7 @@ export class UploadFormComponent {
     private uploadService: UploadFormService,
     private router: Router,
     private login: LoginService,
-    public translate: TranslateService,
-    private http: HttpClient
+    public translate: TranslateService
   ) {}
 
   ngOnInit(): void {
@@ -76,8 +71,6 @@ export class UploadFormComponent {
 
     const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
     for (let i = 0; i < urlsToLoad; i++) {
-      this.files.push(files[i]);
-
       const reader = new FileReader();
       reader.readAsDataURL(files[i]);
       reader.onload = (event: any) => {
@@ -122,48 +115,24 @@ export class UploadFormComponent {
     }
 
     if (this.uploadForm.valid) {
-      const postID = uuidv4();
-
-      this.uploadImages(this.files, postID);
-
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
         urls: this.urls,
-        postID: postID,
       };
-      // this.uploadService.uploadPost(data).subscribe((res) => {
-      //   if (res['code'] === 200) {
-      //     if (res['token']) {
-      //       localStorage.setItem('token', res['token']);
-      //     }
-      //     this.router.navigate(['/post', res['id']]);
-      //   } else {
-      //     this.form_msg = 'Not Enough Balance!';
-      //   }
-      // });
+      this.uploadService.uploadPost(data).subscribe((res) => {
+        if (res['code'] === 200) {
+          if (res['token']) {
+            localStorage.setItem('token', res['token']);
+          }
+          this.router.navigate(['/post', res['id']]);
+        } else {
+          this.form_msg = 'Not Enough Balance!';
+        }
+      });
     } else {
       this.form_msg = 'Fill Out The Form';
     }
-  }
-
-  uploadImages(files, postID) {
-    const formData = new FormData();
-    formData.append('file', files[0]);
-    formData.append('upload_preset', 'ouqjxg4a');
-
-    formData.append('public_id', postID);
-
-    const cloudName = 'dtxhjtnns'; // replace with your own cloud name
-    const uploadUrl = `https://api.cloudinary.com/v1_1/${cloudName}/upload`;
-    this.http.post(uploadUrl, formData).subscribe(
-      (response) => {
-        console.log('Upload successful:', response);
-      },
-      (error) => {
-        console.error('Upload error:', error);
-      }
-    );
   }
 
   changeInput(event) {
