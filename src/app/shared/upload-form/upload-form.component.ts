@@ -67,23 +67,19 @@ export class UploadFormComponent {
 
   selectFiles(event) {
     const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const url = URL.createObjectURL(files[i]);
-      this.urls.push(url);
-    }
     if (!files) return;
 
-    // const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
-    // for (let i = 0; i < urlsToLoad; i++) {
-    //   const reader = new FileReader();
-    //   reader.readAsDataURL(files[i]);
-    //   reader.onload = (event: any) => {
-    //     this.urls.push(event.target.result);
-    //     if (this.urls.length === 3) {
-    //       this.message = '';
-    //     }
-    //   };
-    // }
+    const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
+    for (let i = 0; i < urlsToLoad; i++) {
+      const reader = new FileReader();
+      reader.readAsDataURL(files[i]);
+      reader.onload = (event: any) => {
+        this.urls.push(event.target.result);
+        if (this.urls.length === 3) {
+          this.message = '';
+        }
+      };
+    }
   }
 
   removeImage(event) {
