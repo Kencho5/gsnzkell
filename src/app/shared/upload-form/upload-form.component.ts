@@ -39,7 +39,6 @@ export class UploadFormComponent {
   loggedIn: boolean;
   daysSelected = 0;
   vipSum = 0;
-  images = [];
 
   customOptions: OwlOptions = {
     items: 1,
@@ -68,9 +67,6 @@ export class UploadFormComponent {
 
   selectFiles(event) {
     const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      this.images.push(files[i]);
-    }
     if (!files) return;
 
     const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
@@ -97,7 +93,6 @@ export class UploadFormComponent {
   }
 
   upload() {
-    console.log(this.images);
     const controls = this.uploadForm.controls;
     for (const name in controls) {
       const control = controls[name];
@@ -120,14 +115,12 @@ export class UploadFormComponent {
     }
 
     if (this.uploadForm.valid) {
-      const formData = new FormData();
-      for (let i = 0; i < this.images.length; i++) {
-        formData.append('images', this.images[i]);
-      }
-      formData.append('user', localStorage.getItem('token'));
-      formData.append('form', JSON.stringify(this.uploadForm.value));
-
-      this.uploadService.uploadPost(formData).subscribe((res) => {
+      const data = {
+        user: localStorage.getItem('token'),
+        form: this.uploadForm.value,
+        urls: this.urls,
+      };
+      this.uploadService.uploadPost(data).subscribe((res) => {
         if (res['code'] === 200) {
           if (res['token']) {
             localStorage.setItem('token', res['token']);
