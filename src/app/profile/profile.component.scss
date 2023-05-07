@@ -28,11 +28,20 @@ li {
   height: 180px;
   position: relative;
 }
+
+.user-hero-top img {
+  width: 25px;
+  height: 25px;
+}
+
 .user-edit-icon {
   position: absolute;
   top: 50%;
   right: 50px;
   transform: translateY(-50%);
+  background-color: white;
+  border-radius: 100%;
+  padding: 10px;
 }
 .user-hero-bottom-wrapper {
   padding: 0 40px 70px 100px;
