@@ -35,7 +35,7 @@ async function checkPayment(req, res) {
 
         await users.updateOne(
           { email: email },
-          { $inc: { balance: response.data.amount } }
+          { $inc: { balance: response.data.amount * 100 } }
         );
 
         return res.status(200).send({

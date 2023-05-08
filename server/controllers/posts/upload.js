@@ -52,14 +52,14 @@ async function upload(req, res) {
       }
     );
   } else {
-    if (balance - (0.15 + form.days * 1.5) > 0) {
+    if (balance - (15 + form.days * 150) >= 0) {
       var updated = await users.findOneAndUpdate(
         {
           email: email,
         },
         {
           $inc: {
-            balance: -(0.15 + form.days * 1.5),
+            balance: -(15 + form.days * 150),
           },
         },
         {
@@ -80,7 +80,7 @@ async function upload(req, res) {
     instagram: updated.value.instagram,
     facebook: updated.value.facebook,
     city: updated.value.city,
-    balance: updated.value.balance.toFixed(2),
+    balance: (updated.value.balance / 100).toFixed(2),
     pfp: updated.value.pfp,
   };
 

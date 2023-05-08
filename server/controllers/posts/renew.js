@@ -10,14 +10,14 @@ async function renew(req, res) {
 
   var { balance } = await getUserBalance(user["id"]);
 
-  if (balance - 0.20 >= 0) {
+  if (balance - 20 >= 0) {
     var updated = await users.findOneAndUpdate(
       {
         _id: user.id,
       },
       {
         $inc: {
-          balance: -0.20,
+          balance: -20,
         },
       },
       {
@@ -33,7 +33,7 @@ async function renew(req, res) {
       instagram: updated.value.instagram,
       facebook: updated.value.facebook,
       city: updated.value.city,
-      balance: updated.value.balance.toFixed(2),
+      balance: (updated.value.balance / 100).toFixed(2),
       pfp: updated.value.pfp,
     };
 

@@ -127,17 +127,15 @@
             Renew Post
           </h1>
           <app-service-cost [serviceCost]="0.20"></app-service-cost>
+          <p *ngIf="balanceMessage" style="color: red; font-weight: bold">
+            {{ balanceMessage }}
+          </p>
+
           <button class="form-done-btn" (click)="renewPost()">Renew</button>
           <button class="form-close-btn" type="button" (click)="toggleRenew(0)">
             Close
           </button>
         </div>
-        <p
-          *ngIf="balanceMessage"
-          style="color: red; font-weight: bold; margin-top: 50px"
-        >
-          {{ balanceMessage }}
-        </p>
       </div>
     </div>
     <div class="vip-modal">
