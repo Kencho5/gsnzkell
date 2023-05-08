@@ -122,24 +122,16 @@ export class UploadFormComponent {
         form: this.uploadForm.value,
         urls: this.urls,
       };
-      this.http.post('/api/upload', data).subscribe(
-  response => {
-    console.log(response);
-  },
-  error => {
-    console.error(error);
-  }
-);
-      // this.uploadService.uploadPost(data).subscribe((res) => {
-      //   if (res['code'] === 200) {
-      //     if (res['token']) {
-      //       localStorage.setItem('token', res['token']);
-      //     }
-      //     this.router.navigate(['/post', res['id']]);
-      //   } else {
-      //     this.form_msg = 'Not Enough Balance!';
-      //   }
-      // });
+      this.uploadService.uploadPost(data).subscribe((res) => {
+        if (res['code'] === 200) {
+          if (res['token']) {
+            localStorage.setItem('token', res['token']);
+          }
+          this.router.navigate(['/post', res['id']]);
+        } else {
+          this.form_msg = 'Not Enough Balance!';
+        }
+      });
     } else {
       this.form_msg = 'Fill Out The Form';
     }
