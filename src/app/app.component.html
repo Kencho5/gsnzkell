@@ -7,21 +7,22 @@
           ><img src="assets/images/logo.svg" alt="logo" />Pender</a
         >
         <div class="mobile-lang-selector">
-          
-        <app-language-selector *ngIf="screenWidth < 1200"></app-language-selector>
-        <button
-          class="navbar-toggler collapsed"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="toggler-icon top-bar"></span>
-          <span class="toggler-icon middle-bar"></span>
-          <span class="toggler-icon bottom-bar"></span>
-        </button>
+          <app-language-selector
+            *ngIf="screenWidth < 1200"
+          ></app-language-selector>
+          <button
+            class="navbar-toggler collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav"
+            aria-controls="navbarNav"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+          >
+            <span class="toggler-icon top-bar"></span>
+            <span class="toggler-icon middle-bar"></span>
+            <span class="toggler-icon bottom-bar"></span>
+          </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav pl-md-5 mx-auto pb-0">
@@ -62,25 +63,27 @@
                   />
                 </ng-template>
                 <div class="profile-dropdown">
-                  <div class="profile-user-info d-flex align-items-center">
-                    <img
-                      *ngIf="loginService.user.pfp == true; else default"
-                      src="assets/user-pfps/{{
+                  <a href="/profile">
+                    <div class="profile-user-info d-flex align-items-center">
+                      <img
+                        *ngIf="loginService.user.pfp == true; else default"
+                        src="assets/user-pfps/{{
                         loginService.user.id
                       }}.jpg"
-                      alt="user-profile"
-                    />
-                    <ng-template #default>
-                      <img
-                        src="assets/images/default_pfp.png"
                         alt="user-profile"
                       />
-                    </ng-template>
-                    <div>
-                      <h5>{{ loginService.user.username }}</h5>
-                      <p>{{ loginService.user.email }}</p>
+                      <ng-template #default>
+                        <img
+                          src="assets/images/default_pfp.png"
+                          alt="user-profile"
+                        />
+                      </ng-template>
+                      <div>
+                        <h5>{{ loginService.user.username }}</h5>
+                        <p>{{ loginService.user.email }}</p>
+                      </div>
                     </div>
-                  </div>
+                  </a>
                   <hr />
                   <div class="user-edit-profile">
                     <a href="/profile" class="align-items-center">
@@ -132,7 +135,9 @@
             </div>
           </ng-template>
           <div class="lang-selector">
-            <app-language-selector *ngIf="screenWidth > 1200"></app-language-selector>
+            <app-language-selector
+              *ngIf="screenWidth > 1200"
+            ></app-language-selector>
           </div>
         </div>
       </div>
