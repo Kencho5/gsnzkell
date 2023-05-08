@@ -11,6 +11,7 @@ import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-form',
@@ -55,7 +56,8 @@ export class UploadFormComponent {
     private uploadService: UploadFormService,
     private router: Router,
     private login: LoginService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -120,16 +122,24 @@ export class UploadFormComponent {
         form: this.uploadForm.value,
         urls: this.urls,
       };
-      this.uploadService.uploadPost(data).subscribe((res) => {
-        if (res['code'] === 200) {
-          if (res['token']) {
-            localStorage.setItem('token', res['token']);
-          }
-          this.router.navigate(['/post', res['id']]);
-        } else {
-          this.form_msg = 'Not Enough Balance!';
-        }
-      });
+      this.http.post('/api/upload', data).subscribe(
+  response => {
+    console.log(response);
+  },
+  error => {
+    console.error(error);
+  }
+);
+      // this.uploadService.uploadPost(data).subscribe((res) => {
+      //   if (res['code'] === 200) {
+      //     if (res['token']) {
+      //       localStorage.setItem('token', res['token']);
+      //     }
+      //     this.router.navigate(['/post', res['id']]);
+      //   } else {
+      //     this.form_msg = 'Not Enough Balance!';
+      //   }
+      // });
     } else {
       this.form_msg = 'Fill Out The Form';
     }
