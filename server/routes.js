@@ -42,7 +42,7 @@ router.post('/api/profile', profile);
 
 router.post('/api/update', update);
 
-router.post('/api/upload', upload);
+// router.post('/api/upload', upload);
 
 router.post('/api/post', post);
 

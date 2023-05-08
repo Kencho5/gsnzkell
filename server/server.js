@@ -6,6 +6,9 @@ const session = require("express-session");
 const { spawn } = require("child_process");
 const cookieParser = require("cookie-parser");
 const ipfilter = require("express-ipfilter").IpFilter;
+const multer = require('multer');
+const path = require('path');
+const fs = require('fs');
 
 const routes = require("./routes");
 
@@ -61,6 +64,32 @@ app.use((req, res, next) => {
 app.use(express.json());
 
 app.use(routes);
+
+const storage = multer.diskStorage({
+  destination: async (req, file, cb) => {
+        const savePath = "/var/uploads";
+  await fs.promises.mkdir(`${savePath}/postImages/${req.params.postID}`);
+
+    const postID = req.params.postID;
+    const destination = path.join('/var/uploads/postImages', postID);
+    cb(null, destination);
+  },
+  filename: (req, file, cb) => {
+    cb(null, file.originalname);
+  }
+});
+
+const upload = multer({ storage });
+
+app.post('/api/upload/:postID', upload.fields([{ name: 'image' }]), async (req, res) => {
+
+  // req.files contains the uploaded files
+  // req.body contains the other form data (if any)
+  console.log(req.files);
+  console.log(req.body);
+  console.log(req.params.postID);
+  res.send('File uploaded successfully!');
+});
 
 app.listen(3000, () => {
   console.log(`Started server at http://localhost:3000!`);
