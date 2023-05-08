@@ -1,7 +1,7 @@
 const jwt = require("jsonwebtoken");
 const { db, userPosts, users } = require("../../utils/db");
 const { privateKEY, publicKEY, signOptions } = require("../../models/token");
-const getUserBalance = require('../user/getUserBalance');
+const getUserBalance = require("../user/getUserBalance");
 
 async function renew(req, res) {
   var id = req.body.id;
