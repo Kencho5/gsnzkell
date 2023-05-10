@@ -70,6 +70,19 @@ app.listen(3000, () => {
     "./controllers/posts/updateExpiredVips.js",
   ]);
 
+  const refreshProcess = spawn("node", [
+    "./controllers/auth/refreshToken.js",
+  ]);
+
+  // Log any output from the child process
+  refreshProcess.stdout.on("data", (data) => {
+    console.log(`refreshToken.js: ${data}`);
+  });
+
+  refreshProcess.stderr.on("data", (data) => {
+    console.error(`refreshToken.js error: ${data}`);
+  });
+
   // Log any output from the child process
   updateProcess.stdout.on("data", (data) => {
     console.log(`updateExpired.js: ${data}`);

@@ -5,5 +5,7 @@ module.exports = {
   secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   region: "eu-central-1",
   tbcAccessToken: process.env.TBC_ACCESS_TOKEN,
-  tbcApiKey: process.env.TBC_API_KEY
+  tbcApiKey: process.env.TBC_API_KEY,
+  tbcClientId: process.env.TBC_CLIENT_ID,
+  tbcClientSecret: process.env.TBC_CLIENT_SECRET
 };
