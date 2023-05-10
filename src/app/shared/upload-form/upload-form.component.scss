@@ -428,29 +428,6 @@ textarea {
     font-size: 28px;
   }
 }
-@media (min-width: 300px) and (max-width: 767px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 10px;
-  }
-  .section-title h2 {
-    font-size: 28px;
-  }
-  .upload-post-img {
-    max-width: 100%;
-    padding: 50px 0 80px;
-  }
-  .upload-post-form {
-    padding: 0 20px 50px;
-    margin: auto;
-  }
-  .upload-post-shape {
-    z-index: -1;
-  }
-  .vip-post-wrapper {
-    padding: 0 0 50px;
-  }
-}
 @media only screen and (min-width: 767px) {
   .owl {
     display: none;
@@ -464,6 +441,12 @@ textarea {
   }
 }
 @media (min-width: 300px) and (max-width: 767px) {
+  .section-title h2 {
+    font-size: 28px;
+  }
+  .upload-post-shape {
+    z-index: -1;
+  }
   .post-wrapper .container-fluid,
   .upload-post-wrapper .container-fluid {
     padding: 0 10px;

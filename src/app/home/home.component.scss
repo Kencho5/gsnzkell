@@ -192,6 +192,8 @@ span.sell img {
 // RESPONSIVE
 @media (min-width: 1920px) {
   .post-hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid,
   .user-footer .container-fluid,
   .user-hero-wrapper .container-fluid {
     padding: 0 100px;
@@ -199,13 +201,11 @@ span.sell img {
   .hero-wrapper .container-fluid {
     padding: 0 150px;
   }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
-  }
 }
 @media (min-width: 1600px) and (max-width: 1919px) {
   .post-hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid,
   .user-hero-wrapper .container-fluid {
     padding: 0 100px;
   }
@@ -218,10 +218,6 @@ span.sell img {
   .hero-shape2 {
     bottom: 100px;
   }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
-  }
 }
 @media (min-width: 1400px) and (max-width: 1599px) {
   .user-footer .container-fluid,
@@ -229,7 +225,9 @@ span.sell img {
   .user-post-wrapper .container-fluid {
     padding: 0 80px;
   }
-  .hero-wrapper .container-fluid {
+  .hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
     padding: 0 100px;
   }
   .hero-shape1 {
@@ -237,10 +235,6 @@ span.sell img {
   }
   .hero-shape2 {
     bottom: 80px;
-  }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
   }
   .post-hero-title {
     margin-bottom: -60px;
@@ -282,6 +276,8 @@ span.sell img {
 }
 @media (min-width: 992px) and (max-width: 1199px) {
   .post-hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid,
   .user-footer .container-fluid,
   .user-hero-wrapper .container-fluid {
     padding: 0 50px;
@@ -308,10 +304,6 @@ span.sell img {
   .hero-shape2 img {
     float: right;
   }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 50px;
-  }
   .post-hero-title h2 {
     font-size: 44px;
     margin-bottom: 50px;
@@ -319,6 +311,8 @@ span.sell img {
 }
 @media (min-width: 768px) and (max-width: 991px) {
   .post-hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid,
   .user-footer .container-fluid,
   .user-hero-wrapper .container-fluid {
     padding: 0 20px;
@@ -354,10 +348,6 @@ span.sell img {
   .hero-img {
     padding-top: 50px;
   }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 20px;
-  }
   .section-title h2 {
     font-size: 28px;
   }
@@ -370,28 +360,18 @@ span.sell img {
     margin-bottom: 53px;
   }
 }
-@media (min-width: 300px) and (max-width: 767px) {
-  .post-hero-wrapper .container-fluid,
-  .user-footer .container-fluid,
-  .user-hero-wrapper .container-fluid {
-    padding: 0 10px;
+@media only screen and (min-width: 767px) {
+  span.adopt,
+  span.meet,
+  span.sell {
+    font-size: 52px;
   }
+}
+@media (min-width: 300px) and (max-width: 767px) {
   .search-form {
     max-width: 93%;
     margin: auto;
     padding-left: 10px;
-  }
-  .hero-wrapper .container-fluid {
-    padding: 0 10px;
-  }
-  .hero-content {
-    position: relative;
-    padding-top: 120px;
-    text-align: center;
-  }
-  .hero-content h1 {
-    font-size: 32px;
-    line-height: 45px;
   }
   span.adopt img,
   span.meet img,
@@ -422,65 +402,21 @@ span.sell img {
   .single-pet h4 {
     font-size: 20px;
   }
-  .hero-img {
-    display: none;
-  }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 10px;
-  }
   .section-title h2 {
     font-size: 28px;
-  }
-  .upload-post-img {
-    max-width: 100%;
-    padding: 50px 0 80px;
-  }
-  .upload-post-form {
-    padding: 0 20px 50px;
-    margin: auto;
   }
   .upload-post-shape {
     z-index: -1;
   }
-  .user-hero-top {
-    background-position: center center;
-    height: 100px;
-  }
-  .user-form-container {
-    width: 300px;
-    margin-top: 80px;
-    padding: 40px 20px;
-  }
-  .user-upload-img {
-    width: 100px;
-    height: 100px;
-    margin: auto;
-  }
   .post-hero-title h2 {
     font-size: 30px;
   }
-  .post-hero-wrapper {
-    margin-top: 120px;
-  }
-  .vip-post-wrapper {
-    padding: 0 0 50px;
-  }
-}
-@media only screen and (min-width: 767px) {
-  span.adopt,
-  span.meet,
-  span.sell {
-    font-size: 52px;
-  }
-}
-@media (min-width: 300px) and (max-width: 767px) {
+  .hero-wrapper .container-fluid,
   .post-hero-wrapper .container-fluid,
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid,
   .user-footer .container-fluid,
   .user-hero-wrapper .container-fluid {
-    padding: 0 10px;
-  }
-  .hero-wrapper .container-fluid {
     padding: 0 10px;
   }
   .hero-content {
@@ -492,18 +428,8 @@ span.sell img {
     font-size: 32px;
     line-height: 45px;
   }
-  span.sell img {
-    width: 90%;
-  }
-  span.sell::after {
-    top: 16px;
-  }
   .hero-img {
     display: none;
-  }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 10px;
   }
   .upload-post-img {
     max-width: 100%;

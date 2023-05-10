@@ -1,12 +1,18 @@
-$dark: #ee8240;
-$light: #fceddc;
-$dim: #2e3134;
-
-mat-icon {
-  vertical-align: middle;
+.logo,
+.right,
+.search-btn,
+.search-form {
+  display: flex;
 }
-
-/* Navigation Section CSS Start */
+.sticky,
+a.login {
+  transition: 0.3s ease-in-out;
+}
+.profile-user-info h5,
+a.login {
+  font-weight: 600;
+  color: #1d1d1d;
+}
 nav.navbar {
   position: fixed;
   top: 0;
@@ -14,38 +20,25 @@ nav.navbar {
   padding: 20px 0;
   z-index: 999;
 }
-
 .sticky {
-  background: #ffffff;
+  background: #fff;
   padding: 25px 0 !important;
-  box-shadow: 1px 1px 20px 0px #dddddd;
-  transition: all 0.3s ease-in-out;
+  box-shadow: 1px 1px 20px 0 #ddd;
 }
-
 .logo {
-  display: flex;
   align-items: center;
   font-size: 32px;
   font-weight: 700;
   color: #334368;
 }
-
 .logo img {
   padding-right: 12px;
 }
-
-.right {
-  display: flex;
-}
-
 .search-form {
-  display: flex;
   justify-content: center;
   align-items: center;
 }
-
 .search-btn {
-  display: flex;
   justify-content: center;
   align-items: center;
   width: 45px;
@@ -55,107 +48,88 @@ nav.navbar {
   border-radius: 100%;
   background: #54a0b3;
 }
-
-.search-form-field {
-  background: #ffffff;
-  border: 1px solid #54a0b2;
-  border-radius: 50px;
-}
-
-.search-form-field input {
-  background: transparent;
-  padding: 11px 30px;
-  border: none;
-}
-
-.search-form-field input:focus {
-  outline: 0;
-}
-
-.search-form-field span {
-  padding: 11px 30px 11px 0;
-  cursor: pointer;
-}
-
-.search-form-field ::placeholder {
-  font-weight: 700;
-  color: #4a4a4a;
-}
-
-a.login {
-  font-size: 16px;
-  font-weight: 600;
-  line-height: 20px;
-  padding: 13px 32px;
-  color: #1d1d1d;
-  background: #fca311;
-  border: 1px solid #fca311;
-  border-radius: 50px;
-  transition: all 0.3s ease-in-out;
-}
-
-a.login:hover {
-  color: #fca311;
-  background: transparent;
-  border: 1px solid #fca311;
-}
-
-.user-profile {
-  text-align: center;
-}
-
+.profile-user-info img,
 .user-profile-icon {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  border-radius: 100%;
   cursor: pointer;
+}
+.search-form-field {
+  background: #fff;
+  border: 1px solid #54a0b2;
+  border-radius: 50px;
+}
+.search-form-field input {
+  background: 0 0;
+  padding: 11px 30px;
+  border: none;
+}
+.form-input-field input:focus,
+.form-input-field select:focus,
+.search-form-field input:focus,
+.sorted-by select:focus {
+  outline: 0;
+}
+.search-form-field span {
+  padding: 11px 30px 11px 0;
+  cursor: pointer;
+}
+.search-form-field ::placeholder {
+  font-weight: 700;
+  color: #4a4a4a;
+}
+a.login {
+  font-size: 16px;
+  line-height: 20px;
+  padding: 13px 32px;
+  background: #fca311;
+  border: 1px solid #fca311;
+  border-radius: 50px;
+}
+a.login:hover {
+  color: #fca311;
+  background: 0 0;
+  border: 1px solid #fca311;
+}
+.user-profile {
+  text-align: center;
+}
+.user-profile-icon {
+  border-radius: 100%;
   border: 2px solid #48c0e0;
 }
-
 .profile-dropdown {
   position: absolute;
   top: 60px;
   right: 0;
   width: 270px;
   padding: 40px 30px;
-  background: #ffffff;
+  background: #fff;
   filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
   border-radius: 30px;
   display: none;
   z-index: 1;
 }
-
 .profile-dropdown.active {
   display: block;
 }
-
 .profile-user-info {
   overflow: hidden;
 }
-
 .profile-user-info img {
-  width: 50px;
-  height: 50px;
-  object-fit: cover;
   border-radius: 100%;
-  cursor: pointer;
   margin-right: 20px;
 }
-
 .profile-user-info h5 {
   font-size: 18px;
-  font-weight: 600;
   text-align: left;
-  color: #1d1d1d;
   margin: 0;
 }
-
 .profile-user-info p {
   color: #1d1d1dcc;
   margin: 0;
 }
-
 .user-edit-profile span,
 .user-logout span {
   margin: 10px;
@@ -163,154 +137,112 @@ a.login:hover {
   font-weight: 400;
   color: #1d1d1d;
 }
-
 .user-edit-profile {
   display: flex;
   justify-content: flex-start;
 }
-
 .user-logout {
   float: left;
 }
-
 .profile-dropdown hr {
   border-top: 1px solid #62d8f4;
   opacity: 1;
 }
-
 .navbar-toggler {
   border: 0 !important;
   margin-top: -15px;
 }
-
-.navbar-toggler:focus,
+.navbar-toggler-icon:focus,
 .navbar-toggler:active,
-.navbar-toggler-icon:focus {
-  outline: none !important;
+.navbar-toggler:focus {
+  outline: 0 !important;
   box-shadow: none !important;
   border: 0 !important;
 }
-
 .toggler-icon {
   width: 25px;
   height: 2px;
   background-color: #e74c3c;
   display: block;
-  transition: all 0.2s;
+  transition: 0.2s;
 }
-
 .middle-bar {
   margin: 5px auto;
 }
-
 .navbar-toggler .top-bar {
   transform: rotate(45deg);
   transform-origin: 10% 10%;
 }
-
 .navbar-toggler .middle-bar {
   opacity: 0;
-  filter: alpha(opacity=0);
 }
-
 .navbar-toggler .bottom-bar {
   transform: rotate(-45deg);
   transform-origin: 10% 90%;
 }
-
+.navbar-toggler.collapsed .bottom-bar,
 .navbar-toggler.collapsed .top-bar {
   transform: rotate(0);
 }
-
 .navbar-toggler.collapsed .middle-bar {
   opacity: 1;
-  filter: alpha(opacity=100);
 }
-
-.navbar-toggler.collapsed .bottom-bar {
-  transform: rotate(0);
-}
-
 .navbar-toggler.collapsed .toggler-icon {
   background-color: #151515;
 }
-
 .lang-selector {
   display: flex;
   justify-content: center;
   margin-left: 20px;
 }
-
 .mobile-lang-selector {
   display: flex;
   margin-right: 10px;
 }
-
 @media (max-width: 1200px) {
   .navbar-nav {
-    background: #ffffff;
+    background: #fff;
     padding-bottom: 50px;
+    padding-top: 30px;
   }
-
   .logo {
     font-size: 25px;
   }
-
   button.navbar-toggler {
     padding-top: 15px;
   }
-
-  .navbar-nav {
-    padding-top: 30px;
-  }
-
   .search-form-field input {
     padding: 11px 0 11px 10px;
   }
-
   .search-form-field span {
     padding: 11px 10px 11px 0;
   }
-
   .navbar-toggler:focus {
     box-shadow: none;
   }
 }
-
-/* Navigation Section CSS End */
-
-/* 
-===========***===========
-Profile Page CSS
-===========***=========== */
-
 .profile-main-wrapper {
   display: flex;
   margin-top: 100px;
   min-height: 100vh;
   height: 100%;
 }
-
 #Profile-sidebar {
   max-width: 450px;
   width: 100%;
 }
-
 .profile-sidebar-wrapper {
   padding: 40px 60px;
 }
-
 .filter-form-wrapper h4 {
   font-size: 24px;
   font-weight: 700;
   line-height: 24px;
   color: #1d1d1d;
 }
-
 .form-input-field {
   padding-top: 20px;
 }
-
 .form-input-field input,
 .form-input-field select {
   width: 100%;
@@ -318,12 +250,6 @@ Profile Page CSS
   border: 1px solid #54a0b2;
   border-radius: 30px;
 }
-
-.form-input-field input:focus,
-.form-input-field select:focus {
-  outline: 0;
-}
-
 .form-input-field label {
   font-size: 18px;
   font-weight: 500;
@@ -331,12 +257,10 @@ Profile Page CSS
   color: #1d1d1d;
   margin-bottom: 10px;
 }
-
 .form-btn {
   display: flex;
   justify-content: space-around;
 }
-
 .form-btn input {
   font-size: 16px;
   color: #1d1d1d;
@@ -347,13 +271,17 @@ Profile Page CSS
   border: none;
   border-radius: 30px;
 }
-
+.sorted-by label,
+.sorted-by select {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1d1d1d;
+}
 #Profile-contents {
   flex: 1;
   min-height: 100vh;
   height: 100%;
 }
-
 .profile-contents-wrapper {
   background: linear-gradient(
     155.53deg,
@@ -363,58 +291,38 @@ Profile Page CSS
   min-height: 100vh;
   height: 100%;
   padding: 50px 40px 0;
-  border-radius: 30px 0px 0px 30px;
+  border-radius: 30px 0 0 30px;
 }
-
 .vip-post-wrapper {
   padding: 0 20px 50px;
   background: linear-gradient(
     107.16deg,
-    rgba(255, 255, 255, 0.9) 0%,
+    rgba(255, 255, 255, 0.9) 0,
     rgba(255, 255, 255, 0.4) 100%
   );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+  box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   border-radius: 30px;
 }
-
-.sorted-by label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1d1d1d;
-}
-
 .sorted-by select {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1d1d1d;
-  background: transparent;
+  background: 0 0;
   border: none;
 }
-
-.sorted-by select:focus {
-  outline: none;
-}
-
-/* Search Filter CSS */
-
 .search-filter {
   position: absolute;
   left: 60%;
   top: 0;
   max-width: 350px;
   padding: 30px;
-  background: #ffffff;
+  background: #fff;
   border-radius: 30px;
   z-index: 9999;
   display: none;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
 }
-
 .search-filter.active {
   display: block;
   width: 90%;
 }
-
 @media (min-width: 300px) and (max-width: 992px) {
   .search-filter {
     position: absolute;
@@ -422,7 +330,6 @@ Profile Page CSS
     top: 0;
     transform: translateX(-50%);
   }
-
   .search-filter.active {
     top: 20px;
   }

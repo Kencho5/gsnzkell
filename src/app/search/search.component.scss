@@ -2,6 +2,13 @@ $dark: #ee8240;
 $bg: #fceddc;
 $light: #fff;
 
+.profile-shape1,
+.profile-shape2,
+.profile-shape3 {
+  max-width: 400px;
+  z-index: -1;
+  position: absolute;
+}
 body {
   font-family: Ubuntu, sans-serif;
   color: $light;
@@ -46,7 +53,8 @@ li {
   border-radius: 30px;
 }
 .form-input-field input:focus,
-.form-input-field select:focus {
+.form-input-field select:focus,
+.sorted-by select:focus {
   outline: 0;
 }
 .form-input-field label {
@@ -71,6 +79,12 @@ li {
   margin-top: 40px;
   border: none;
   border-radius: 30px;
+}
+.sorted-by label,
+.sorted-by select {
+  font-size: 18px;
+  color: #1d1d1d;
+  font-weight: 700;
 }
 #Profile-contents {
   flex: 1;
@@ -98,20 +112,9 @@ li {
   box-shadow: 0 27px 100px 5px rgba(11, 47, 91, 0.1);
   border-radius: 30px;
 }
-.sorted-by label {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1d1d1d;
-}
 .sorted-by select {
-  font-size: 18px;
-  font-weight: 700;
-  color: #1d1d1d;
   background: 0 0;
   border: none;
-}
-.sorted-by select:focus {
-  outline: 0;
 }
 .latest-pagi-wrapper {
   padding-top: 100px;
@@ -142,25 +145,16 @@ li {
   border: 1px solid #54a0b2;
 }
 .profile-shape1 {
-  position: absolute;
   top: 0;
   left: 0;
-  max-width: 400px;
-  z-index: -1;
 }
 .profile-shape2 {
-  position: absolute;
   bottom: -180px;
   right: -20px;
-  max-width: 400px;
-  z-index: -1;
 }
 .profile-shape3 {
-  position: absolute;
   bottom: 70px;
   left: -50px;
-  max-width: 400px;
-  z-index: -1;
 }
 .search-filter {
   position: absolute;
@@ -226,47 +220,6 @@ li {
     font-size: 28px;
   }
 }
-@media (min-width: 300px) and (max-width: 767px) {
-  .search-form {
-    max-width: 93%;
-    margin: auto;
-    padding-left: 10px;
-  }
-  .search-form-field {
-    max-width: 75%;
-  }
-  .search-form-field input {
-    max-width: 85%;
-  }
-  .section-title h2 {
-    font-size: 28px;
-  }
-  .upload-post-img {
-    max-width: 100%;
-    padding: 50px 0 80px;
-  }
-  .upload-post-form {
-    padding: 0 20px 50px;
-    margin: auto;
-  }
-  .upload-post-shape {
-    z-index: -1;
-  }
-  .user-upload-img {
-    width: 100px;
-    height: 100px;
-    margin: auto;
-  }
-  #Profile-contents {
-    width: 100%;
-  }
-  .profile-contents-wrapper {
-    padding: 50px 20px 0;
-  }
-  .vip-post-wrapper {
-    padding: 0 0 50px;
-  }
-}
 @media (min-width: 300px) and (max-width: 1199px) {
   .profile-main-wrapper {
     margin-top: 150px;
@@ -302,6 +255,29 @@ li {
   }
 }
 @media (min-width: 300px) and (max-width: 767px) {
+  .search-form {
+    max-width: 93%;
+    margin: auto;
+    padding-left: 10px;
+  }
+  .search-form-field {
+    max-width: 75%;
+  }
+  .search-form-field input {
+    max-width: 85%;
+  }
+  .section-title h2 {
+    font-size: 28px;
+  }
+  .upload-post-shape {
+    z-index: -1;
+  }
+  #Profile-contents {
+    width: 100%;
+  }
+  .profile-contents-wrapper {
+    padding: 50px 20px 0;
+  }
   .upload-post-img {
     max-width: 100%;
     padding: 50px 0 80px;
