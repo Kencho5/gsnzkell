@@ -71,3 +71,47 @@
 .post-card p span img {
   margin-top: -20px;
 }
+
+// RESPONSIVE
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
+}
+@media (min-width: 400px) and (max-width: 576px) {
+  .post-card-img img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
+}
+@media (min-width: 400px) and (max-width: 576px) {
+  .post-card-img img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
+}

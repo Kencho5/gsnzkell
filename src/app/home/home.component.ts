@@ -14,7 +14,7 @@ import citiesJson from '../../assets/i18n/cities.json';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss', '../responsive.css'],
+  styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent implements OnInit {
   posts = [];

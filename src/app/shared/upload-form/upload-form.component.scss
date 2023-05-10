@@ -387,3 +387,96 @@ textarea {
 }
 
 /* Upload Post Section CSS End */
+
+// RESPONSIVE
+@media (min-width: 1920px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+@media (min-width: 1600px) and (max-width: 1919px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 100px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 60px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 50px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 20px;
+  }
+  .section-title h2 {
+    font-size: 28px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+  .section-title h2 {
+    font-size: 28px;
+  }
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+  .upload-post-form {
+    padding: 0 20px 50px;
+    margin: auto;
+  }
+  .upload-post-shape {
+    z-index: -1;
+  }
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
+}
+@media only screen and (min-width: 767px) {
+  .owl {
+    display: none;
+  }
+}
+@media only screen and (max-width: 767px) {
+  .slide1,
+  .slide2,
+  .slide3 {
+    padding: 20px 25px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-wrapper .container-fluid,
+  .upload-post-wrapper .container-fluid {
+    padding: 0 10px;
+  }
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+  .upload-post-form {
+    padding: 0 20px 50px;
+    margin: auto;
+  }
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
+}

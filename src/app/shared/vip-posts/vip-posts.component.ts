@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-vip-posts',
   templateUrl: './vip-posts.component.html',
-  styleUrls: ['../posts/posts.component.scss', '../../responsive.css']
+  styleUrls: ['../posts/posts.component.scss']
 })
 export class VipPostsComponent {
   constructor(private router: Router, public translate: TranslateService) {}

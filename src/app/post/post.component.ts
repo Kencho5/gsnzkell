@@ -9,7 +9,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',
-  styleUrls: ['./post.component.scss', '../responsive.css'],
+  styleUrls: ['./post.component.scss'],
 })
 export class PostComponent implements OnInit {
   postID: string;

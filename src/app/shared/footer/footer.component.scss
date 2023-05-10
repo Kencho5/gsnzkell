@@ -57,3 +57,48 @@ mat-icon {
   margin-top: 20px;
   margin-left: 20px;
 }
+
+// RESPONSIVE
+@media (min-width: 1920px) {
+  .user-footer .container-fluid {
+    padding: 0 100px;
+  }
+}
+@media (min-width: 1400px) and (max-width: 1599px) {
+  .user-footer .container-fluid {
+    padding: 0 80px;
+  }
+}
+@media (min-width: 1200px) and (max-width: 1399px) {
+  .user-footer .container-fluid {
+    padding: 0 80px;
+  }
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+  .user-footer .container-fluid {
+    padding: 0 50px;
+  }
+  .user-social li::after {
+    right: -75px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .user-footer .container-fluid {
+    padding: 0 20px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .user-footer .container-fluid {
+    padding: 0 10px;
+  }
+  .footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .user-footer .container-fluid {
+    padding: 0 10px;
+  }
+}

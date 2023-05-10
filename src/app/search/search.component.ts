@@ -20,7 +20,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss', '../responsive.css'],
+  styleUrls: ['./search.component.scss'],
 })
 export class SearchComponent implements OnInit {
   filterForm = new FormGroup({

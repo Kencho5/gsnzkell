@@ -210,3 +210,122 @@ li {
     display: none;
   }
 }
+
+// RESPONSIVE
+@media (min-width: 1200px) and (max-width: 1399px) {
+  #Profile-sidebar {
+    max-width: 300px;
+    width: 100%;
+  }
+  .profile-sidebar-wrapper {
+    padding: 40px 20px;
+  }
+}
+@media (min-width: 768px) and (max-width: 991px) {
+  .section-title h2 {
+    font-size: 28px;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .search-form {
+    max-width: 93%;
+    margin: auto;
+    padding-left: 10px;
+  }
+  .search-form-field {
+    max-width: 75%;
+  }
+  .search-form-field input {
+    max-width: 85%;
+  }
+  .section-title h2 {
+    font-size: 28px;
+  }
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+  .upload-post-form {
+    padding: 0 20px 50px;
+    margin: auto;
+  }
+  .upload-post-shape {
+    z-index: -1;
+  }
+  .user-upload-img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  #Profile-contents {
+    width: 100%;
+  }
+  .profile-contents-wrapper {
+    padding: 50px 20px 0;
+  }
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
+}
+@media (min-width: 300px) and (max-width: 1199px) {
+  .profile-main-wrapper {
+    margin-top: 150px;
+  }
+  #Profile-sidebar {
+    max-width: 320px;
+    width: 100%;
+    padding-bottom: 40px;
+    position: absolute;
+    top: 150px;
+    left: -100%;
+    z-index: 111;
+    background: #fff;
+    transition: left 0.3s ease-in-out;
+  }
+  #Profile-sidebar.active {
+    left: 0;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+    border-radius: 0 15px 15px 0;
+  }
+  .profile-sidebar-wrapper {
+    padding: 40px 20px;
+  }
+  .bars {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+  }
+  .bars span {
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+@media (min-width: 300px) and (max-width: 767px) {
+  .upload-post-img {
+    max-width: 100%;
+    padding: 50px 0 80px;
+  }
+  .upload-post-form {
+    padding: 0 20px 50px;
+    margin: auto;
+  }
+  .user-upload-img {
+    width: 100px;
+    height: 100px;
+    margin: auto;
+  }
+  .vip-post-wrapper {
+    padding: 0 0 50px;
+  }
+  .post-time {
+    padding: 20px 0 40px;
+  }
+  .post-time::after,
+  .post-time::before {
+    bottom: 25px;
+  }
+  .post-time::after {
+    bottom: 27px;
+  }
+}

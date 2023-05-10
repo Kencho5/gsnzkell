@@ -5,7 +5,7 @@ import { TranslateService } from '@ngx-translate/core';
 @Component({
   selector: 'app-posts',
   templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss', '../../responsive.css'],
+  styleUrls: ['./posts.component.scss'],
 })
 export class PostsComponent {
   constructor(private router: Router, public translate: TranslateService) {}

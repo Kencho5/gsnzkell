@@ -15,7 +15,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 @Component({
   selector: 'app-upload-form',
   templateUrl: './upload-form.component.html',
-  styleUrls: ['./upload-form.component.scss', '../../responsive.css'],
+  styleUrls: ['./upload-form.component.scss'],
 })
 export class UploadFormComponent {
   uploadForm = new FormGroup({

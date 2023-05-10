@@ -10,7 +10,6 @@ import { UserService } from './user.service';
   templateUrl: './user.component.html',
   styleUrls: [
     './user.component.scss',
-    '../responsive.css',
     '../profile/profile.component.scss',
   ],
 })
