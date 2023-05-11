@@ -12,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { v4 as uuidv4 } from 'uuid';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Component({
   selector: 'app-upload-form',
@@ -41,7 +42,10 @@ export class UploadFormComponent {
   daysSelected = 0;
   vipSum = 0;
   images: File[] = [];
-
+  private files: File[] = [];
+  private fileContent: File;
+  private apiUrl = 'https://storage.bunnycdn.com';
+  private storageZoneName = 'pender';
   customOptions: OwlOptions = {
     items: 1,
     dots: true,
@@ -57,7 +61,8 @@ export class UploadFormComponent {
     private uploadService: UploadFormService,
     private router: Router,
     private login: LoginService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {
@@ -68,6 +73,7 @@ export class UploadFormComponent {
   }
 
   selectFiles(event) {
+    this.files = event.target.files;
     const files = event.target.files;
     if (!files) return;
 
@@ -96,14 +102,26 @@ export class UploadFormComponent {
     this.urls = tmp;
   }
 
-  upload() {
+  async upload() {
     const postID = uuidv4();
-    this.uploadService.uploadImages(postID, this.images).subscribe((res) => {
-      if (res['code'] === 200) {
-        if (res['token']) {
-        }
-      }
-    });
+    const path = `postImages/${postID}`;
+    for (let i = 0; i < this.files.length; i++) {
+      const url = `${this.apiUrl}/${this.storageZoneName}/${path}/${this.files[i].name}`;
+      const headers = new HttpHeaders({
+        AccessKey: '006c7cc7-e193-46a4-aefa47983831-16e1-43f1',
+      });
+
+      this.http.put(url, this.files[i], { headers }).subscribe(
+        (res) => console.log(`File ${i + 1} uploaded successfully`),
+        (err) => console.error(`File ${i + 1} upload failed`, err)
+      );
+    }
+    // this.uploadService.uploadImages(postID, this.images).subscribe((res) => {
+    //   if (res['code'] === 200) {
+    //     if (res['token']) {
+    //     }
+    //   }
+    // });
 
     //   const controls = this.uploadForm.controls;
     //   for (const name in controls) {
