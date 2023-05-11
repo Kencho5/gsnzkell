@@ -17,112 +17,112 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  // filterForm = new FormGroup({
-  //   animal: new FormControl(''),
-  //   postType: new FormControl('', Validators.required),
-  //   city: new FormControl(''),
-  //   ageMin: new FormControl('', Validators.required),
-  //   ageMax: new FormControl('', Validators.required),
-  //   ageType: new FormControl('', Validators.required),
-  //   priceMin: new FormControl('', Validators.required),
-  //   priceMax: new FormControl('', Validators.required),
-  // });
+  filterForm = new FormGroup({
+    animal: new FormControl(''),
+    postType: new FormControl('', Validators.required),
+    city: new FormControl(''),
+    ageMin: new FormControl('', Validators.required),
+    ageMax: new FormControl('', Validators.required),
+    ageType: new FormControl('', Validators.required),
+    priceMin: new FormControl('', Validators.required),
+    priceMax: new FormControl('', Validators.required),
+  });
 
-  // searchForm = this.formBuilder.group({
-  //   text: new FormControl(),
-  // });
+  searchForm = this.formBuilder.group({
+    text: new FormControl(),
+  });
 
-  // posts = [];
-  // postsLength;
-  // text: string;
-  // count;
-  // time;
-  // filterError;
-  // supportedLanguages = ['en', 'ge'];
-  // currentLanguage: string;
-  // screenWidth: number;
+  posts = [];
+  postsLength;
+  text: string;
+  count;
+  time;
+  filterError;
+  supportedLanguages = ['en', 'ge'];
+  currentLanguage: string;
+  screenWidth: number;
 
-  // @HostListener('window:resize', ['$event'])
-  // onResize(event) {
-  //   this.screenWidth = window.innerWidth;
-  // }
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.screenWidth = window.innerWidth;
+  }
 
-  // constructor(
-  //   private formBuilder: FormBuilder,
-  //   private router: Router,
-  //   public loginService: LoginService,
-  //   private el: ElementRef,
-  //   private renderer: Renderer2,
-  //   private searchService: SearchService,
-  //   private translate: TranslateService
-  // ) {
-  //   // Set the default language
-  //   translate.setDefaultLang('ge');
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    public loginService: LoginService,
+    private el: ElementRef,
+    private renderer: Renderer2,
+    private searchService: SearchService,
+    private translate: TranslateService
+  ) {
+    // Set the default language
+    translate.setDefaultLang('ge');
 
-  //   this.screenWidth = window.innerWidth;
-  // }
+    this.screenWidth = window.innerWidth;
+  }
 
-  // ngOnInit(): void {
-  //   if (!localStorage.getItem('lang')) {
-  //     localStorage.setItem('lang', 'ge');
-  //   }
+  ngOnInit(): void {
+    if (!localStorage.getItem('lang')) {
+      localStorage.setItem('lang', 'ge');
+    }
 
-  //   this.searchForm = new FormGroup({
-  //     text: new FormControl('', [Validators.required]),
-  //   });
+    this.searchForm = new FormGroup({
+      text: new FormControl('', [Validators.required]),
+    });
 
-  //   if (localStorage.getItem('token')) {
-  //     var ts = jwtDecode(localStorage.getItem('token'))['exp'];
-  //     var exp = new Date(ts * 1000).getDate() - new Date().getDate();
+    if (localStorage.getItem('token')) {
+      var ts = jwtDecode(localStorage.getItem('token'))['exp'];
+      var exp = new Date(ts * 1000).getDate() - new Date().getDate();
 
-  //     if (exp == 0) {
-  //       localStorage.removeItem('token');
-  //     }
-  //   }
-  // }
+      if (exp == 0) {
+        localStorage.removeItem('token');
+      }
+    }
+  }
 
-  // search() {
-  //   if (this.searchForm.valid) {
-  //     // this.router.navigate(['/search', { text: this.searchForm.value.text }]);
-  //     window.open(`/search;text=${this.searchForm.value.text}`, '_self');
-  //   }
-  // }
+  search() {
+    if (this.searchForm.valid) {
+      // this.router.navigate(['/search', { text: this.searchForm.value.text }]);
+      window.open(`/search;text=${this.searchForm.value.text}`, '_self');
+    }
+  }
 
-  // filter() {
-  //   if (this.filterForm.valid) {
-  //     this.filterError = '';
+  filter() {
+    if (this.filterForm.valid) {
+      this.filterError = '';
 
-  //     this.searchService
-  //       .searchPost({ text: this.text, filters: this.filterForm.value })
-  //       .subscribe((res) => {
-  //         if (res['code'] == 200) {
-  //           this.posts = res['data'];
-  //           this.count = res['count'];
-  //           this.time = res['time'];
-  //         }
-  //       });
-  //   } else {
-  //     let errors = [];
-  //     for (const invalid in this.filterForm.controls) {
-  //       if (this.filterForm.controls[invalid].invalid) {
-  //         errors.push(invalid);
-  //       }
-  //     }
-  //     this.filterError = `Please fill: ${errors}`;
-  //   }
-  // }
+      this.searchService
+        .searchPost({ text: this.text, filters: this.filterForm.value })
+        .subscribe((res) => {
+          if (res['code'] == 200) {
+            this.posts = res['data'];
+            this.count = res['count'];
+            this.time = res['time'];
+          }
+        });
+    } else {
+      let errors = [];
+      for (const invalid in this.filterForm.controls) {
+        if (this.filterForm.controls[invalid].invalid) {
+          errors.push(invalid);
+        }
+      }
+      this.filterError = `Please fill: ${errors}`;
+    }
+  }
 
-  // logoutFunction() {
-  //   localStorage.removeItem('token');
-  // }
+  logoutFunction() {
+    localStorage.removeItem('token');
+  }
 
-  // openModal() {
-  //   document.querySelector('.profile-dropdown').classList.toggle('active');
-  // }
+  openModal() {
+    document.querySelector('.profile-dropdown').classList.toggle('active');
+  }
 
-  // closeFilter() {
-  //   this.el.nativeElement
-  //     .querySelector('.search-filter')
-  //     .classList.remove('active');
-  // }
+  closeFilter() {
+    this.el.nativeElement
+      .querySelector('.search-filter')
+      .classList.remove('active');
+  }
 }

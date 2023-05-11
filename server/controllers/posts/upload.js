@@ -142,8 +142,9 @@ async function saveImages(postID, req) {
       const [, type, data] = matches;
       const buffer = Buffer.from(data, "base64");
 
-      // Compress the image using sharp
+      // Compress and resize the image using sharp
       const compressedBuffer = await sharp(buffer)
+        .resize({ width: 800 })
         .jpeg({ quality: 60 })
         .toBuffer();
 
