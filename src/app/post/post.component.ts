@@ -90,6 +90,6 @@ export class PostComponent implements OnInit {
     loop: true,
     navText: ['<', '>'],
     autoplay: true,
-    autoplayTimeout: 2500,
+    autoplayTimeout: 3000,
   };
 }
