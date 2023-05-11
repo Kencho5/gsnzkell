@@ -17,7 +17,6 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-
   // filterForm = new FormGroup({
   //   animal: new FormControl(''),
   //   postType: new FormControl('', Validators.required),
