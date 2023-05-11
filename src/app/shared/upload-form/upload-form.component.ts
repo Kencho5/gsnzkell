@@ -181,7 +181,7 @@ export class UploadFormComponent {
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
-        urls: this.urls,
+        urls: this.images,
       };
       this.uploadService.uploadPost(data).subscribe((res) => {
         if (res['code'] === 200) {
