@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const multer = require('multer');
 
 const webhook = require('./webhook');
 const login = require('./controllers/auth/login');
@@ -10,6 +11,7 @@ const editPost = require('./controllers/posts/editPost');
 const profile = require('./controllers/user/profile');
 const update = require('./controllers/user/update');
 const upload = require('./controllers/posts/upload');
+const uploadImages = require('./controllers/posts/uploadImages');
 const post = require('./controllers/posts/post');
 const similar = require('./controllers/posts/similar');
 const getId = require('./controllers/user/getId');
@@ -25,6 +27,16 @@ const cities = require('./utils/cities');
 const payment = require('./controllers/auth/tbcPayment');
 const checkPayment = require('./controllers/auth/checkPayment');
 const paymentStatus = require('./controllers/auth/paymentStatus');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, './uploads');
+  },
+  filename: function (req, file, cb) {
+    cb(null, file.originalname);
+  }
+});
+const uploadImagesMiddleware = multer({ storage: storage }).array('images');
 
 router.post('/api/webhook', webhook);
 
@@ -43,6 +55,8 @@ router.post('/api/profile', profile);
 router.post('/api/update', update);
 
 router.post('/api/upload', upload);
+
+router.post('/api/uploadImages', uploadImagesMiddleware, uploadImages);
 
 router.post('/api/post', post);
 
