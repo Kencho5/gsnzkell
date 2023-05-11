@@ -12,6 +12,7 @@ import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { v4 as uuidv4 } from 'uuid';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-upload-form',
@@ -40,7 +41,7 @@ export class UploadFormComponent {
   loggedIn: boolean;
   daysSelected = 0;
   vipSum = 0;
-  images: File[] = [];
+  images = [];
 
   customOptions: OwlOptions = {
     items: 1,
@@ -57,7 +58,8 @@ export class UploadFormComponent {
     private uploadService: UploadFormService,
     private router: Router,
     private login: LoginService,
-    public translate: TranslateService
+    public translate: TranslateService,
+    private imageCompress: NgxImageCompressService
   ) {}
 
   ngOnInit(): void {
@@ -71,20 +73,69 @@ export class UploadFormComponent {
     const files = event.target.files;
     if (!files) return;
 
-    const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
-    for (let i = 0; i < urlsToLoad; i++) {
-      this.images.push(files.item(i));
+    this.compressFile(files);
+  }
 
+  compressFile(files) {
+    const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
+    const promises = [];
+    for (let i = 0; i < urlsToLoad; i++) {
       const reader = new FileReader();
       reader.readAsDataURL(files[i]);
-      reader.onload = (event: any) => {
-        this.urls.push(event.target.result);
+      promises.push(
+        new Promise((resolve) => {
+          reader.onload = (event) => {
+            resolve(event.target.result);
+          };
+        })
+      );
+    }
+
+    Promise.all(promises).then((results) => {
+      const compressedImages = [];
+      const compressPromises = [];
+      for (let i = 0; i < results.length; i++) {
+        compressPromises.push(
+          this.imageCompress.compressFile(results[i], -1, 50, 50)
+        );
+      }
+
+      Promise.all(compressPromises).then((compressedResults) => {
+        for (let i = 0; i < compressedResults.length; i++) {
+          compressedImages.push(compressedResults[i]);
+        }
+
+        this.images = [...this.images, ...compressedImages];
+        this.urls = [...this.urls, ...results];
+
         if (this.urls.length === 3) {
           this.message = '';
         }
-      };
-    }
+      });
+    });
   }
+
+  //   compressFile(files) {
+  //   const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
+  //   for (let i = 0; i < urlsToLoad; i++) {
+  //     const reader = new FileReader();
+  //     reader.readAsDataURL(files[i]);
+  //     reader.onload = (event: any) => {
+  //       this.imageCompress
+  //         .compressFile(event.target.result, -1, 50, 50)
+  //         .then((compressedImage) => {
+  //           this.images.push(compressedImage)
+  //         });
+
+  //       this.urls.push(event.target.result);
+
+  //       if (this.urls.length === 3) {
+  //         this.message = '';
+  //       }
+  //     };
+  //   }
+  // }
+
 
   removeImage(event) {
     var tmp = [];
@@ -105,46 +156,46 @@ export class UploadFormComponent {
     //   }
     // });
 
-      const controls = this.uploadForm.controls;
-      for (const name in controls) {
-        const control = controls[name];
-        const element = document.getElementById(name);
-        const style = control.invalid ? '2px solid red' : '2px solid #54a0b2';
-        element.style.border = style;
-      }
+    const controls = this.uploadForm.controls;
+    for (const name in controls) {
+      const control = controls[name];
+      const element = document.getElementById(name);
+      const style = control.invalid ? '2px solid red' : '2px solid #54a0b2';
+      element.style.border = style;
+    }
 
-      const ageYears = this.uploadForm.value.ageYears || 0;
-      const ageMonths = this.uploadForm.value.ageMonths || 0;
+    const ageYears = this.uploadForm.value.ageYears || 0;
+    const ageMonths = this.uploadForm.value.ageMonths || 0;
 
-      if (ageYears === 0 && ageMonths === 0) {
-        this.form_msg = 'Fill Out The Form';
-        return;
-      }
+    if (ageYears === 0 && ageMonths === 0) {
+      this.form_msg = 'Fill Out The Form';
+      return;
+    }
 
-      if (this.urls.length !== 3) {
-        this.message = 'Only 3 Photos Required!';
-        return;
-      }
+    if (this.urls.length !== 3) {
+      this.message = 'Only 3 Photos Required!';
+      return;
+    }
 
-      if (this.uploadForm.valid) {
-        const data = {
-          user: localStorage.getItem('token'),
-          form: this.uploadForm.value,
-          urls: this.urls,
-        };
-        this.uploadService.uploadPost(data).subscribe((res) => {
-          if (res['code'] === 200) {
-            if (res['token']) {
-              localStorage.setItem('token', res['token']);
-            }
-            this.router.navigate(['/post', res['id']]);
-          } else {
-            this.form_msg = 'Not Enough Balance!';
+    if (this.uploadForm.valid) {
+      const data = {
+        user: localStorage.getItem('token'),
+        form: this.uploadForm.value,
+        urls: this.urls,
+      };
+      this.uploadService.uploadPost(data).subscribe((res) => {
+        if (res['code'] === 200) {
+          if (res['token']) {
+            localStorage.setItem('token', res['token']);
           }
-        });
-      } else {
-        this.form_msg = 'Fill Out The Form';
-      }
+          this.router.navigate(['/post', res['id']]);
+        } else {
+          this.form_msg = 'Not Enough Balance!';
+        }
+      });
+    } else {
+      this.form_msg = 'Fill Out The Form';
+    }
   }
 
   changeInput(event) {
