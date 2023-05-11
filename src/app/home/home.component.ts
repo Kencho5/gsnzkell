@@ -19,6 +19,7 @@ import citiesJson from '../../assets/i18n/cities.json';
 export class HomeComponent implements OnInit {
   ngOnInit(): void {
       
+
   }
   // posts = [];
   // vipPosts = [];
