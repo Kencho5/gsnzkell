@@ -154,6 +154,10 @@ export class UploadFormComponent {
   }
 
   checkForm() {
+    if (!this.loggedIn) {
+      this.router.navigate(['/login']);
+    }
+
     const controls = this.uploadForm.controls;
     for (const name in controls) {
       const control = controls[name];
