@@ -61,6 +61,44 @@ select {
   color: $dim;
 }
 
+.button-select {
+  font-size: 16px;
+  border: 2px solid #54a0b2;
+  margin-bottom: 16px;
+  border-radius: 30px;
+  align-items: center;
+  background: white;
+  color: $dim;
+  font-weight: bold;
+}
+
+::ng-deep.menu-container {
+  border-radius: 15px !important;
+  max-width: 100% !important;
+  width: 200px;
+}
+
+.menu-item {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #94c9d6;
+}
+
+.button-select p {
+  margin: 0;
+  padding: 15px 40px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
 .double-input {
   display: flex;
   justify-content: space-between;

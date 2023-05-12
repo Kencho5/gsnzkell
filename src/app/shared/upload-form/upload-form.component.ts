@@ -11,7 +11,6 @@ import { UploadFormService } from './upload-form.service';
 import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-import { v4 as uuidv4 } from 'uuid';
 import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
@@ -42,6 +41,8 @@ export class UploadFormComponent {
   daysSelected = 0;
   vipSum = 0;
   images = [];
+  selectedAnimal: string;
+  selectedType: string;
 
   customOptions: OwlOptions = {
     items: 1,
@@ -136,7 +137,6 @@ export class UploadFormComponent {
   //   }
   // }
 
-
   removeImage(event) {
     var tmp = [];
     this.urls.forEach((url) => {
@@ -147,15 +147,13 @@ export class UploadFormComponent {
     this.urls = tmp;
   }
 
-  upload() {
-    // const postID = uuidv4();
-    // this.uploadService.uploadImages(postID, this.images).subscribe((res) => {
-    //   if (res['code'] === 200) {
-    //     if (res['token']) {
-    //     }
-    //   }
-    // });
+  selectItem(item, type) {
+    this.uploadForm.controls[type].setValue(
+      item.charAt(0).toUpperCase() + item.slice(1)
+    );
+  }
 
+  upload() {
     const controls = this.uploadForm.controls;
     for (const name in controls) {
       const control = controls[name];
@@ -198,9 +196,9 @@ export class UploadFormComponent {
     }
   }
 
-  changeInput(event) {
+  changeInput() {
     var priceInput = document.getElementById('price') as HTMLInputElement;
-    if (event.target.value != 'Selling') {
+    if (this.selectedType != 'Selling') {
       priceInput.style.display = 'none';
       this.uploadForm.value.price = '';
     } else {

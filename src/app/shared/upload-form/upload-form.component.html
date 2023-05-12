@@ -15,33 +15,59 @@
             <div class="upload-post-form-container">
               <form [formGroup]="uploadForm" (ngSubmit)="upload()">
                 <div class="upload-post-form">
-                  <div class="up-form-field">
-                    <select
-                      class="form-select"
-                      formControlName="animal"
-                      id="animal"
-                      required
+                  <div class="up-form-field button-select" id="animal">
+                    <p
+                      [matMenuTriggerFor]="selectAnimalMenu"
+                      *ngIf="selectedAnimal; else selectAnimal"
                     >
-                      <option value="" selected disabled>
+                      {{ 'ANIMALS.' + selectedAnimal | translate }}
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </p>
+                    <ng-template #selectAnimal>
+                      <p [matMenuTriggerFor]="selectAnimalMenu">
                         {{ 'UPLOAD.select_animal' | translate }}
-                      </option>
-                      <option value="Dog">
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                      </p>
+                    </ng-template>
+
+                    <mat-menu
+                      #selectAnimalMenu="matMenu"
+                      class="menu-container"
+                    >
+                      <p
+                        class="menu-item"
+                        (click)="selectedAnimal = 'dog'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                      >
                         {{ 'ANIMALS.dog' | translate }}
-                      </option>
-                      <option value="Cat">
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedAnimal = 'cat'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                      >
                         {{ 'ANIMALS.cat' | translate }}
-                      </option>
-                      <option value="Fish">
-                        {{ 'ANIMALS.fish' | translate }}
-                      </option>
-                      <option value="Bird">
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedAnimal = 'bird'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                      >
                         {{ 'ANIMALS.bird' | translate }}
-                      </option>
-                      <option value="Reptile">
+                      </p>
+
+                      <p
+                        class="menu-item"
+                        (click)="selectedAnimal = 'fish'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                      >
+                        {{ 'ANIMALS.fish' | translate }}
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedAnimal = 'reptile'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                      >
                         {{ 'ANIMALS.reptile' | translate }}
-                      </option>
-                    </select>
+                      </p>
+                    </mat-menu>
                   </div>
+
                   <div class="up-form-field">
                     <input
                       type="text"
@@ -51,28 +77,45 @@
                       required
                     />
                   </div>
-                  <div class="up-form-field">
-                    <select
-                      (change)="changeInput($event)"
-                      formControlName="postType"
-                      class="form-select"
-                      id="postType"
-                      required
+
+                  <!-- POST TYPE -->
+                  <div class="up-form-field button-select" id="postType">
+                    <p
+                      [matMenuTriggerFor]="selectTypeMenu"
+                      *ngIf="selectedType; else selectType"
                     >
-                      <option value="" disabled>
+                      {{ 'POST.' + selectedType | translate }}
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </p>
+                    <ng-template #selectType>
+                      <p [matMenuTriggerFor]="selectTypeMenu">
                         {{ 'UPLOAD.select_post_type' | translate }}
-                      </option>
-                      <option value="Selling">
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                      </p>
+                    </ng-template>
+
+                    <mat-menu #selectTypeMenu="matMenu" class="menu-container">
+                      <p
+                        class="menu-item"
+                        (click)="selectedType = 'Selling'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                      >
                         {{ 'POST.Selling' | translate }}
-                      </option>
-                      <option value="Meeting">
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedType = 'Meeting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                      >
                         {{ 'POST.Meeting' | translate }}
-                      </option>
-                      <option value="Adopting">
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedType = 'Adopting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                      >
                         {{ 'POST.Adopting' | translate }}
-                      </option>
-                    </select>
+                      </p>
+                    </mat-menu>
                   </div>
+
                   <div class="up-form-field">
                     <input
                       type="number"
