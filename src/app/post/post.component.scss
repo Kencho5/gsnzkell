@@ -109,7 +109,7 @@ mat-icon {
 .slide1,
 .slide2,
 .slide3 {
-  padding: 30px 40px;
+  padding: 20px 20px;
   border-radius: 30px;
 }
 .post-hero-title h2 {
@@ -143,8 +143,11 @@ mat-icon {
   max-height: 280px;
   height: 100%;
   border-radius: 22px;
+  object-fit: cover;
 }
 .post-hero-card2 img {
+  object-fit: cover;
+
   width: 100%;
   min-height: 450px;
   max-height: 450px;
