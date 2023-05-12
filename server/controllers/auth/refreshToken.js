@@ -5,6 +5,8 @@ const dotenv = require("dotenv");
 const fs = require("fs");
 dotenv.config();
 
+// */10 * * * * *
+// 0 0 12 * * *
 cron.schedule("0 0 12 * * *", function () {
   axios
     .post(

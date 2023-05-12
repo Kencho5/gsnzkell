@@ -74,10 +74,10 @@ export class UploadFormComponent {
     const files = event.target.files;
     if (!files) return;
 
-    this.compressFile(files);
+    this.compressImages(files);
   }
 
-  compressFile(files) {
+  compressImages(files) {
     const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
     const promises = [];
     for (let i = 0; i < urlsToLoad; i++) {
@@ -153,7 +153,7 @@ export class UploadFormComponent {
     );
   }
 
-  upload() {
+  checkForm() {
     const controls = this.uploadForm.controls;
     for (const name in controls) {
       const control = controls[name];
@@ -175,6 +175,10 @@ export class UploadFormComponent {
       return;
     }
 
+    this.upload();
+  }
+
+  upload() {
     if (this.uploadForm.valid) {
       const data = {
         user: localStorage.getItem('token'),
