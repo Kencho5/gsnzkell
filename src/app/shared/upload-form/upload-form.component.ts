@@ -97,7 +97,7 @@ export class UploadFormComponent {
       const compressPromises = [];
       for (let i = 0; i < results.length; i++) {
         compressPromises.push(
-          this.imageCompress.compressFile(results[i], -1, 50, 50)
+          this.imageCompress.compressFile(results[i], -1, 60, 60)
         );
       }
 
