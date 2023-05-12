@@ -480,7 +480,9 @@
     <app-footer></app-footer>
   </div>
 
-  <app-footer *ngIf="posts.length == 0"></app-footer>
+  <div class="empty-footer">
+    <app-footer *ngIf="posts.length == 0"></app-footer>
+  </div>
 
   <!-- Post Section HTML End -->
 
