@@ -10,7 +10,6 @@ const editPost = require('./controllers/posts/editPost');
 const profile = require('./controllers/user/profile');
 const update = require('./controllers/user/update');
 const upload = require('./controllers/posts/upload');
-const uploadImages = require('./controllers/posts/uploadImages');
 const post = require('./controllers/posts/post');
 const similar = require('./controllers/posts/similar');
 const getId = require('./controllers/user/getId');

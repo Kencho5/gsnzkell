@@ -16,6 +16,13 @@ async function upload(req, res) {
     return;
   }
 
+  const checkImages = await verifyImages(req.body.urls);
+  if(!checkImages) {
+    return res.status(500).send({
+      code: 500,
+    });
+  }
+
   const postID = uuidv4();
   const { email, username } = jwt.verify(token, publicKEY, signOptions);
   const form = req.body.form;
@@ -125,6 +132,37 @@ async function upload(req, res) {
       });
     }
   });
+}
+
+async function verifyImages(images) {
+  try {
+    for (let i = 0; i < images.length; i++) {
+      const image = sharp(images[i]);
+      
+      // Check if the file is an image
+      const metadata = await image.metadata();
+      if (!metadata.format) {
+        return false;
+      }
+      
+      // Check if the image is too large
+      const { width, height } = metadata;
+      if (width > 5000 || height > 5000) {
+        return false;
+      }
+      
+      // Check if the image has a valid MIME type
+      const mime = metadata.format.toLowerCase();
+      if (!mime.startsWith('image/')) {
+        return false;
+      }
+    }
+    
+    // All checks passed, images are legitimate
+    return true;
+  } catch (err) {
+    return false;
+  }
 }
 
 async function saveImages(postID, req) {
