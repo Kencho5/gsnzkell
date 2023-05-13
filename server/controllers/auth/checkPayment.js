@@ -7,6 +7,17 @@ const accessToken = config.tbcAccessToken;
 const apiKey = config.tbcApiKey;
 
 async function checkPayment(req, res) {
+  const options = {
+    timeZone: "Asia/Tbilisi",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  const georgiaDate = new Date().toLocaleString("en-US", options);
+
   const apiUrl = "https://api.tbcbank.ge/v1/tpay/payments";
 
   const headers = {
@@ -31,6 +42,7 @@ async function checkPayment(req, res) {
           amount: response.data.amount,
           transactionId: response.data.transactionId,
           card: response.data.paymentCardNumber,
+          date: georgiaDate,
         });
 
         await users.updateOne(
