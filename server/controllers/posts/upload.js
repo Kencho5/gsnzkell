@@ -16,14 +16,6 @@ async function upload(req, res) {
     return;
   }
 
-  const checkImages = await verifyImages(req.body.urls);
-
-  if(!checkImages.some(item => item.isValid) || req.body.urls.length < 3) {
-    return res.status(500).send({
-      code: 500,
-    });
-  }
-
   const postID = uuidv4();
   const { email, username } = jwt.verify(token, publicKEY, signOptions);
   const form = req.body.form;
@@ -133,30 +125,6 @@ async function upload(req, res) {
       });
     }
   });
-}
-
-function verifyImages(imageBytesArray) {
-  const promises = imageBytesArray.map(imageBytes => {
-    const imageBuffer = Buffer.from(imageBytes.split(',')[1], 'base64');
-    return sharp(imageBuffer)
-      .metadata()
-      .then(metadata => {
-        if (metadata.format !== 'jpeg' && metadata.format !== 'png') {
-          return { isValid: false, reason: 'Invalid image format' };
-        }
-
-        if (metadata.width < 100 || metadata.width > 500 || metadata.height < 100 || metadata.height > 500) {
-          return { isValid: false, reason: 'Invalid image dimensions' };
-        }
-
-        return { isValid: true };
-      })
-      .catch(err => {
-        return { isValid: false, reason: err.message };
-      });
-  });
-
-  return Promise.all(promises);
 }
 
 async function saveImages(postID, req) {
