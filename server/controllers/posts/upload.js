@@ -17,7 +17,8 @@ async function upload(req, res) {
   }
 
   const checkImages = await verifyImages(req.body.urls);
-  if(!checkImages || req.body.urls.length < 3) {
+
+  if(!checkImages.some(item => item.isValid) || req.body.urls.length < 3) {
     return res.status(500).send({
       code: 500,
     });
@@ -134,35 +135,28 @@ async function upload(req, res) {
   });
 }
 
-async function verifyImages(images) {
-  try {
-    for (let i = 0; i < images.length; i++) {
-      const image = sharp(images[i]);
-      
-      // Check if the file is an image
-      const metadata = await image.metadata();
-      if (!metadata.format) {
-        return false;
-      }
-      
-      // Check if the image is too large
-      const { width, height } = metadata;
-      if (width > 5000 || height > 5000) {
-        return false;
-      }
-      
-      // Check if the image has a valid MIME type
-      const mime = metadata.format.toLowerCase();
-      if (!mime.startsWith('image/')) {
-        return false;
-      }
-    }
-    
-    // All checks passed, images are legitimate
-    return true;
-  } catch (err) {
-    return false;
-  }
+function verifyImages(imageBytesArray) {
+  const promises = imageBytesArray.map(imageBytes => {
+    const imageBuffer = Buffer.from(imageBytes.split(',')[1], 'base64');
+    return sharp(imageBuffer)
+      .metadata()
+      .then(metadata => {
+        if (metadata.format !== 'jpeg' && metadata.format !== 'png') {
+          return { isValid: false, reason: 'Invalid image format' };
+        }
+
+        if (metadata.width < 100 || metadata.width > 500 || metadata.height < 100 || metadata.height > 500) {
+          return { isValid: false, reason: 'Invalid image dimensions' };
+        }
+
+        return { isValid: true };
+      })
+      .catch(err => {
+        return { isValid: false, reason: err.message };
+      });
+  });
+
+  return Promise.all(promises);
 }
 
 async function saveImages(postID, req) {
