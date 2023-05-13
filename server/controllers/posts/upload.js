@@ -9,7 +9,7 @@ const sharp = require("sharp");
 async function upload(req, res) {
   const token = req.body.user;
 
-  if (!jwt.verify(token, publicKEY, signOptions)) {
+  if (!token || !jwt.verify(token, publicKEY, signOptions)) {
     res.status(500).send({
       code: 500,
     });
