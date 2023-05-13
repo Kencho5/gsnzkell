@@ -25,6 +25,7 @@ export class ProfileService {
         id: id,
         pfpSet: pfpSet,
         balance: balance,
+        token: localStorage.getItem('token')
       })
       .pipe(
         map((res: HttpResponse<Response>) => {

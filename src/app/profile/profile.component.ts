@@ -151,7 +151,7 @@ export class ProfileComponent implements OnInit {
 
   editPost() {
     this._profileService
-      .updatePostData({ details: this.postForm.value })
+      .updatePostData({ details: this.postForm.value, token: localStorage.getItem('token') })
       .subscribe((res) => {
         if (res['code'] == 200) {
           this.loadPosts();
