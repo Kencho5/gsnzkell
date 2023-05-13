@@ -2,28 +2,38 @@ const session = require("express-session");
 const { db, userPosts, users } = require("../../utils/db");
 const { sendEmail } = require("./email");
 
-async function confirmEmail(req, res) {
-const email = req.body.email;
+function confirmEmail(req, res) {
+  const email = req.body.email;
 
-  const exists = await users
+  const exists = users
     .find({
       email: email,
     })
-    .next();
+    .next()
+    .then((exists) => {
+      if (exists) {
+        return res.status(200).send({
+          code: 404,
+        });
+      }
 
-  if (exists) {
-    return res.status(200).send({
-      code: 404,
+      return sendEmail(email);
+    })
+    .then((code) => {
+      req.session.code = code;
+      req.session.email = email;
+
+      res.status(200).send({
+        code: 200,
+      });
+    })
+    .catch((err) => {
+      console.error(err);
+      res.status(500).send({
+        code: 500,
+        message: "Internal server error",
+      });
     });
-  }
-
-  const code = await sendEmail(email);
-  req.session.code = code;
-  req.session.email = email;
-
-  res.status(200).send({
-    code: 200,
-  });
 }
 
 module.exports = confirmEmail;

@@ -22,7 +22,7 @@ async function sendWarning(ip) {
       </style>
     </head>
     <body>
-      <p>ვიღაც პროჭობს ამ IP ით:</p>
+      <p>ვიღაც მაიმუნობს ამ IP ით:</p>
       <p class="verification-code">${ip}</p>
     </body>
   </html>

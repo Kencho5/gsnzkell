@@ -27,6 +27,12 @@ const cities = require('./utils/cities');
 const payment = require('./controllers/auth/tbcPayment');
 const checkPayment = require('./controllers/auth/checkPayment');
 const paymentStatus = require('./controllers/auth/paymentStatus');
+const rateLimit = require("express-rate-limit");
+
+const emailLimiter = rateLimit({
+  windowMs: 120 * 1000, // 2 minutes
+  max: 3, // limit each IP to 3 request per windowMs
+});
 
 const storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -74,11 +80,11 @@ router.post('/api/buyVip', buyVip);
 
 router.post('/api/renew', renew);
 
-router.post('/api/reset', reset);
+router.post('/api/reset', emailLimiter, reset);
 
 router.post('/api/code', code);
 
-router.post('/api/confirmEmail', confirmEmail);
+router.post('/api/confirmEmail', emailLimiter, confirmEmail);
 
 router.get('/api/cities', cities);
 
