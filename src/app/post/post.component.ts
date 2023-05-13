@@ -69,7 +69,7 @@ export class PostComponent implements OnInit {
   }
 
   getID() {
-    this.postService.getUserID({ email: this.post.email }).subscribe((res) => {
+    this.postService.getUserID({ id: this.postID }).subscribe((res) => {
       this.userID = res['id'];
       this.userPfp = res['pfp'];
     });

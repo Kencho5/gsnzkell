@@ -1,11 +1,15 @@
 const { db, userPosts, users } = require("../../utils/db");
 
 async function getId(req, res) {
-  email = req.body.email;
+  const postID = req.body.id;
+  
+  const { email } = await userPosts.findOne({
+    _id: postID
+  })
 
   users.findOne(
     {
-      email: req.body.email,
+      email: email,
     },
     function (err, response) {
       if (response) {

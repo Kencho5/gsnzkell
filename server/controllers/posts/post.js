@@ -13,7 +13,6 @@ async function post(req, res) {
       if (result) {
         var data = {
           id: result._id,
-          email: result.email,
           name: result.name,
           phone: result.phone,
           animal: result.animal,
