@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const multer = require('multer');
 
 const webhook = require('./webhook');
 const login = require('./controllers/auth/login');
@@ -29,26 +28,18 @@ const checkPayment = require('./controllers/auth/checkPayment');
 const paymentStatus = require('./controllers/auth/paymentStatus');
 const rateLimit = require("express-rate-limit");
 
-const emailLimiter = rateLimit({
-  windowMs: 120 * 1000, // 2 minutes
-  max: 3, // limit each IP to 3 request per windowMs
-});
-
-const storage = multer.diskStorage({
-  destination: function (req, file, cb) {
-    cb(null, './uploads');
-  },
-  filename: function (req, file, cb) {
-    cb(null, file.originalname);
-  }
-});
-const uploadImagesMiddleware = multer({ storage: storage }).array('images');
+function limitRequests(maxValue, minutes) {
+  return rateLimit({
+    windowMs: minutes * 60 * 1000, // 2 minutes
+    max: maxValue, // limit each IP to 3 request per windowMs
+  });
+}
 
 router.post('/api/webhook', webhook);
 
 router.post('/api/login', login);
 
-router.post('/api/register', register);
+router.post('/api/register', limitRequests(10, 1), register);
 
 router.post('/api/user', getUser);
 
@@ -60,9 +51,7 @@ router.post('/api/profile', profile);
 
 router.post('/api/update', update);
 
-router.post('/api/upload', upload);
-
-router.post('/api/uploadImages', uploadImagesMiddleware, uploadImages);
+router.post('/api/upload', limitRequests(5, 2), upload);
 
 router.post('/api/post', post);
 
@@ -80,11 +69,11 @@ router.post('/api/buyVip', buyVip);
 
 router.post('/api/renew', renew);
 
-router.post('/api/reset', emailLimiter, reset);
+router.post('/api/reset', limitRequests(3, 2), reset);
 
 router.post('/api/code', code);
 
-router.post('/api/confirmEmail', emailLimiter, confirmEmail);
+router.post('/api/confirmEmail', limitRequests(3, 2), confirmEmail);
 
 router.get('/api/cities', cities);
 
