@@ -12,6 +12,18 @@ async function update(req, res) {
     balance,
   } = req.body;
 
+  const user = jwt.verify(req.body.token, publicKEY, signOptions);
+
+  const auth = await users.findOne({
+    _id: id,
+  });
+
+  if (auth.email != user.email) {
+    return res.status(200).send({
+      code: 500,
+    });
+  }
+
   var pfpSet = req.body.pfpSet;
 
   if (pfp) {
