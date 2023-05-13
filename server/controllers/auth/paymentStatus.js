@@ -23,7 +23,7 @@ async function paymentStatus(req, res) {
             instagram: responseDB.instagram,
             facebook: responseDB.facebook,
             city: responseDB.city,
-            balance: responseDB.balance.toFixed(2),
+            balance: (responseDB.balance / 100).toFixed(2),
             freeUpload: responseDB.freeUpload,
             pfp: responseDB.pfp,
           };

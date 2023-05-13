@@ -21,9 +21,9 @@ async function checkPayment(req, res) {
   axios
     .get(`${apiUrl}/${payId}`, { headers })
     .then(async (response) => {
-      const status = response.data.httpStatusCode;
+      const status = response.data.status;
 
-      if (status === 200) {
+      if (status != "Failed") {
         await payments.insertOne({
           email: email,
           merchantId: response.data.merchantPaymentId,
