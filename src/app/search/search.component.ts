@@ -46,6 +46,9 @@ export class SearchComponent implements OnInit {
   pages = [];
   vipCount = 0;
   animal: string;
+  selectedAnimal: string;
+  selectedType: string;
+  selectedAgeType: string;
 
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // pageEvent: PageEvent;
@@ -114,6 +117,13 @@ export class SearchComponent implements OnInit {
         }
       });
   }
+
+  selectItem(item, type) {
+    this.filterForm.controls[type].setValue(
+      item.charAt(0).toUpperCase() + item.slice(1)
+    );
+  }
+
 
   openPost(id) {
     window.open(`/post/${id}`);

@@ -47,6 +47,43 @@ li {
 .form-input-field {
   padding-top: 20px;
 }
+
+.button-select {
+  font-size: 16px;
+  border: 1px solid #54a0b2;
+  border-radius: 30px;
+  align-items: center;
+  background: white;
+  color: black;
+}
+
+::ng-deep.menu-container {
+  border-radius: 15px !important;
+  max-width: 100% !important;
+  width: 200px;
+}
+
+.menu-item {
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.menu-item:hover {
+  background-color: #94c9d6;
+}
+
+.button-select p {
+  margin: 0;
+  padding: 15px 20px;
+  border-radius: 30px;
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
 .form-input-field input,
 .form-input-field select {
   width: 100%;

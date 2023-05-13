@@ -168,6 +168,9 @@ export class UploadFormComponent {
 
     const ageYears = this.uploadForm.value.ageYears || 0;
     const ageMonths = this.uploadForm.value.ageMonths || 0;
+    
+    this.uploadForm.value.ageYears = ageYears;
+    this.uploadForm.value.ageMonths = ageMonths;
 
     if (ageYears === 0 && ageMonths === 0) {
       this.form_msg = 'Fill Out The Form';
