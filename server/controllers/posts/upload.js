@@ -17,7 +17,7 @@ async function upload(req, res) {
   }
 
   const checkImages = await verifyImages(req.body.urls);
-  if(!checkImages) {
+  if(!checkImages || req.body.urls.length < 3) {
     return res.status(500).send({
       code: 500,
     });
