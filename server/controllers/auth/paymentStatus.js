@@ -28,7 +28,7 @@ async function paymentStatus(req, res) {
             pfp: responseDB.pfp,
           };
 
-          const balance = responseDB.balance.toFixed(2);
+          const balance = (responseDB.balance / 100).toFixed(2);
           const token = jwt.sign(payload, privateKEY, signOptions);
 
           return res.status(200).send({
