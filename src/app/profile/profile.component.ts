@@ -189,7 +189,7 @@ export class ProfileComponent implements OnInit {
   }
 
   deletePost(id) {
-    this._profileService.deletePost({ id: id }).subscribe((res) => {
+    this._profileService.deletePost({ id: id, token: localStorage.getItem('token') }).subscribe((res) => {
       if (res['code'] == 200) {
         this.openDeleteModal(0);
         this.loadPosts();
@@ -284,7 +284,7 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this._profileService.deletePost({ id: this.selected }).subscribe((res) => {
+    this._profileService.deletePost({ id: this.selected, token: localStorage.getItem('token') }).subscribe((res) => {
       if (res['code'] == 200) {
         this.selectedPosts = 0;
         this.selected = [];
