@@ -8,7 +8,17 @@ const ses = new AWS.SES({
   region: config.region
 });
 
-async function sendWarning(ip) {
+async function sendWarning(ip, minutes, route) {
+  const options = {
+    timeZone: "Asia/Tbilisi",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+  };
+
+  const georgiaDate = new Date().toLocaleString("en-US", options);
 
   const htmlBody = `
   <html>
@@ -24,6 +34,8 @@ async function sendWarning(ip) {
     <body>
       <p>ვიღაც მაიმუნობს ამ IP ით:</p>
       <p class="verification-code">${ip}</p>
+      <p>${minutes} Minute(s) On: ${route} Route</p>
+      <p>Date: ${georgiaDate}</p>
     </body>
   </html>
 `;

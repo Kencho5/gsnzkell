@@ -26,7 +26,7 @@ const limiter = rateLimit({
     const sendWarning = require("./controllers/auth/warning");
     const clientIP = req.headers['x-real-ip'] || req.headers['x-forwarded-for'] || req.connection.remoteAddress;
 
-    sendWarning(clientIP);
+    sendWarning(clientIP, 10, 'Global');
   },
 });
 

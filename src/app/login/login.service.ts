@@ -26,12 +26,11 @@ export class LoginService {
   getLoginData(data) {
     return this._http.post('/api/login', data).pipe(
       map((res: HttpResponse<Response>) => {
-        if(res.status == 500) {
-          return res;
+        if (res.status == 500) {
+        } else if (res.status == 200) {
+          this.user = this.getUser(res['token']);
+          this._isLoggedIn$.next(true);
         }
-        this.user = this.getUser(res['token']);
-        this._isLoggedIn$.next(true);
-
         return res;
       })
     );

@@ -47,7 +47,7 @@ export class RegisterComponent implements OnInit {
   }
 
   sendCode() {
-    if(!this.registerForm.valid) {
+    if (!this.registerForm.valid) {
       this.httpError = 'Please Fill Out The Form';
       return;
     }
@@ -60,6 +60,8 @@ export class RegisterComponent implements OnInit {
         if (res['code'] == 404) {
           this.httpError = 'Email Already Exists';
           this.step = 1;
+        } else if (res.status == 500) {
+          this.httpError = 'Too Many Requests! Try In 1 Minute';
         } else {
           this.step = 2;
         }
@@ -80,7 +82,7 @@ export class RegisterComponent implements OnInit {
             localStorage.setItem('isRegistered', this.isRegistered);
             this.router.navigate(['/login']);
           } else {
-            this.httpError = "Incorrect Code";
+            this.httpError = 'Incorrect Code';
           }
         });
     } else {
