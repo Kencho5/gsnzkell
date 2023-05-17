@@ -217,37 +217,43 @@
                         </label>
                       </div>
                     </fieldset>
-                    <select
-                      [(ngModel)]="daysSelected"
-                      formControlName="days"
-                      class="form-select days-selector"
-                      id="days"
+                    <div
+                      class="up-form-field button-select days-selector"
+                      id="animal"
                     >
-                      <option value="0" [selected]="true" disabled>
-                        {{ 'UPLOAD.select_days' | translate }}
-                      </option>
-                      <option value="1">
-                        1 {{ 'UPLOAD.day' | translate }}
-                      </option>
-                      <option value="2">
-                        2 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                      <option value="3">
-                        3 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                      <option value="4">
-                        4 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                      <option value="5">
-                        5 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                      <option value="6">
-                        6 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                      <option value="7">
-                        7 {{ 'UPLOAD.days' | translate }}
-                      </option>
-                    </select>
+                      <p
+                        [matMenuTriggerFor]="selectDaysMenu"
+                        *ngIf="daysSelected; else selectDays"
+                      >
+                        {{ daysSelected }} {{ 'UPLOAD.day' | translate }}
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                      </p>
+                      <ng-template #selectDays>
+                        <p [matMenuTriggerFor]="selectDaysMenu">
+                          {{ 'UPLOAD.select_days' | translate }}
+                          <mat-icon>keyboard_arrow_down</mat-icon>
+                        </p>
+                      </ng-template>
+
+                      <mat-menu
+                        #selectDaysMenu="matMenu"
+                        class="menu-container"
+                      >
+                        <p
+                          class="menu-item"
+                          (click)="daysSelected = 1; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                        >
+                          1 {{ 'UPLOAD.day' | translate }}
+                        </p>
+                        <p
+                          *ngFor="let days of [2, 3, 4, 5, 6, 7]"
+                          class="menu-item"
+                          (click)="daysSelected = days; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                        >
+                          {{days}} {{ 'UPLOAD.days' | translate }}
+                        </p>
+                      </mat-menu>
+                    </div>
                   </div>
 
                   <div class="up-form-btn text-center text-md-end mt-3">
@@ -267,7 +273,7 @@
                   </div>
                   <app-service-cost
                     *ngIf="loggedIn"
-                    [serviceCost]="0.15 + daysSelected * 1.5"
+                    [serviceCost]="0.15 + daysSelected"
                   ></app-service-cost>
                 </div>
               </form>
