@@ -147,21 +147,38 @@
               VIP
               <mat-icon>bolt</mat-icon>
             </h1>
-            <select [(ngModel)]="daysSelected" formControlName="days">
-              <option value="" disabled>
-                {{ 'UPLOAD.select_days' | translate }}
-              </option>
-              <option value="1">1 {{ 'UPLOAD.day' | translate }}</option>
-              <option value="2">2 {{ 'UPLOAD.days' | translate }}</option>
-              <option value="3">3 {{ 'UPLOAD.days' | translate }}</option>
-              <option value="4">4 {{ 'UPLOAD.days' | translate }}</option>
-              <option value="5">5 {{ 'UPLOAD.days' | translate }}</option>
-              <option value="6">6 {{ 'UPLOAD.days' | translate }}</option>
-              <option value="7">7 {{ 'UPLOAD.days' | translate }}</option>
-            </select>
-            <app-service-cost
-              [serviceCost]="daysSelected"
-            ></app-service-cost>
+            <div class="up-form-field button-select" id="animal">
+              <p
+                [matMenuTriggerFor]="selectDaysMenu"
+                *ngIf="daysSelected; else selectDays"
+              >
+                {{ daysSelected }} {{ 'UPLOAD.day' | translate }}
+                <mat-icon>keyboard_arrow_down</mat-icon>
+              </p>
+              <ng-template #selectDays>
+                <p [matMenuTriggerFor]="selectDaysMenu">
+                  {{ 'UPLOAD.select_days' | translate }}
+                  <mat-icon>keyboard_arrow_down</mat-icon>
+                </p>
+              </ng-template>
+
+              <mat-menu #selectDaysMenu="matMenu" class="menu-container">
+                <p
+                  class="menu-item"
+                  (click)="daysSelected = 1; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                >
+                  1 {{ 'UPLOAD.day' | translate }}
+                </p>
+                <p
+                  *ngFor="let days of [2, 3, 4, 5, 6, 7]"
+                  class="menu-item"
+                  (click)="daysSelected = days; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                >
+                  {{days}} {{ 'UPLOAD.days' | translate }}
+                </p>
+              </mat-menu>
+            </div>
+            <app-service-cost [serviceCost]="daysSelected"></app-service-cost>
             <button class="form-done-btn" type="submit">Buy</button>
             <button class="form-close-btn" type="button" (click)="closeVip()">
               Close

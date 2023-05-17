@@ -49,7 +49,7 @@ export class ProfileComponent implements OnInit {
   pfp;
   animal: string;
   pageIndex = 1;
-  daysSelected = 1;
+  daysSelected = 0;
   pages = [];
   currentDate: Date = new Date();
   renewID: string;
@@ -238,6 +238,7 @@ export class ProfileComponent implements OnInit {
           this.userData.balance = jwtDecode(res['token'])['balance'];
           localStorage.setItem('token', res['token']);
 
+          this.daysSelected = 0;
           this.closeVip();
           this.loadPosts();
         }
@@ -292,4 +293,8 @@ export class ProfileComponent implements OnInit {
       }
     });
   }
+  selectItem(item, type) {
+    this.vipForm.controls[type].setValue(item);
+  }
+
 }
