@@ -15,14 +15,14 @@ async function buyVip(req, res) {
       user = await getUserBalance(user["id"]);
       user.balance = parseFloat(user.balance).toFixed(2);
 
-      if (user.balance - days * 150 >= 0) {
+      if (user.balance - days * 100 >= 0) {
         var updated = await users.findOneAndUpdate(
           {
             _id: user._id,
           },
           {
             $inc: {
-              balance: -150 * days,
+              balance: -100 * days,
             },
           },
           {

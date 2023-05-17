@@ -160,7 +160,7 @@
               <option value="7">7 {{ 'UPLOAD.days' | translate }}</option>
             </select>
             <app-service-cost
-              [serviceCost]="daysSelected * 1.5"
+              [serviceCost]="daysSelected"
             ></app-service-cost>
             <button class="form-done-btn" type="submit">Buy</button>
             <button class="form-close-btn" type="button" (click)="closeVip()">
