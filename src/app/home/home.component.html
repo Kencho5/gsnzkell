@@ -76,7 +76,7 @@
     </div>
 
     <!-- Post Section HTML Start -->
-    <section id="Post">
+    <section id="Post" *ngIf="vipPosts.length > 0">
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
@@ -93,7 +93,7 @@
       </div>
     </section>
 
-    <section id="Post" class="latest-posts-section">
+    <section id="Post" class="latest-posts-section" *ngIf="posts.length > 0">
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
           <div class="section-title">
