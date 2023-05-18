@@ -158,13 +158,13 @@ export class UploadFormComponent {
       this.router.navigate(['/login']);
     }
 
-    const controls = this.uploadForm.controls;
-    for (const name in controls) {
-      const control = controls[name];
-      const element = document.getElementById(name);
-      const style = control.invalid ? '2px solid red' : '2px solid #54a0b2';
-      element.style.border = style;
-    }
+    // const controls = this.uploadForm.controls;
+    // for (const name in controls) {
+    //   const control = controls[name];
+    //   const element = document.getElementById(name);
+    //   const style = control.invalid ? '2px solid red' : '2px solid #54a0b2';
+    //   element.style.border = style;
+    // }
 
     const ageYears = this.uploadForm.value.ageYears || 0;
     const ageMonths = this.uploadForm.value.ageMonths || 0;
