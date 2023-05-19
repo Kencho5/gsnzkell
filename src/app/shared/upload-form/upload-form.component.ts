@@ -40,7 +40,6 @@ export class UploadFormComponent {
   loggedIn: boolean;
   daysSelected = 0;
   vipSum = 0;
-  images = [];
   selectedAnimal: string;
   selectedType: string;
 
@@ -72,7 +71,10 @@ export class UploadFormComponent {
 
   selectFiles(event) {
     const files = event.target.files;
-    if (!files) return;
+    if (!files || this.urls.length >= 3) {
+      this.message = 'Only 3 Photos Required!';
+      return;
+    }
 
     this.compressImages(files);
   }
@@ -103,11 +105,8 @@ export class UploadFormComponent {
 
       Promise.all(compressPromises).then((compressedResults) => {
         for (let i = 0; i < compressedResults.length; i++) {
-          compressedImages.push(compressedResults[i]);
+          this.urls.push(compressedResults[i]);
         }
-
-        this.images = compressedImages;
-        this.urls = results;
 
         if (this.urls.length === 3) {
           this.message = '';
@@ -115,27 +114,6 @@ export class UploadFormComponent {
       });
     });
   }
-
-  //   compressFile(files) {
-  //   const urlsToLoad = Math.min(files.length, 3 - this.urls.length);
-  //   for (let i = 0; i < urlsToLoad; i++) {
-  //     const reader = new FileReader();
-  //     reader.readAsDataURL(files[i]);
-  //     reader.onload = (event: any) => {
-  //       this.imageCompress
-  //         .compressFile(event.target.result, -1, 50, 50)
-  //         .then((compressedImage) => {
-  //           this.images.push(compressedImage)
-  //         });
-
-  //       this.urls.push(event.target.result);
-
-  //       if (this.urls.length === 3) {
-  //         this.message = '';
-  //       }
-  //     };
-  //   }
-  // }
 
   removeImage(event) {
     var tmp = [];
@@ -190,7 +168,7 @@ export class UploadFormComponent {
       const data = {
         user: localStorage.getItem('token'),
         form: this.uploadForm.value,
-        urls: this.images,
+        urls: this.urls,
       };
       this.uploadService.uploadPost(data).subscribe((res) => {
         if (res['code'] === 200) {
