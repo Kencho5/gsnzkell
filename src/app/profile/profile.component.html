@@ -437,12 +437,12 @@
                 (ngSubmit)="editPost()"
                 class="edit-post-form"
               >
-                <label>Breed</label>
+              <label>{{ 'UPLOAD.breed' | translate }}</label>
                 <div class="user-form-field">
                   <mat-icon>badge</mat-icon>
                   <input type="text" formControlName="breed" required />
                 </div>
-                <label *ngIf="postForm.controls.price.value">Price</label>
+                <label *ngIf="postForm.controls.price.value">{{ 'UPLOAD.price' | translate }}</label>
                 <div
                   class="user-form-field"
                   *ngIf="postForm.controls.price.value"
@@ -450,17 +450,17 @@
                   <mat-icon>sell</mat-icon>
                   <input type="text" formControlName="price" required />
                 </div>
-                <label>Description</label>
+                <label>{{ 'UPLOAD.description' | translate }}</label>
                 <div class="user-form-field">
                   <mat-icon>description</mat-icon>
                   <input type="text" formControlName="description" required />
                 </div>
-                <label>Phone</label>
+                <label>{{ 'UPLOAD.phone' | translate }}</label>
                 <div class="user-form-field">
                   <mat-icon>phone</mat-icon>
                   <input type="text" formControlName="phone" required />
                 </div>
-                <label>City</label>
+                <label>{{ 'UPLOAD.city' | translate }}</label>
                 <div class="user-form-field">
                   <mat-icon>place</mat-icon>
                   <input type="text" formControlName="city" required />
