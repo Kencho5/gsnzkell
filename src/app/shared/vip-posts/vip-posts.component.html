@@ -3,6 +3,7 @@
     class="col-sm-6 col-lg-3 col-xl-4"
     *ngFor="let post of vipPosts"
     (click)="openPost(post._id)"
+    [@fadeIn]
   >
     <div class="post-card vip-post">
       <div class="post-card-img position-relative">
