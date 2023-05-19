@@ -126,6 +126,7 @@ export class UploadFormComponent {
   }
 
   selectItem(item, type) {
+    item = String(item);
     this.uploadForm.controls[type].setValue(
       item.charAt(0).toUpperCase() + item.slice(1)
     );
