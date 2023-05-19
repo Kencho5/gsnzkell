@@ -10,6 +10,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { NgxImageCompressService } from 'ngx-image-compress';
 
 @Component({
   selector: 'app-profile',
@@ -63,7 +64,8 @@ export class ProfileComponent implements OnInit {
   constructor(
     private router: Router,
     private _profileService: ProfileService,
-    private login: LoginService
+    private login: LoginService,
+    private imageCompress: NgxImageCompressService
   ) {}
 
   getProfileData() {
@@ -151,7 +153,10 @@ export class ProfileComponent implements OnInit {
 
   editPost() {
     this._profileService
-      .updatePostData({ details: this.postForm.value, token: localStorage.getItem('token') })
+      .updatePostData({
+        details: this.postForm.value,
+        token: localStorage.getItem('token'),
+      })
       .subscribe((res) => {
         if (res['code'] == 200) {
           this.loadPosts();
@@ -188,23 +193,34 @@ export class ProfileComponent implements OnInit {
   }
 
   deletePost(id) {
-    this._profileService.deletePost({ id: id, token: localStorage.getItem('token') }).subscribe((res) => {
-      if (res['code'] == 200) {
-        this.openDeleteModal(0);
-        this.loadPosts();
-      }
-    });
+    this._profileService
+      .deletePost({ id: id, token: localStorage.getItem('token') })
+      .subscribe((res) => {
+        if (res['code'] == 200) {
+          this.openDeleteModal(0);
+          this.loadPosts();
+        }
+      });
   }
 
-  changePfp(event) {
+  async changePfp(event) {
     var reader = new FileReader();
     reader.readAsDataURL(event.target.files[0]);
-    reader.onload = (event: any) => {
-      this.pfp = event.target.result;
+    reader.onload = async (event: any) => {
+      this.pfp = await this.compressFile(event.target.result);
       document
         .getElementsByClassName('edit-profile-pfp')[0]
-        .setAttribute('src', event.target.result);
+        .setAttribute('src', this.pfp);
     };
+  }
+
+  async compressFile(image) {
+    const compressedImage = await this.imageCompress
+      .compressFile(image, -1, 50, 50) // 50% ratio, 50% quality
+      .then((compressedImage) => {
+        return compressedImage;
+      });
+    return compressedImage;
   }
 
   pagination(event) {
@@ -284,16 +300,17 @@ export class ProfileComponent implements OnInit {
       return;
     }
 
-    this._profileService.deletePost({ id: this.selected, token: localStorage.getItem('token') }).subscribe((res) => {
-      if (res['code'] == 200) {
-        this.selectedPosts = 0;
-        this.selected = [];
-        this.loadPosts();
-      }
-    });
+    this._profileService
+      .deletePost({ id: this.selected, token: localStorage.getItem('token') })
+      .subscribe((res) => {
+        if (res['code'] == 200) {
+          this.selectedPosts = 0;
+          this.selected = [];
+          this.loadPosts();
+        }
+      });
   }
   selectItem(item, type) {
     this.vipForm.controls[type].setValue(item);
   }
-
 }
