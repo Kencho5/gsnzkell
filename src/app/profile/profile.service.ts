@@ -16,14 +16,13 @@ export class ProfileService {
     );
   }
 
-  updateUserData(data, old_email, pfp, id, pfpSet, balance) {
+  updateUserData(data, old_email, pfp, id, balance) {
     return this._http
       .post('/api/update', {
         data: data,
         old_email: old_email,
         pfp: pfp,
         id: id,
-        pfpSet: pfpSet,
         balance: balance,
         token: localStorage.getItem('token')
       })

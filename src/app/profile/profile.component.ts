@@ -167,7 +167,6 @@ export class ProfileComponent implements OnInit {
         this.userData.email,
         this.pfp,
         this.userData.id,
-        this.userData.pfp,
         this.userData.balance
       )
       .subscribe((res) => {

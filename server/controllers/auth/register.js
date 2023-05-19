@@ -27,6 +27,7 @@ function register(req, res) {
           password: hash,
           balance: 0,
           freeUpload: true,
+          pfp: 'assets/images/default_pfp.png'
         };
 
         users.insertOne(data, (err, result) => {

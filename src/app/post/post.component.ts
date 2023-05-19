@@ -16,7 +16,7 @@ export class PostComponent implements OnInit {
   post;
   similarPosts;
   userID: string;
-  userPfp: boolean;
+  userPfp: string;
 
   private routeSub: Subscription;
 

@@ -24,11 +24,10 @@ async function update(req, res) {
     });
   }
 
-  var pfpSet = req.body.pfpSet;
-
+  
+  var pfpPath = user['pfp'];
   if (pfp) {
-    savePfp(pfp, id);
-    pfpSet = true;
+    pfpPath = savePfp(pfp, id);
   }
 
   users.updateOne(
@@ -41,7 +40,7 @@ async function update(req, res) {
         city,
         facebook,
         instagram,
-        pfp: pfpSet,
+        pfp: pfpPath,
       },
     }
   );
@@ -55,7 +54,7 @@ async function update(req, res) {
     instagram,
     city,
     balance,
-    pfp: pfpSet,
+    pfp: pfpPath,
   };
 
   const token = jwt.sign(payload, privateKEY, signOptions);
@@ -80,13 +79,16 @@ function savePfp(pfp, id) {
 
   const type = matches[1];
   const data = Buffer.from(matches[2], "base64");
+  const pfpPath = `${savePath}/user-pfps/${id}.jpg`;
 
-  fs.writeFile(`${savePath}/user-pfps/${id}.jpg`, data, "base64", (err) => {
+  fs.writeFile(pfpPath, data, "base64", (err) => {
     if (err) {
       console.error(err);
       return;
     }
   });
+  
+  return `assets/user-pfps/${id}.jpg`;
 }
 
 module.exports = update;
