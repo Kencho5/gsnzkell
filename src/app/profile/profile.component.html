@@ -290,12 +290,12 @@
       </div>
 
       <a class="delete-multiple-button" (click)="deleteMultiple()">
-        Delete {{ selected.length }}
+        {{ 'PROFILE.delete_multiple' | translate }} {{ selected.length }}
         <img src="assets/images/delete-icon.svg" alt="delete-icon"
       /></a>
     </div>
     <section id="Post" class="user-post">
-      <div class="post-wrapper position-relative" *ngFor="let post of posts">
+      <div class="post-wrapper position-relative" *ngFor="let post of posts" [@fadeIn]>
         <div class="container-fluid">
           <div class="v-post-card-wrapper" [ngClass]="{'vip-post': post.vip}">
             <div class="row align-items-center">

@@ -72,7 +72,8 @@
     "expires_desc": "Expires Desc.",
     "expires_asc": "Expires Asc.",
     "date_desc": "Date Desc.",
-    "date_asc": "Date Asc."
+    "date_asc": "Date Asc.",
+    "delete_multiple": "Delete"
   },
 
   "NAV": {

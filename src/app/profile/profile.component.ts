@@ -11,11 +11,20 @@ import {
 } from '@angular/forms';
 import { DatePipe } from '@angular/common';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.scss'],
+   animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class ProfileComponent implements OnInit {
   profileForm = new FormGroup({

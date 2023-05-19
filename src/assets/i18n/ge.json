@@ -72,7 +72,8 @@
     "expires_desc": "ვადა დაღმავალი",
     "expires_asc": "ვადა აღმავალი",
     "date_desc": "თარიღი დაღმავალი",
-    "date_asc": "თარიღი აღმავალი"
+    "date_asc": "თარიღი აღმავალი",
+    "delete_multiple": "წაშალე"
   },
 
   "NAV": {
