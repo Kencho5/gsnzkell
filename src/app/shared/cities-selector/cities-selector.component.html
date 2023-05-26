@@ -32,21 +32,46 @@
     </select>
   </ng-template>
   <ng-template [ngIf]="type == 'upload'">
-    <select
-      [formControlName]="controlName"
-      class="upload-select form-select"
-      id="city"
-    >
-      <option value="" selected disabled>
-        {{ 'UPLOAD.select_city' | translate }}
-      </option>
-      <option
-        *ngFor="let city of cities$ | async | keyvalue"
-        value="{{city.key}}"
+    <div class="button-select" id="city">
+      <p
+        [matMenuTriggerFor]="selectCityMenu"
+        *ngIf="selectedCity; else selectCity"
       >
-        {{ 'CITIES.' + city.key | translate }}
-      </option>
-    </select>
+        {{ 'CITIES.' + selectedCity | translate }}
+        <mat-icon>keyboard_arrow_down</mat-icon>
+      </p>
+      <ng-template #selectCity>
+        <p [matMenuTriggerFor]="selectCityMenu">
+          {{ 'UPLOAD.select_city' | translate }}
+          <mat-icon>keyboard_arrow_down</mat-icon>
+        </p>
+      </ng-template>
+
+      <mat-menu #selectCityMenu="matMenu" class="menu-container">
+        <p
+          class="menu-item"
+          *ngFor="let city of cities$ | async | keyvalue"
+          (click)="selectedCity = city.key; selectCityMenu.close.emit(); selectItem(selectedCity, 'city')"
+        >
+          {{ 'CITIES.' + city.key | translate }}
+        </p>
+      </mat-menu>
+    </div>
+    <!-- <select -->
+    <!--   [formControlName]="controlName" -->
+    <!--   class="upload-select form-select" -->
+    <!--   id="city" -->
+    <!-- > -->
+    <!--   <option value="" selected disabled> -->
+    <!--     {{ 'UPLOAD.select_city' | translate }} -->
+    <!--   </option> -->
+    <!--   <option -->
+    <!--     *ngFor="let city of cities$ | async | keyvalue" -->
+    <!--     value="{{city.key}}" -->
+    <!--   > -->
+    <!--     {{ 'CITIES.' + city.key | translate }} -->
+    <!--   </option> -->
+    <!-- </select> -->
   </ng-template>
   <ng-template [ngIf]="type == 'register'">
     <select [formControlName]="controlName" class="register-select">

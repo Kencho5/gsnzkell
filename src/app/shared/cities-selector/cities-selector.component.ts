@@ -22,6 +22,7 @@ export class CitiesSelectorComponent {
   @Input() type: string;
 
   cities$: Observable<any>;
+  selectedCity;
 
   ngOnInit() {
     this.cities$ = this.getCities();
@@ -34,4 +35,10 @@ export class CitiesSelectorComponent {
       })
     );
   }
+
+  selectItem(item, type) {
+    item = String(item);
+    this.form.controls[type].setValue(item);
+  }
+
 }
