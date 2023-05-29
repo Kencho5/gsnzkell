@@ -105,6 +105,8 @@
                     <span *ngIf="post.ageMonths > 0">
                       {{ post.ageMonths }} {{ 'POST.Months' | translate }}
                     </span>
+                    <img src="assets/images/slash.svg" alt="slash" />
+                    {{ 'UPLOAD.' + post.gender | translate }}
                   </h2>
                 </div>
                 <div class="post-info-price" *ngIf="post.price != null">
@@ -121,11 +123,7 @@
                 class="post-user-info d-flex align-items-center mt-4 mt-md-0"
               >
                 <div class="post-user-img">
-                  <img
-                      src="{{ userPfp }}"
-                    alt="user"
-                    id="user-pfp"
-                  />
+                  <img src="{{ userPfp }}" alt="user" id="user-pfp" />
                 </div>
                 <div class="post-user-info-text">
                   <h4>{{ post.name }}</h4>
