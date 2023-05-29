@@ -10,7 +10,9 @@
       <div class="formbg-outer">
         <div class="formbg" *ngIf="step == 1">
           <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--24 main-text">{{ 'REGISTER.register_on_pender' | translate }}</span>
+            <span class="padding-bottom--24 main-text"
+              >{{ 'REGISTER.register_on_pender' | translate }}</span
+            >
             <form
               id="stripe-login"
               [formGroup]="registerForm"
@@ -25,22 +27,33 @@
                 <input type="text" formControlName="name" />
               </div>
               <div class="field padding-bottom--24">
-                <label for="phone-number">{{ 'REGISTER.phone' | translate }}</label>
+                <label for="phone-number"
+                  >{{ 'REGISTER.phone' | translate }}</label
+                >
                 <input
-                  type="number"
+                  type="tel"
+                  pattern="[0-9]*"
                   formControlName="phoneNumber"
                   minlength="9"
                   maxlength="9"
+                  oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                 />
               </div>
               <!-- <div class="field padding-bottom--24"> -->
               <label for="name">{{ 'REGISTER.city' | translate }}</label>
               <div class="field padding-bottom--24">
-                <app-cities-selector [type]="'register'" [form]="registerForm" controlName="city" [currentCity]="'Select Your City'"></app-cities-selector>
+                <app-cities-selector
+                  [type]="'register'"
+                  [form]="registerForm"
+                  controlName="city"
+                  [currentCity]="'Select Your City'"
+                ></app-cities-selector>
               </div>
               <div class="field padding-bottom--24">
                 <div class="grid--50-50">
-                  <label for="password">{{ 'REGISTER.password' | translate }}</label>
+                  <label for="password"
+                    >{{ 'REGISTER.password' | translate }}</label
+                  >
                 </div>
                 <input
                   type="password"
@@ -49,7 +62,11 @@
                 />
               </div>
               <div class="field padding-bottom--24">
-                <input type="submit" name="submit" value="{{ 'REGISTER.register' | translate }}" />
+                <input
+                  type="submit"
+                  name="submit"
+                  value="{{ 'REGISTER.register' | translate }}"
+                />
               </div>
               <div *ngIf="httpError" class="error-div">
                 <h4 class="error-text">
@@ -62,7 +79,9 @@
         <!-- EMAIL CODE -->
         <div class="formbg" *ngIf="step == 2">
           <div class="formbg-inner padding-horizontal--48">
-            <span class="padding-bottom--24">{{ 'REGISTER.confirm_email' | translate }}</span>
+            <span class="padding-bottom--24"
+              >{{ 'REGISTER.confirm_email' | translate }}</span
+            >
             <form
               id="stripe-login"
               [formGroup]="codeForm"
@@ -73,7 +92,11 @@
                 <input type="text" formControlName="code" />
               </div>
               <div class="field padding-bottom--24">
-                <input type="submit" name="submit" value="{{ 'REGISTER.confirm' | translate }}" />
+                <input
+                  type="submit"
+                  name="submit"
+                  value="{{ 'REGISTER.confirm' | translate }}"
+                />
               </div>
               <div *ngIf="httpError" class="error-div">
                 <h4 class="error-text">
@@ -87,15 +110,30 @@
         <div class="footer-link padding-top--24">
           <span
             >{{ 'REGISTER.have_account' | translate }}
-            <a href="/login" class="footer-login" style="color: #2e3134; font-size: 16px; text-decoration: underline;"
+            <a
+              href="/login"
+              class="footer-login"
+              style="
+                color: #2e3134;
+                font-size: 16px;
+                text-decoration: underline;
+              "
               >{{ 'REGISTER.login' | translate }}</a
             ></span
           >
           <div
             class="listing padding-top--24 padding-bottom--24 flex-flex center-center"
           >
-            <span><a href="https://www.instagram.com/pender.ge/">Instagram</a></span>
-            <span><a href="https://www.facebook.com/Pender-122585780814408">Facebook</a></span>
+            <span
+              ><a href="https://www.instagram.com/pender.ge/"
+                >Instagram</a
+              ></span
+            >
+            <span
+              ><a href="https://www.facebook.com/Pender-122585780814408"
+                >Facebook</a
+              ></span
+            >
             <span><a href="/contact">Contact</a></span>
           </div>
         </div>
