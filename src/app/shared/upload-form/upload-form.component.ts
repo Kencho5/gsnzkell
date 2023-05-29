@@ -25,6 +25,7 @@ export class UploadFormComponent {
     price: new FormControl(''),
     ageYears: new FormControl(),
     ageMonths: new FormControl(),
+    gender: new FormControl('', Validators.required),
     description: new FormControl('', Validators.maxLength(200)),
     postType: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
@@ -42,6 +43,7 @@ export class UploadFormComponent {
   vipSum = 0;
   selectedAnimal: string;
   selectedType: string;
+  selectedGender: string;
 
   customOptions: OwlOptions = {
     items: 1,
@@ -133,6 +135,7 @@ export class UploadFormComponent {
   }
 
   checkForm() {
+    console.log(this.uploadForm.value)
     if (!this.loggedIn) {
       this.router.navigate(['/login']);
     }
@@ -147,7 +150,7 @@ export class UploadFormComponent {
 
     const ageYears = this.uploadForm.value.ageYears || 0;
     const ageMonths = this.uploadForm.value.ageMonths || 0;
-    
+
     this.uploadForm.value.ageYears = ageYears;
     this.uploadForm.value.ageMonths = ageMonths;
 

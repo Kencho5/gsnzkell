@@ -138,7 +138,37 @@
                       id="ageMonths"
                     />
                   </div>
+                  <!-- GENDER -->
+                  <div class="up-form-field button-select" id="gender">
+                    <p
+                      [matMenuTriggerFor]="selectGenderMenu"
+                      *ngIf="selectedGender; else selectGender"
+                    >
+                      {{ 'UPLOAD.' + selectedGender | translate }}
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </p>
+                    <ng-template #selectGender>
+                      <p [matMenuTriggerFor]="selectGenderMenu">
+                        {{ 'UPLOAD.gender' | translate }}
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                      </p>
+                    </ng-template>
 
+                    <mat-menu #selectGenderMenu="matMenu" class="menu-container">
+                      <p
+                        class="menu-item"
+                        (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender'); changeInput()"
+                      >
+                        {{ 'UPLOAD.male' | translate }}
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender'); changeInput()"
+                      >
+                        {{ 'UPLOAD.female' | translate }}
+                      </p>
+                    </mat-menu>
+                  </div>
                   <div class="up-form-field">
                     <textarea
                       placeholder="{{ 'UPLOAD.description' | translate }}"
