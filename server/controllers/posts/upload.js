@@ -95,6 +95,7 @@ async function upload(req, res) {
     animal: form.animal,
     breed: form.breed,
     price: parseInt(form.price),
+    gender: form.gender,
     ageYears: parseInt(form.ageYears),
     ageMonths: parseInt(form.ageMonths),
     description: form.description,

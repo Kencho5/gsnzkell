@@ -20,6 +20,7 @@ async function home(req, res) {
       animal: post.animal,
       breed: post.breed,
       price: post.price,
+      gender: post.gender.toLowerCase(),
       ageYears: post.ageYears,
       ageMonths: post.ageMonths,
       postType: post.postType,
