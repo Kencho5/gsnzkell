@@ -14,7 +14,7 @@ async function home(req, res) {
       .sort({ expires: -1 })
       .toArray();
 
-    const formattedPosts = posts.map(post => ({
+    const formattedPosts = posts.map((post) => ({
       _id: post._id,
       email: post.email,
       animal: post.animal,
@@ -29,12 +29,13 @@ async function home(req, res) {
       vip: post.vip,
     }));
 
-    const formattedVipPosts = vipPosts.map(post => ({
+    const formattedVipPosts = vipPosts.map((post) => ({
       _id: post._id,
       email: post.email,
       animal: post.animal,
       breed: post.breed,
       price: post.price,
+      gender: post.gender.toLowerCase(),
       ageYears: post.ageYears,
       ageMonths: post.ageMonths,
       postType: post.postType,
@@ -50,7 +51,7 @@ async function home(req, res) {
     });
   } catch (error) {
     console.error(error);
-    res.status(500).send({ code: 500, message: 'Internal server error' });
+    res.status(500).send({ code: 500, message: "Internal server error" });
   }
 }
 module.exports = home;

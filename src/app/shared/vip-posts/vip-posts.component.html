@@ -17,6 +17,7 @@
         <span class="vip-label" *ngIf="post.vip">VIP</span>
       </div>
       <h5>{{ post.breed }}</h5>
+      <p>{{ 'UPLOAD.' + post.gender | translate }}</p>
       <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
       <ng-template #age>
         <p class="age-text">
