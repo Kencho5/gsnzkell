@@ -118,6 +118,44 @@
                     [currentCity]="'Select Your City'"
                   ></app-cities-selector>
                 </div>
+                <!-- GENDER -->
+                <div class="form-input-field">
+                  <label>{{ 'UPLOAD.gender' | translate }}</label>
+
+                  <div class="up-form-field button-select" id="gender">
+                    <p
+                      [matMenuTriggerFor]="selectGenderMenu"
+                      *ngIf="selectedGender; else selectGender"
+                    >
+                      {{ 'UPLOAD.' + selectedGender | translate }}
+                      <mat-icon>keyboard_arrow_down</mat-icon>
+                    </p>
+                    <ng-template #selectGender>
+                      <p [matMenuTriggerFor]="selectGenderMenu">
+                        {{ 'UPLOAD.gender' | translate }}
+                        <mat-icon>keyboard_arrow_down</mat-icon>
+                      </p>
+                    </ng-template>
+
+                    <mat-menu
+                      #selectGenderMenu="matMenu"
+                      class="menu-container"
+                    >
+                      <p
+                        class="menu-item"
+                        (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
+                      >
+                        {{ 'UPLOAD.male' | translate }}
+                      </p>
+                      <p
+                        class="menu-item"
+                        (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
+                      >
+                        {{ 'UPLOAD.female' | translate }}
+                      </p>
+                    </mat-menu>
+                  </div>
+                </div>
                 <div class="form-input-field">
                   <label>{{ 'SEARCH.age_type' | translate }}</label>
                   <div class="up-form-field button-select" id="postType">
@@ -135,7 +173,10 @@
                       </p>
                     </ng-template>
 
-                    <mat-menu #selectAgeTypeMenu="matMenu" class="menu-container">
+                    <mat-menu
+                      #selectAgeTypeMenu="matMenu"
+                      class="menu-container"
+                    >
                       <p
                         class="menu-item"
                         (click)="selectedAgeType = 'Years'; selectTypeMenu.close.emit(); selectItem(selectedAgeType, 'ageType');"

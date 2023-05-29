@@ -27,6 +27,7 @@ export class SearchComponent implements OnInit {
     animal: new FormControl(''),
     postType: new FormControl('', Validators.required),
     city: new FormControl(''),
+    gender: new FormControl('', Validators.required),
     ageMin: new FormControl('', Validators.required),
     ageMax: new FormControl('', Validators.required),
     ageYears: new FormControl(),
@@ -49,6 +50,7 @@ export class SearchComponent implements OnInit {
   selectedAnimal: string;
   selectedType: string;
   selectedAgeType: string;
+  selectedGender: string;
 
   // @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   // pageEvent: PageEvent;

@@ -157,13 +157,13 @@
                     <mat-menu #selectGenderMenu="matMenu" class="menu-container">
                       <p
                         class="menu-item"
-                        (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender'); changeInput()"
+                        (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
                       >
                         {{ 'UPLOAD.male' | translate }}
                       </p>
                       <p
                         class="menu-item"
-                        (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender'); changeInput()"
+                        (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
                       >
                         {{ 'UPLOAD.female' | translate }}
                       </p>
