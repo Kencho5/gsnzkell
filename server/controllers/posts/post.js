@@ -18,7 +18,7 @@ async function post(req, res) {
           animal: result.animal,
           breed: result.breed,
           price: result.price,
-          gender: result.gender,
+          gender: result.gender.toLowerCase(),
           ageYears: result.ageYears,
           ageMonths: result.ageMonths,
           description: result.description,
