@@ -12,11 +12,20 @@ import { TranslateService } from '@ngx-translate/core';
 import jwtDecode from 'jwt-decode';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { NgxImageCompressService } from 'ngx-image-compress';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-upload-form',
   templateUrl: './upload-form.component.html',
   styleUrls: ['./upload-form.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class UploadFormComponent {
   uploadForm = new FormGroup({
@@ -29,7 +38,6 @@ export class UploadFormComponent {
     description: new FormControl('', Validators.maxLength(200)),
     postType: new FormControl('', Validators.required),
     phone: new FormControl('', Validators.required),
-    imgs: new FormControl(''),
     city: new FormControl('', Validators.required),
     days: new FormControl('', Validators.required),
   });
@@ -44,6 +52,12 @@ export class UploadFormComponent {
   selectedAnimal: string;
   selectedType: string;
   selectedGender: string;
+  step = 1;
+  stepObj = {
+    1: ['animal', 'breed', 'postType'],
+    2: ['gender'],
+    3: ['phone', 'city'],
+  };
 
   customOptions: OwlOptions = {
     items: 1,
@@ -135,36 +149,33 @@ export class UploadFormComponent {
   }
 
   checkForm() {
-    console.log(this.uploadForm.value)
     if (!this.loggedIn) {
       this.router.navigate(['/login']);
     }
 
-    const controls = this.uploadForm.controls;
-    for (const name in controls) {
-      const control = controls[name];
-      const element = document.getElementById(name);
-      const style = control.invalid ? '2px solid red' : '2px solid #54a0b2';
-      element.style.border = style;
+    if (this.step == 4) {
+      if (this.urls.length !== 3) {
+        this.message = 'Only 3 Photos Required!';
+        return false;
+      }
+    } else if (this.step < 4) {
+      const names = this.stepObj[this.step];
+      const controls = this.uploadForm.controls;
+      let count = 0;
+
+      names.forEach((name) => {
+        const control = controls[name];
+        const element = document.getElementById(name);
+        const style = control.invalid
+          ? (count++, '2px solid red')
+          : '2px solid #54a0b2';
+        element.style.border = style;
+      });
+
+      if (count > 0) return false;
     }
 
-    const ageYears = this.uploadForm.value.ageYears || 0;
-    const ageMonths = this.uploadForm.value.ageMonths || 0;
-
-    this.uploadForm.value.ageYears = ageYears;
-    this.uploadForm.value.ageMonths = ageMonths;
-
-    if (ageYears === 0 && ageMonths === 0) {
-      this.form_msg = 'Fill Out The Form';
-      return;
-    }
-
-    if (this.urls.length !== 3) {
-      this.message = 'Only 3 Photos Required!';
-      return;
-    }
-
-    this.upload();
+    return true;
   }
 
   upload() {
@@ -213,5 +224,18 @@ export class UploadFormComponent {
     }
     this.uploadForm.get('days').enable();
     daysSelector.style.display = 'block';
+  }
+
+  changeStep(event) {
+    if (!this.checkForm()) return;
+
+    const arrowRightClicked = event.target.classList.contains('arrow-right');
+    const arrowLeftClicked = event.target.classList.contains('arrow-left');
+
+    if (arrowRightClicked && this.step < 5) {
+      this.step++;
+    } else if (arrowLeftClicked && this.step > 1) {
+      this.step--;
+    }
   }
 }

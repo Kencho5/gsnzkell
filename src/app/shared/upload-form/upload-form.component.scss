@@ -501,3 +501,34 @@ textarea {
     padding: 0 0 50px;
   }
 }
+
+// STEP PAGINATION
+.latest-pagi-wrapper ul {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 30px;
+}
+.latest-pagi-wrapper ul li {
+  color: #54a0b2;
+  width: 100px;
+  height: 46px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  margin: 0 8px;
+  border: 1px solid #54a0b2;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.latest-pagi-wrapper ul li.active {
+  color: #fff;
+  background: #54a0b2;
+  border: 1px solid #54a0b2;
+}
+
+.latest-pagi-wrapper ul li:hover {
+  transform: scale(1.1);
+}

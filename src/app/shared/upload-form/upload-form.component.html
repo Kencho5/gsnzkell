@@ -13,284 +13,336 @@
           </div>
           <div class="col-md-6">
             <div class="upload-post-form-container">
-              <form [formGroup]="uploadForm" (ngSubmit)="checkForm()">
+              <form [formGroup]="uploadForm">
                 <div class="upload-post-form">
-                  <div class="up-form-field button-select" id="animal">
-                    <p
-                      [matMenuTriggerFor]="selectAnimalMenu"
-                      *ngIf="selectedAnimal; else selectAnimal"
-                    >
-                      {{ 'ANIMALS.' + selectedAnimal | translate }}
-                      <mat-icon>keyboard_arrow_down</mat-icon>
-                    </p>
-                    <ng-template #selectAnimal>
-                      <p [matMenuTriggerFor]="selectAnimalMenu">
-                        {{ 'UPLOAD.select_animal' | translate }}
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                      </p>
-                    </ng-template>
-
-                    <mat-menu
-                      #selectAnimalMenu="matMenu"
-                      class="menu-container"
-                    >
-                      <p
-                        class="menu-item"
-                        (click)="selectedAnimal = 'dog'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
-                      >
-                        {{ 'ANIMALS.dog' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedAnimal = 'cat'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
-                      >
-                        {{ 'ANIMALS.cat' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedAnimal = 'bird'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
-                      >
-                        {{ 'ANIMALS.bird' | translate }}
-                      </p>
-
-                      <p
-                        class="menu-item"
-                        (click)="selectedAnimal = 'fish'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
-                      >
-                        {{ 'ANIMALS.fish' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedAnimal = 'reptile'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
-                      >
-                        {{ 'ANIMALS.reptile' | translate }}
-                      </p>
-                    </mat-menu>
-                  </div>
-
-                  <div class="up-form-field">
-                    <input
-                      type="text"
-                      placeholder="{{ 'UPLOAD.breed' | translate }}"
-                      formControlName="breed"
-                      id="breed"
-                      required
-                    />
-                  </div>
-
-                  <!-- POST TYPE -->
-                  <div class="up-form-field button-select" id="postType">
-                    <p
-                      [matMenuTriggerFor]="selectTypeMenu"
-                      *ngIf="selectedType; else selectType"
-                    >
-                      {{ 'POST.' + selectedType | translate }}
-                      <mat-icon>keyboard_arrow_down</mat-icon>
-                    </p>
-                    <ng-template #selectType>
-                      <p [matMenuTriggerFor]="selectTypeMenu">
-                        {{ 'UPLOAD.select_post_type' | translate }}
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                      </p>
-                    </ng-template>
-
-                    <mat-menu #selectTypeMenu="matMenu" class="menu-container">
-                      <p
-                        class="menu-item"
-                        (click)="selectedType = 'Selling'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
-                      >
-                        {{ 'POST.Selling' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedType = 'Meeting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
-                      >
-                        {{ 'POST.Meeting' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedType = 'Adopting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
-                      >
-                        {{ 'POST.Adopting' | translate }}
-                      </p>
-                    </mat-menu>
-                  </div>
-
-                  <div class="up-form-field">
-                    <input
-                      type="number"
-                      placeholder="{{ 'UPLOAD.price' | translate }}"
-                      formControlName="price"
-                      id="price"
-                    />
-                  </div>
-                  <div class="double-input">
-                    <input
-                      type="number"
-                      placeholder="{{ 'UPLOAD.ageYears' | translate }}"
-                      formControlName="ageYears"
-                      id="ageYears"
-                    />
-                    <input
-                      type="number"
-                      placeholder="{{ 'UPLOAD.ageMonths' | translate }}"
-                      formControlName="ageMonths"
-                      id="ageMonths"
-                    />
-                  </div>
-                  <!-- GENDER -->
-                  <div class="up-form-field button-select" id="gender">
-                    <p
-                      [matMenuTriggerFor]="selectGenderMenu"
-                      *ngIf="selectedGender; else selectGender"
-                    >
-                      {{ 'UPLOAD.' + selectedGender | translate }}
-                      <mat-icon>keyboard_arrow_down</mat-icon>
-                    </p>
-                    <ng-template #selectGender>
-                      <p [matMenuTriggerFor]="selectGenderMenu">
-                        {{ 'UPLOAD.gender' | translate }}
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                      </p>
-                    </ng-template>
-
-                    <mat-menu #selectGenderMenu="matMenu" class="menu-container">
-                      <p
-                        class="menu-item"
-                        (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
-                      >
-                        {{ 'UPLOAD.male' | translate }}
-                      </p>
-                      <p
-                        class="menu-item"
-                        (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
-                      >
-                        {{ 'UPLOAD.female' | translate }}
-                      </p>
-                    </mat-menu>
-                  </div>
-                  <div class="up-form-field">
-                    <textarea
-                      placeholder="{{ 'UPLOAD.description' | translate }}"
-                      maxlength="150"
-                      id="description"
-                      formControlName="description"
-                    ></textarea>
-                  </div>
-                  <div class="up-form-field">
-                    <input
-                      type="text"
-                      placeholder="{{ 'UPLOAD.phone' | translate }}"
-                      formControlName="phone"
-                      id="phone"
-                    />
-                  </div>
-                  <div class="up-form-field">
-                    <app-cities-selector
-                      [type]="'upload'"
-                      [form]="uploadForm"
-                      controlName="city"
-                      [currentCity]="'Select Your City'"
-                    ></app-cities-selector>
-                  </div>
-                  <div class="up-form-field">
-                    <div class="upload-icon">
-                      <button
-                        type="button"
-                        (click)="fileInput.click()"
-                        class="files-btn"
-                      >
-                        <mat-icon>file_upload</mat-icon> {{ 'UPLOAD.photos' |
-                        translate }}
-                      </button>
-                    </div>
-                    <input
-                      hidden
-                      (change)="selectFiles($event)"
-                      #fileInput
-                      type="file"
-                      multiple
-                      formControlName="imgs"
-                      id="imgs"
-                    />
-                    <div class="owl-upload">
-                      <owl-carousel-o [options]="customOptions">
-                        <ng-template carouselSlide *ngFor="let url of urls">
-                          <div class="slide-upload">
-                            <img [src]="url" class="slide-img-upload" />
-                          </div>
-                          <mat-icon
-                            class="{{ url }}"
-                            id="cancel-icon"
-                            (click)="removeImage($event)"
-                            >delete</mat-icon
-                          >
-                        </ng-template>
-                      </owl-carousel-o>
-                    </div>
-                  </div>
-                  <div class="up-form-btn text-center text-md-end mt-3 vip-box">
-                    <fieldset class="checkbox-group">
-                      <div class="checkbox">
-                        <label class="checkbox-wrapper">
-                          <input
-                            type="checkbox"
-                            class="checkbox-input"
-                            (change)="unlockDays($event)"
-                          />
-                          <span class="checkbox-tile">
-                            <span class="checkbox-icon">
-                              <mat-icon>bolt</mat-icon>
-                            </span>
-                            <span class="checkbox-label">VIP</span>
-                          </span>
-                        </label>
-                      </div>
-                    </fieldset>
-                    <div
-                      class="up-form-field button-select days-selector"
-                      id="days"
-                    >
-                      <p
-                        [matMenuTriggerFor]="selectDaysMenu"
-                        *ngIf="daysSelected; else selectDays"
-                      >
-                        {{ daysSelected }} {{ 'UPLOAD.day' | translate }}
-                        <mat-icon>keyboard_arrow_down</mat-icon>
-                      </p>
-                      <ng-template #selectDays>
-                        <p [matMenuTriggerFor]="selectDaysMenu">
-                          {{ 'UPLOAD.select_days' | translate }}
+                  <ng-template [ngIf]="step == 1">
+                    <div [@fadeIn]>
+                      <div class="up-form-field button-select" id="animal">
+                        <p
+                          [matMenuTriggerFor]="selectAnimalMenu"
+                          *ngIf="selectedAnimal; else selectAnimal"
+                        >
+                          {{ 'ANIMALS.' + selectedAnimal | translate }}
                           <mat-icon>keyboard_arrow_down</mat-icon>
                         </p>
-                      </ng-template>
+                        <ng-template #selectAnimal>
+                          <p [matMenuTriggerFor]="selectAnimalMenu">
+                            {{ 'UPLOAD.select_animal' | translate }}
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                          </p>
+                        </ng-template>
 
-                      <mat-menu
-                        #selectDaysMenu="matMenu"
-                        class="menu-container"
-                      >
-                        <p
-                          class="menu-item"
-                          (click)="daysSelected = 1; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                        <mat-menu
+                          #selectAnimalMenu="matMenu"
+                          class="menu-container"
                         >
-                          1 {{ 'UPLOAD.day' | translate }}
-                        </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedAnimal = 'dog'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                          >
+                            {{ 'ANIMALS.dog' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedAnimal = 'cat'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                          >
+                            {{ 'ANIMALS.cat' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedAnimal = 'bird'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                          >
+                            {{ 'ANIMALS.bird' | translate }}
+                          </p>
+
+                          <p
+                            class="menu-item"
+                            (click)="selectedAnimal = 'fish'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                          >
+                            {{ 'ANIMALS.fish' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedAnimal = 'reptile'; selectAnimalMenu.close.emit(); selectItem(selectedAnimal, 'animal')"
+                          >
+                            {{ 'ANIMALS.reptile' | translate }}
+                          </p>
+                        </mat-menu>
+                      </div>
+
+                      <div class="up-form-field">
+                        <input
+                          type="text"
+                          placeholder="{{ 'UPLOAD.breed' | translate }}"
+                          formControlName="breed"
+                          id="breed"
+                          required
+                        />
+                      </div>
+
+                      <!-- POST TYPE -->
+                      <div class="up-form-field button-select" id="postType">
                         <p
-                          *ngFor="let days of [2, 3, 4, 5, 6, 7]"
-                          class="menu-item"
-                          (click)="daysSelected = days; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                          [matMenuTriggerFor]="selectTypeMenu"
+                          *ngIf="selectedType; else selectType"
                         >
-                          {{days}} {{ 'UPLOAD.days' | translate }}
+                          {{ 'POST.' + selectedType | translate }}
+                          <mat-icon>keyboard_arrow_down</mat-icon>
                         </p>
-                      </mat-menu>
+                        <ng-template #selectType>
+                          <p [matMenuTriggerFor]="selectTypeMenu">
+                            {{ 'UPLOAD.select_post_type' | translate }}
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                          </p>
+                        </ng-template>
+
+                        <mat-menu
+                          #selectTypeMenu="matMenu"
+                          class="menu-container"
+                        >
+                          <p
+                            class="menu-item"
+                            (click)="selectedType = 'Selling'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                          >
+                            {{ 'POST.Selling' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedType = 'Meeting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                          >
+                            {{ 'POST.Meeting' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedType = 'Adopting'; selectTypeMenu.close.emit(); selectItem(selectedType, 'postType'); changeInput()"
+                          >
+                            {{ 'POST.Adopting' | translate }}
+                          </p>
+                        </mat-menu>
+                      </div>
+                      <div class="up-form-field">
+                        <input
+                          type="number"
+                          placeholder="{{ 'UPLOAD.price' | translate }}"
+                          formControlName="price"
+                          id="price"
+                        />
+                      </div>
                     </div>
-                  </div>
+                  </ng-template>
 
-                  <div class="up-form-btn text-center text-md-end mt-3">
-                    <input
-                      type="submit"
-                      value="{{ 'UPLOAD.submit' | translate }}"
-                    />
+                  <ng-template [ngIf]="step == 2">
+                    <div [@fadeIn]>
+                      <div class="double-input">
+                        <input
+                          type="number"
+                          placeholder="{{ 'UPLOAD.ageYears' | translate }}"
+                          formControlName="ageYears"
+                          id="ageYears"
+                        />
+                        <input
+                          type="number"
+                          placeholder="{{ 'UPLOAD.ageMonths' | translate }}"
+                          formControlName="ageMonths"
+                          id="ageMonths"
+                        />
+                      </div>
+                      <!-- GENDER -->
+                      <div class="up-form-field button-select" id="gender">
+                        <p
+                          [matMenuTriggerFor]="selectGenderMenu"
+                          *ngIf="selectedGender; else selectGender"
+                        >
+                          {{ 'UPLOAD.' + selectedGender | translate }}
+                          <mat-icon>keyboard_arrow_down</mat-icon>
+                        </p>
+                        <ng-template #selectGender>
+                          <p [matMenuTriggerFor]="selectGenderMenu">
+                            {{ 'UPLOAD.gender' | translate }}
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                          </p>
+                        </ng-template>
+
+                        <mat-menu
+                          #selectGenderMenu="matMenu"
+                          class="menu-container"
+                        >
+                          <p
+                            class="menu-item"
+                            (click)="selectedGender = 'male'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
+                          >
+                            {{ 'UPLOAD.male' | translate }}
+                          </p>
+                          <p
+                            class="menu-item"
+                            (click)="selectedGender = 'female'; selectGenderMenu.close.emit(); selectItem(selectedGender, 'gender');"
+                          >
+                            {{ 'UPLOAD.female' | translate }}
+                          </p>
+                        </mat-menu>
+                      </div>
+                      <div class="up-form-field">
+                        <textarea
+                          placeholder="{{ 'UPLOAD.description' | translate }}"
+                          maxlength="150"
+                          id="description"
+                          formControlName="description"
+                        ></textarea>
+                      </div>
+                    </div>
+                  </ng-template>
+
+                  <ng-template [ngIf]="step == 3">
+                    <div [@fadeIn]>
+                      <div class="up-form-field">
+                        <input
+                          type="text"
+                          placeholder="{{ 'UPLOAD.phone' | translate }}"
+                          formControlName="phone"
+                          id="phone"
+                        />
+                      </div>
+                      <div class="up-form-field">
+                        <app-cities-selector
+                          [type]="'upload'"
+                          [form]="uploadForm"
+                          controlName="city"
+                          [currentCity]="'Select Your City'"
+                        ></app-cities-selector>
+                      </div>
+                    </div>
+                  </ng-template>
+
+                  <ng-template [ngIf]="step == 4">
+                    <div [@fadeIn]>
+                      <div class="up-form-field">
+                        <div class="upload-icon" *ngIf="urls.length < 3">
+                          <button
+                            type="button"
+                            (click)="fileInput.click()"
+                            class="files-btn"
+                          >
+                            <mat-icon>file_upload</mat-icon> {{ 'UPLOAD.photos'
+                            | translate }}
+                          </button>
+                        </div>
+                        <input
+                          hidden
+                          (change)="selectFiles($event)"
+                          #fileInput
+                          type="file"
+                          multiple
+                          id="imgs"
+                        />
+                        <div class="owl-upload">
+                          <owl-carousel-o [options]="customOptions">
+                            <ng-template carouselSlide *ngFor="let url of urls">
+                              <div class="slide-upload">
+                                <img [src]="url" class="slide-img-upload" />
+                              </div>
+                              <mat-icon
+                                class="{{ url }}"
+                                id="cancel-icon"
+                                (click)="removeImage($event)"
+                                >delete</mat-icon
+                              >
+                            </ng-template>
+                          </owl-carousel-o>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                  <ng-template [ngIf]="step == 5">
+                    <div [@fadeIn]>
+                      <div
+                        class="up-form-btn text-center text-md-end mt-3 vip-box"
+                      >
+                        <fieldset class="checkbox-group">
+                          <div class="checkbox">
+                            <label class="checkbox-wrapper">
+                              <input
+                                type="checkbox"
+                                class="checkbox-input"
+                                (change)="unlockDays($event)"
+                              />
+                              <span class="checkbox-tile">
+                                <span class="checkbox-icon">
+                                  <mat-icon>bolt</mat-icon>
+                                </span>
+                                <span class="checkbox-label">VIP</span>
+                              </span>
+                            </label>
+                          </div>
+                        </fieldset>
+                        <div
+                          class="up-form-field button-select days-selector"
+                          id="days"
+                        >
+                          <p
+                            [matMenuTriggerFor]="selectDaysMenu"
+                            *ngIf="daysSelected; else selectDays"
+                          >
+                            {{ daysSelected }} {{ 'UPLOAD.day' | translate }}
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                          </p>
+                          <ng-template #selectDays>
+                            <p [matMenuTriggerFor]="selectDaysMenu">
+                              {{ 'UPLOAD.select_days' | translate }}
+                              <mat-icon>keyboard_arrow_down</mat-icon>
+                            </p>
+                          </ng-template>
+
+                          <mat-menu
+                            #selectDaysMenu="matMenu"
+                            class="menu-container"
+                          >
+                            <p
+                              class="menu-item"
+                              (click)="daysSelected = 1; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                            >
+                              1 {{ 'UPLOAD.day' | translate }}
+                            </p>
+                            <p
+                              *ngFor="let days of [2, 3, 4, 5, 6, 7]"
+                              class="menu-item"
+                              (click)="daysSelected = days; selectDaysMenu.close.emit(); selectItem(daysSelected, 'days')"
+                            >
+                              {{days}} {{ 'UPLOAD.days' | translate }}
+                            </p>
+                          </mat-menu>
+                        </div>
+                      </div>
+
+                      <div class="up-form-btn text-center text-md-end mt-3">
+                        <input
+                          (click)="upload()"
+                          type="submit"
+                          value="{{ 'UPLOAD.submit' | translate }}"
+                        />
+                      </div>
+                      <app-service-cost
+                        *ngIf="loggedIn"
+                        [serviceCost]="0.15 + daysSelected"
+                      ></app-service-cost>
+                    </div>
+                  </ng-template>
+                  <div class="latest-pagi-wrapper">
+                    <ul (click)="changeStep($event)">
+                      <li class="arrow-left">
+                        <img
+                          src="assets/images/chevron-left.svg"
+                          alt="chevron-left"
+                          class="arrow-left"
+                        />
+                      </li>
+                      <li class="arrow-right">
+                        <img
+                          src="assets/images/chevron-right.svg"
+                          alt="chevron-right"
+                          class="arrow-right"
+                        />
+                      </li>
+                    </ul>
                   </div>
                   <div *ngIf="message" class="error-div">
                     <h2 class="error-text">3 Photos Min/Max!</h2>
@@ -301,10 +353,6 @@
                       <mat-icon>cancel</mat-icon> {{ this.form_msg }}
                     </h2>
                   </div>
-                  <app-service-cost
-                    *ngIf="loggedIn"
-                    [serviceCost]="0.15 + daysSelected"
-                  ></app-service-cost>
                 </div>
               </form>
             </div>
