@@ -52,12 +52,13 @@ export class UploadFormComponent {
   selectedAnimal: string;
   selectedType: string;
   selectedGender: string;
-  step = 1;
+  step = 5;
   stepObj = {
     1: ['animal', 'breed', 'postType'],
     2: ['gender'],
     3: ['phone', 'city'],
   };
+  freeUpload: boolean;
 
   customOptions: OwlOptions = {
     items: 1,
@@ -83,6 +84,8 @@ export class UploadFormComponent {
       this.loggedIn = true;
     }
     this.uploadForm.get('days').disable();
+
+    this.freeUpload = this.login.user['freeUpload'];
   }
 
   selectFiles(event) {
