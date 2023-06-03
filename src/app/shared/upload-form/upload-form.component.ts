@@ -52,7 +52,7 @@ export class UploadFormComponent {
   selectedAnimal: string;
   selectedType: string;
   selectedGender: string;
-  step = 5;
+  step = 1;
   stepObj = {
     1: ['animal', 'breed', 'postType'],
     2: ['gender'],
