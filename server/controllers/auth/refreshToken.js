@@ -6,8 +6,8 @@ const fs = require("fs");
 dotenv.config();
 
 // */10 * * * * *
-// 0 0 12 * * *
-cron.schedule("0 0 12 * * *", function () {
+// 0 0 * * *
+cron.schedule("0 0 * * *", function () {
   axios
     .post(
       "https://api.tbcbank.ge/v1/tpay/access-token",
