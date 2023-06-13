@@ -171,7 +171,7 @@ export class UploadFormComponent {
         const element = document.getElementById(name);
         const style = control.invalid
           ? (count++, '2px solid red')
-          : '2px solid #54a0b2';
+          : 'border: none';
         element.style.border = style;
       });
 

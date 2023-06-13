@@ -1,104 +1,41 @@
-mat-icon {
-  vertical-align: middle;
-  margin-bottom: 4px;
-}
-.user-footer {
-  padding: 30px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-}
-.logo {
-  display: flex;
-  align-items: center;
-  font-size: 32px;
-  font-weight: 700;
-  color: #334368;
-}
-.logo img {
-  padding-right: 12px;
-}
-.footer-copyright a {
-  font-size: 20px;
-  font-weight: 700;
-  color: #334368;
-  cursor: pointer;
-  margin: 0;
-}
-.user-social li {
-  position: relative;
-  margin: 0 25px;
-}
-.user-social li::after {
-  position: absolute;
-  content: "";
-  top: 50%;
-  right: -65px;
-  transform: translate(-50%, -50%);
-  width: 40px;
-  height: 1px;
-  background: #b24a3f;
-}
-.user-footer-social li::after {
-  background: #5a6381;
-}
-.user-social li:last-child {
-  margin-right: 0;
-  padding-right: 0;
-}
-.user-social li:last-child:after {
-  display: none;
-}
-.user-social li a {
-  padding: 0 10px;
-}
-.counter {
-  margin-top: 20px;
-  margin-left: 20px;
+/* Footer Part CSS Start */
+
+.footer-wrapper {
+  margin-top: 80px;
+  background: #040930;
+  padding: 40px 0;
 }
 
-// RESPONSIVE
-@media (min-width: 1920px) {
-  .user-footer .container-fluid {
-    padding: 0 100px;
-  }
+.footer-social ul li {
+  padding: 0 15px;
 }
-@media (min-width: 1400px) and (max-width: 1599px) {
-  .user-footer .container-fluid {
-    padding: 0 80px;
-  }
+
+.footer-social ul li a {
+  font-size: 20px;
+  color: #ffffff;
 }
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .user-footer .container-fluid {
-    padding: 0 80px;
-  }
+
+.footer-contact a {
+  font-size: 18px;
+  color: #d3d3d3;
 }
-@media (min-width: 992px) and (max-width: 1199px) {
-  .user-footer .container-fluid {
-    padding: 0 50px;
-  }
-  .user-social li::after {
-    right: -75px;
-  }
+
+.footer-wrapper hr {
+  margin: 25px 0;
+  opacity: 0.5;
+  border-top: 1px solid rgba(255, 255, 255, 0.4);
 }
-@media (min-width: 768px) and (max-width: 991px) {
-  .user-footer .container-fluid {
-    padding: 0 20px;
-  }
+
+.footer-copyright p {
+  font-size: 16px;
+  text-align: center;
+  color: #a7a7a7;
+  margin-bottom: 0;
 }
-@media (min-width: 300px) and (max-width: 767px) {
-  .user-footer .container-fluid {
-    padding: 0 10px;
-  }
-  .footer-logo {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+
+.counter {
+  margin-top: 25px;
+  text-align: center;
 }
-@media (min-width: 300px) and (max-width: 767px) {
-  .user-footer .container-fluid {
-    padding: 0 10px;
-  }
-}
+
+/* Footer Part CSS End */

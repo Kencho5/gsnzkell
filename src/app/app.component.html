@@ -1,130 +1,127 @@
 <app-loading></app-loading>
-<header>
-  <section id="Header">
-    <nav class="navbar navbar-expand-xl sticky">
-      <div class="container-fluid">
-        <a class="logo" href="/"
-          ><img src="assets/images/logo.svg" alt="logo" />Pender</a
-        >
-        <div class="mobile-lang-selector">
-          <app-language-selector
-            *ngIf="screenWidth < 1200"
-          ></app-language-selector>
-          <button
-            class="navbar-toggler collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-            aria-controls="navbarNav"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="toggler-icon top-bar"></span>
-            <span class="toggler-icon middle-bar"></span>
-            <span class="toggler-icon bottom-bar"></span>
-          </button>
+<!-- Navigation Section HTML Start -->
+
+<section id="Header">
+  <nav class="navbar sticky">
+    <div class="container">
+      <div
+        class="navbar-container w-100 d-flex justify-content-between align-items-center"
+      >
+        <div class="logo">
+          <a href="/">
+            <img src="assets/images/logo.svg" alt="logo" />
+          </a>
         </div>
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <ul class="navbar-nav pl-md-5 mx-auto pb-0">
-            <form [formGroup]="searchForm" (ngSubmit)="search()">
-              <div class="search-form">
-                <button type="submit" class="search-btn">
-                  <img src="assets/images/search.svg" alt="search" />
-                </button>
-                <div class="search-form-field">
-                  <input
-                    type="text"
-                    placeholder="{{ 'NAV.search' | translate }}"
-                    formControlName="text"
-                  />
-                </div>
+        <ul class="d-flex align-items-center">
+          <div class="nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="/"
+                >{{ 'NAV.home' | translate }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/contact"
+                >{{ 'NAV.contact' | translate }}</a
+              >
+            </li>
+            <li class="nav-item">
+              <div class="search-form-wrapper">
+                <form [formGroup]="searchForm" (ngSubmit)="search()">
+                  <div class="search-form">
+                    <input
+                      type="text"
+                      placeholder="{{ 'NAV.search' | translate }}"
+                      formControlName="text"
+                    />
+                    <mat-icon>search</mat-icon>
+                  </div>
+                </form>
               </div>
-            </form>
-          </ul>
-          <div
-            class="navbar-nav ml-auto"
-            *ngIf="loginService.isLoggedIn$ | async; else logout"
-          >
-            <div class="nav-buttons">
-              <div class="user-profile position-relative" href="#">
-                <img
-                    src="{{ loginService.user.pfp }}"
-                  alt="user-profile"
-                  class="user-profile-icon"
-                  (click)="openModal()"
-                />
-                <div class="profile-dropdown">
-                  <a href="/profile">
-                    <div class="profile-user-info d-flex align-items-center">
-                      <img
-                          src="{{ loginService.user.pfp }}"
-                        alt="user-profile"
-                      />
-                      <div>
-                        <h5>{{ loginService.user.username }}</h5>
-                        <p>{{ loginService.user.email }}</p>
-                      </div>
+            </li>
+            <li class="nav-item">
+              <div class="language-selector">
+                <app-language-selector></app-language-selector>
+              </div>
+            </li>
+          </div>
+          <li class="nav-item" *ngIf="loginService.user; else login">
+            <div class="user-profile">
+              <img
+                src="{{ loginService.user.pfp }}"
+                alt="user-profile"
+                class="user-profile-icon"
+                (click)="openModal()"
+              />
+              <div class="profile-dropdown">
+                <a href="/profile">
+                  <div class="profile-user-info d-flex align-items-center">
+                    <img src="{{ loginService.user.pfp }}" alt="user-profile" />
+                    <div>
+                      <h5>{{ loginService.user.username }}</h5>
+                      <p>{{ loginService.user.email }}</p>
                     </div>
+                  </div>
+                </a>
+                <hr />
+                <div class="user-edit-profile">
+                  <a href="/profile" class="align-items-center">
+                    <mat-icon>visibility</mat-icon>
+                    <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
+                    <span class="">{{ 'NAV.view_profile' | translate }}</span>
                   </a>
-                  <hr />
-                  <div class="user-edit-profile">
-                    <a href="/profile" class="align-items-center">
-                      <mat-icon style="color: #000">visibility</mat-icon>
-                      <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
-                      <span class="">{{ 'NAV.view_profile' | translate }}</span>
-                    </a>
-                  </div>
-                  <hr />
-                  <div class="user-edit-profile">
-                    <a href="/upload" class="align-items-center">
-                      <mat-icon style="color: #000">add_circle</mat-icon>
-                      <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
-                      <span class="">{{ 'NAV.upload' | translate }}</span>
-                    </a>
-                  </div>
-                  <hr />
-                  <div class="user-edit-profile">
-                    <a class="align-items-center">
-                      <mat-icon style="color: #000"
-                        >account_balance_wallet</mat-icon
-                      >
-                      <span class="">{{ loginService.user.balance }} ₾</span>
-                    </a>
-                  </div>
-                  <hr />
-                  <div class="user-edit-profile">
-                    <a href="/balance" class="align-items-center">
-                      <mat-icon style="color: #000">credit_card</mat-icon>
-                      <span class="">{{ 'NAV.add_balance' | translate }}</span>
-                    </a>
-                  </div>
-                  <hr />
-                  <div class="user-logout" (click)="logoutFunction()">
-                    <a href="/login" class="align-items-center"
-                      ><img src="assets/images/logout.svg" alt="logout" />
-                      <span>{{ 'NAV.log_out' | translate }}</span></a
-                    >
-                  </div>
+                </div>
+                <hr />
+                <div class="user-edit-profile">
+                  <a href="/upload" class="align-items-center">
+                    <mat-icon>add_circle</mat-icon>
+                    <!-- <img src="assets/images/edit.svg" alt="edit" /> -->
+                    <span class="">{{ 'NAV.upload' | translate }}</span>
+                  </a>
+                </div>
+                <hr />
+                <div class="user-edit-profile">
+                  <a class="align-items-center">
+                    <mat-icon>account_balance_wallet</mat-icon>
+                    <span class="">{{ loginService.user.balance }} ₾</span>
+                  </a>
+                </div>
+                <hr />
+                <div class="user-edit-profile">
+                  <a href="/balance" class="align-items-center">
+                    <mat-icon>credit_card</mat-icon>
+                    <span class="">{{ 'NAV.add_balance' | translate }}</span>
+                  </a>
+                </div>
+                <hr />
+                <div class="user-logout" (click)="logoutFunction()">
+                  <a href="/login" class="align-items-center">
+                    <mat-icon>logout</mat-icon>
+
+                    <span>{{ 'NAV.log_out' | translate }}</span></a
+                  >
                 </div>
               </div>
             </div>
-          </div>
-          <ng-template #logout>
-            <div class="navbar-nav ml-auto">
-              <div class="nav-buttons">
-                <a class="login" href="/login">Log In</a>
-              </div>
-            </div>
+          </li>
+          <ng-template #login>
+            <li class="nav-item">
+              <a href="/login" class="login-btn">
+                {{ 'LOGIN.login' | translate }}</a
+              >
+            </li>
           </ng-template>
-          <div class="lang-selector">
-            <app-language-selector
-              *ngIf="screenWidth > 1200"
-            ></app-language-selector>
-          </div>
-        </div>
+          <a
+            class="navbar-toggler collapsed"
+            id="bar"
+          >
+            <span></span>
+          </a>
+        </ul>
       </div>
-    </nav>
-  </section>
-</header>
+    </div>
+  </nav>
+</section>
+
+<!-- Navigation Section HTML End -->
 
 <router-outlet></router-outlet>

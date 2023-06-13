@@ -1,42 +1,86 @@
-@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap');
 
-body {
-	// background-color: #fceddc;
-    margin: 0;
-}
+// body {
+// 	// background-color: #fceddc;
+//     margin: 0;
+// }
 
-body {
-    animation: fadeInAnimation ease 0.5s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-  
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-     }
-}
-/* Font */
-@import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Ubuntu:wght@300;400;500;700&display=swap");
+// body {
+//     animation: fadeInAnimation ease 0.5s;
+//     animation-iteration-count: 1;
+//     animation-fill-mode: forwards;
+// }
+//   
+// @keyframes fadeInAnimation {
+//     0% {
+//         opacity: 0;
+//     }
+//     100% {
+//         opacity: 1;
+//      }
+// }
+// /* Font */
+// @import url("https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700&family=Ubuntu:wght@300;400;500;700&display=swap");
+
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
+
+// body {
+//   font-family: "Ubuntu", sans-serif;
+//   scroll-behavior: smooth;
+// }
+
+// ol,
+// ul {
+//   margin: 0;
+//   padding: 0;
+// }
+
+// li {
+//   list-style: none;
+// }
+
+// a {
+//   text-decoration: none;
+//   cursor: pointer;
+// }
+
+// img {
+//   max-width: 100%;
+// }
+
+// .section-title h2 {
+//   font-size: 32px;
+//   font-weight: 700;
+//   color: #1d1d1d;
+//   margin-bottom: 20px;
+// }
+
+// /* Base Styles CSS End */
+/* Base Styles CSS Start */
+
+/* Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
 * {
-  margin: 0;
   padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
 
 body {
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
+  background: #fffaf5;
 }
 
 ol,
 ul {
-  margin: 0;
   padding: 0;
+  margin: 0;
 }
 
 li {
@@ -52,11 +96,14 @@ img {
   max-width: 100%;
 }
 
-.section-title h2 {
-  font-size: 32px;
-  font-weight: 700;
-  color: #1d1d1d;
-  margin-bottom: 20px;
+.primary-btn {
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  color: #ffffff;
+  background: #ff5b2e;
+  padding: 12px 32px;
+  border-radius: 32px;
 }
 
 /* Base Styles CSS End */

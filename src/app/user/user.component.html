@@ -11,15 +11,7 @@
                 <div class="col-lg-9">
                   <div class="user-info-container d-md-flex">
                     <div class="user-info-img">
-                      <img
-                        *ngIf="userData.pfp == true; else default"
-                        src="assets/user-pfps/{{ userID }}.jpg"
-                        alt="user"
-                        id="user-pfp"
-                      />
-                      <ng-template #default>
-                        <img src="assets/images/default_pfp.png" alt="user" />
-                      </ng-template>
+                      <img src="{{ userData.pfp }}" alt="user" id="user-pfp" />
                     </div>
                     <div class="user-info-content ms-3">
                       <h4>{{ userData.username }}</h4>
@@ -31,9 +23,9 @@
                             src="assets/images/phone-icon.svg"
                             alt="phone-icon"
                           />
-                          <a href="tel:(+995) {{ userData.phone_number }}">{{
-                            userData.phone
-                          }}</a>
+                          <a href="tel:(+995) {{ userData.phone_number }}"
+                            >{{ userData.phone }}</a
+                          >
                         </li>
                         <li>
                           <img
@@ -81,7 +73,40 @@
     <section id="Post" class="user-post">
       <div class="post-wrapper position-relative">
         <div class="container-fluid">
-          <app-posts [posts]="posts"></app-posts>
+          <div class="row align-items-center mt-4">
+            <div
+              class="col-sm-6 col-lg-3 col-xl-4"
+              *ngFor="let post of posts"
+              (click)="openPost(post._id)"
+              [@fadeIn]
+            >
+              <div class="post-card" [ngClass]="{ 'vip-post': post.vip }">
+                <div class="post-card-img position-relative">
+                  <img
+                    src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                    alt="post-img"
+                  />
+                  <span class="post-type-label"
+                    >{{ 'POST.' + post.postType | translate}}</span
+                  >
+                  <span class="vip-label" *ngIf="post.vip">VIP</span>
+                </div>
+                <h5>{{ post.breed }}</h5>
+                <p>{{ 'UPLOAD.' + post.gender | translate }}</p>
+                <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
+                <ng-template #age>
+                  <p class="age-text">
+                    <span *ngIf="post.ageYears > 0">
+                      {{ post.ageYears }} {{ 'POST.Years' | translate }}
+                    </span>
+                    <span *ngIf="post.ageMonths > 0">
+                      {{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                    </span>
+                  </p>
+                </ng-template>
+              </div>
+            </div>
+          </div>
           <div class="latest-pagination">
             <div class="latest-pagi-wrapper">
               <ul (click)="pagination($event)">

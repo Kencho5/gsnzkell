@@ -15,11 +15,7 @@
                 <div class="col-lg-9">
                   <div class="user-info-container d-md-flex">
                     <div class="user-info-img">
-                      <img
-                          src="{{ userData.pfp }}"
-                        alt="user"
-                        id="user-pfp"
-                      />
+                      <img src="{{ userData.pfp }}" alt="user" id="user-pfp" />
                     </div>
                     <div class="user-info-content ms-3">
                       <h4>{{ userData.username }}</h4>
@@ -188,7 +184,7 @@
         <div class="user-form-container d-lg-flex">
           <div class="user-upload-img mb-4 mb-lg-0">
             <img
-                src="{{ userData.pfp }}"
+              src="{{ userData.pfp }}"
               alt="user"
               id="user-pfp"
               class="edit-profile-pfp"
@@ -295,7 +291,11 @@
       /></a>
     </div>
     <section id="Post" class="user-post">
-      <div class="post-wrapper position-relative" *ngFor="let post of posts" [@fadeIn]>
+      <div
+        class="post-wrapper position-relative"
+        *ngFor="let post of posts"
+        [@fadeIn]
+      >
         <div class="container-fluid">
           <div class="v-post-card-wrapper" [ngClass]="{'vip-post': post.vip}">
             <div class="row align-items-center">
@@ -408,11 +408,7 @@
       <div class="latest-pagi-wrapper">
         <ul (click)="pagination($event)">
           <li class="arrow-left">
-            <img
-              src="assets/images/chevron-left.svg"
-              alt="chevron-left"
-              class="arrow-left"
-            />
+            <mat-icon class="arrow-left">keyboard_arrow_left</mat-icon>
           </li>
           <li
             *ngFor="let page of pages"
@@ -422,11 +418,7 @@
             {{ page }}
           </li>
           <li class="arrow-right">
-            <img
-              src="assets/images/chevron-right.svg"
-              alt="chevron-right"
-              class="arrow-right"
-            />
+            <mat-icon class="arrow-right">keyboard_arrow_right</mat-icon>
           </li>
         </ul>
         <section id="User-form">
@@ -437,12 +429,14 @@
                 (ngSubmit)="editPost()"
                 class="edit-post-form"
               >
-              <label>{{ 'UPLOAD.breed' | translate }}</label>
+                <label>{{ 'UPLOAD.breed' | translate }}</label>
                 <div class="user-form-field">
                   <mat-icon>badge</mat-icon>
                   <input type="text" formControlName="breed" required />
                 </div>
-                <label *ngIf="postForm.controls.price.value">{{ 'UPLOAD.price' | translate }}</label>
+                <label *ngIf="postForm.controls.price.value"
+                  >{{ 'UPLOAD.price' | translate }}</label
+                >
                 <div
                   class="user-form-field"
                   *ngIf="postForm.controls.price.value"

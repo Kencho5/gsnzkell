@@ -50,7 +50,7 @@ li {
 
 .button-select {
   font-size: 16px;
-  border: 1px solid #54a0b2;
+  border: 1px solid #ff5b2e;
   border-radius: 30px;
   align-items: center;
   background: white;
@@ -72,7 +72,7 @@ li {
 }
 
 .menu-item:hover {
-  background-color: #94c9d6;
+  background-color: tomato;
 }
 
 .button-select p {
@@ -88,7 +88,7 @@ li {
 .form-input-field select {
   width: 100%;
   padding: 12px 20px;
-  border: 1px solid #54a0b2;
+  border: 1px solid #ff5b2e;
   border-radius: 30px;
 }
 .form-input-field input:focus,
@@ -112,7 +112,7 @@ li {
 }
 .form-btn input {
   font-size: 16px;
-  color: #1d1d1d;
+  color: white;
   background: #fca311;
   padding: 12px 25px;
   margin-top: 40px;
@@ -167,7 +167,7 @@ li {
 }
 .latest-pagi-wrapper ul li {
   font-size: 16px;
-  color: #54a0b2;
+  color: #ff5b2e;
   width: 36px;
   height: 36px;
   display: flex;
@@ -175,14 +175,14 @@ li {
   align-items: center;
   background: #fff;
   margin: 0 8px;
-  border: 1px solid #54a0b2;
+  border: 1px solid #ff5b2e;
   border-radius: 100%;
   cursor: pointer;
 }
 .latest-pagi-wrapper ul li.active {
   color: #fff;
-  background: #54a0b2;
-  border: 1px solid #54a0b2;
+  background: #ff5b2e;
+  border: 1px solid #ff5b2e;
 }
 .profile-shape1 {
   top: 0;
@@ -215,9 +215,9 @@ li {
   margin-top: 20px;
   width: 100%;
   padding: 12px 20px;
-  border: 1px solid #54a0b2;
   border-radius: 30px;
   color: #000;
+  border: none;
 }
 .error-div {
   word-wrap: break-word;
@@ -255,11 +255,6 @@ li {
     padding: 40px 20px;
   }
 }
-@media (min-width: 768px) and (max-width: 991px) {
-  .section-title h2 {
-    font-size: 28px;
-  }
-}
 @media (min-width: 300px) and (max-width: 1199px) {
   .profile-main-wrapper {
     margin-top: 150px;
@@ -287,7 +282,7 @@ li {
     position: absolute;
     top: 115px;
     left: 20px;
-    background-color: #54a0b2;
+    background-color: #ff5b2e;
     border-radius: 20px;
   }
   .bars span {
@@ -308,9 +303,6 @@ li {
   }
   .search-form-field input {
     max-width: 85%;
-  }
-  .section-title h2 {
-    font-size: 28px;
   }
   .upload-post-shape {
     z-index: -1;
@@ -347,4 +339,107 @@ li {
   .post-time::after {
     bottom: 27px;
   }
+}
+
+.vip-post {
+  -webkit-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  -moz-box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+  box-shadow: 0 0 33px 0 rgba(255, 202, 43, 1) !important;
+}
+.post-card {
+  background: linear-gradient(180deg, #fff 0, rgba(255, 255, 255, 0.7) 100%);
+  box-shadow: 0 5.92334px 37.0209px -1.48084px rgba(51, 67, 104, 0.2);
+  backdrop-filter: blur(5px);
+  padding: 30px;
+  margin-top: 40px;
+  border-radius: 44px;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+.post-card:hover {
+  transform: scale(1.05);
+}
+.post-card-img img {
+  width: 100%;
+  min-height: 200px;
+  max-height: 300px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.post-type-label {
+  position: absolute;
+  left: 0;
+  bottom: 40px;
+  border-radius: 0 10px 10px 0;
+  font-size: 18px;
+  font-weight: 700 !important;
+  padding: 8px 12px;
+  color: #1d1d1d;
+  background: #fff;
+}
+.age-text {
+  display: flex;
+  justify-content: space-between;
+  width: 95%;
+}
+.vip-label {
+  -webkit-box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
+  -moz-box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
+  box-shadow: 0 0 50px 0 rgba(255, 203, 46, 1);
+  background-color: #ffca2b;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 700 !important;
+  padding: 8px 12px;
+  color: #1d1d1d;
+}
+.post-card h5 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 28px;
+  color: #1d1d1d;
+  padding-top: 20px;
+  margin-bottom: 10px;
+}
+.post-card p {
+  font-weight: 400;
+  font-size: 32px;
+  color: #27525c;
+  margin: 0;
+}
+.post-card p span img {
+  margin-top: -20px;
+}
+
+// RESPONSIVE
+@media (min-width: 300px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 180px;
+    max-height: 180px;
+    height: 100%;
+  }
+}
+@media (min-width: 577px) and (max-width: 767px) {
+  .post-card-img img {
+    min-height: 400px;
+    max-height: 400px;
+    height: 100%;
+  }
+}
+@media (min-width: 400px) and (max-width: 576px) {
+  .post-card-img img {
+    min-height: 300px;
+    max-height: 300px;
+    height: 100%;
+  }
+}
+
+.section-title h2 {
+  font-size: 28px !important;
+  color: black;
+  font-weight: bold;
 }

@@ -265,7 +265,42 @@
               <h2>{{ 'HOME.vip_posts' | translate }}</h2>
             </div>
             <div class="position-relative pt-3">
-              <app-vip-posts [vipPosts]="vipPosts"></app-vip-posts>
+              <div class="vip-post-wrapper row align-items-center mt-4">
+                <div
+                  class="col-sm-6 col-lg-3 col-xl-4"
+                  *ngFor="let post of vipPosts"
+                  (click)="openPost(post._id)"
+                  [@fadeIn]
+                >
+                  <div class="post-card vip-post">
+                    <div class="post-card-img position-relative">
+                      <img
+                        src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                        alt="post-img"
+                      />
+                      <span class="post-type-label">
+                        {{ 'POST.' + post.postType | translate }}
+                      </span>
+                      <span class="vip-label" *ngIf="post.vip">VIP</span>
+                    </div>
+                    <h5>{{ post.breed }}</h5>
+                    <p>{{ 'UPLOAD.' + post.gender | translate }}</p>
+                    <p *ngIf="post.price != null; else age">
+                      {{ post.price }} ₾
+                    </p>
+                    <ng-template #age>
+                      <p class="age-text">
+                        <span *ngIf="post.ageYears > 0">
+                          {{ post.ageYears }} {{ 'POST.Years' | translate }}
+                        </span>
+                        <span *ngIf="post.ageMonths > 0">
+                          {{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                        </span>
+                      </p>
+                    </ng-template>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="profile-shape2">
               <img
@@ -287,7 +322,40 @@
                 >
               </div>
             </div>
-            <app-posts [posts]="posts"></app-posts>
+            <div class="row align-items-center mt-4">
+              <div
+                class="col-sm-6 col-lg-3 col-xl-4"
+                *ngFor="let post of posts"
+                (click)="openPost(post._id)"
+                [@fadeIn]
+              >
+                <div class="post-card" [ngClass]="{ 'vip-post': post.vip }">
+                  <div class="post-card-img position-relative">
+                    <img
+                      src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                      alt="post-img"
+                    />
+                    <span class="post-type-label"
+                      >{{ 'POST.' + post.postType | translate}}</span
+                    >
+                    <span class="vip-label" *ngIf="post.vip">VIP</span>
+                  </div>
+                  <h5>{{ post.breed }}</h5>
+                  <p>{{ 'UPLOAD.' + post.gender | translate }}</p>
+                  <p *ngIf="post.price != null; else age">{{ post.price }} ₾</p>
+                  <ng-template #age>
+                    <p class="age-text">
+                      <span *ngIf="post.ageYears > 0">
+                        {{ post.ageYears }} {{ 'POST.Years' | translate }}
+                      </span>
+                      <span *ngIf="post.ageMonths > 0">
+                        {{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                      </span>
+                    </p>
+                  </ng-template>
+                </div>
+              </div>
+            </div>
           </div>
 
           <!-- Latest Post Pagination -->

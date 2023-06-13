@@ -1,75 +1,75 @@
 $dark: #ee8240;
 $bg: #fceddc;
 $light: #fff;
-$dim: #2e3134;
+$dim: #050D43;
 
-body {
-  font-family: "Ubuntu", sans-serif;
-  font-weight: 600;
-}
+// body {
+//   font-family: "Ubuntu", sans-serif;
+//   font-weight: 600;
+// }
 
 mat-icon {
   vertical-align: middle;
 }
 
-/* Upload Post Section CSS Start */
+// /* Upload Post Section CSS Start */
 
-.upload-post-wrapper {
-  padding: 200px 0;
-}
+// .upload-post-wrapper {
+//   padding: 200px 0;
+// }
 
-.upload-post-container {
-  background: linear-gradient(
-    107.16deg,
-    #ffffff 0%,
-    rgba(255, 255, 255, 0.6) 100%
-  );
-  box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
-  margin-top: 50px;
-  border-radius: 30px;
-}
+// .upload-post-container {
+//   background: linear-gradient(
+//     107.16deg,
+//     #ffffff 0%,
+//     rgba(255, 255, 255, 0.6) 100%
+//   );
+//   box-shadow: 0px 27px 100px 5px rgba(11, 47, 91, 0.1);
+//   margin-top: 50px;
+//   border-radius: 30px;
+// }
 
-.upload-post-title h4 {
-  font-size: 24px;
-  font-weight: 700;
-  text-align: center;
-  color: #1d1d1d;
-  padding-top: 50px;
-}
+// .upload-post-title h4 {
+//   font-size: 24px;
+//   font-weight: 700;
+//   text-align: center;
+//   color: #1d1d1d;
+//   padding-top: 50px;
+// }
 
-.upload-post-img {
-  max-width: 80%;
-  margin: auto;
-  padding: 80px 0 150px;
-}
+// .upload-post-img {
+//   max-width: 80%;
+//   margin: auto;
+//   padding: 80px 0 150px;
+// }
 
-.upload-post-img img {
-  width: 100%;
-}
+// .upload-post-img img {
+//   width: 100%;
+// }
 
-.upload-post-form {
-  max-width: 400px;
-  width: 100%;
-}
+// .upload-post-form {
+//   max-width: 400px;
+//   width: 100%;
+// }
 
 select {
-  border: 2px solid #54a0b2;
+  // border: 1px solid #ff5b2e;
+  border: none;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
   color: $dim;
 }
 
 .button-select {
   font-size: 16px;
-  border: 2px solid #54a0b2;
+  // border: 1px solid #ff5b2e;
+  border: none;
   margin-bottom: 16px;
   border-radius: 30px;
   align-items: center;
   background: white;
   color: $dim;
-  font-weight: bold;
 }
 
 ::ng-deep.menu-container {
@@ -82,12 +82,11 @@ select {
   padding: 10px;
   text-align: center;
   cursor: pointer;
-  font-weight: bold;
   transition: 0.3s;
 }
 
 .menu-item:hover {
-  background-color: #94c9d6;
+  background-color: tomato;
 }
 
 .button-select p {
@@ -107,14 +106,14 @@ select {
 .double-input input {
   width: 48%;
   background: #ffffff;
-  border: 2px solid #54a0b2;
+  border: none;
   text-align: center;
   height: 62px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
   font-size: 16px;
   outline: none;
+  font-weight: normal !important;
 }
 
 // REMOVE DEFAULT NUMBER INPUT ARROWS
@@ -130,8 +129,7 @@ select {
 
 .double-input input::placeholder {
   font-size: 16px;
-  font-weight: 700;
-  color: black;
+  color: $dim;
 }
 
 #price {
@@ -198,7 +196,7 @@ select {
   width: 120px;
   min-height: 70px;
   border-radius: 0.5rem;
-  border: 2px solid #ffd766;
+  border: 1px solid #ffd766;
   background-color: #fff;
   box-shadow: 0 5px 10px rgba(#000, 0.1);
   transition: 0.15s ease;
@@ -211,7 +209,7 @@ select {
     display: block;
     width: 1.25rem;
     height: 1.25rem;
-    border: 2px solid #ffd766;
+    border: 1px solid #ffd766;
     background-color: #fff;
     border-radius: 50%;
     top: 0.25rem;
@@ -258,22 +256,21 @@ textarea {
   outline: none;
   width: 100%;
   background: #ffffff;
-  border: 2px solid #54a0b2;
+  border: none;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
 }
 
 .up-form-field input,
 .files-btn {
   width: 100%;
   background: #ffffff;
-  border: 2px solid #54a0b2;
+  // border: 1px solid #ff5b2e;
+  border: none;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
-  font-weight: bold;
   outline: none;
   font-size: 16px;
 }
@@ -285,7 +282,7 @@ textarea {
 .up-form-field ::placeholder {
   font-size: 16px;
   font-weight: 700;
-  color: black;
+  color: $dim;
 }
 
 .up-form-btn {
@@ -308,11 +305,11 @@ textarea {
 .up-form-btn input:hover {
   transform: scale(1.1);
 }
-.upload-post-shape {
-  position: absolute;
-  left: 0;
-  bottom: -20px;
-}
+// .upload-post-shape {
+//   position: absolute;
+//   left: 0;
+//   bottom: -20px;
+// }
 
 .images {
   display: flex;
@@ -394,9 +391,9 @@ textarea {
   cursor: pointer;
 }
 
-.upload-post-shape img {
-  max-width: 80%;
-}
+// .upload-post-shape img {
+//   max-width: 80%;
+// }
 
 .error-div {
   padding-top: 20px;
@@ -424,83 +421,83 @@ textarea {
   display: none;
 }
 
-/* Upload Post Section CSS End */
+// /* Upload Post Section CSS End */
 
-// RESPONSIVE
-@media (min-width: 1920px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
-  }
-}
-@media (min-width: 1600px) and (max-width: 1919px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
-  }
-}
-@media (min-width: 1400px) and (max-width: 1599px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 100px;
-  }
-}
-@media (min-width: 1200px) and (max-width: 1399px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 60px;
-  }
-}
-@media (min-width: 992px) and (max-width: 1199px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 50px;
-  }
-}
-@media (min-width: 768px) and (max-width: 991px) {
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 20px;
-  }
-  .section-title h2 {
-    font-size: 28px;
-  }
-}
-@media only screen and (min-width: 767px) {
-  .owl {
-    display: none;
-  }
-}
-@media only screen and (max-width: 767px) {
-  .slide1,
-  .slide2,
-  .slide3 {
-    padding: 20px 25px;
-  }
-}
-@media (min-width: 300px) and (max-width: 767px) {
-  .section-title h2 {
-    font-size: 28px;
-  }
-  .upload-post-shape {
-    z-index: -1;
-  }
-  .post-wrapper .container-fluid,
-  .upload-post-wrapper .container-fluid {
-    padding: 0 10px;
-  }
-  .upload-post-img {
-    max-width: 100%;
-    padding: 50px 0 80px;
-  }
-  .upload-post-form {
-    padding: 0 20px 50px;
-    margin: auto;
-  }
-  .vip-post-wrapper {
-    padding: 0 0 50px;
-  }
-}
+// // RESPONSIVE
+// @media (min-width: 1920px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 100px;
+//   }
+// }
+// @media (min-width: 1600px) and (max-width: 1919px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 100px;
+//   }
+// }
+// @media (min-width: 1400px) and (max-width: 1599px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 100px;
+//   }
+// }
+// @media (min-width: 1200px) and (max-width: 1399px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 60px;
+//   }
+// }
+// @media (min-width: 992px) and (max-width: 1199px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 50px;
+//   }
+// }
+// @media (min-width: 768px) and (max-width: 991px) {
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 20px;
+//   }
+//   .section-title h2 {
+//     font-size: 28px;
+//   }
+// }
+// @media only screen and (min-width: 767px) {
+//   .owl {
+//     display: none;
+//   }
+// }
+// @media only screen and (max-width: 767px) {
+//   .slide1,
+//   .slide2,
+//   .slide3 {
+//     padding: 20px 25px;
+//   }
+// }
+// @media (min-width: 300px) and (max-width: 767px) {
+//   .section-title h2 {
+//     font-size: 28px;
+//   }
+//   .upload-post-shape {
+//     z-index: -1;
+//   }
+//   .post-wrapper .container-fluid,
+//   .upload-post-wrapper .container-fluid {
+//     padding: 0 10px;
+//   }
+//   .upload-post-img {
+//     max-width: 100%;
+//     padding: 50px 0 80px;
+//   }
+//   .upload-post-form {
+//     padding: 0 20px 50px;
+//     margin: auto;
+//   }
+//   .vip-post-wrapper {
+//     padding: 0 0 50px;
+//   }
+// }
 
 // STEP PAGINATION
 .latest-pagi-wrapper ul {
@@ -510,7 +507,7 @@ textarea {
   margin-top: 30px;
 }
 .latest-pagi-wrapper ul li {
-  color: #54a0b2;
+  color: #ff5b2e;
   width: 100px;
   height: 46px;
   display: flex;
@@ -518,17 +515,86 @@ textarea {
   align-items: center;
   background: #fff;
   margin: 0 8px;
-  border: 1px solid #54a0b2;
+  // border: 1px solid #ff5b2e;
+  border: none;
   border-radius: 50px;
   cursor: pointer;
   transition: transform 0.2s;
 }
 .latest-pagi-wrapper ul li.active {
   color: #fff;
-  background: #54a0b2;
-  border: 1px solid #54a0b2;
+  background: #ff5b2e;
+  // border: 1px solid #ff5b2e;
+  border: none;
 }
 
 .latest-pagi-wrapper ul li:hover {
   transform: scale(1.1);
 }
+
+/* Upload Post Section CSS Start */
+
+.upload-post-wrapper {
+  margin-top: 100px;
+}
+
+.upload-post-container {
+  padding: 48px 36px;
+  background: #fff3e8;
+  border-radius: 48px;
+}
+
+.upload-post-img img {
+  max-width: 100%;
+  width: 100%;
+}
+
+.upload-post-content h3 {
+  font-size: 40px;
+  font-weight: 600;
+  color: #050c43;
+  margin-bottom: 30px;
+}
+
+.post-form-field {
+  margin-bottom: 24px;
+}
+
+.post-form-field select,
+.post-form-field input {
+  width: 100%;
+  font-size: 16px;
+  font-weight: 500;
+  color: #4d4f5f;
+  padding: 16px 24px;
+  background: #ffffff;
+  border: none;
+  border-radius: 32px;
+}
+
+.post-form-field select:focus,
+.post-form-field input:focus {
+  outline: 0;
+}
+
+.post-submit-btn {
+  padding-top: 20px;
+}
+
+.post-submit-btn input {
+  font-size: 18px;
+  font-weight: 500;
+  color: #ffffff;
+  padding: 16px 32px;
+  background: #ff5b2e;
+  border: px solid #ffffff;
+  border-radius: 32px;
+}
+
+.upload-post-form ::placeholder {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4d4f5f;
+}
+
+/* Upload Post Section CSS End */

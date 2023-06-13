@@ -17,35 +17,16 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  filterForm = new FormGroup({
-    animal: new FormControl(''),
-    postType: new FormControl('', Validators.required),
-    city: new FormControl(''),
-    ageMin: new FormControl('', Validators.required),
-    ageMax: new FormControl('', Validators.required),
-    ageType: new FormControl('', Validators.required),
-    priceMin: new FormControl('', Validators.required),
-    priceMax: new FormControl('', Validators.required),
-  });
-
   searchForm = this.formBuilder.group({
     text: new FormControl(),
   });
 
   posts = [];
-  postsLength;
   text: string;
   count;
   time;
-  filterError;
   supportedLanguages = ['en', 'ge'];
   currentLanguage: string;
-  screenWidth: number;
-
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.screenWidth = window.innerWidth;
-  }
 
   constructor(
     private formBuilder: FormBuilder,
@@ -54,12 +35,11 @@ export class AppComponent {
     private el: ElementRef,
     private renderer: Renderer2,
     private searchService: SearchService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private elementRef: ElementRef
   ) {
     // Set the default language
     translate.setDefaultLang('ge');
-
-    this.screenWidth = window.innerWidth;
   }
 
   ngOnInit(): void {
@@ -79,6 +59,14 @@ export class AppComponent {
         localStorage.removeItem('token');
       }
     }
+
+    const bar = this.elementRef.nativeElement.querySelector('#bar');
+    const nav = this.elementRef.nativeElement.querySelector('.nav');
+
+    this.renderer.listen(bar, 'click', () => {
+      bar.classList.toggle('active');
+      nav.classList.toggle('active');
+    });
   }
 
   search() {
@@ -88,29 +76,6 @@ export class AppComponent {
     }
   }
 
-  filter() {
-    if (this.filterForm.valid) {
-      this.filterError = '';
-
-      this.searchService
-        .searchPost({ text: this.text, filters: this.filterForm.value })
-        .subscribe((res) => {
-          if (res['code'] == 200) {
-            this.posts = res['data'];
-            this.count = res['count'];
-            this.time = res['time'];
-          }
-        });
-    } else {
-      let errors = [];
-      for (const invalid in this.filterForm.controls) {
-        if (this.filterForm.controls[invalid].invalid) {
-          errors.push(invalid);
-        }
-      }
-      this.filterError = `Please fill: ${errors}`;
-    }
-  }
 
   logoutFunction() {
     localStorage.removeItem('token');
@@ -120,9 +85,4 @@ export class AppComponent {
     document.querySelector('.profile-dropdown').classList.toggle('active');
   }
 
-  closeFilter() {
-    this.el.nativeElement
-      .querySelector('.search-filter')
-      .classList.remove('active');
-  }
 }

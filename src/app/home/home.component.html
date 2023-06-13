@@ -1,123 +1,225 @@
 <body>
+  <!-- Header Part HTML Start -->
+
   <header>
     <!-- Hero Section HTML Start -->
+
     <section id="Hero">
-      <div class="hero-wrapper position-relative">
-        <div class="container-fluid">
+      <div class="hero-wrapper">
+        <div class="container">
           <div class="row">
             <div class="col-lg-6">
-              <div class="hero-shape3">
-                <img src="assets/images/hero-shape2.png" alt="hero-shape1" />
-              </div>
-              <div class="hero-content">
-                <h1>
-                  <span class="adopt position-relative">
-                    {{ 'HOME.adopt' | translate}}
-                    <img src="assets/images/adopt.svg" alt="adopt" />
-                  </span>
-                  <span class="sell position-relative">
-                    {{ 'HOME.sell' | translate}}
-                    <img src="assets/images/sell.svg" alt="sell" />
-                  </span>
-                  <span class="meet position-relative">
-                    {{ 'HOME.meet' | translate}}
-                    <img src="assets/images/meet.svg" alt="meet" />
-                  </span>
-                  <br />
-                  {{ 'HOME.your_pet_here' | translate}}
-                </h1>
-                <div class="hero-btn mt-5">
-                  <a href="/upload">{{ 'HOME.upload_post' | translate}}</a>
+              <div class="hero-content position-relative">
+                <div class="hero-content-shape1">
+                  <img
+                    draggable="false"
+                    src="assets/images/hero-content-shape1.svg"
+                    alt="hero-content-shape1"
+                  />
                 </div>
-                <div class="pets-box">
-                  <div class="single-pet" (click)="openAll($event)">
-                    <img src="assets/images/dog.png" alt="dog" id="dog" />
-                    <h4 id="dog">{{ 'HOME.dogs' | translate}}</h4>
-                  </div>
-                  <div class="single-pet" (click)="openAll($event)">
-                    <img src="assets/images/cat.png" alt="cat" id="cat" />
-                    <h4 id="cat">{{ 'HOME.cats' | translate}}</h4>
-                  </div>
-                  <div class="single-pet" (click)="openAll($event)">
-                    <img src="assets/images/birds.png" alt="bird" id="bird" />
-                    <h4 id="bird">{{ 'HOME.birds' | translate}}</h4>
-                  </div>
-                  <div class="single-pet more" (click)="openAll($event)">
-                    <a href="/search;animal=all"
-                      >{{ 'HOME.see_more' | translate}}</a
-                    >
-                  </div>
+                <h2>
+                  <span
+                    >{{ 'HOME.adopt' | translate}}, {{ 'HOME.sell' |
+                    translate}}, <br />
+                    {{ 'HOME.meet' | translate}}</span
+                  >
+                  {{ 'HOME.your_pet_here' | translate}}
+                </h2>
+                <p>{{ 'HOME.long_text' | translate }}</p>
+                <div class="hero-btn">
+                  <a class="primary-btn" href="/upload"
+                    >{{ 'HOME.upload_post' | translate }}</a
+                  >
+                </div>
+                <div class="hero-content-shape3">
+                  <img
+                    draggable="false"
+                    src="assets/images/hero-content-shape3.svg"
+                    alt="hero-content-shape3"
+                  />
                 </div>
               </div>
             </div>
             <div class="col-lg-6">
               <div class="hero-img">
-                <img
-                  class="img-fluid"
-                  src="assets/images/hero-img.png"
-                  alt="hero-img"
-                />
+                <img src="assets/images/hero-img.png" alt="hero-img" />
               </div>
             </div>
           </div>
         </div>
-        <div class="hero-shape1">
-          <img src="assets/images/hero-shape1.png" alt="hero-shape1" />
-        </div>
-        <div class="hero-shape2">
-          <img src="assets/images/hero-shape2.png" alt="hero-shape2" />
-        </div>
       </div>
     </section>
+
     <!-- Hero Section HTML End -->
   </header>
+
   <!-- Header Part HTML End -->
+
   <!-- Main Part HTML Start -->
-  <main class="main-bg position-relative">
-    <div class="main-top-shape">
-      <img src="assets/images/main-shape.png" alt="main-shape" />
-    </div>
 
-    <!-- Post Section HTML Start -->
-    <section id="Post" *ngIf="vipPosts.length > 0">
-      <div class="post-wrapper position-relative">
-        <div class="container-fluid">
-          <div class="section-title">
-            <h2>{{ 'HOME.vip_posts' | translate}}</h2>
+  <main>
+    <!-- Find Pet Section HTML Start -->
+
+    <section id="Find-pet">
+      <div class="find-pet-wrapper position-relative">
+        <div class="container">
+          <div class="find-pet-container">
+            <div class="row align-items-center">
+              <div class="col-xl-4">
+                <div class="find-pet-content">
+                  <h3>
+                    {{ 'HOME.new_pet' | translate }}
+                    <img
+                      draggable="false"
+                      src="assets/images/find-pet-text-shape.svg"
+                      alt="find-pet-text-shape"
+                    />
+                  </h3>
+                  <p>{{ 'HOME.new_pet_bottom' | translate }}</p>
+                  <div class="see-more-btn">
+                    <a class="primary-btn" href="/search;animal=all"
+                      >{{ 'HOME.see_more' | translate }}</a
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-8 pt-5 pt-xl-0">
+                <div class="row">
+                  <div class="col-md-6 col-lg-3 text-center">
+                    <a href="/search;animal=cat">
+                      <div class="find-pet-card">
+                        <div class="find-pet-card-img">
+                          <img
+                            src="assets/images/find-pet-card-img1.png"
+                            alt="find-pet-card-img1"
+                          />
+                        </div>
+                        <h4>{{ 'ANIMALS.cat' | translate }}</h4>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 col-lg-3 text-center pt-4 pt-md-0">
+                    <a href="/search;animal=dog">
+                      <div class="find-pet-card">
+                        <div class="find-pet-card-img">
+                          <img
+                            src="assets/images/find-pet-card-img2.png"
+                            alt="find-pet-card-img2"
+                          />
+                        </div>
+                        <h4>{{ 'ANIMALS.dog' | translate }}</h4>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 col-lg-3 text-center pt-4 pt-lg-0">
+                    <a href="/search;animal=reptile">
+                      <div class="find-pet-card">
+                        <div class="find-pet-card-img">
+                          <img
+                            src="assets/images/reptile.webp"
+                            alt="find-pet-card-img3"
+                          />
+                        </div>
+                        <h4>{{ 'ANIMALS.reptile' | translate }}</h4>
+                      </div>
+                    </a>
+                  </div>
+                  <div class="col-md-6 col-lg-3 text-center pt-4 pt-lg-0">
+                    <a href="/search;animal=bird">
+                      <div class="find-pet-card">
+                        <div class="find-pet-card-img">
+                          <img
+                            src="assets/images/find-pet-card-img4.png"
+                            alt="find-pet-card-img4"
+                          />
+                        </div>
+                        <h4>{{ 'ANIMALS.bird' | translate }}</h4>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <app-vip-posts [vipPosts]="vipPosts"></app-vip-posts>
         </div>
-        <div class="latest-post-shape">
-          <img
-            src="assets/images/latest-post-shape.png"
-            alt="latest-post-shape"
-          />
+        <div class="find-pet-shape">
+          <img src="assets/images/find-pet-shape.svg" alt="find-pet-shape" />
         </div>
       </div>
     </section>
 
-    <section id="Post" class="latest-posts-section" *ngIf="posts.length > 0">
-      <div class="post-wrapper position-relative">
-        <div class="container-fluid">
-          <div class="section-title">
-            <h2>{{ 'HOME.latest_posts' | translate }}</h2>
+    <!-- Find Pet Section HTML End -->
+
+    <!-- Pet Selling Section HTML Start -->
+
+    <section id="Pet-selling">
+      <div class="pet-selling-wrapper">
+        <div class="container">
+          <div class="pet-selling-top">
+            <h2>{{ 'HOME.latest_posts' | translate}}</h2>
           </div>
-          <app-posts [posts]="posts"></app-posts>
-        </div>
-        <div class="latest-post-shape">
-          <img
-            src="assets/images/latest-post-shape.png"
-            alt="latest-post-shape"
-          />
+          <div class="pet-selling-slider owl-theme" [@fadeIn]>
+            <owl-carousel-o [options]="customOptions" #carousel>
+              <ng-template carouselSlide *ngFor="let post of posts">
+                <div
+                  class="pet-selling-slide item"
+                  (click)="openPost(post._id)"
+                >
+                  <div class="pet-slide-img position-relative">
+                    <img
+                      src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                      alt="pet-selling-slide-img1"
+                    />
+                    <div class="vip-tag" *ngIf="post.vip">
+                      <span>VIP</span>
+                    </div>
+                  </div>
+                  <div class="pet-slide-content">
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <h5>
+                        {{ post.breed }}
+                        <span>({{ 'UPLOAD.' + post.gender | translate }})</span>
+                      </h5>
+                      <h5 *ngIf="post.price">{{ post.price }} ₾</h5>
+                    </div>
+                    <div
+                      class="d-flex justify-content-between align-items-center"
+                    >
+                      <p>
+                        <span *ngIf="post.ageYears > 0"
+                          >{{ post.ageYears }} {{ 'POST.Years' | translate }}
+                        </span>
+                        <span *ngIf="post.ageMonths > 0"
+                          >{{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                        </span>
+                      </p>
+                      <div class="buy-now-btn">
+                        <a>{{ 'POST.' + post.postType | translate}}</a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </owl-carousel-o>
+          </div>
+
+          <div class="carousel-nav">
+            <button type="button" (click)="carousel.prev()">
+              <mat-icon>arrow_back</mat-icon>
+            </button>
+            <button type="button" (click)="carousel.next()">
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </div>
         </div>
       </div>
     </section>
-    <!-- Post Section HTML End -->
-    <!-- Upload Post Section HTML Start -->
+
+    <!-- Pet Selling Section HTML End -->
     <app-upload-form></app-upload-form>
-    <!-- Upload Post Section HTML End -->
-    <app-footer></app-footer>
   </main>
+
   <!-- Main Part HTML End -->
-  <!-- User Footer Section HTML Start -->
 </body>

@@ -10,6 +10,7 @@ import { HomeService } from './home.service';
 import { UploadService } from '../upload/upload.service';
 import { TranslateService } from '@ngx-translate/core';
 import citiesJson from '../../assets/i18n/cities.json';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-home',
@@ -145,5 +146,41 @@ export class HomeComponent implements OnInit {
     const animal = event.target.id;
 
     this.router.navigate(['/search', { animal: animal }]);
+  }
+
+  customOptions: OwlOptions = {
+    loop: true,
+    dots: false,
+    nav: true,
+    margin: 25,
+    autoplay: true,
+    autoplayTimeout: 5000,
+    responsive: {
+      0: {
+        items: 1,
+        nav: true,
+      },
+      600: {
+        items: 1,
+        nav: true,
+      },
+      800: {
+        items: 2,
+        nav: true,
+      },
+      1000: {
+        items: 3,
+        nav: true,
+      },
+      1200: {
+        items: 4,
+        nav: true,
+      },
+    },
+    navText: ['', ''],
+  };
+
+  openPost(id) {
+    this.router.navigate([`/post/${id}`]);
   }
 }

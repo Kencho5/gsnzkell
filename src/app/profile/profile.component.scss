@@ -110,7 +110,7 @@ li {
   font-weight: 700;
   letter-spacing: 0.03em;
   color: #ffffff;
-  background: #1f879f;
+  background: tomato;
   padding: 20px 32px;
   border-radius: 40px;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
@@ -131,7 +131,7 @@ li {
 
 .button-select {
   font-size: 16px;
-  border: 2px solid #54a0b2;
+  border: 2px solid #ff5b2e;
   margin: 30px;
   border-radius: 30px;
   align-items: center;
@@ -155,7 +155,7 @@ li {
 }
 
 .menu-item:hover {
-  background-color: #94c9d6;
+  background-color: tomato;
 }
 
 .button-select p {
@@ -194,7 +194,7 @@ li {
   font-weight: 700;
 }
 select {
-  border: 1px solid #0b2f5b;
+  border: 1px solid #ff5b2e;
   padding: 18px 40px;
   margin-bottom: 16px;
   border-radius: 30px;
@@ -315,7 +315,7 @@ select {
 }
 
 .sort-select {
-  border: 2px solid #54a0b2;
+  border: 2px solid #ff5b2e;
   border-radius: 30px;
   font-weight: bold;
   color: black;
@@ -323,7 +323,7 @@ select {
 }
 
 .delete-multiple-button {
-  border: 2px solid #54a0b2;
+  border: 2px solid #ff5b2e;
   padding: 20px;
   width: 170px;
   height: 70px;
@@ -544,7 +544,7 @@ p {
 }
 .latest-pagi-wrapper ul li {
   font-size: 16px;
-  color: #54a0b2;
+  color: #ff5b2e;
   width: 36px;
   height: 36px;
   display: flex;
@@ -552,14 +552,14 @@ p {
   align-items: center;
   background: #fff;
   margin: 0 8px;
-  border: 1px solid #54a0b2;
+  border: 1px solid #ff5b2e;
   border-radius: 100%;
   cursor: pointer;
 }
 .latest-pagi-wrapper ul li.active {
   color: #fff;
-  background: #54a0b2;
-  border: 1px solid #54a0b2;
+  background: #ff5b2e;
+  border: 1px solid #ff5b2e;
 }
 .v-post-card-wrapper {
   padding: 30px 70px 30px 30px;

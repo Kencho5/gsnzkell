@@ -4,13 +4,19 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { UserService } from './user.service';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: [
-    './user.component.scss',
-    '../profile/profile.component.scss',
+  styleUrls: ['./user.component.scss', '../profile/profile.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-out', style({ opacity: 1 })),
+      ]),
+    ]),
   ],
 })
 export class UserComponent implements OnInit {

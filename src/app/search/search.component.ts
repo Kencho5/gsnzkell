@@ -16,11 +16,20 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { TranslateService } from '@ngx-translate/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 @Component({
   selector: 'app-search',
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
+  animations: [
+    trigger('fadeIn', [
+      transition(':enter', [
+        style({ opacity: 0 }),
+        animate('500ms ease-out', style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class SearchComponent implements OnInit {
   filterForm = new FormGroup({
@@ -81,10 +90,10 @@ export class SearchComponent implements OnInit {
   }
 
   searchPosts() {
-    if(this.filterForm.value.ageType == "Years") {
+    if (this.filterForm.value.ageType == 'Years') {
       this.filterForm.value.ageMonths = 0;
     }
-    if(this.filterForm.value.ageType == "Months") {
+    if (this.filterForm.value.ageType == 'Months') {
       this.filterForm.value.ageYears = 0;
     }
 
@@ -125,7 +134,6 @@ export class SearchComponent implements OnInit {
       item.charAt(0).toUpperCase() + item.slice(1)
     );
   }
-
 
   openPost(id) {
     window.open(`/post/${id}`);

@@ -10,7 +10,10 @@
     "birds": "Birds",
     "see_more": "See More",
     "vip_posts": "VIP Posts",
-    "latest_posts": "Latest Posts"
+    "latest_posts": "Latest Posts",
+    "long_text": "Find Your Perfect Companion: Adopt, Sell, and Meet Your Pet Here! Discover Unconditional Love On Our Website",
+    "new_pet": "Find a new friend",
+    "new_pet_bottom": "Looking For a Dog? or maybe a reptile? :)"
   },
 
   "ANIMALS": {
@@ -80,6 +83,8 @@
   },
 
   "NAV": {
+    "home": "Home",
+    "contact": "Contact Us",
     "search": "Search Breed...",
     "view_profile": "View Profile",
     "upload": "Upload",
