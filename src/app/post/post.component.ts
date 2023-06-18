@@ -58,8 +58,6 @@ export class PostComponent implements OnInit {
       .getSimilarPosts({
         id: this.post.id,
         breed: this.post.breed,
-        city: this.post.city,
-        postType: this.post.postType,
       })
       .subscribe((res) => {
         if (res['code'] == 200) {
@@ -84,12 +82,13 @@ export class PostComponent implements OnInit {
   }
 
   customOptions: OwlOptions = {
-    items: 1,
-    dots: true,
-    nav: true,
     loop: true,
-    navText: ['<', '>'],
+    dots: false,
+    nav: true,
+    margin: 25,
     autoplay: true,
-    autoplayTimeout: 3000,
+    autoplayTimeout: 5000,
+    items: 1,
+    navText: ['', ''],
   };
 }

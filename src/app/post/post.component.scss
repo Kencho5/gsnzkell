@@ -785,3 +785,170 @@ mat-icon {
     height: 100%;
   }
 }
+
+.similar-text {
+  font-weight: bold;
+  font-size: 36px;
+}
+
+/* VIP Pet Selling Section CSS Start */
+
+.pet-selling-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.carousel-nav {
+  width: 120px;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  margin-top: 30px;
+}
+
+::ng-deep .owl-nav {
+  display: none !important;
+}
+
+.carousel-nav button {
+  border: none;
+  background-color: #ff5b2e;
+  border-radius: 100%;
+  padding: 10px;
+}
+
+.carousel-nav mat-icon {
+  vertical-align: middle;
+  color: white;
+}
+
+.pet-selling-wrapper {
+  padding-top: 100px;
+}
+
+.pet-selling-slider {
+  padding-top: 50px;
+  margin: auto;
+  width: 350px;
+}
+
+.pet-selling-top h2 {
+  font-size: 40px;
+  font-weight: 600;
+  line-height: 60px;
+  color: #000000;
+}
+
+.pet-selling-slide {
+  cursor: pointer;
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: rgba(99, 99, 99, 0.1) 0px 2px 8px 0px;
+}
+
+.pet-slide-img img {
+  max-width: 100%;
+  width: 100%;
+  min-height: 300px;
+  max-height: 300px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
+.vip-tag {
+  position: absolute;
+  top: 25px;
+  left: 20px;
+}
+
+.vip-tag span {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #ffffff;
+  background: #ff5b2e;
+  padding: 7px 16px;
+  border: 2px solid #ffffffd9;
+  border-radius: 29px;
+}
+
+.pet-slide-content {
+  padding: 20px;
+}
+
+.pet-slide-content h5 {
+  font-size: 20px;
+  font-weight: 500;
+  color: #050c43;
+  padding-bottom: 10px;
+}
+
+.pet-slide-content h5 span {
+  font-size: 16px;
+  font-weight: 400;
+  color: #4d4f5f;
+}
+
+.pet-slide-content p {
+  font-size: 16px;
+  font-weight: 500;
+  color: #4d4f5f;
+  margin-bottom: 0;
+}
+
+.buy-now-btn a {
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 18px;
+  color: #ffffff;
+  background: #ff5b2e;
+  padding: 7px 16px;
+  border-radius: 30px;
+}
+
+.owl-carousel .owl-nav.disabled {
+  display: block;
+}
+
+.owl-carousel .owl-dots.disabled {
+  display: none;
+}
+
+.owl-prev {
+  position: absolute;
+  top: -65px;
+  right: 70px;
+}
+
+.owl-next {
+  position: absolute;
+  top: -65px;
+  right: 0;
+}
+
+.owl-prev i,
+.owl-next i {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #000000;
+  background: #ffffff;
+  border: 1px solid #fff6ee;
+  border-radius: 100%;
+}
+
+.owl-prev i {
+  color: #9c9c9c;
+}
+
+.owl-theme .owl-nav [class*="owl-"]:hover {
+  background: none;
+}
+
+/* VIP Pet Selling Section CSS End */
+

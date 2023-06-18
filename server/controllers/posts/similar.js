@@ -3,16 +3,12 @@ const { db, userPosts, users } = require("../../utils/db");
 async function similar(req, res) {
   id = req.body.id;
   breed = req.body.breed;
-  city = req.body.city;
-  postType = req.body.postType;
 
   userPosts
     .find({
       breed: {
         $regex: new RegExp(breed, "i"),
       },
-      city: city,
-      postType: postType,
       _id: { $ne: id },
     })
     .limit(3)

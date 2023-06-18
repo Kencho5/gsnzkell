@@ -154,59 +154,59 @@
     <div class="post-wrapper position-relative overflow-hidden pb-5">
       <div class="container-fluid">
         <div class="section-title">
-          <h2>{{ 'POST.similar' | translate }}</h2>
-        </div>
-        <div
-          class="row align-items-center justify-content-center d-none d-md-flex"
-        >
-          <div
-            class="col-md-6 col-lg-4 col-xxl-3"
-            *ngFor="let similar of similarPosts"
-          >
-            <div class="post-card" (click)="openPost(similar._id)">
-              <div class="post-card-img position-relative">
-                <img
-                  src="/assets/postImages/{{ similar._id }}/{{
-                    similar.img_path[0]
-                  }}"
-                  alt="post-img1"
-                />
-                <span>{{ similar.postType }}</span>
-              </div>
-              <h5>{{ similar.breed }}</h5>
-              <p *ngIf="similar.price != null; else age">
-                {{ similar.price }} ₾
-              </p>
-              <ng-template #age>
-                <p>{{ similar.age }} {{ similar.ageType | titlecase }} Old</p>
-              </ng-template>
-            </div>
-          </div>
+          <h2 class="similar-text">{{ 'POST.similar' | translate }}</h2>
         </div>
         <!-- Slider For Mobile -->
-        <div class="owl-similar-posts">
-          <owl-carousel-o [options]="customOptions">
-            <ng-template carouselSlide *ngFor="let similar of similarPosts">
-              <div class="post-card item" (click)="openPost(similar._id)">
-                <div class="post-card-img position-relative">
+        <div class="pet-selling-slider owl-theme" [@fadeIn]>
+          <owl-carousel-o [options]="customOptions" #carousel>
+            <ng-template carouselSlide *ngFor="let post of similarPosts">
+              <div class="pet-selling-slide item" (click)="openPost(post._id)">
+                <div class="pet-slide-img position-relative">
                   <img
-                    src="/assets/postImages/{{ similar._id }}/{{
-                      similar.img_path[0]
-                    }}"
-                    alt="post-img1"
+                    src="/assets/postImages/{{ post._id }}/{{ post.img_path[0] }}"
+                    alt="pet-selling-slide-img1"
                   />
-                  <span>{{ similar.postType }}</span>
+                  <div class="vip-tag" *ngIf="post.vip">
+                    <span>VIP</span>
+                  </div>
                 </div>
-                <h5>{{ similar.breed }}</h5>
-                <p *ngIf="similar.price != null; else age">
-                  {{ similar.price }} ₾
-                </p>
-                <ng-template #age>
-                  <p>{{ similar.age }} {{ similar.ageType | titlecase }} Old</p>
-                </ng-template>
+                <div class="pet-slide-content">
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <h5>
+                      {{ post.breed }}
+                      <span>({{ 'UPLOAD.' + post.gender | translate }})</span>
+                    </h5>
+                    <h5 *ngIf="post.price">{{ post.price }} ₾</h5>
+                  </div>
+                  <div
+                    class="d-flex justify-content-between align-items-center"
+                  >
+                    <p>
+                      <span *ngIf="post.ageYears > 0"
+                        >{{ post.ageYears }} {{ 'POST.Years' | translate }}
+                      </span>
+                      <span *ngIf="post.ageMonths > 0"
+                        >{{ post.ageMonths }} {{ 'POST.Months' | translate }}
+                      </span>
+                    </p>
+                    <div class="buy-now-btn">
+                      <a>{{ 'POST.' + post.postType | translate}}</a>
+                    </div>
+                  </div>
+                </div>
               </div>
             </ng-template>
           </owl-carousel-o>
+        </div>
+        <div class="carousel-nav" *ngIf="similarPosts.length > 1">
+          <button type="button" (click)="carousel.prev()">
+            <mat-icon>arrow_back</mat-icon>
+          </button>
+          <button type="button" (click)="carousel.next()">
+            <mat-icon>arrow_forward</mat-icon>
+          </button>
         </div>
       </div>
     </div>
