@@ -137,7 +137,7 @@ export class UploadFormComponent {
   removeImage(event) {
     var tmp = [];
     this.urls.forEach((url) => {
-      if (url != event.target.classList[2]) {
+      if (url != event.target.classList[3]) {
         tmp.push(url);
       }
     });
