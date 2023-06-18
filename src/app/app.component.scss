@@ -19,7 +19,7 @@ mat-icon {
   width: 270px;
   padding: 40px 30px;
   background: #ffffff;
-  filter: drop-shadow(0px 5px 10px rgba(0, 0, 0, 0.2));
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   border-radius: 30px;
   display: none;
   z-index: 1;
@@ -73,8 +73,8 @@ mat-icon {
 }
 
 .profile-dropdown hr {
-  border-top: 1px solid #ff5b2e;
-  opacity: 1;
+  border-top: 2px solid tomato;
+  opacity: 0.7;
 }
 
 /* Navigation Section CSS Start */
